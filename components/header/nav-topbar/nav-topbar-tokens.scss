@@ -1,0 +1,40 @@
+.dsa-nav-topbar {
+  --dsa-nav-topbar--background: linear-gradient(
+    125deg,
+    var(--ks-background-color-default),
+    var(--ks-color-primary-to-bg-6)
+  );
+
+  --dsa-nav-topbar__link--color: var(--ks-color-fg);
+
+  --dsa-nav-topbar__link--opacity_hover: 0.6;
+  --dsa-nav-topbar__link--color_active: var(--ks-text-color-interface-interactive-active);
+  --dsa-nav-topbar__link--font: var(--ks-font-interface-m);
+
+  --dsa-nav-topbar__link--font-weight: var(--ks-font-weight-semi-bold);
+  --dsa-nav-topbar__link--font-weight_active: var(--ks-font-weight-semi-bold);
+
+  --dsa-nav-topbar_floating__link--color: var(--ks-color-fg);
+  --dsa-nav-topbar_floating__link--color_active: var(--ks-color-fg);
+  --dsa-nav-topbar_floating__link--opacity_hover: 0.6;
+
+  --dsa-nav-topbar__link--padding: 0 0.75em;
+
+  // Sublist
+  --dsa-nav-topbar__sublist__link--color: var(--ks-color-fg);
+
+  --dsa-nav-topbar__sublist__link--opacity_hover: 0.6;
+  --dsa-nav-topbar__sublist__link--color_active: var(--ks-text-color-interface-interactive-active);
+  --dsa-nav-topbar__sublist__link--font: var(--ks-font-interface-s);
+
+  --dsa-nav-topbar__sublist__link--font-weight: var(--ks-font-weight-semi-bold);
+  --dsa-nav-topbar__sublist__link--font-weight_active: var(--ks-font-weight-semi-bold);
+
+  --dsa-nav-topbar_floating__subslist__link--color: var(--ks-color-fg);
+  --dsa-nav-topbar_floating__subslist__link--color_active: var(--ks-color-fg);
+  --dsa-nav-topbar_floating__subslist__link--opacity_hover: 0.6;
+
+  --dsa-nav-topbar__sublist__link--padding: 0.35em 0.25em;
+
+  --dsa-nav-main--shadow: 50px 0px 50px 50px rgba(0, 0, 0, 0.539);
+}

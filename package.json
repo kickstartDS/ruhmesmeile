@@ -31,7 +31,11 @@
     "push-components": "storyblok push-components cms/components.123456.json --space $NEXT_STORYBLOK_SPACE_ID --presets-source cms/presets.123456.json",
     "create-storyblok-config": "kickstartDS cms storyblok --components-path node_modules/@kickstartds/ds-agency-premium/dist/components --cms-path components --configuration-path cms --components cta faq features gallery image-text logos stats teaser-card testimonials text blog-teaser hero mosaic video-curtain image-story slider",
     "storyblok-logout": "storyblok logout",
-    "storyblok-login": "storyblok login"
+    "storyblok-login": "storyblok login",
+    "schema": "run-p schema:*",
+    "schema:dereference-schemas": "kickstartDS schema dereference --schema-domain schema.mydesignsystem.com",
+    "schema:generate-props": "kickstartDS schema types",
+    "schema:layer-types": "kickstartDS schema layer"
   },
   "dependencies": {
     "@kickstartds/base": "4.0.2",

@@ -4,7 +4,7 @@ import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 
 import DsaProviders from "@kickstartds/ds-agency-premium/providers";
-import { Header } from "@kickstartds/ds-agency-premium/header";
+import { Header } from "../components/header/HeaderComponent";
 import { Footer } from "@kickstartds/ds-agency-premium/footer";
 import { initStoryblok } from "@/helpers/storyblok";
 import { unflatten } from "@/helpers/unflatten";

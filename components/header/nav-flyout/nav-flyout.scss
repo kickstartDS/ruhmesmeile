@@ -1,0 +1,10 @@
+@use "sass:meta";
+@use "bourbon/core/bourbon";
+@use "./nav-flyout-tokens";
+
+.dsa-nav-flyout {
+  @media (max-width: "62rem") {
+    display: block;
+  }
+  display: none;
+}

@@ -1,0 +1,42 @@
+@import "./header-tokens.scss";
+
+.dsa-header {
+  &--floating {
+    background: var(--dsa-header_floating--background, linear-gradient(var(--ks-color-bg-alpha-5), transparent));
+    position: absolute;
+    z-index: 999;
+
+    .c-nav-main__link {
+      text-shadow: 0 0 10px var(--ks-color-bg-alpha-5);
+    }
+  }
+
+  background: var(--dsa-header--background, var(--ks-background-color-default));
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  padding: var(--dsa-header--spacing-vertical) 0;
+  position: relative;
+
+  &__content {
+    padding: 0 var(--dsa-header--spacing-horizontal);
+    max-width: var(--l-section--content-width-max);
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.dsa-header--spacer {
+  display: none;
+
+  @media (min-width: 640px) {
+    display: block;
+    height: var(--dsa-header--height);
+    z-index: -1;
+    position: relative;
+    background-color: var(--ks-background-color-default);
+  }
+}

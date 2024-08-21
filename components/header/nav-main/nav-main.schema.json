@@ -1,0 +1,99 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://cms.schema.mydesignsystem.com/nav-main.schema.json",
+  "title": "Nav Main",
+  "type": "object",
+  "properties": {
+    "logo": {
+      "$ref": "http://schema.mydesignsystem.com/logo.schema.json"
+    },
+    "flyoutInverted": {
+      "type": "boolean",
+      "title": "Flyout Inverted",
+      "description": "Toggle the inversion of the flyout navigation",
+      "default": false
+    },
+    "navItems": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "href": { "type": "string", "format": "uri" },
+          "label": { "type": "string" },
+          "active": { "type": "boolean" },
+          "navItems": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "href": { "type": "string", "format": "uri" },
+                "label": { "type": "string" },
+                "active": { "type": "boolean" }
+              }
+            }
+          }
+        },
+        "additionalProperties": false,
+        "required": ["href", "label"]
+      },
+      "examples": [
+        [
+          {
+            "label": "Nav With Children",
+            "href": "#",
+            "items": [
+              {
+                "label": "TEST1",
+                "href": "#",
+                "id": "TEST1"
+              },
+              {
+                "label": "TEST2",
+                "href": "#",
+                "id": "TEST2"
+              }
+            ]
+          },
+          {
+            "label": "Active Item",
+            "href": "#",
+            "active": true
+          },
+          {
+            "label": "Another Item",
+            "href": "#"
+          },
+          {
+            "label": "One more Item",
+            "href": "#"
+          },
+          {
+            "label": "Last Item",
+            "href": "#"
+          }
+        ]
+      ]
+    },
+    "cta": {
+      "type": "object",
+      "title": "CTA",
+      "description": "Add a CTA to the Navigation",
+      "properties": {
+        "toggle": {
+          "title": "Toggle CTA",
+          "description": "Toggle the CTA",
+          "type": "boolean",
+          "default": false
+        },
+        "label": {
+          "$ref": "http://schema.mydesignsystem.com/button.schema.json#/properties/label"
+        },
+        "target": {
+          "$ref": "http://schema.mydesignsystem.com/button.schema.json#/properties/target"
+        }
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": ["logo"]
+}
