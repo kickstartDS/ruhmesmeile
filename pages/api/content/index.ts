@@ -30,8 +30,9 @@ export default async function handler(
     await runMiddleware(req, res, cors);
 
     try {
-      const { prompt, schema } = JSON.parse(req.body);
+      const { system, prompt, schema } = JSON.parse(req.body);
 
+      if (!system) return res.status(400).send({ error: "system is required" });
       if (!prompt) return res.status(400).send({ error: "prompt is required" });
       if (!schema) return res.status(400).send({ error: "schema is required" });
 
@@ -40,10 +41,9 @@ export default async function handler(
         messages: [
           {
             role: "system",
-            content:
-              "You are a Design System marketing specialist. You excel in creating engaging and informative content for your audience. You are using a page schema to generate content for your website.",
+            content: system,
           },
-          { role: "user", content: `Suggest content for: "${prompt}"` },
+          { role: "user", content: prompt },
         ],
         response_format: {
           type: "json_schema",
