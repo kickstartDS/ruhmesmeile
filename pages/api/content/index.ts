@@ -30,8 +30,7 @@ export default async function handler(
     await runMiddleware(req, res, cors);
 
     try {
-      console.log("debugging", req, req.body);
-      const { prompt, schema } = req.body;
+      const { prompt, schema } = JSON.parse(req.body);
 
       if (!prompt) return res.status(400).send({ error: "prompt is required" });
       if (!schema) return res.status(400).send({ error: "schema is required" });
