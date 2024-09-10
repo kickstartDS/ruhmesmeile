@@ -1,4 +1,4 @@
-import OpenAI from "https://esm.sh/openai@4.58.2";
+import OpenAI from "openai";
 
 export default async (request: Request) => {
   const locationInput = new URL(request.url).searchParams.get("location");
@@ -22,6 +22,7 @@ export default async (request: Request) => {
       {
         type: "function",
         function: {
+          description: "gets the current weather",
           function: getWeather,
           parse: JSON.parse,
           parameters: {
@@ -49,5 +50,5 @@ async function getWeather(args: { location: string }) {
 }
 
 export const config = {
-  path: "/packing-suggestions",
+  path: "/gpt/content",
 };
