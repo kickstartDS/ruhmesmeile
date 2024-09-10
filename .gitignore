@@ -58,3 +58,6 @@ token/components.ts
 public/sitemap*
 public/robots.txt
 public/img/screenshots
+
+# Local Netlify folder
+.netlify

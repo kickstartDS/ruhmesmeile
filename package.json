@@ -44,6 +44,7 @@
     "@kickstartds/core": "4.0.2",
     "@kickstartds/ds-agency-premium": "^1.5.20",
     "@kickstartds/form": "4.0.2",
+    "@netlify/functions": "^2.8.1",
     "@storyblok/react": "^3.0.9",
     "@unpic/pixels": "^1.2.2",
     "@unpic/placeholder": "^0.1.2",
@@ -58,13 +59,13 @@
     "storyblok-rich-text-react-renderer": "^2.9.0"
   },
   "devDependencies": {
-    "@kickstartds/jsonschema2types": "^1.1.51",
     "@csstools/css-calc": "^1.2.4",
     "@csstools/css-parser-algorithms": "^2.7.1",
     "@csstools/css-tokenizer": "^2.4.1",
     "@kickstartds/jsonschema2storyblok": "^1.5.34",
+    "@kickstartds/jsonschema2types": "^1.1.51",
     "@kickstartds/style-dictionary": "^4.0.2",
-    "@netlify/plugin-nextjs": "^5.5.1",
+    "@netlify/plugin-nextjs": "^5.7.1",
     "@types/ffprobe": "^1.1.8",
     "@types/ffprobe-static": "^2.0.3",
     "@types/node": "20.4.5",
