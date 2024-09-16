@@ -1,0 +1,341 @@
+{
+  "story": {
+    "name": "Import",
+    "is_folder": false,
+    "content": {
+      "section": [
+        {
+          "style": "horizontalGradient",
+          "components": [
+            {
+              "text": "A design system provides a single source of truth for your brand’s design language. By utilizing consistent styles, components, and patterns, you can guarantee that your product delivers a cohesive experience across different devices and platforms.",
+              "layout": "singleColumn",
+              "type": "text",
+              "align": "left",
+              "highlightText": false,
+              "component": "text"
+            },
+            {
+              "headline": "Want to learn more about maintaining consistency?",
+              "sub": "Reach out to explore how a design system can unify your brand vision.",
+              "text": "Consistency breeds familiarity with users, enhancing user experience and satisfaction.",
+              "buttons": [
+                {
+                  "label": "Contact Us"
+                }
+              ],
+              "type": "cta",
+              "highlightText": false,
+              "colorNeutral": false,
+              "fullWidth": false,
+              "textAlign": "left",
+              "contentAlign": "center",
+              "component": "cta",
+              "image_padding": true,
+              "order_mobileImageLast": false,
+              "order_desktopImageLast": true
+            }
+          ],
+          "buttons": [],
+          "type": "section",
+          "width": "default",
+          "backgroundColor": "default",
+          "spotlight": false,
+          "spaceBefore": "default",
+          "spaceAfter": "default",
+          "inverted": false,
+          "headerSpacing": false,
+          "component": "section",
+          "headline_text": "Consistency Across Platforms",
+          "headline_large": false,
+          "headline_sub": "Ensure uniform design across all your products",
+          "headline_width": "unset",
+          "content_width": "unset",
+          "content_align": "center",
+          "content_gutter": "default",
+          "content_mode": "list",
+          "content_tileWidth": "default"
+        },
+        {
+          "style": "accentTransition",
+          "components": [
+            {
+              "text": "A well-defined design system allows teams to work faster by reusing components rather than creating them from scratch for each project. This not only speeds up development but also reduces errors and ensures high-quality standards are met consistently.",
+              "layout": "singleColumn",
+              "type": "text",
+              "align": "left",
+              "highlightText": false,
+              "component": "text"
+            },
+            {
+              "layout": "largeTiles",
+              "style": "centered",
+              "feature": [
+                {
+                  "title": "Save Time",
+                  "text": "Cut design time by up to 50% through reusability.",
+                  "style": "centered",
+                  "type": "feature",
+                  "component": "feature",
+                  "cta_label": "See more",
+                  "cta_toggle": true,
+                  "cta_style": "link",
+                  "cta_target": "#"
+                },
+                {
+                  "title": "Reduce Toil",
+                  "text": "Focus on innovation instead of repetitive design tasks.",
+                  "style": "centered",
+                  "type": "feature",
+                  "component": "feature",
+                  "cta_label": "See more",
+                  "cta_toggle": true,
+                  "cta_style": "link",
+                  "cta_target": "#"
+                }
+              ],
+              "type": "features",
+              "component": "features",
+              "ctas_toggle": true,
+              "ctas_style": "link"
+            }
+          ],
+          "buttons": [
+            {
+              "label": "Read More",
+              "variant": "secondary",
+              "size": "medium",
+              "disabled": false,
+              "type": "button",
+              "component": "button"
+            }
+          ],
+          "type": "section",
+          "width": "default",
+          "backgroundColor": "default",
+          "spotlight": false,
+          "spaceBefore": "default",
+          "spaceAfter": "default",
+          "inverted": false,
+          "headerSpacing": false,
+          "component": "section",
+          "headline_text": "Efficiency Improvements",
+          "headline_large": false,
+          "headline_sub": "Streamline workflows with reusable components",
+          "headline_width": "unset",
+          "content_width": "unset",
+          "content_align": "center",
+          "content_gutter": "default",
+          "content_mode": "list",
+          "content_tileWidth": "default"
+        },
+        {
+          "style": "boldTransition",
+          "components": [
+            {
+              "questions": [
+                {
+                  "question": "How does a design system support cross-functional teams?",
+                  "answer": "By offering a shared language that aligns design and development teams, fostering smoother handoffs and reducing miscommunications."
+                },
+                {
+                  "question": "What tools can streamline this process?",
+                  "answer": "Tools like Figma and Storybook integrate well with design systems to ease this collaborative effort."
+                }
+              ],
+              "type": "faq",
+              "component": "faq"
+            },
+            {
+              "text": "Adopting a design system invites seamless collaboration between designers, developers, and product managers. By establishing a common design language, it breaks down silos and promotes efficiency.",
+              "layout": "multiColumn",
+              "type": "text",
+              "align": "left",
+              "highlightText": false,
+              "component": "text"
+            }
+          ],
+          "buttons": [
+            {
+              "label": "Join Our Webinar",
+              "variant": "primary",
+              "size": "large",
+              "disabled": false,
+              "type": "button",
+              "component": "button"
+            }
+          ],
+          "type": "section",
+          "width": "default",
+          "backgroundColor": "default",
+          "spotlight": false,
+          "spaceBefore": "default",
+          "spaceAfter": "default",
+          "inverted": false,
+          "headerSpacing": false,
+          "component": "section",
+          "headline_text": "Facilitating Collaboration",
+          "headline_large": false,
+          "headline_sub": "Enhance team communication with a shared language",
+          "headline_width": "unset",
+          "content_width": "unset",
+          "content_align": "center",
+          "content_gutter": "default",
+          "content_mode": "list",
+          "content_tileWidth": "default"
+        },
+        {
+          "style": "symmetricGlow",
+          "components": [
+            {
+              "stat": [
+                {
+                  "number": 70,
+                  "description": "of companies see improved scalability with design systems",
+                  "title": "Scalable Design",
+                  "type": "stat",
+                  "component": "stat"
+                },
+                {
+                  "number": 85,
+                  "description": "agree that scalability is crucial for long-term success",
+                  "title": "Long-term Benefits",
+                  "type": "stat",
+                  "component": "stat"
+                }
+              ],
+              "type": "stats",
+              "component": "stats"
+            },
+            {
+              "headline": "Scale with Confidence",
+              "sub": "Design systems allow you to maintain brand integrity, whether you're creating a single landing page or launching a multisite platform.",
+              "text": "Talk to our experts about scaling your business efficiently without compromising on quality.",
+              "buttons": [
+                {
+                  "label": "Contact Sales"
+                }
+              ],
+              "type": "cta",
+              "highlightText": false,
+              "colorNeutral": false,
+              "fullWidth": false,
+              "textAlign": "left",
+              "contentAlign": "center",
+              "component": "cta",
+              "image_padding": true,
+              "order_mobileImageLast": false,
+              "order_desktopImageLast": true
+            }
+          ],
+          "buttons": [],
+          "type": "section",
+          "width": "default",
+          "backgroundColor": "default",
+          "spotlight": false,
+          "spaceBefore": "default",
+          "spaceAfter": "default",
+          "inverted": false,
+          "headerSpacing": false,
+          "component": "section",
+          "headline_text": "Scalability",
+          "headline_large": false,
+          "headline_sub": "Support growth without losing quality or consistency",
+          "headline_width": "unset",
+          "content_width": "unset",
+          "content_align": "center",
+          "content_gutter": "default",
+          "content_mode": "list",
+          "content_tileWidth": "default"
+        },
+        {
+          "style": "symmetricGlow",
+          "components": [
+            {
+              "layout": "list",
+              "style": "stack",
+              "feature": [
+                {
+                  "title": "Predefined Accessibility",
+                  "text": "Design systems come equipped with accessible components, which helps further inclusivity in design.",
+                  "style": "intext",
+                  "type": "feature",
+                  "component": "feature",
+                  "cta_label": "See more",
+                  "cta_toggle": true,
+                  "cta_style": "link",
+                  "cta_target": "#"
+                },
+                {
+                  "title": "Regulatory Compliance",
+                  "text": "Have confidence that your product meets necessary accessibility standards and regulations.",
+                  "style": "stack",
+                  "type": "feature",
+                  "component": "feature",
+                  "cta_label": "See more",
+                  "cta_toggle": true,
+                  "cta_style": "link",
+                  "cta_target": "#"
+                }
+              ],
+              "type": "features",
+              "component": "features",
+              "ctas_toggle": true,
+              "ctas_style": "link"
+            }
+          ],
+          "buttons": [
+            {
+              "label": "Get Started",
+              "variant": "primary",
+              "size": "medium",
+              "disabled": false,
+              "type": "button",
+              "component": "button"
+            }
+          ],
+          "type": "section",
+          "width": "default",
+          "backgroundColor": "default",
+          "spotlight": false,
+          "spaceBefore": "default",
+          "spaceAfter": "default",
+          "inverted": false,
+          "headerSpacing": false,
+          "component": "section",
+          "headline_text": "Accessibility and Inclusivity",
+          "headline_large": false,
+          "headline_sub": "Build products that everyone can use",
+          "headline_width": "unset",
+          "content_width": "unset",
+          "content_align": "center",
+          "content_gutter": "default",
+          "content_mode": "list",
+          "content_tileWidth": "default"
+        }
+      ],
+      "seo": {
+        "type": "seo",
+        "component": "seo",
+        "title": "5 Key Reasons to Adopt a Design System",
+        "description": "Explore the essential benefits of using a design system to enhance consistency, efficiency, collaboration, scalability, and accessibility.",
+        "keywords": "Design System, Consistency, Efficiency, Collaboration, Scalability, Accessibility"
+      },
+      "type": "page",
+      "component": "page",
+      "header": {
+        "floating": false,
+        "inverted": false
+      },
+      "footer": {
+        "inverted": false
+      }
+    },
+    "published": true,
+    "real_path": "/import",
+    "unpublished_changes": false,
+    "slug": "import",
+    "full_slug": "import",
+    "position": 0
+  }
+}
