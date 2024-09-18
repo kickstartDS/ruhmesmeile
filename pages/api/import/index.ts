@@ -30,9 +30,7 @@ export default async function handler(
     await runMiddleware(req, res, cors);
 
     try {
-      console.log(req.body);
-      console.log(JSON.parse(req.body));
-      const { page } = JSON.parse(req.body);
+      const page = JSON.parse(req.body);
 
       if (!page) return res.status(400).send({ error: "page is required" });
 
