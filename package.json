@@ -42,7 +42,7 @@
     "@kickstartds/blog": "4.0.2",
     "@kickstartds/content": "^4.0.0",
     "@kickstartds/core": "4.0.2",
-    "@kickstartds/ds-agency-premium": "^1.5.20",
+    "@kickstartds/ds-agency-premium": "1.6.0--canary.18.1017.0",
     "@kickstartds/form": "4.0.2",
     "@netlify/functions": "^2.8.1",
     "@storyblok/react": "^3.0.9",
