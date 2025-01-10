@@ -30,6 +30,13 @@
           "presenter": "BorderRadius"
         }
       },
+      "image": {
+        "value": "4px",
+        "token": {
+          "category": "Border Radius",
+          "presenter": "BorderRadius"
+        }
+      },
       "pill": {
         "value": "999px",
         "token": {

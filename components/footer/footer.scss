@@ -15,7 +15,7 @@
     justify-content: space-between;
 
     &--bottom {
-      padding: var(--ks-spacing-stack-s) var(--dsa-content--spacing);
+      padding: var(--ks-spacing-stack-s) var(--dsa-content--horizontal-spacing);
       align-items: center;
       gap: var(--ks-spacing-stack-s) var(--ks-spacing-inline-m);
     }
