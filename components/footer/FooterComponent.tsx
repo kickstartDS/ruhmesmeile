@@ -53,25 +53,25 @@ export const FooterContextDefault = forwardRef<
           <li className="dsa-footer__column">
             <Link
               className="dsa-footer__headline"
-              href="/design-system-services/design-system-services"
+              href="/services"
             >
-              Design System Services
+              Unsere Services
             </Link>
             <ul className="dsa-footer__sublist">
               <li>
                 <Link
                   className="dsa-footer__link"
-                  href="/design-system-services/brauche-ich-ein-design-system"
+                  href="/design-system-services/design-system-services"
                 >
-                  Beratung
+                  Design System Services
                 </Link>
               </li>
               <li>
                 <Link
                   className="dsa-footer__link"
-                  href="/design-system-services/vorteile-eines-design-systems"
+                  href="/headless-cms/headless-cms-services"
                 >
-                  Design System Vorteile
+                  Headless CMS Services
                 </Link>
               </li>
               <li>
@@ -79,7 +79,7 @@ export const FooterContextDefault = forwardRef<
                   className="dsa-footer__link"
                   href="/ux-strategie-beratung"
                 >
-                  UX-Strategie
+                  UX-Strategie & Beratung
                 </Link>
               </li>
             </ul>
@@ -87,22 +87,22 @@ export const FooterContextDefault = forwardRef<
           <li className="dsa-footer__column">
             <Link
               className="dsa-footer__headline"
-              href="/headless-cms/was-ist-ein-headless-cms"
+              href="/Projekte"
             >
-              Headless CMS
+              Case Studies
             </Link>
             <ul className="dsa-footer__sublist">
               <li>
-                <Link
-                  className="dsa-footer__link"
-                  href="/headless-cms/headless-cms-services"
-                >
-                  Services
+                <Link className="dsa-footer__link" href="headless-cms/cms-starter-paket">
+                  CMS Website-Accelerator
                 </Link>
               </li>
               <li>
-                <Link className="dsa-footer__link" href="headless-cms/cms-starter-paket">
-                  CMS Starter
+                <Link
+                  className="dsa-footer__link"
+                  href="/headless-cms/composable-frontends"
+                >
+                  Whitelabel Frontends
                 </Link>
               </li>
               <li>
