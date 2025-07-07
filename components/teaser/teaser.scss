@@ -9,6 +9,11 @@
     margin-bottom: 0.5em;
     position: relative;
 
+    .dsa-teaser-card__label {
+      top: calc(var(--dsa-teaser-card--padding) * -1);
+      right: calc(var(--dsa-teaser-card--padding) * -1);
+    }
+
     &::before {
       content: "";
       position: absolute;
@@ -18,7 +23,7 @@
       transition: inherit;
     }
 
-    span {
+    span:not(.dsa-teaser-card__label) {
       transition: inherit;
       display: block;
     }
@@ -26,7 +31,7 @@
 
   &:hover {
     .c-teaser__topic {
-      span {
+      span:not(.dsa-teaser-card__label) {
         transform: translateX(0.5em);
       }
 
