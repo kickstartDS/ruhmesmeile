@@ -1,11 +1,14 @@
 @import "./teaser-tokens.scss";
 
-.dsa-teaser-card {
+.c-teaser.dsa-teaser-card {
+  --c-teaser_text--spacing: 0;
+
   .c-teaser__topic {
     transition-property: padding-left;
     transition: var(--ks-transition-hover);
     padding-left: 0em;
     border-left: 0px solid var(--ks-color-secondary);
+    margin-bottom: 0.5em;
   }
 
   &:hover {

@@ -1,3 +1,6 @@
+@use "@kickstartds/core/source/core/container";
+@include container.wrapper("teaser-card");
+
 :root {
   .dsa-teaser-card {
     --dsa-teaser-card--shadow: none;
@@ -5,6 +8,12 @@
     --dsa-teaser-card--border-color: transparent;
     --dsa-teaser-card--border-color_hover: transparent;
 
-    --dsa-teaser-card--padding: var(--ks-spacing-inset-stretch-m);
+    // Scaling for Mobile Breakpoint
+    --dsa-teaser-card--padding: var(--ks-spacing-inset-xl);
+
+    @media (min-width: 48em) {
+      //Scaling for Desktop Breakpoint SmallTiles
+      --dsa-teaser-card--padding: var(--ks-spacing-inset-l);
+    }
   }
 }
