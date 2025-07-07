@@ -101,7 +101,7 @@ export const FooterContextDefault = forwardRef<
                 </Link>
               </li>
               <li>
-                <Link className="dsa-footer__link" href="/headless-cms/cms-website-acceleretor">
+                <Link className="dsa-footer__link" href="/headless-cms/cms-website-accelerator">
                   CMS Website-Accelerator
                 </Link>
               </li>
