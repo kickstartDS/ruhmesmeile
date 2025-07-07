@@ -87,7 +87,7 @@ export const FooterContextDefault = forwardRef<
           <li className="dsa-footer__column">
             <Link
               className="dsa-footer__headline"
-              href="/Projekte"
+              href="/case-studies"
             >
               Was wir machen
             </Link>
@@ -95,7 +95,7 @@ export const FooterContextDefault = forwardRef<
               <li>
                 <Link
                   className="dsa-footer__link"
-                  href="/headless-cms/storyblok-websites"
+                  href="/case-studies"
                 >
                   Case Studies
                 </Link>
