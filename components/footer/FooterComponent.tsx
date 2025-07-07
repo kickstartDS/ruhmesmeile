@@ -55,7 +55,7 @@ export const FooterContextDefault = forwardRef<
               className="dsa-footer__headline"
               href="/services"
             >
-              Unsere Services
+              Was wir bieten
             </Link>
             <ul className="dsa-footer__sublist">
               <li>
@@ -89,11 +89,19 @@ export const FooterContextDefault = forwardRef<
               className="dsa-footer__headline"
               href="/Projekte"
             >
-              Case Studies
+              Was wir machen
             </Link>
             <ul className="dsa-footer__sublist">
               <li>
-                <Link className="dsa-footer__link" href="headless-cms/cms-starter-paket">
+                <Link
+                  className="dsa-footer__link"
+                  href="/headless-cms/storyblok-websites"
+                >
+                  Case Studies
+                </Link>
+              </li>
+              <li>
+                <Link className="dsa-footer__link" href="/headless-cms/cms-website-accelerator">
                   CMS Website-Accelerator
                 </Link>
               </li>
@@ -105,14 +113,6 @@ export const FooterContextDefault = forwardRef<
                   Whitelabel Frontends
                 </Link>
               </li>
-              <li>
-                <Link
-                  className="dsa-footer__link"
-                  href="/headless-cms/storyblok-websites"
-                >
-                  Storyblok Agentur
-                </Link>
-              </li>
             </ul>
           </li>
           <li className="dsa-footer__column">
@@ -120,7 +120,7 @@ export const FooterContextDefault = forwardRef<
               className="dsa-footer__headline"
               href="/ueber-uns/design-system-agentur-beratung"
             >
-              Agentur & Beratung
+              Wer wir sind
             </Link>
             <ul className="dsa-footer__sublist">
               <li>
@@ -128,7 +128,7 @@ export const FooterContextDefault = forwardRef<
                   className="dsa-footer__link"
                   href="/ueber-uns/design-system-agentur-beratung"
                 >
-                  Über uns
+                  Agentur & Beratung
                 </Link>
               </li>
               <li>
