@@ -5,14 +5,14 @@
     .dsa-nav-toggle {
       display: block;
 
-      @media (min-width: "90em") {
+      @media (min-width: "64em") {
         display: none;
       }
     }
     .dsa-nav-flyout {
       display: flex;
 
-      @media (min-width: "90em") {
+      @media (min-width: "64em") {
         display: none;
       }
     }
@@ -20,7 +20,7 @@
     .dsa-nav-topbar {
       display: none;
 
-      @media (min-width: "90em") {
+      @media (min-width: "64em") {
         display: block;
       }
     }

@@ -1,9 +1,14 @@
 @import "./nav-topbar-tokens.scss";
 
 .dsa-nav-topbar {
+  &__list {
+    gap: var(--ks-spacing-inline-xs);
+  }
+
   .dsa-nav-topbar__label {
     font-family: var(--ks-font-family-display);
   }
+
   &__cta {
     margin-left: var(--ks-spacing-inline-m);
   }
