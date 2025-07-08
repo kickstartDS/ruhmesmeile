@@ -116,6 +116,30 @@
 
 [[redirects]]
   from="/cms-starter-paket"
-  to="/headless-cms/cms-starter-paket"
+  to="/headless-cms/cms-website-accelerator"
+  status = 301
+  force = false
+
+[[redirects]]
+  from="/headless-cms/cms-starter-paket"
+  to="/headless-cms/cms-website-accelerator"
+  status = 301
+  force = false
+
+[[redirects]]
+  from="/projekte"
+  to="/case-studies"
+  status = 301
+  force = false
+
+[[redirects]]
+  from="/insights"
+  to="/design-system-insights"
+  status = 301
+  force = false
+
+[[redirects]]
+  from="/blog"
+  to="/design-system-insights"
   status = 301
   force = false
