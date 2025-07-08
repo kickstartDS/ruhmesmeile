@@ -21,7 +21,7 @@
     "init": "rimraf tmp && mkdir -p tmp/images && node scripts/prepareProject.js && npm run push-components && npm run generate-content-types",
     "update-previews": "node scripts/updatePreviews.js",
     "dereference-schemas": "kickstartDS schema dereference --schema-paths node_modules/@kickstartds/ds-agency-premium/dist/components components cms/components --layer-order editor cms schema",
-    "generate-props": "kickstartDS schema types --schema-paths node_modules/@kickstartds/ds-agency-premium/dist/components components cms/components --layer-order editor cms schema --merge-schemas false",
+    "generate-props": "kickstartDS schema types --components-path node_modules/@kickstartds/ds-agency-premium/dist/components --schema-paths node_modules/@kickstartds/ds-agency-premium/dist/components components cms/components --layer-order editor cms schema --merge-schemas false",
     "create-defaults": "kickstartDS schema defaults --schema-paths node_modules/@kickstartds/ds-agency-premium/dist/components components cms/components --layer-order editor cms schema",
     "start": "next start",
     "lint": "next lint",
