@@ -3,10 +3,17 @@
 [ks-theme],
 .dsa-headline {
   --dsa-headline--gap: 0;
-  --dsa-headline--font-weight: var(--ks-font-weight-bold);
+  --dsa-headline--font-weight: var(--ks-font-weight-semi-bold);
   --dsa-headline--highlight-background: var(--ks-text-color-primary);
 
-  --dsa-headline__subheadline--font-weight: var(--ks-font-weight-medium);
-  --dsa-headline_h1__subheadline--font: var(--ks-font-copy-xxl);
-  --dsa-headline_h2__subheadline--font: var(--ks-font-copy-xl);
+  --dsa-headline__subheadline--color: var(--ks-color-fg-alpha-4);
+  --dsa-headline__subheadline--font-weight: var(--ks-font-weight-bold);
+  --dsa-headline__headline-spacing: 0.35em;
+
+  --dsa-headline__subheadline--font-family: var(--ks-font-family-copy);
+  --dsa-headline_h1__subheadline--font-size: 50%;
+  --dsa-headline_h2__subheadline--font-size: 55%;
+  --dsa-headline_h3__subheadline--font-size: 65%;
+  --dsa-headline_h4__subheadline--font-size: 75%;
+  --dsa-headline_p__subheadline--font-size: 75%;
 }

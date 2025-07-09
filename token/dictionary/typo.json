@@ -2,7 +2,7 @@
   "ks": {
     "font-family": {
       "display": {
-        "value": "Fredoka, Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif",
+        "value": "Metropolis, Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif",
         "token": {
           "category": "Font Families",
           "presenter": "FontFamily"

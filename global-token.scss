@@ -18,9 +18,12 @@
   }
 
   // Topic
-  --dsa-topic--font-weight: var(--ks-font-weight-thin);
+  --dsa-topic--font-weight: var(--ks-font-weight-bold);
 
   // Link
   --dsa-link--text-decoration: underline;
   --dsa-link--text-decoration_hover: none;
+
+  // Rich Text
+  --dsa-rich-text--vertical-spacing: 1em;
 }

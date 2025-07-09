@@ -3,6 +3,7 @@
 
 :root {
   .dsa-teaser-card {
+    --dsa-teaser-card__copy--color: var(--ks-text-color-copy);
     --dsa-teaser-card--shadow: none;
 
     --dsa-teaser-card--border-color: transparent;
@@ -10,10 +11,27 @@
 
     // Scaling for Mobile Breakpoint
     --dsa-teaser-card--padding: var(--ks-spacing-inset-xl);
+    --dsa-teaser-card__topic--font: var(--ks-font-display-xl);
+
+    // Scaling for Mobile Breakpoint MediumTiles
+    @include container.size("≥", 400px, "teaser-card") {
+      --dsa-teaser-card__topic--font: var(--ks-font-display-xl);
+    }
 
     @media (min-width: 48em) {
       //Scaling for Desktop Breakpoint SmallTiles
-      --dsa-teaser-card--padding: var(--ks-spacing-inset-l);
+      --dsa-teaser-card--padding: var(--ks-spacing-inset-m);
+      --dsa-teaser-card__topic--font: var(--ks-font-display-xs);
+      --dsa-teaser-card__copy--font: var(--ks-font-copy-s);
+      --dsa-teaser-card__button--font: var(--ks-font-interface-s);
+
+      // Scaling for Desktop Breakpoint MediumTiles
+      @include container.size("≥", 400px, "teaser-card") {
+        --dsa-teaser-card--padding: var(--ks-spacing-inset-l);
+        --dsa-teaser-card__topic--font: var(--ks-font-display-s);
+        --dsa-teaser-card__copy--font: var(--ks-font-copy-m);
+        --dsa-teaser-card__button--font: var(--ks-font-interface-m);
+      }
     }
   }
 }

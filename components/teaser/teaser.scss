@@ -29,6 +29,12 @@
     }
   }
 
+  .c-teaser__link {
+    .c-button {
+      --c-button--font: var(--dsa-teaser-card__button--font, var(--ks-font-interface-m));
+    }
+  }
+
   &:hover {
     .c-teaser__topic {
       span:not(.dsa-teaser-card__label) {

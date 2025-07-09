@@ -23,6 +23,26 @@ const displayFont = localFont({
       style: "normal",
     },
     {
+      path: "../token/fonts/Metropolis-Medium.woff",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../token/fonts/Metropolis-Medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../token/fonts/Metropolis-SemiBold.woff2",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../token/fonts/Metropolis-SemiBold.woff",
+      weight: "600",
+      style: "normal",
+    },
+    {
       path: "../token/fonts/Metropolis-Bold.woff2",
       weight: "700",
       style: "normal",
@@ -49,6 +69,16 @@ const displayFont = localFont({
 const displayFontPreview = localFont({
   src: [
     {
+      path: "../token/fonts/Metropolis-Thin.woff2",
+      weight: "100",
+      style: "normal",
+    },
+    {
+      path: "../token/fonts/Metropolis-Thin.woff",
+      weight: "100",
+      style: "normal",
+    },
+    {
       path: "../token/fonts/Metropolis-Regular.woff2",
       weight: "400",
       style: "normal",
@@ -59,13 +89,8 @@ const displayFontPreview = localFont({
       style: "normal",
     },
     {
-      path: "../token/fonts/Metropolis-SemiBold.woff2",
-      weight: "600",
-      style: "normal",
-    },
-    {
-      path: "../token/fonts/Metropolis-SemiBold.woff",
-      weight: "600",
+      path: "../token/fonts/Metropolis-Medium.woff",
+      weight: "500",
       style: "normal",
     },
     {
@@ -74,18 +99,13 @@ const displayFontPreview = localFont({
       style: "normal",
     },
     {
-      path: "../token/fonts/Metropolis-Medium.woff",
-      weight: "500",
+      path: "../token/fonts/Metropolis-SemiBold.woff2",
+      weight: "600",
       style: "normal",
     },
     {
-      path: "../token/fonts/Metropolis-Thin.woff2",
-      weight: "100",
-      style: "normal",
-    },
-    {
-      path: "../token/fonts/Metropolis-Thin.woff",
-      weight: "100",
+      path: "../token/fonts/Metropolis-SemiBold.woff",
+      weight: "600",
       style: "normal",
     },
     {
