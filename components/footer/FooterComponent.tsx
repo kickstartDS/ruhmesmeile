@@ -61,7 +61,7 @@ export const FooterContextDefault = forwardRef<
               <li>
                 <Link
                   className="dsa-footer__link"
-                  href="/design-system-services/design-system-services"
+                  href="/design-system-services"
                 >
                   Design System Services
                 </Link>
