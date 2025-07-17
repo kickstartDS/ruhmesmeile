@@ -82,6 +82,22 @@ export const FooterContextDefault = forwardRef<
                   UX-Strategie & Beratung
                 </Link>
               </li>
+              <li>
+                <Link
+                  className="dsa-footer__link"
+                  href="/marketing/cms-webseite-accelerator-fuer-energie-unternehmen"
+                >
+                  Für Energieunternehmen
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="dsa-footer__link"
+                  href="/marketing/cms-accelerator-industriekunden"
+                >
+                  Für Industrieunternehmen 
+                </Link>
+              </li>
             </ul>
           </li>
           <li className="dsa-footer__column">
