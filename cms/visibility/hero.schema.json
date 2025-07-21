@@ -1,7 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "http://editor.mydesignsystem.com/hero.schema.json",
-  "title": "Hero",
+  "$id": "http://visibility.mydesignsystem.com/hero.schema.json",
   "type": "object",
   "allOf": [
     {
