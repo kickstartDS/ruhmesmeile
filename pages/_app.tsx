@@ -15,6 +15,12 @@ import ComponentProviders from "@/components/ComponentProviders";
 import ImageSizeProviders from "@/components/ImageSizeProviders";
 import ImageRatioProviders from "@/components/ImageRatioProviders";
 
+import {
+  ConsentManagerDialog,
+  ConsentManagerProvider,
+  CookieBanner,
+} from "@c15t/nextjs";
+
 import palette from "@kickstartds/ds-agency-premium/global.client.js";
 import "@kickstartds/ds-agency-premium/global.css";
 import "@/token/tokens.css";
@@ -82,34 +88,47 @@ export default function App({
   }, [router.events]);
 
   return (
-    <LanguageProvider language={language}>
-      <BlurHashProvider blurHashes={blurHashes}>
-        <DsaProviders>
-          <ComponentProviders>
-            <ImageSizeProviders>
-              <ImageRatioProviders>
-                <Meta
-                  globalSeo={settings?.seo}
-                  pageSeo={story?.content.seo}
-                  fallbackName={story?.name}
-                />
-                {headerProps && (
-                  <Header
-                    logo={{}}
-                    {...headerProps}
-                    inverted={invertHeader}
-                    floating={floatHeader}
+    <ConsentManagerProvider
+      options={{
+        mode: "c15t",
+        backendURL: "https://jonas-ulrich-111nqmo5-europe-onboarding.c15t.dev",
+      }}
+    >
+      <LanguageProvider language={language}>
+        <BlurHashProvider blurHashes={blurHashes}>
+          <DsaProviders>
+            <ComponentProviders>
+              <ImageSizeProviders>
+                <ImageRatioProviders>
+                  <Meta
+                    globalSeo={settings?.seo}
+                    pageSeo={story?.content.seo}
+                    fallbackName={story?.name}
                   />
-                )}
-                <Component {...pageProps} />
-                {footerProps && (
-                  <Footer logo={{}} {...footerProps} inverted={invertFooter} />
-                )}
-              </ImageRatioProviders>
-            </ImageSizeProviders>
-          </ComponentProviders>
-        </DsaProviders>
-      </BlurHashProvider>
-    </LanguageProvider>
+                  <ConsentManagerDialog />
+                  <CookieBanner />
+                  {headerProps && (
+                    <Header
+                      logo={{}}
+                      {...headerProps}
+                      inverted={invertHeader}
+                      floating={floatHeader}
+                    />
+                  )}
+                  <Component {...pageProps} />
+                  {footerProps && (
+                    <Footer
+                      logo={{}}
+                      {...footerProps}
+                      inverted={invertFooter}
+                    />
+                  )}
+                </ImageRatioProviders>
+              </ImageSizeProviders>
+            </ComponentProviders>
+          </DsaProviders>
+        </BlurHashProvider>
+      </LanguageProvider>
+    </ConsentManagerProvider>
   );
 }
