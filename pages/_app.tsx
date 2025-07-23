@@ -15,6 +15,12 @@ import ComponentProviders from "@/components/ComponentProviders";
 import ImageSizeProviders from "@/components/ImageSizeProviders";
 import ImageRatioProviders from "@/components/ImageRatioProviders";
 
+import {
+  ConsentManagerDialog,
+  ConsentManagerProvider,
+  CookieBanner,
+} from "@c15t/nextjs/pages";
+
 import palette from "@kickstartds/ds-agency-premium/global.client.js";
 import "@kickstartds/ds-agency-premium/global.css";
 import "@/token/tokens.css";
@@ -82,34 +88,53 @@ export default function App({
   }, [router.events]);
 
   return (
-    <LanguageProvider language={language}>
-      <BlurHashProvider blurHashes={blurHashes}>
-        <DsaProviders>
-          <ComponentProviders>
-            <ImageSizeProviders>
-              <ImageRatioProviders>
-                <Meta
-                  globalSeo={settings?.seo}
-                  pageSeo={story?.content.seo}
-                  fallbackName={story?.name}
-                />
-                {headerProps && (
-                  <Header
-                    logo={{}}
-                    {...headerProps}
-                    inverted={invertHeader}
-                    floating={floatHeader}
+    <ConsentManagerProvider
+      initialData={undefined}
+      options={{
+        mode: "c15t",
+        backendURL: "/api/c15t",
+        consentCategories: ["necessary", "measurement"],
+        ignoreGeoLocation: true,
+        unstable_googleTagManager: {
+          id: "GTM-MMWSRLLF",
+        },
+      }}
+    >
+      <LanguageProvider language={language}>
+        <BlurHashProvider blurHashes={blurHashes}>
+          <DsaProviders>
+            <ComponentProviders>
+              <ImageSizeProviders>
+                <ImageRatioProviders>
+                  <Meta
+                    globalSeo={settings?.seo}
+                    pageSeo={story?.content.seo}
+                    fallbackName={story?.name}
                   />
-                )}
-                <Component {...pageProps} />
-                {footerProps && (
-                  <Footer logo={{}} {...footerProps} inverted={invertFooter} />
-                )}
-              </ImageRatioProviders>
-            </ImageSizeProviders>
-          </ComponentProviders>
-        </DsaProviders>
-      </BlurHashProvider>
-    </LanguageProvider>
+                  <CookieBanner scrollLock={true} />
+                  <ConsentManagerDialog />
+                  {headerProps && (
+                    <Header
+                      logo={{}}
+                      {...headerProps}
+                      inverted={invertHeader}
+                      floating={floatHeader}
+                    />
+                  )}
+                  <Component {...pageProps} />
+                  {footerProps && (
+                    <Footer
+                      logo={{}}
+                      {...footerProps}
+                      inverted={invertFooter}
+                    />
+                  )}
+                </ImageRatioProviders>
+              </ImageSizeProviders>
+            </ComponentProviders>
+          </DsaProviders>
+        </BlurHashProvider>
+      </LanguageProvider>
+    </ConsentManagerProvider>
   );
 }
