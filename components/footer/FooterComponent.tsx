@@ -11,14 +11,18 @@ import {
   FooterContextDefault as DsaFooter,
   FooterContext,
 } from "@kickstartds/ds-agency-premium/footer";
+import { Button } from "@kickstartds/ds-agency-premium/button";
 import { Link } from "@kickstartds/base/lib/link";
 import { Icon } from "@kickstartds/base/lib/icon";
+import { useConsentManager } from "@c15t/nextjs/pages";
 
 export const FooterContextDefault = forwardRef<
   HTMLDivElement,
   ComponentProps<typeof DsaFooter> & HTMLAttributes<HTMLDivElement>
->(({ navItems, inverted }, ref) =>
-  navItems && navItems.length > 0 ? (
+>(({ navItems, inverted }, ref) => {
+  const { setShowPopup } = useConsentManager();
+
+  return navItems && navItems.length > 0 ? (
     <div
       className={classnames("dsa-footer")}
       ks-inverted={inverted?.toString()}
@@ -51,10 +55,7 @@ export const FooterContextDefault = forwardRef<
 
         <ul className="dsa-footer__links dsa-footer__links--top">
           <li className="dsa-footer__column">
-            <Link
-              className="dsa-footer__headline"
-              href="/services"
-            >
+            <Link className="dsa-footer__headline" href="/services">
               Was wir bieten
             </Link>
             <ul className="dsa-footer__sublist">
@@ -95,29 +96,26 @@ export const FooterContextDefault = forwardRef<
                   className="dsa-footer__link"
                   href="/marketing/cms-accelerator-industriekunden"
                 >
-                  Für Industrieunternehmen 
+                  Für Industrieunternehmen
                 </Link>
               </li>
             </ul>
           </li>
           <li className="dsa-footer__column">
-            <Link
-              className="dsa-footer__headline"
-              href="/case-studies"
-            >
+            <Link className="dsa-footer__headline" href="/case-studies">
               Was wir machen
             </Link>
             <ul className="dsa-footer__sublist">
               <li>
-                <Link
-                  className="dsa-footer__link"
-                  href="/case-studies"
-                >
+                <Link className="dsa-footer__link" href="/case-studies">
                   Case Studies
                 </Link>
               </li>
               <li>
-                <Link className="dsa-footer__link" href="/headless-cms/cms-website-accelerator">
+                <Link
+                  className="dsa-footer__link"
+                  href="/headless-cms/cms-website-accelerator"
+                >
                   CMS Website-Accelerator
                 </Link>
               </li>
@@ -186,6 +184,11 @@ export const FooterContextDefault = forwardRef<
               Cookie-Liste
             </Link>
           </li>
+          <Button
+            label="Cookie-Einstellungen"
+            onClick={() => setShowPopup(true, true)}
+            size="small"
+          />
         </ul>
         <ul className="dsa-footer__social">
           <li>
@@ -201,8 +204,8 @@ export const FooterContextDefault = forwardRef<
         </ul>
       </div>
     </div>
-  ) : null
-);
+  ) : null;
+});
 
 export const FooterProvider: FC<PropsWithChildren> = (props) => (
   <FooterContext.Provider {...props} value={FooterContextDefault} />

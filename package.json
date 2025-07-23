@@ -38,7 +38,7 @@
     "storyblok-login": "storyblok login"
   },
   "dependencies": {
-    "@c15t/nextjs": "^1.4.4",
+    "@c15t/nextjs": "1.5.0-canary-20250722133547",
     "@dotenvx/dotenvx": "^1.7.0",
     "@kickstartds/base": "^4.1.0",
     "@kickstartds/blog": "^4.1.0",

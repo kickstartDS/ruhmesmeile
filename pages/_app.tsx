@@ -19,7 +19,7 @@ import {
   ConsentManagerDialog,
   ConsentManagerProvider,
   CookieBanner,
-} from "@c15t/nextjs";
+} from "@c15t/nextjs/pages";
 
 import palette from "@kickstartds/ds-agency-premium/global.client.js";
 import "@kickstartds/ds-agency-premium/global.css";
@@ -89,9 +89,15 @@ export default function App({
 
   return (
     <ConsentManagerProvider
+      initialData={undefined}
       options={{
         mode: "c15t",
-        backendURL: "https://jonas-ulrich-111nqmo5-europe-onboarding.c15t.dev",
+        backendURL: "/api/c15t",
+        consentCategories: ["necessary", "measurement"],
+        ignoreGeoLocation: true,
+        unstable_googleTagManager: {
+          id: "GTM-MMWSRLLF",
+        },
       }}
     >
       <LanguageProvider language={language}>
@@ -105,8 +111,8 @@ export default function App({
                     pageSeo={story?.content.seo}
                     fallbackName={story?.name}
                   />
+                  <CookieBanner scrollLock={true} />
                   <ConsentManagerDialog />
-                  <CookieBanner />
                   {headerProps && (
                     <Header
                       logo={{}}
