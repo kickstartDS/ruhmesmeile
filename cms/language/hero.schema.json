@@ -5,6 +5,8 @@
   "type": "object",
   "allOf": [
     {
+      "title": "Hero",
+      "description": "Das Hero Element ist ein großes, visuell ansprechendes Element, das oft am Anfang einer Seite verwendet wird, um wichtige Informationen hervorzuheben.",
       "type": "object",
       "properties": {
         "headline": {

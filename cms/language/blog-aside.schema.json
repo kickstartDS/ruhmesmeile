@@ -4,6 +4,8 @@
   "type": "object",
   "allOf": [
     {
+      "title": "Blog Aside",
+      "description": "Das Blog Aside Element zeigt zusätzliche Informationen zu einem Blogbeitrag an, wie Autor, Lesezeit und Veröffentlichungsdatum.",
       "type": "object",
       "properties": {
         "author": {

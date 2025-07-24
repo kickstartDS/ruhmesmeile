@@ -4,6 +4,8 @@
   "type": "object",
   "allOf": [
     {
+      "title": "Button",
+      "description": "Ein Button ist ein klickbares Element, das eine Aktion auslöst. Er kann verschiedene Stile und Größen haben.",
       "type": "object",
       "properties": {
         "label": {
