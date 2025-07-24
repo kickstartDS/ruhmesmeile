@@ -11,16 +11,16 @@ import {
   FooterContextDefault as DsaFooter,
   FooterContext,
 } from "@kickstartds/ds-agency-premium/footer";
-import { Button } from "@kickstartds/ds-agency-premium/button";
+// import { Button } from "@kickstartds/ds-agency-premium/button";
 import { Link } from "@kickstartds/base/lib/link";
 import { Icon } from "@kickstartds/base/lib/icon";
-import { useConsentManager } from "@c15t/nextjs/pages";
+// import { useConsentManager } from "@c15t/nextjs/pages";
 
 export const FooterContextDefault = forwardRef<
   HTMLDivElement,
   ComponentProps<typeof DsaFooter> & HTMLAttributes<HTMLDivElement>
 >(({ navItems, inverted }, ref) => {
-  const { setShowPopup } = useConsentManager();
+  // const { setShowPopup } = useConsentManager();
 
   return navItems && navItems.length > 0 ? (
     <div
@@ -184,11 +184,11 @@ export const FooterContextDefault = forwardRef<
               Cookie-Liste
             </Link>
           </li>
-          <Button
+          {/* <Button
             label="Cookie-Einstellungen"
             onClick={() => setShowPopup(true, true)}
             size="small"
-          />
+          /> */}
         </ul>
         <ul className="dsa-footer__social">
           <li>
