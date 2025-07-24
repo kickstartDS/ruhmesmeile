@@ -18,6 +18,7 @@ import {
   BlogTeaserContext,
 } from "@kickstartds/ds-agency-premium/components/blog-teaser/index.js";
 import { Cta } from "@kickstartds/ds-agency-premium/components/cta/index.js";
+import { BlogAuthor } from "@kickstartds/ds-agency-premium/components/blog-author/index.js";
 import { BlogPost } from "@kickstartds/ds-agency-premium/components/blog-post/index.js";
 import { BlogOverview as DsaBlogOverview } from "@kickstartds/ds-agency-premium/components/blog-overview/index.js";
 import { Divider } from "@kickstartds/ds-agency-premium/components/divider/index.js";
@@ -44,11 +45,18 @@ const BlogTeaserPostProvider: FC<PropsWithChildren> = (props) => {
         | (ComponentProps<typeof BlogPost> & HTMLAttributes<HTMLDivElement>)
       >(function BlogTeaserPostMapper(props, ref) {
         const locale = useLanguage();
+        const unflattenedProps = unflatten(props);
 
         function isBlogPost(
           object: any
         ): object is ComponentProps<typeof BlogPost> & { slug: string } {
           return object.type === "blog-post";
+        }
+
+        function isBlogAuthor(
+          object: any
+        ): object is ComponentProps<typeof BlogAuthor> {
+          return object.type === "blog-author";
         }
 
         function isBlogTeaser(
@@ -57,23 +65,38 @@ const BlogTeaserPostProvider: FC<PropsWithChildren> = (props) => {
           return object.type === "blog-teaser";
         }
 
-        if (isBlogPost(props) && props.head && props.aside) {
+        if (
+          isBlogPost(unflattenedProps) &&
+          unflattenedProps.head &&
+          unflattenedProps.aside
+        ) {
           const date =
-            props.head.date &&
-            new Date(Date.parse(props.head.date)).toLocaleDateString([locale]);
+            unflattenedProps.head.date &&
+            new Date(Date.parse(unflattenedProps.head.date)).toLocaleDateString(
+              [locale]
+            );
+
+          const author = unflatten(unflattenedProps.aside.author);
 
           const teaserProps: ComponentProps<typeof BlogTeaser> & {
             component: string;
           } = {
             date,
-            headline: props.head.headline || "",
-            teaserText: props.seo.description || "",
-            image: props.head.image || "",
-            alt: props.head.alt || "",
-            tags: props.head.tags || [],
-            readingTime: props.aside.readingTime,
+            headline: unflattenedProps.head.headline || "",
+            teaserText: unflattenedProps.seo.description || "",
+            image: unflattenedProps.head.image || "",
+            alt: unflattenedProps.head.alt || "",
+            tags: unflattenedProps.head.tags || [],
+            readingTime: unflattenedProps.aside.readingTime,
+            author: isBlogAuthor(author)
+              ? {
+                  name: author.name || "",
+                  title: author.byline || "",
+                  image: author.image?.src || "",
+                }
+              : undefined,
             link: {
-              url: props.slug,
+              url: unflattenedProps.slug,
             },
             component: "blog-teaser",
           };
