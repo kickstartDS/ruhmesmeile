@@ -61,7 +61,7 @@
       "additionalProperties": false
     },
     {
-      "$ref": "http://visibility.mydesignsystem.com/hero.schema.json"
+      "$ref": "http://schema.mydesignsystem.com/hero.schema.json"
     }
   ],
   "additionalProperties": false
