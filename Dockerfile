@@ -45,4 +45,4 @@ EXPOSE 3030
 ENV PORT 3030
 ENV HOSTNAME "0.0.0.0"
 
-CMD ["PORT=3030", "HOSTNAME=0.0.0.0", "node", "server.js"]
+CMD ["node", "server.js"]
