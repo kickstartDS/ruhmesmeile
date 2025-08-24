@@ -4,6 +4,8 @@ service: analytics
 # Name of the container image.
 image: ruhmesmeile/ruhmesmeile-analytics
 
+deploy_timeout: 60
+
 # Deploy to these servers.
 servers:
   web:
