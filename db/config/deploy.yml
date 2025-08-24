@@ -2,7 +2,7 @@
 service: analytics
 
 # Name of the container image.
-image: ghcr.io/umami-software/umami:postgresql-latest
+image: ruhmesmeile/ruhmesmeile-analytics
 
 # Deploy to these servers.
 servers:
