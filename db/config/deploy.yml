@@ -22,6 +22,8 @@ proxy:
   host: usage.ruhmesmeile.com
   # Proxy connects to your container on port 80 by default.
   # app_port: 3000
+  healthcheck:
+    path: /api/heartbeat
 
 # Credentials for your image host.
 registry:
@@ -37,15 +39,16 @@ registry:
 builder:
   arch: amd64
   # Pass in additional build args needed for your Dockerfile.
-  # args:
-  #   RUBY_VERSION: <%= ENV["RBENV_VERSION"] || ENV["rvm_ruby_string"] || "#{RUBY_ENGINE}-#{RUBY_ENGINE_VERSION}" %>
+  args:
+    DATABASE_URL: "postgresql://kamal_pg:#{POSTGRES_PASSWORD}@postgres:5432/kamal_pg_production"
+    DATABASE_TYPE: postgresql
 # Inject ENV variables into containers (secrets come from .kamal/secrets).
 #
-# env:
-#   clear:
-#     DB_HOST: 192.168.0.2
-#   secret:
-#     - RAILS_MASTER_KEY
+env:
+  secret:
+    - POSTGRES_PASSWORD
+    - DATABASE_URL
+    - DATABASE_TYPE
 
 # Aliases are triggered with "bin/kamal <alias>". You can overwrite arguments on invocation:
 # "bin/kamal app logs -r job" will tail logs from the first server in the job section.
@@ -79,6 +82,7 @@ builder:
 #
 accessories:
   db:
+    service: postgres
     image: postgres:15
     host: 91.98.115.152
     port: 5432

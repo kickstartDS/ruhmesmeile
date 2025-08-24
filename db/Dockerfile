@@ -1,1 +1,9 @@
 FROM ghcr.io/umami-software/umami:postgresql-latest
+
+ARG DATABASE_URL
+ENV DATABASE_URL=$DATABASE_URL
+ARG DATABASE_TYPE
+ENV DATABASE_TYPE=$DATABASE_TYPE
+
+RUN echo "SECRETS!!"
+RUN echo "${DATABASE_URL}"
