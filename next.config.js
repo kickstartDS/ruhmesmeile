@@ -42,6 +42,16 @@ module.exports = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "header", key: "host", value: "ruhmesmeile.com" }],
+        destination: "https://www.ruhmesmeile.com/:path*",
+        permanent: true,
+      },
+    ];
+  },
   // async rewrites() {
   //   return [
   //     {
