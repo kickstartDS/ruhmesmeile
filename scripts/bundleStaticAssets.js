@@ -38,6 +38,7 @@ const build = async () => {
       ".css": "empty",
     },
     write: false,
+    external: ["/pagefind/pagefind-ui.js"],
   });
 
   for (const outputFile of result.outputFiles) {

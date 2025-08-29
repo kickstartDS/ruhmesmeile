@@ -34,6 +34,7 @@ class KsDocument extends Document<any> {
       >
         <Head />
         <body>
+          <div id="search"></div>
           <Main />
           <NextScript />
         </body>
