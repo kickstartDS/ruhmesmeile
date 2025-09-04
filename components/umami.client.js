@@ -4,13 +4,13 @@ if (window.location.hash === "#disable-umami")
   localStorage.setItem("umami.disabled", 1);
 
 document.querySelectorAll("a").forEach((a) => {
-  if (!a.dataset["umami-event"]) {
-    a.dataset["umami-event"] =
+  if (!a.dataset.umamiEvent) {
+    a.dataset.umamiEvent =
       a.host !== window.location.host
         ? "click.link.outbound"
         : "click.link.internal";
-    a.dataset["umami-event-url"] = a.href;
-    a.dataset["umami-event-label"] = a.innerText;
+    a.dataset.umamiEventUrl = a.href;
+    a.dataset.umamiEventLabel = a.innerText;
   }
 });
 
