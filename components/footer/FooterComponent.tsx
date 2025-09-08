@@ -179,12 +179,12 @@ export const FooterContextDefault = forwardRef<
               Glossar
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link className="dsa-footer__link" href="#">
               Cookie-Liste
             </Link>
           </li>
-          {/* <Button
+          <Button
             label="Cookie-Einstellungen"
             onClick={() => setShowPopup(true, true)}
             size="small"
