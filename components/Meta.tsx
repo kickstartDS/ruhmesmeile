@@ -48,7 +48,7 @@ export default function Meta({
       <script
         defer
         src="https://usage.ruhmesmeile.com/script.js"
-        data-website-id="5e13ac28-2a26-4ab0-9355-960e3b5dd498"
+        data-website-id="9d7e0754-28f9-459a-8cff-0ba3c359cf24"
         data-do-not-track="true"
       ></script>
       <script
