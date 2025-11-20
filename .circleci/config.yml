@@ -3,7 +3,7 @@ version: 2.1
 defaults: &defaults
   docker:
     - image: cimg/ruby:3.4.7
-  resource_class: large
+  resource_class: medium
 
 # aliases:
 #   - &save-cache-yarn
