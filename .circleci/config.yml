@@ -25,7 +25,7 @@ defaults: &defaults
 #       - node-v1-
 
 jobs:
-  install:
+  deploy:
     <<: *defaults
     steps:
       - checkout
@@ -34,26 +34,13 @@ jobs:
       - run:
           name: Install Kamal
           command: gem install kamal
-      # - save_cache: *save-cache-yarn
-      # - save_cache: *save-cache-node
-
-  deploy:
-    <<: *defaults
-    steps:
-      - checkout
-      # - restore_cache: *restore-cache-node
-      # - attach_workspace:
-      #     at: .
       - run:
           name: Build & Deploy Website
-          command: |
-            kamal deploy
+          command: kamal deploy
+      # - save_cache: *save-cache-yarn
+      # - save_cache: *save-cache-node
 
 workflows:
   release:
     jobs:
-      - install
-
-      - deploy:
-          requires:
-            - install
+      - deploy
