@@ -569,11 +569,8 @@ export const PrompterComponent = forwardRef<
       })
         .then((response) => {
           response.json().then((json) => {
-            console.log("JSON received", json);
             const pageProps = processResponse(JSON.parse(json.content));
             setGeneratedContent(pageProps);
-
-            console.log("Pageprops", pageProps);
 
             const storyblokProps = processPage(structuredClone(pageProps));
             setStoryblokContent(storyblokProps);
@@ -611,8 +608,7 @@ export const PrompterComponent = forwardRef<
         }),
       })
         .then((response) => {
-          response.json().then((json) => {
-            console.log("Story submitted successfully", json);
+          response.json().then(() => {
             setSubmitted(true);
           });
         })
