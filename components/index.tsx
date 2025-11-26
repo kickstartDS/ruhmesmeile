@@ -190,6 +190,13 @@ export const components = {
       )
     )
   ),
+  prompter: editable(
+    dynamic(() =>
+      import("./prompter/PrompterComponent").then(
+        (mod) => mod.PrompterComponent
+      )
+    )
+  ),
   split: editable(
     dynamic(() =>
       import("@kickstartds/ds-agency-premium/split").then((mod) => mod.Split)

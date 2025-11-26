@@ -1,6 +1,6 @@
 const cspHeader = `
     default-src 'self';
-    connect-src 'self' https://*.ruhmesmeile.com https://app.lemcal.com https://pzdzoelitkqizxopmwfg.supabase.co;
+    connect-src 'self' localhost:3010 https://*.ruhmesmeile.com https://app.lemcal.com https://pzdzoelitkqizxopmwfg.supabase.co;
     script-src 'self' 'unsafe-eval' 'unsafe-inline' https://*.ruhmesmeile.com https://app.storyblok.com https://cdn.lemcal.com;
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
     frame-src 'self' https://youtube.com https://www.youtube.com https://player.vimeo.com https://www.youtube-nocookie.com/ *.google.com;

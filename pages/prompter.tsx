@@ -1,5 +1,5 @@
 import { HeadlineLevelProvider } from "@/components/headline/HeadlineLevelContext";
-import { PrompterFrame } from "@/components/prompter/Prompter";
+import { PrompterComponent } from "@/components/prompter/PrompterComponent";
 import { NextPage } from "next";
 
 type PageProps = {};
@@ -7,7 +7,7 @@ type PageProps = {};
 const Page: NextPage<PageProps> = () => {
   return (
     <HeadlineLevelProvider>
-      <PrompterFrame />
+      <PrompterComponent />
     </HeadlineLevelProvider>
   );
 };
