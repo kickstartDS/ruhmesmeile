@@ -31,19 +31,33 @@ export default async function handler(
     await runMiddleware(req, res, cors);
 
     try {
-      const page = JSON.parse(req.body);
+      const { storyUid, prompterUid, page } = JSON.parse(req.body);
 
+      if (!storyUid)
+        return res.status(400).send({ error: "storyUid is required" });
+      if (!prompterUid)
+        return res.status(400).send({ error: "prompterUid is required" });
       if (!page) return res.status(400).send({ error: "page is required" });
 
       const Storyblok = new StoryblokClient({
         oauthToken: process.env.NEXT_STORYBLOK_OAUTH_TOKEN,
       });
 
-      const response = await Storyblok.post(
-        `spaces/${process.env.NEXT_STORYBLOK_SPACE_ID}/stories/`,
+      const storyResponse = await Storyblok.get(
+        `spaces/${process.env.NEXT_STORYBLOK_SPACE_ID}/stories/${storyUid}`
+      );
+      const story = storyResponse.data.story;
+
+      const prompterIndex = story.content.section.findIndex(
+        (section: any) => section._uid === prompterUid
+      );
+      story.content.section.splice(prompterIndex, 1, ...page.content.section);
+
+      const response = await Storyblok.put(
+        `spaces/${process.env.NEXT_STORYBLOK_SPACE_ID}/stories/${storyUid}`,
         {
-          story: page,
-          publish: 0,
+          story,
+          publish: 0, // TODO TBD
         }
       );
 

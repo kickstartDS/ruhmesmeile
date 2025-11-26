@@ -23,6 +23,7 @@ import type {TestimonialsProps} from "@kickstartds/ds-agency-premium/testimonial
 import type {TextProps} from "@kickstartds/ds-agency-premium/text";
 import type {VideoCurtainProps} from "@kickstartds/ds-agency-premium/video-curtain";
 import type {InfoTableProps} from "../info-table/InfoTableProps";
+import type {PrompterProps} from "../prompter/PrompterProps";
 import type {ButtonProps} from "@kickstartds/ds-agency-premium/button";
 
 /**
@@ -138,6 +139,7 @@ export type Content = (
   | TextProps
   | VideoCurtainProps
   | InfoTableProps
+  | PrompterProps
 )[];
 /**
  * Buttons of the Button Group
