@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "http://cms.schema.mydesignsystem.com/prompter.schema.json",
-  "title": "Content Prompter",
+  "title": "Prompter",
   "description": "Component used to create new website content using AI prompts",
   "type": "object",
   "properties": {

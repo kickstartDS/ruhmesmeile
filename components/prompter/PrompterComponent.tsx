@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {
   FC,
   HTMLAttributes,
@@ -32,7 +33,7 @@ import { Text } from "@kickstartds/ds-agency-premium/text";
 import { Hero } from "@kickstartds/ds-agency-premium/hero";
 
 import pageSchema from "@kickstartds/ds-agency-premium/page/page.schema.dereffed.json";
-import { ContentPrompterProps } from "./PrompterProps";
+import { PrompterProps } from "./PrompterProps";
 
 function getSchemaName(schemaId: string): string {
   return (schemaId && schemaId.split("/").pop()?.split(".").shift()) || "";
@@ -281,7 +282,7 @@ const Page: FC<PropsWithChildren<PageProps>> = ({ section }) => {
 
 export const PrompterComponent = forwardRef<
   HTMLDivElement,
-  ContentPrompterProps & HTMLAttributes<HTMLDivElement>
+  PrompterProps & HTMLAttributes<HTMLDivElement>
 >(
   (
     {

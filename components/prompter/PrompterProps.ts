@@ -29,7 +29,7 @@ export type SystemPrompt = string;
 /**
  * Component used to create new website content using AI prompts
  */
-export interface ContentPrompterProps {
+export interface PrompterProps {
   sections?: SectionCount;
   includeStory?: IncludeStory;
   relatedStories?: RelatedStories;
