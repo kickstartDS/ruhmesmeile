@@ -33,8 +33,6 @@ export default async function handler(
     try {
       const { storyUid, prompterUid, page } = JSON.parse(req.body);
 
-      console.log(storyUid, prompterUid, JSON.stringify(page, null, 2));
-
       if (!storyUid)
         return res.status(400).send({ error: "storyUid is required" });
       if (!prompterUid)
