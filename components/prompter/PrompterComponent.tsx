@@ -1,4 +1,4 @@
-// @ts-nocheck
+// // @ts-nocheck
 import {
   FC,
   HTMLAttributes,
@@ -34,6 +34,14 @@ import { Hero } from "@kickstartds/ds-agency-premium/hero";
 
 import pageSchema from "@kickstartds/ds-agency-premium/page/page.schema.dereffed.json";
 import { PrompterProps } from "./PrompterProps";
+import {
+  ISbStory,
+  ISbStoryData,
+  getStoryblokApi,
+  useStoryblok,
+  useStoryblokApi,
+} from "@storyblok/react";
+import { fetchStory, fetchUuid, initStoryblok } from "@/helpers/storyblok";
 
 function getSchemaName(schemaId: string): string {
   return (schemaId && schemaId.split("/").pop()?.split(".").shift()) || "";
@@ -287,14 +295,15 @@ export const PrompterComponent = forwardRef<
   (
     {
       sections,
-      includeStory,
-      relatedStories,
+      includeStory = true,
+      relatedStories = [],
       userPrompt,
       systemPrompt,
       ...props
     },
     ref
   ) => {
+    console.log("RELATED STORIES", relatedStories);
     const [generatedContent, setGeneratedContent] =
       useState<Record<string, any>>(null);
     const [storyblokContent, setStoryblokContent] =
@@ -365,7 +374,8 @@ export const PrompterComponent = forwardRef<
           parentSchema.properties &&
           parentSchema.properties[keyIndex]
         ) {
-          delete parentSchema.properties[keyIndex];
+          delete schema.format;
+          // delete parentSchema.properties[keyIndex];
         }
       };
 
@@ -524,21 +534,36 @@ export const PrompterComponent = forwardRef<
     const [idea, setIdea] = useState("");
     const [loading, setLoading] = useState(false);
     const [submitted, setSubmitted] = useState(false);
+    const [story, setStory] = useState<ISbStoryData>();
 
     const ideaSelectRef = useRef(null);
 
-    const createPrompt = (idea) => {
-      const prompt: string[] = [];
+    const createPrompt = (idea, story) => {
+      const ideaContent: string[] = [];
 
       objectTraverse(
         ideas.find((object) => object.id === idea),
         ({ value }) => {
           if (value && value.type && value.type === "text" && value.text)
-            prompt.push(value.text);
+            ideaContent.push(value.text);
         }
       );
 
-      return `${userPrompt}. For the following idea: ${prompt.join(" ")}`;
+      let prompt = `
+        Aufgabe: ${userPrompt}.\n
+        \n
+        ((Idee)):\n${ideaContent.join(" ")}\n`;
+
+      // TODO this passed story JSON needs some processing done to it, like changing type key in e.g. a section to `type__section`, remove _uid, _editable, etc
+      if (story) prompt += `\n((Story)):\n${JSON.stringify(story.content)}\n`;
+      if (relatedStories && relatedStories.length > 0) {
+        relatedStories.forEach((relatedStory) => {
+          console.log("related Story", relatedStory);
+          prompt += `\n((Ähnliche Story)):\n${JSON.stringify(relatedStory)}\n`;
+        });
+      }
+
+      return prompt;
     };
 
     useEffect(() => {
@@ -551,22 +576,35 @@ export const PrompterComponent = forwardRef<
         .catch((error) => console.error(error));
     }, []);
 
+    useEffect(() => {
+      initStoryblok("tiiyPe4tqKDSQEdBa9qtRwtt");
+      const storyblokApi = getStoryblokApi();
+      fetchStory("538457684", false, storyblokApi)
+        .then((response) => {
+          setStory(response.data.story);
+        })
+        .catch((error) => console.error(error));
+
+      // for (const story of relatedStories) {
+      //   fetchStory(story, false, storyblokApi)
+      //     .then((response) => {
+      //       console.log("RELATED STORY", response.data.story);
+      //     })
+      //     .catch((error) => console.error(error));
+      // }
+    }, []);
+
     const handleGenerate = async () => {
+      const prompt = createPrompt(idea, story);
+      console.log("PROMPT", prompt, systemPrompt, schema);
       setLoading(true);
-      fetch("https://pzdzoelitkqizxopmwfg.supabase.co/functions/v1/content", {
+      fetch("https://www.ruhmesmeile.com/api/content", {
         method: "POST",
         body: JSON.stringify({
           system: systemPrompt,
-          prompt: createPrompt(idea),
+          prompt,
           schema,
         }),
-        headers: {
-          apikey:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB6ZHpvZWxpdGtxaXp4b3Btd2ZnIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Nzg0ODAzMzQsImV4cCI6MTk5NDA1NjMzNH0.FYWwK6ByCPr7clUJ66b_8njSQ1EOQQLrEujQnnIVeUo",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB6ZHpvZWxpdGtxaXp4b3Btd2ZnIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Nzg0ODAzMzQsImV4cCI6MTk5NDA1NjMzNH0.FYWwK6ByCPr7clUJ66b_8njSQ1EOQQLrEujQnnIVeUo",
-          "Content-Type": "application/json",
-        },
       })
         .then((response) => {
           response.json().then((json) => {
@@ -697,19 +735,16 @@ export const PrompterComponent = forwardRef<
             }}
           />
         )}
-        {/* {generatedContent && (
-        <Section width="full" spaceAfter="small" spaceBefore="none">
-          <Html
-            style={{ background: "white" }}
-            html={`<pre><code>${JSON.stringify(
-              generatedContent,
-              null,
-              2
-            )}</code></pre>`}
-          />
-        </Section>
-      )}
-      {storyblokContent && (
+        {/* {story && (
+          <Section width="full" spaceAfter="small" spaceBefore="none">
+            <div>
+              <pre>
+                <code>${JSON.stringify(story, null, 2)}</code>
+              </pre>
+            </div>
+          </Section>
+        )} */}
+        {/* {storyblokContent && (
         <Section width="full" spaceAfter="small" spaceBefore="none">
           <Html
             style={{ background: "white" }}
