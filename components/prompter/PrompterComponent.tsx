@@ -534,6 +534,7 @@ export const PrompterComponent = forwardRef<
     const [idea, setIdea] = useState("");
     const [loading, setLoading] = useState(false);
     const [submitted, setSubmitted] = useState(false);
+    const [storyUid, setStoryUid] = useState<string>(null);
     const [story, setStory] = useState<ISbStoryData>();
 
     const ideaSelectRef = useRef(null);
@@ -558,7 +559,6 @@ export const PrompterComponent = forwardRef<
       if (story) prompt += `\n((Story)):\n${JSON.stringify(story.content)}\n`;
       if (relatedStories && relatedStories.length > 0) {
         relatedStories.forEach((relatedStory) => {
-          console.log("related Story", relatedStory);
           prompt += `\n((Ähnliche Story)):\n${JSON.stringify(relatedStory)}\n`;
         });
       }
@@ -576,27 +576,57 @@ export const PrompterComponent = forwardRef<
         .catch((error) => console.error(error));
     }, []);
 
-    useEffect(() => {
-      initStoryblok("tiiyPe4tqKDSQEdBa9qtRwtt");
-      const storyblokApi = getStoryblokApi();
-      fetchStory("538457684", false, storyblokApi)
-        .then((response) => {
-          setStory(response.data.story);
-        })
-        .catch((error) => console.error(error));
+    // useEffect(() => {
+    //   initStoryblok("tiiyPe4tqKDSQEdBa9qtRwtt");
+    //   const storyblokApi = getStoryblokApi();
+    //   fetchStory("118768188291694", false, storyblokApi)
+    //     .then((response) => {
+    //       setStory(response.data.story);
+    //     })
+    //     .catch((error) => console.error(error));
 
-      // for (const story of relatedStories) {
-      //   fetchStory(story, false, storyblokApi)
-      //     .then((response) => {
-      //       console.log("RELATED STORY", response.data.story);
-      //     })
-      //     .catch((error) => console.error(error));
-      // }
+    // for (const story of relatedStories) {
+    //   fetchStory(story, false, storyblokApi)
+    //     .then((response) => {
+    //       console.log("RELATED STORY", response.data.story);
+    //     })
+    //     .catch((error) => console.error(error));
+    // }
+    // }, []);
+
+    useEffect(() => {
+      const blok = document.querySelector("[data-blok-c]");
+      const blokMetaString = blok?.getAttribute("data-blok-c");
+      if (!blokMetaString)
+        throw new Error("Could not find blok meta for prompter");
+
+      const { id } = JSON.parse(blokMetaString);
+      setStoryUid(id);
     }, []);
 
+    useEffect(() => {
+      if (storyUid) {
+        initStoryblok("tiiyPe4tqKDSQEdBa9qtRwtt");
+        const storyblokApi = getStoryblokApi();
+        fetchStory(storyUid, false, storyblokApi)
+          .then((response) => {
+            setStory(response.data.story);
+          })
+          .catch((error) => console.error(error));
+      }
+    }, [storyUid]);
+
     const handleGenerate = async () => {
-      const prompt = createPrompt(idea, story);
-      console.log("PROMPT", prompt, systemPrompt, schema);
+      const prompt = createPrompt(idea, includeStory ? story : null);
+      console.log(
+        "PROMPT",
+        prompt,
+        systemPrompt,
+        schema,
+        includeStory,
+        story,
+        storyUid
+      );
       setLoading(true);
       fetch("https://www.ruhmesmeile.com/api/content", {
         method: "POST",
@@ -626,7 +656,7 @@ export const PrompterComponent = forwardRef<
       if (!blokMetaString)
         throw new Error("Could not find blok meta for prompter");
 
-      const { uid: prompterUid, id: storyUid } = JSON.parse(blokMetaString);
+      const { uid: prompterUid } = JSON.parse(blokMetaString);
 
       fetch("https://www.ruhmesmeile.com/api/import", {
         method: "POST",
@@ -735,7 +765,7 @@ export const PrompterComponent = forwardRef<
             }}
           />
         )}
-        {/* {story && (
+        {story && (
           <Section width="full" spaceAfter="small" spaceBefore="none">
             <div>
               <pre>
@@ -743,7 +773,7 @@ export const PrompterComponent = forwardRef<
               </pre>
             </div>
           </Section>
-        )} */}
+        )}
         {/* {storyblokContent && (
         <Section width="full" spaceAfter="small" spaceBefore="none">
           <Html
