@@ -132,7 +132,7 @@ export const FooterContextDefault = forwardRef<
           <li className="dsa-footer__column">
             <Link
               className="dsa-footer__headline"
-              href="/ueber-uns/design-system-agentur-beratung"
+              href="/ueber-uns/"
             >
               Wer wir sind
             </Link>
@@ -140,7 +140,7 @@ export const FooterContextDefault = forwardRef<
               <li>
                 <Link
                   className="dsa-footer__link"
-                  href="/ueber-uns/design-system-agentur-beratung"
+                  href="/ueber-uns/"
                 >
                   Agentur & Beratung
                 </Link>
