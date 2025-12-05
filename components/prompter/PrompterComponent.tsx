@@ -1,4 +1,4 @@
-// @ts-nocheck
+// // @ts-nocheck
 import {
   FC,
   HTMLAttributes,
@@ -34,14 +34,14 @@ import { Hero } from "@kickstartds/ds-agency-premium/hero";
 
 import pageSchema from "@kickstartds/ds-agency-premium/page/page.schema.dereffed.json";
 import { PrompterProps } from "./PrompterProps";
-import {
-  ISbStory,
-  ISbStoryData,
-  getStoryblokApi,
-  useStoryblok,
-  useStoryblokApi,
-} from "@storyblok/react";
-import { fetchStory, fetchUuid, initStoryblok } from "@/helpers/storyblok";
+import { ISbStoryData, getStoryblokApi } from "@storyblok/react";
+import { fetchStory, initStoryblok } from "@/helpers/storyblok";
+import { unflatten } from "@/helpers/unflatten";
+
+type Idea = {
+  id: string;
+  name: string;
+};
 
 function getSchemaName(schemaId: string): string {
   return (schemaId && schemaId.split("/").pop()?.split(".").shift()) || "";
@@ -288,6 +288,23 @@ const Page: FC<PropsWithChildren<PageProps>> = ({ section }) => {
   );
 };
 
+const storyblokKeys = ["_uid", "_editable", "component"];
+const processStory = (story: ISbStoryData): Record<string, any> => {
+  const page = structuredClone(story);
+  const test = unflatten(page.content);
+  // TODO should smartly unflatten here
+
+  // resursively call unflatten on all nested objects, even those in arrays?
+  objectTraverse(page, ({ key, value, parent }) => {});
+  objectTraverse(page, ({ key, parent }) => {
+    if (key && storyblokKeys.includes(key) && parent) {
+      delete parent[key];
+    }
+  });
+  console.log("Processed page", page);
+  return page;
+};
+
 export const PrompterComponent = forwardRef<
   HTMLDivElement,
   PrompterProps & HTMLAttributes<HTMLDivElement>
@@ -296,6 +313,7 @@ export const PrompterComponent = forwardRef<
     {
       sections,
       includeStory = true,
+      useIdea = true,
       relatedStories = [],
       userPrompt,
       systemPrompt,
@@ -313,7 +331,7 @@ export const PrompterComponent = forwardRef<
       const allProperties: Set<string> = new Set();
       let maxDepth = 0;
 
-      const collectSchemas = (schema) => {
+      const collectSchemas: schemaTraverse.Callback = (schema) => {
         if (
           schema.properties &&
           schema.properties.type &&
@@ -323,7 +341,7 @@ export const PrompterComponent = forwardRef<
         }
       };
 
-      const filterComponents = (schema) => {
+      const filterComponents: schemaTraverse.Callback = (schema) => {
         if (schema && schema.anyOf) {
           schema.anyOf = schema.anyOf.filter((component) => {
             return components.includes(component.properties.type.const);
@@ -331,7 +349,7 @@ export const PrompterComponent = forwardRef<
         }
       };
 
-      const deleteConsts = (
+      const deleteConsts: schemaTraverse.Callback = (
         schema,
         jsonPtr,
         _rootSchema,
@@ -359,7 +377,7 @@ export const PrompterComponent = forwardRef<
         }
       };
 
-      const removeImageFormatProperties = (
+      const removeImageFormatProperties: schemaTraverse.Callback = (
         schema,
         _jsonPtr,
         _rootSchema,
@@ -370,6 +388,7 @@ export const PrompterComponent = forwardRef<
       ) => {
         if (
           (schema.format === "image" || schema.format === "video") &&
+          keyIndex &&
           parentSchema &&
           parentSchema.properties &&
           parentSchema.properties[keyIndex]
@@ -379,7 +398,7 @@ export const PrompterComponent = forwardRef<
         }
       };
 
-      const removeIconProperties = (
+      const removeIconProperties: schemaTraverse.Callback = (
         _schema,
         _jsonPtr,
         _rootSchema,
@@ -398,7 +417,7 @@ export const PrompterComponent = forwardRef<
         }
       };
 
-      const removeUnsupportedProperties = (
+      const removeUnsupportedProperties: schemaTraverse.Callback = (
         _schema,
         _jsonPtr,
         _rootSchema,
@@ -408,6 +427,8 @@ export const PrompterComponent = forwardRef<
         keyIndex
       ) => {
         if (
+          keyIndex &&
+          typeof keyIndex === "string" &&
           propertiesToDrop.includes(keyIndex) &&
           parentSchema &&
           parentSchema.properties &&
@@ -417,13 +438,13 @@ export const PrompterComponent = forwardRef<
         }
       };
 
-      const removeUnsupportedKeywords = (schema) => {
+      const removeUnsupportedKeywords: schemaTraverse.Callback = (schema) => {
         for (const key of unsupportedKeywords) {
           if (schema.hasOwnProperty(key)) delete schema[key];
         }
       };
 
-      const removeEmptyObjects = (
+      const removeEmptyObjects: schemaTraverse.Callback = (
         schema,
         _jsonPtr,
         _rootSchema,
@@ -435,6 +456,7 @@ export const PrompterComponent = forwardRef<
         if (
           schema.type === "object" &&
           !Object.keys(schema.properties).length &&
+          keyIndex &&
           parentSchema &&
           parentSchema.properties &&
           parentSchema.properties[keyIndex]
@@ -443,19 +465,19 @@ export const PrompterComponent = forwardRef<
         }
       };
 
-      const denyAdditionalProperties = (schema) => {
+      const denyAdditionalProperties: schemaTraverse.Callback = (schema) => {
         if (schema.type === "object") {
           schema.additionalProperties = false;
         }
       };
 
-      const makeRequired = (schema) => {
+      const makeRequired: schemaTraverse.Callback = (schema) => {
         if (schema.type === "object") {
           schema.required = Object.keys(schema.properties);
         }
       };
 
-      const collectProperties = (
+      const collectProperties: schemaTraverse.Callback = (
         _schema,
         jsonPtr,
         _rootSchema,
@@ -471,7 +493,7 @@ export const PrompterComponent = forwardRef<
         }
       };
 
-      const countDepth = (_schema, jsonPtr) => {
+      const countDepth: schemaTraverse.Callback = (_schema, jsonPtr) => {
         maxDepth = Math.max(jsonPtr.split("/properties/").length, maxDepth);
         if (jsonPtr.split("/properties/").length > 6) {
           console.log("Max depth exceeded:", jsonPtr);
@@ -530,31 +552,30 @@ export const PrompterComponent = forwardRef<
       };
     }, [sections]);
 
-    const [ideas, setIdeas] = useState([]);
+    const [ideas, setIdeas] = useState<Idea[]>([]);
     const [idea, setIdea] = useState("");
     const [loading, setLoading] = useState(false);
     const [submitted, setSubmitted] = useState(false);
-    const [storyUid, setStoryUid] = useState<string>(null);
+    const [storyUid, setStoryUid] = useState<string>();
     const [story, setStory] = useState<ISbStoryData>();
 
     const ideaSelectRef = useRef(null);
 
-    const createPrompt = (idea, story) => {
-      const ideaContent: string[] = [];
+    const createPrompt = (ideaId: string, story?: ISbStoryData) => {
+      let prompt = `Aufgabe: ${userPrompt}.\n`;
 
-      objectTraverse(
-        ideas.find((object) => object.id === idea),
-        ({ value }) => {
-          if (value && value.type && value.type === "text" && value.text)
-            ideaContent.push(value.text);
+      if (useIdea) {
+        const ideaContent: string[] = [];
+        const idea = ideas.find((object) => object.id === ideaId);
+
+        if (idea) {
+          objectTraverse(idea, ({ value }) => {
+            if (value && value.type && value.type === "text" && value.text)
+              ideaContent.push(value.text);
+          });
         }
-      );
-
-      let prompt = `
-        Aufgabe: ${userPrompt}.\n
-        \n
-        ((Idee)):\n${ideaContent.join(" ")}\n`;
-
+        prompt += `\n((Idee)):\n${ideaContent.join(" ")}\n`;
+      }
       // TODO this passed story JSON needs some processing done to it, like changing type key in e.g. a section to `type__section`, remove _uid, _editable, etc
       if (story) prompt += `\n((Story)):\n${JSON.stringify(story.content)}\n`;
       if (relatedStories && relatedStories.length > 0) {
@@ -567,7 +588,7 @@ export const PrompterComponent = forwardRef<
     };
 
     useEffect(() => {
-      fetch("https://www.ruhmesmeile.com/api/ideas")
+      fetch("https://localhost:3010/api/ideas")
         .then((response) => {
           response.json().then((json) => {
             setIdeas(json.response.data.ideas);
@@ -606,18 +627,19 @@ export const PrompterComponent = forwardRef<
 
     useEffect(() => {
       if (storyUid) {
+        // TODO remove credential
         initStoryblok("tiiyPe4tqKDSQEdBa9qtRwtt");
         const storyblokApi = getStoryblokApi();
         fetchStory(storyUid, false, storyblokApi)
           .then((response) => {
-            setStory(response.data.story);
+            setStory(processStory(response.data.story));
           })
           .catch((error) => console.error(error));
       }
     }, [storyUid]);
 
     const handleGenerate = async () => {
-      const prompt = createPrompt(idea, includeStory ? story : null);
+      const prompt = createPrompt(idea, includeStory ? story : undefined);
       console.log(
         "PROMPT",
         prompt,
@@ -628,7 +650,7 @@ export const PrompterComponent = forwardRef<
         storyUid
       );
       setLoading(true);
-      fetch("https://www.ruhmesmeile.com/api/content", {
+      fetch("https://localhost:3010/api/content", {
         method: "POST",
         body: JSON.stringify({
           system: systemPrompt,
@@ -658,7 +680,7 @@ export const PrompterComponent = forwardRef<
 
       const { uid: prompterUid } = JSON.parse(blokMetaString);
 
-      fetch("https://www.ruhmesmeile.com/api/import", {
+      fetch("https://localhost:3010/api/import", {
         method: "POST",
         body: JSON.stringify({
           storyUid,
@@ -769,7 +791,7 @@ export const PrompterComponent = forwardRef<
           <Section width="full" spaceAfter="small" spaceBefore="none">
             <div>
               <pre>
-                <code>${JSON.stringify(story, null, 2)}</code>
+                <code>{JSON.stringify(story, null, 2)}</code>
               </pre>
             </div>
           </Section>
