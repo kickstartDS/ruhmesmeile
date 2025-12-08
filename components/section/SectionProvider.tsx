@@ -5,10 +5,11 @@ import { HeadlineLevelProvider } from "../headline/HeadlineLevelContext";
 export const SectionProvider: FC<PropsWithChildren<any>> = (props) => {
   const PrevSection = useContext(SectionContext);
   // eslint-disable-next-line react/display-name
-  const Section = forwardRef<HTMLDivElement, any>(({ aiDraft, ...props }, ref) => (
+  const Section = forwardRef<HTMLDivElement, any>(({ aiDraft, ...props }, ref) => {
+    return (
     <HeadlineLevelProvider>
-      <PrevSection {...props} ref={ref} data-ai-draft={aiDraft} />
+      <PrevSection {...props} ref={ref} data-ai-draft={aiDraft || undefined} />
     </HeadlineLevelProvider>
-  ));
+  )});
   return <SectionContext.Provider {...props} value={Section} />;
 };
