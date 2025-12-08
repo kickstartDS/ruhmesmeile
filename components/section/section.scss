@@ -6,4 +6,9 @@
       padding: 0;
     }
   }
+
+  .dsa-section[data-ai-draft] {
+    outline: 0.5em solid var(--ks-color-informative);
+    outline-offset: -0.5em;
+  }
 }
