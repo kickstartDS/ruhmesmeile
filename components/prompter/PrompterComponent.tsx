@@ -291,11 +291,44 @@ const Page: FC<PropsWithChildren<PageProps>> = ({ section }) => {
 const storyblokKeys = ["_uid", "_editable", "component"];
 const processStory = (story: ISbStoryData): Record<string, any> => {
   const page = structuredClone(story);
-  const test = unflatten(page.content);
-  // TODO should smartly unflatten here
 
-  // resursively call unflatten on all nested objects, even those in arrays?
-  objectTraverse(page, ({ key, value, parent }) => {});
+  objectTraverse(
+    page,
+    ({ value, parent, key }) => {
+      if (
+        typeof value === "object" &&
+        value !== null &&
+        !Array.isArray(value)
+      ) {
+        if (parent && key !== undefined) {
+          parent[key] = unflatten(value);
+        }
+      } else if (Array.isArray(value)) {
+        value.forEach((item, index) => {
+          if (
+            typeof item === "object" &&
+            item !== null &&
+            !Array.isArray(item)
+          ) {
+            value[index] = unflatten(item);
+          }
+        });
+      }
+    },
+    { traversalType: "depth-first" }
+  );
+
+  objectTraverse(
+    page,
+    ({ key, value, parent }) => {
+      if (key === "type" && parent && typeof value === "string") {
+        parent[`type__${value}`] = value;
+        delete parent[key];
+      }
+    },
+    { traversalType: "depth-first" }
+  );
+
   objectTraverse(page, ({ key, parent }) => {
     if (key && storyblokKeys.includes(key) && parent) {
       delete parent[key];
@@ -576,11 +609,12 @@ export const PrompterComponent = forwardRef<
         }
         prompt += `\n((Idee)):\n${ideaContent.join(" ")}\n`;
       }
-      // TODO this passed story JSON needs some processing done to it, like changing type key in e.g. a section to `type__section`, remove _uid, _editable, etc
       if (story) prompt += `\n((Story)):\n${JSON.stringify(story.content)}\n`;
       if (relatedStories && relatedStories.length > 0) {
         relatedStories.forEach((relatedStory) => {
-          prompt += `\n((Ähnliche Story)):\n${JSON.stringify(relatedStory)}\n`;
+          prompt += `\n((Ähnliche Story)):\n${JSON.stringify(
+            processStory(relatedStory)
+          )}\n`;
         });
       }
 
@@ -596,24 +630,6 @@ export const PrompterComponent = forwardRef<
         })
         .catch((error) => console.error(error));
     }, []);
-
-    // useEffect(() => {
-    //   initStoryblok("tiiyPe4tqKDSQEdBa9qtRwtt");
-    //   const storyblokApi = getStoryblokApi();
-    //   fetchStory("118768188291694", false, storyblokApi)
-    //     .then((response) => {
-    //       setStory(response.data.story);
-    //     })
-    //     .catch((error) => console.error(error));
-
-    // for (const story of relatedStories) {
-    //   fetchStory(story, false, storyblokApi)
-    //     .then((response) => {
-    //       console.log("RELATED STORY", response.data.story);
-    //     })
-    //     .catch((error) => console.error(error));
-    // }
-    // }, []);
 
     useEffect(() => {
       const blok = document.querySelector("[data-blok-c]");
@@ -788,13 +804,16 @@ export const PrompterComponent = forwardRef<
           />
         )}
         {story && (
-          <Section width="full" spaceAfter="small" spaceBefore="none">
-            <div>
-              <pre>
-                <code>{JSON.stringify(story, null, 2)}</code>
-              </pre>
-            </div>
-          </Section>
+          <details>
+            <summary>Story JSON</summary>
+            <Section width="full" spaceAfter="small" spaceBefore="none">
+              <div>
+                <pre>
+                  <code>{JSON.stringify(story, null, 2)}</code>
+                </pre>
+              </div>
+            </Section>
+          </details>
         )}
         {/* {storyblokContent && (
         <Section width="full" spaceAfter="small" spaceBefore="none">
