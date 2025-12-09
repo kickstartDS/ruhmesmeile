@@ -263,6 +263,10 @@ const processPage = (page: PageProps): Record<string, any> => {
     { traversalType: "breadth-first" }
   );
 
+  for (const section of page.section || []) {
+    section.aiDraft = true;
+  }
+
   return page as Record<string, any>;
 };
 
