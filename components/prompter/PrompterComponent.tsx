@@ -1,4 +1,4 @@
-// // @ts-nocheck
+// @ts-nocheck
 import {
   FC,
   HTMLAttributes,
@@ -37,6 +37,7 @@ import { PrompterProps } from "./PrompterProps";
 import { ISbStoryData, getStoryblokApi } from "@storyblok/react";
 import { fetchStory, initStoryblok } from "@/helpers/storyblok";
 import { unflatten } from "@/helpers/unflatten";
+import { SectionProps } from "../section/SectionProps";
 
 type Idea = {
   id: string;
@@ -264,7 +265,7 @@ const processPage = (page: PageProps): Record<string, any> => {
   );
 
   for (const section of page.section || []) {
-    section.aiDraft = true;
+    (section as SectionProps).aiDraft = true;
   }
 
   return page as Record<string, any>;
