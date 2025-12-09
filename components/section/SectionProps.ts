@@ -145,6 +145,10 @@ export type Content = (
  * Buttons of the Button Group
  */
 export type Buttons = ButtonProps[];
+/**
+ * If true, the section is marked as an AI-generated draft
+ */
+export type AIDraft = boolean;
 
 /**
  * Component used to layout components into pages
@@ -177,4 +181,5 @@ export interface SectionProps {
   };
   components?: Content;
   buttons?: Buttons;
+  aiDraft?: AIDraft;
 }

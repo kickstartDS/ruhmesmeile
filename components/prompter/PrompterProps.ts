@@ -14,6 +14,10 @@ export type SectionCount = number;
  */
 export type IncludeStory = boolean;
 /**
+ * Whether to use an idea as part of the context
+ */
+export type UseIdea = boolean;
+/**
  * Additional related stories to include as context
  */
 export type RelatedStories = string[];
@@ -32,6 +36,7 @@ export type SystemPrompt = string;
 export interface PrompterProps {
   sections?: SectionCount;
   includeStory?: IncludeStory;
+  useIdea?: UseIdea;
   relatedStories?: RelatedStories;
   userPrompt?: UserPrompt;
   systemPrompt?: SystemPrompt;
