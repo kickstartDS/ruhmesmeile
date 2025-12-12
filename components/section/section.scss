@@ -54,12 +54,12 @@
       z-index: 999;
       position: absolute;
       left: 0em;
-      background: linear-gradient(
-        var(--border-color),
-        var(--border-color) var(--border-width),
-        var(--shadow-color) var(--border-width),
-        transparent
-      );
+      // background: linear-gradient(
+      //   var(--border-color),
+      //   var(--border-color) var(--border-width),
+      //   var(--shadow-color) var(--border-width),
+      //   transparent
+      // );
     }
 
     &::before {
