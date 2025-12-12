@@ -627,7 +627,7 @@ export const PrompterComponent = forwardRef<
     };
 
     useEffect(() => {
-      fetch("https://localhost:3010/api/ideas")
+      fetch("https://www.ruhmesmeile.com/api/ideas")
         .then((response) => {
           response.json().then((json) => {
             setIdeas(json.response.data.ideas);
@@ -671,7 +671,7 @@ export const PrompterComponent = forwardRef<
         storyUid
       );
       setLoading(true);
-      fetch("https://localhost:3010/api/content", {
+      fetch("https://www.ruhmesmeile.com/api/content", {
         method: "POST",
         body: JSON.stringify({
           system: systemPrompt,
@@ -701,7 +701,7 @@ export const PrompterComponent = forwardRef<
 
       const { uid: prompterUid } = JSON.parse(blokMetaString);
 
-      fetch("https://localhost:3010/api/import", {
+      fetch("https://www.ruhmesmeile.com/api/import", {
         method: "POST",
         body: JSON.stringify({
           storyUid,
