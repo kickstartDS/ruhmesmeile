@@ -34,14 +34,15 @@ import { Hero } from "@kickstartds/ds-agency-premium/hero";
 
 import pageSchema from "@kickstartds/ds-agency-premium/page/page.schema.dereffed.json";
 import { PrompterProps } from "./PrompterProps";
-import {
-  ISbStory,
-  ISbStoryData,
-  getStoryblokApi,
-  useStoryblok,
-  useStoryblokApi,
-} from "@storyblok/react";
-import { fetchStory, fetchUuid, initStoryblok } from "@/helpers/storyblok";
+import { ISbStoryData, getStoryblokApi } from "@storyblok/react";
+import { fetchStory, initStoryblok } from "@/helpers/storyblok";
+import { unflatten } from "@/helpers/unflatten";
+import { SectionProps } from "../section/SectionProps";
+
+type Idea = {
+  id: string;
+  name: string;
+};
 
 function getSchemaName(schemaId: string): string {
   return (schemaId && schemaId.split("/").pop()?.split(".").shift()) || "";
@@ -263,6 +264,10 @@ const processPage = (page: PageProps): Record<string, any> => {
     { traversalType: "breadth-first" }
   );
 
+  for (const section of page.section || []) {
+    (section as SectionProps).aiDraft = true;
+  }
+
   return page as Record<string, any>;
 };
 
@@ -288,6 +293,56 @@ const Page: FC<PropsWithChildren<PageProps>> = ({ section }) => {
   );
 };
 
+const storyblokKeys = ["_uid", "_editable", "component"];
+const processStory = (story: ISbStoryData): Record<string, any> => {
+  const page = structuredClone(story);
+
+  objectTraverse(
+    page,
+    ({ value, parent, key }) => {
+      if (
+        typeof value === "object" &&
+        value !== null &&
+        !Array.isArray(value)
+      ) {
+        if (parent && key !== undefined) {
+          parent[key] = unflatten(value);
+        }
+      } else if (Array.isArray(value)) {
+        value.forEach((item, index) => {
+          if (
+            typeof item === "object" &&
+            item !== null &&
+            !Array.isArray(item)
+          ) {
+            value[index] = unflatten(item);
+          }
+        });
+      }
+    },
+    { traversalType: "depth-first" }
+  );
+
+  objectTraverse(
+    page,
+    ({ key, value, parent }) => {
+      if (key === "type" && parent && typeof value === "string") {
+        parent[`type__${value}`] = value;
+        delete parent[key];
+      }
+    },
+    { traversalType: "depth-first" }
+  );
+
+  objectTraverse(page, ({ key, parent }) => {
+    if (key && storyblokKeys.includes(key) && parent) {
+      delete parent[key];
+    }
+  });
+  console.log("Processed page", page);
+  return page;
+};
+
 export const PrompterComponent = forwardRef<
   HTMLDivElement,
   PrompterProps & HTMLAttributes<HTMLDivElement>
@@ -296,6 +351,7 @@ export const PrompterComponent = forwardRef<
     {
       sections,
       includeStory = true,
+      useIdea = true,
       relatedStories = [],
       userPrompt,
       systemPrompt,
@@ -313,7 +369,7 @@ export const PrompterComponent = forwardRef<
       const allProperties: Set<string> = new Set();
       let maxDepth = 0;
 
-      const collectSchemas = (schema) => {
+      const collectSchemas: schemaTraverse.Callback = (schema) => {
         if (
           schema.properties &&
           schema.properties.type &&
@@ -323,7 +379,7 @@ export const PrompterComponent = forwardRef<
         }
       };
 
-      const filterComponents = (schema) => {
+      const filterComponents: schemaTraverse.Callback = (schema) => {
         if (schema && schema.anyOf) {
           schema.anyOf = schema.anyOf.filter((component) => {
             return components.includes(component.properties.type.const);
@@ -331,7 +387,7 @@ export const PrompterComponent = forwardRef<
         }
       };
 
-      const deleteConsts = (
+      const deleteConsts: schemaTraverse.Callback = (
         schema,
         jsonPtr,
         _rootSchema,
@@ -359,7 +415,7 @@ export const PrompterComponent = forwardRef<
         }
       };
 
-      const removeImageFormatProperties = (
+      const removeImageFormatProperties: schemaTraverse.Callback = (
         schema,
         _jsonPtr,
         _rootSchema,
@@ -370,6 +426,7 @@ export const PrompterComponent = forwardRef<
       ) => {
         if (
           (schema.format === "image" || schema.format === "video") &&
+          keyIndex &&
           parentSchema &&
           parentSchema.properties &&
           parentSchema.properties[keyIndex]
@@ -379,7 +436,7 @@ export const PrompterComponent = forwardRef<
         }
       };
 
-      const removeIconProperties = (
+      const removeIconProperties: schemaTraverse.Callback = (
         _schema,
         _jsonPtr,
         _rootSchema,
@@ -398,7 +455,7 @@ export const PrompterComponent = forwardRef<
         }
       };
 
-      const removeUnsupportedProperties = (
+      const removeUnsupportedProperties: schemaTraverse.Callback = (
         _schema,
         _jsonPtr,
         _rootSchema,
@@ -408,6 +465,8 @@ export const PrompterComponent = forwardRef<
         keyIndex
       ) => {
         if (
+          keyIndex &&
+          typeof keyIndex === "string" &&
           propertiesToDrop.includes(keyIndex) &&
           parentSchema &&
           parentSchema.properties &&
@@ -417,13 +476,13 @@ export const PrompterComponent = forwardRef<
         }
       };
 
-      const removeUnsupportedKeywords = (schema) => {
+      const removeUnsupportedKeywords: schemaTraverse.Callback = (schema) => {
         for (const key of unsupportedKeywords) {
           if (schema.hasOwnProperty(key)) delete schema[key];
         }
       };
 
-      const removeEmptyObjects = (
+      const removeEmptyObjects: schemaTraverse.Callback = (
         schema,
         _jsonPtr,
         _rootSchema,
@@ -435,6 +494,7 @@ export const PrompterComponent = forwardRef<
         if (
           schema.type === "object" &&
           !Object.keys(schema.properties).length &&
+          keyIndex &&
           parentSchema &&
           parentSchema.properties &&
           parentSchema.properties[keyIndex]
@@ -443,19 +503,19 @@ export const PrompterComponent = forwardRef<
         }
       };
 
-      const denyAdditionalProperties = (schema) => {
+      const denyAdditionalProperties: schemaTraverse.Callback = (schema) => {
         if (schema.type === "object") {
           schema.additionalProperties = false;
         }
       };
 
-      const makeRequired = (schema) => {
+      const makeRequired: schemaTraverse.Callback = (schema) => {
         if (schema.type === "object") {
           schema.required = Object.keys(schema.properties);
         }
       };
 
-      const collectProperties = (
+      const collectProperties: schemaTraverse.Callback = (
         _schema,
         jsonPtr,
         _rootSchema,
@@ -471,7 +531,7 @@ export const PrompterComponent = forwardRef<
         }
       };
 
-      const countDepth = (_schema, jsonPtr) => {
+      const countDepth: schemaTraverse.Callback = (_schema, jsonPtr) => {
         maxDepth = Math.max(jsonPtr.split("/properties/").length, maxDepth);
         if (jsonPtr.split("/properties/").length > 6) {
           console.log("Max depth exceeded:", jsonPtr);
@@ -530,36 +590,36 @@ export const PrompterComponent = forwardRef<
       };
     }, [sections]);
 
-    const [ideas, setIdeas] = useState([]);
+    const [ideas, setIdeas] = useState<Idea[]>([]);
     const [idea, setIdea] = useState("");
     const [loading, setLoading] = useState(false);
     const [submitted, setSubmitted] = useState(false);
-    const [storyUid, setStoryUid] = useState<string>(null);
+    const [storyUid, setStoryUid] = useState<string>();
     const [story, setStory] = useState<ISbStoryData>();
 
     const ideaSelectRef = useRef(null);
 
-    const createPrompt = (idea, story) => {
-      const ideaContent: string[] = [];
+    const createPrompt = (ideaId: string, story?: ISbStoryData) => {
+      let prompt = `Aufgabe: ${userPrompt}.\n`;
 
-      objectTraverse(
-        ideas.find((object) => object.id === idea),
-        ({ value }) => {
-          if (value && value.type && value.type === "text" && value.text)
-            ideaContent.push(value.text);
+      if (useIdea) {
+        const ideaContent: string[] = [];
+        const idea = ideas.find((object) => object.id === ideaId);
+
+        if (idea) {
+          objectTraverse(idea, ({ value }) => {
+            if (value && value.type && value.type === "text" && value.text)
+              ideaContent.push(value.text);
+          });
         }
-      );
-
-      let prompt = `
-        Aufgabe: ${userPrompt}.\n
-        \n
-        ((Idee)):\n${ideaContent.join(" ")}\n`;
-
-      // TODO this passed story JSON needs some processing done to it, like changing type key in e.g. a section to `type__section`, remove _uid, _editable, etc
+        prompt += `\n((Idee)):\n${ideaContent.join(" ")}\n`;
+      }
       if (story) prompt += `\n((Story)):\n${JSON.stringify(story.content)}\n`;
       if (relatedStories && relatedStories.length > 0) {
         relatedStories.forEach((relatedStory) => {
-          prompt += `\n((Ähnliche Story)):\n${JSON.stringify(relatedStory)}\n`;
+          prompt += `\n((Ähnliche Story)):\n${JSON.stringify(
+            processStory(relatedStory)
+          )}\n`;
         });
       }
 
@@ -576,24 +636,6 @@ export const PrompterComponent = forwardRef<
         .catch((error) => console.error(error));
     }, []);
 
-    // useEffect(() => {
-    //   initStoryblok("tiiyPe4tqKDSQEdBa9qtRwtt");
-    //   const storyblokApi = getStoryblokApi();
-    //   fetchStory("118768188291694", false, storyblokApi)
-    //     .then((response) => {
-    //       setStory(response.data.story);
-    //     })
-    //     .catch((error) => console.error(error));
-
-    // for (const story of relatedStories) {
-    //   fetchStory(story, false, storyblokApi)
-    //     .then((response) => {
-    //       console.log("RELATED STORY", response.data.story);
-    //     })
-    //     .catch((error) => console.error(error));
-    // }
-    // }, []);
-
     useEffect(() => {
       const blok = document.querySelector("[data-blok-c]");
       const blokMetaString = blok?.getAttribute("data-blok-c");
@@ -606,18 +648,19 @@ export const PrompterComponent = forwardRef<
 
     useEffect(() => {
       if (storyUid) {
+        // TODO remove credential
         initStoryblok("tiiyPe4tqKDSQEdBa9qtRwtt");
         const storyblokApi = getStoryblokApi();
         fetchStory(storyUid, false, storyblokApi)
           .then((response) => {
-            setStory(response.data.story);
+            setStory(processStory(response.data.story));
           })
           .catch((error) => console.error(error));
       }
     }, [storyUid]);
 
     const handleGenerate = async () => {
-      const prompt = createPrompt(idea, includeStory ? story : null);
+      const prompt = createPrompt(idea, includeStory ? story : undefined);
       console.log(
         "PROMPT",
         prompt,
@@ -766,13 +809,16 @@ export const PrompterComponent = forwardRef<
           />
         )}
         {story && (
-          <Section width="full" spaceAfter="small" spaceBefore="none">
-            <div>
-              <pre>
-                <code>${JSON.stringify(story, null, 2)}</code>
-              </pre>
-            </div>
-          </Section>
+          <details>
+            <summary>Story JSON</summary>
+            <Section width="full" spaceAfter="small" spaceBefore="none">
+              <div>
+                <pre>
+                  <code>{JSON.stringify(story, null, 2)}</code>
+                </pre>
+              </div>
+            </Section>
+          </details>
         )}
         {/* {storyblokContent && (
         <Section width="full" spaceAfter="small" spaceBefore="none">

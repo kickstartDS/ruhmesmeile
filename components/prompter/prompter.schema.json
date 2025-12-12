@@ -16,6 +16,12 @@
       "type": "boolean",
       "default": true
     },
+    "useIdea": {
+      "title": "Use Idea?",
+      "description": "Whether to use an idea as part of the context",
+      "type": "boolean",
+      "default": true
+    },
     "relatedStories": {
       "title": "Related Stories",
       "description": "Additional related stories to include as context",

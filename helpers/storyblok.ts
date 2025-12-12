@@ -73,7 +73,10 @@ export function isStoryblokStoryLinkObject(
   );
 }
 
-export function storyProcessing(blok: Record<string, any>) {
+export function storyProcessing(
+  blok: Record<string, any>,
+  preview: boolean = false
+) {
   function removeEmptyImages({ parent, key, value }: TraversalCallbackContext) {
     if (
       parent &&
@@ -182,6 +185,12 @@ export function storyProcessing(blok: Record<string, any>) {
     }
   }
 
+  if (!preview && blok.section && blok.section.length > 0) {
+    blok.section = blok.section.filter((section: Record<string, any>) => {
+      return !section.aiDraft;
+    });
+  }
+
   traverse(blok, (context) => {
     removeEmptyImages(context);
     mapStoryblokLinks(context);
@@ -265,7 +274,7 @@ export async function fetchStory(
   lastContentVersion = response.data.cv;
 
   if (resolveUuids) await resolveStoryUuids(response.data.story, storyblokApi);
-  storyProcessing(response.data.story.content);
+  storyProcessing(response.data.story.content, !!previewStoryblokApi);
 
   return response;
 }
@@ -286,7 +295,7 @@ export async function fetchStories(
     if (resolveUuids) {
       await resolveStoryUuids(story, storyblokApi);
     }
-    storyProcessing(story.content);
+    storyProcessing(story.content, !!previewStoryblokApi);
   }
 
   lastContentVersion = response.data.cv;
