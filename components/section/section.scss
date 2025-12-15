@@ -1,6 +1,19 @@
 @import "./section-tokens.scss";
 
 :root {
+  --ai-color: #800080;
+
+  @mixin deco-line {
+    content: "";
+    top: 3em;
+    bottom: 2em;
+    width: 1px;
+    border-left: 4px solid var(--ai-color);
+    position: absolute;
+    border-radius: 99px;
+    left: 1em;
+  }
+
   .dsa-section.l-section--full {
     .l-section__container--headline {
       padding: 0;
@@ -8,12 +21,6 @@
   }
 
   .dsa-section[data-ai-draft] {
-    --shadow-size: 20px;
-    --shadow-color: rgba(50, 50, 50, 0.35);
-    --border-width: 1px;
-    --border-color: rgba(50, 50, 50, 0.35);
-    --badge-background: purple;
-
     position: relative;
     z-index: 2;
 
@@ -23,43 +30,19 @@
         content: "KI Draft";
         position: absolute;
         left: 1em;
-        top: calc(var(--shadow-size) + var(--border-width) + 0.5em);
+        top: 1em;
         font: var(--ks-font-interface-s);
         font-weight: var(--ks-font-weight-semi-bold);
         color: white;
-        background-color: var(--badge-background);
+        background-color: var(--ai-color);
         border-radius: 99px;
         padding: 0.25em 0.75em;
       }
 
       // Decorative line along the left section edge
       &::after {
-        content: "";
-        top: calc(var(--shadow-size) + var(--border-width) + 3em);
-        bottom: 2em;
-        width: 4px;
-        position: absolute;
-        background-color: var(--badge-background);
-        border-radius: 99px;
-        left: 1em;
+        @include deco-line;
       }
-    }
-
-    // Shadow effect for AI draft sections
-    &::before,
-    &::after {
-      content: "";
-      width: 100%;
-      height: calc(var(--shadow-size) + var(--border-width));
-      z-index: 999;
-      position: absolute;
-      left: 0em;
-      // background: linear-gradient(
-      //   var(--border-color),
-      //   var(--border-color) var(--border-width),
-      //   var(--shadow-color) var(--border-width),
-      //   transparent
-      // );
     }
 
     &::before {
@@ -69,20 +52,6 @@
     &::after {
       bottom: 0;
       transform: rotate(180deg);
-    }
-
-    // Shadow removal for preceding draft sections
-    &:has(+ .dsa-section[data-ai-draft]) {
-      &::after {
-        content: unset;
-      }
-    }
-
-    // Shadow removal for following draft sections
-    + .dsa-section[data-ai-draft] {
-      &::before {
-        content: unset;
-      }
     }
   }
 }

@@ -31,6 +31,7 @@ import { TeaserCard } from "@kickstartds/ds-agency-premium/teaser-card";
 import { Testimonials } from "@kickstartds/ds-agency-premium/testimonials";
 import { Text } from "@kickstartds/ds-agency-premium/text";
 import { Hero } from "@kickstartds/ds-agency-premium/hero";
+import { Headline } from "@kickstartds/ds-agency-premium/headline";
 
 import pageSchema from "@kickstartds/ds-agency-premium/page/page.schema.dereffed.json";
 import { PrompterProps } from "./PrompterProps";
@@ -728,21 +729,26 @@ export const PrompterComponent = forwardRef<
     };
 
     return (
-      <div {...props} ref={ref} style={{ border: "5px solid cyan" }}>
+      <div className="prompter" {...props} ref={ref}>
         <Section
-          width="default"
+          className="prompter__header prompter__section"
+          width="narrow"
           spaceAfter="small"
           spaceBefore="default"
-          content={{ mode: "list", width: "narrow" }}
-          headline={{
-            text: `🤖 Prompt content ✨`,
-            width: "default",
-            align: "left",
-          }}
+          ks-inverted="true"
+          content={{ mode: "list", gutter: "small" }}
         >
           {!loading && !submitted && !idea && ideas && ideas.length > 0 && (
-            <>
+            <div className="prompter__input-section">
+              <Headline
+                level="h2"
+                style="h2"
+                text="Pick an Idea from your Ideation Room"
+                spaceAfter="minimum"
+              />
               <SelectField
+                className="prompter__input-field"
+                hideLabel
                 ref={ideaSelectRef}
                 value={idea}
                 onChange={(e) => setIdea(e.target.value)}
@@ -758,7 +764,7 @@ export const PrompterComponent = forwardRef<
                   })
                 )}
               />
-            </>
+            </div>
           )}
           {idea && !loading && !generatedContent && (
             <>
@@ -779,13 +785,11 @@ export const PrompterComponent = forwardRef<
             width="narrow"
             spaceAfter="small"
             spaceBefore="none"
+            className="prompter__loadin prompter__section"
             content={{ mode: "list", width: "narrow" }}
           >
             <div style={{ marginLeft: "auto", marginRight: "auto" }}>
-              <InfinitySpin
-                width="200"
-                color="var(--ks-text-color-secondary)"
-              />
+              <InfinitySpin width="200" color="white" />
             </div>
           </Section>
         )}
@@ -793,6 +797,7 @@ export const PrompterComponent = forwardRef<
           <Section
             width="narrow"
             spaceAfter="small"
+            className="prompter__submitted prompter__section"
             spaceBefore="default"
             content={{ mode: "list", width: "narrow" }}
           >
@@ -809,15 +814,12 @@ export const PrompterComponent = forwardRef<
           />
         )}
         {story && (
-          <details>
+          <details className="prompter__story" ks-inverted="true">
             <summary>Story JSON</summary>
-            <Section width="full" spaceAfter="small" spaceBefore="none">
-              <div>
-                <pre>
-                  <code>{JSON.stringify(story, null, 2)}</code>
-                </pre>
-              </div>
-            </Section>
+
+            <pre className="prompter__story-code">
+              <code>{JSON.stringify(story, null, 2)}</code>
+            </pre>
           </details>
         )}
         {/* {storyblokContent && (

@@ -15,6 +15,8 @@ import ComponentProviders from "@/components/ComponentProviders";
 import ImageSizeProviders from "@/components/ImageSizeProviders";
 import ImageRatioProviders from "@/components/ImageRatioProviders";
 
+import "@/components/prompter/prompter.scss";
+
 // import {
 //   ConsentManagerDialog,
 //   ConsentManagerProvider,
