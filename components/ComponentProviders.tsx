@@ -154,31 +154,27 @@ const Hero = forwardRef<
 >((props, ref) => {
   const { image, ...rest } = props;
 
-  const src =
-    (image &&
-      (image.src && !image.src.endsWith("/m/600x0")
-        ? `${image.src}/m/600x0`
-        : image.src)) ||
-    undefined;
-  const srcMobile =
-    (image &&
-      (image.srcMobile && !image.srcMobile.endsWith("/m/600x0")
-        ? `${image.srcMobile}/m/600x0`
-        : image.srcMobile)) ||
-    src ||
-    "";
-  const srcTablet =
-    (image &&
-      (image.srcTablet && !image.srcTablet.endsWith("/m/950x0")
-        ? `${image.srcTablet}/m/950x0`
-        : image.srcTablet)) ||
-    undefined;
-  const srcDesktop =
-    (image &&
-      (image.srcDesktop && !image.srcDesktop.endsWith("/m/1600x0")
-        ? `${image.srcDesktop}/m/1600x0`
-        : image.srcDesktop)) ||
-    undefined;
+  const ensureModifier = (
+    src: string | undefined,
+    modifier: string
+  ): string => {
+    if (!src) return "";
+    return src.endsWith(modifier) ? src : `${src}${modifier}`;
+  };
+
+  const srcMobile = ensureModifier(image?.srcMobile, "/m/600x0");
+
+  const srcTablet = ensureModifier(
+    image?.srcTablet || image?.srcMobile,
+    "/m/950x0"
+  );
+
+  const srcDesktop = ensureModifier(
+    image?.srcDesktop || image?.srcTablet || image?.srcMobile,
+    "/m/1600x0"
+  );
+
+  const src = image?.src ? ensureModifier(image.src, "/m/600x0") : srcMobile;
 
   return (
     <HeroContextDefault
