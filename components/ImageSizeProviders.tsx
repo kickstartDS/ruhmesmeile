@@ -43,7 +43,7 @@ const SectionProvider: FC<PropsWithChildren> = (props) => {
           Omit<HTMLAttributes<HTMLElement>, "style" | "content">
       >(function SectionImageSize(props, ref) {
         // TODO should also take into account section gap width
-        const childCount = Children.count(props.children) || 1;
+        // const childCount = Children.count(props.children) || 1;
 
         const sectionWidthName =
           props.content?.width === "unset" || !props.content?.width
@@ -62,7 +62,7 @@ const SectionProvider: FC<PropsWithChildren> = (props) => {
             ? sectionWidth
             : props.content?.mode === "slider"
             ? sectionWidth
-            : sectionWidth / childCount;
+            : sectionWidth / 2;
 
         return (
           <ImageSizeProvider size={componentWidth}>
