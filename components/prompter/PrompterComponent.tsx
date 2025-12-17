@@ -5,6 +5,7 @@ import {
   MouseEventHandler,
   PropsWithChildren,
   forwardRef,
+  use,
   useEffect,
   useMemo,
   useRef,
@@ -738,90 +739,93 @@ export const PrompterComponent = forwardRef<
     return (
       <div className="prompter" {...props} ref={ref}>
         <PrompterSection
-          headline={!submitted ? "Prompter" : "Dein Content wurde gespeichert"}
-          text={
+          headline={
             !submitted
-              ? "Erstelle jetzt einen Content-Draft, schnell, markentreu, nahtlos eingefügt."
-              : undefined
+              ? "Prompter - erstelle jetzt einen Content-Draft, schnell, markentreu, nahtlos eingefügt."
+              : "Dein Content wurde gespeichert"
           }
+          text={!submitted ? "" : undefined}
         >
-          <PrompterSectionInput>
-            {!loading && !submitted && !idea && ideas && ideas.length > 0 && (
-              <>
-                <PrompterSelectField
-                  ref={ideaSelectRef}
-                  value={idea}
-                  onChange={(e) => setIdea(e.target.value)}
-                  options={[
-                    { label: "Idee wählen...", value: "", disabled: true },
-                    ...ideas.map((idea) => ({
-                      value: idea.id,
-                      label: idea.name,
-                      disabled: false,
-                    })),
-                  ]}
-                />
+          {((!loading && !submitted && !idea && ideas && ideas.length > 0) ||
+            (idea && !loading && !generatedContent)) && (
+            <>
+              {useIdea && (
+                <PrompterSectionInput>
+                  {!loading &&
+                    !submitted &&
+                    !idea &&
+                    ideas &&
+                    ideas.length > 0 && (
+                      <PrompterSelectField
+                        ref={ideaSelectRef}
+                        value={idea}
+                        onChange={(e) => setIdea(e.target.value)}
+                        options={[
+                          {
+                            label: "Idee wählen...",
+                            value: "",
+                            disabled: true,
+                          },
+                          ...ideas.map((idea) => ({
+                            value: idea.id,
+                            label: idea.name,
+                            disabled: false,
+                          })),
+                        ]}
+                      />
+                    )}
+                  {idea && !loading && !generatedContent && (
+                    <>
+                      <PrompterSelectionDisplay
+                        idea={`${
+                          ideas.find((object) => object.id === idea)?.name
+                        }`}
+                      />
+                    </>
+                  )}
+                </PrompterSectionInput>
+              )}
+              {!submitted && !loading && !generatedContent && (
                 <PrompterButton
-                  disabled={!idea}
+                  disabled={useIdea && !idea}
                   label="Generate Content"
                   icon="wand"
                   onClick={handleGenerate}
                 />
-              </>
-            )}
-
-            {idea && !loading && !generatedContent && (
-              <>
-                <PrompterSelectionDisplay
-                  text={`${ideas.find((object) => object.id === idea)?.name}`}
-                >
-                  <PrompterButton
-                    label="Generate Content"
-                    icon="wand"
-                    onClick={handleGenerate}
-                  />
-                </PrompterSelectionDisplay>
-              </>
-            )}
-            {storyblokContent && !submitted && (
-              <div className="prompter-section__button-row">
-                <PrompterButton variant="secondary" label="Discard Content" />
-                <PrompterButton
-                  label="Save Content"
-                  icon="save"
-                  onClick={submitStory}
-                />
-              </div>
-            )}
-            {loading && (
-              <ThreeDots
-                height="30"
-                width="80"
-                radius="9"
-                color="var(--prompter-color)"
-                ariaLabel="three-dots-loading"
-                wrapperClass="custom-loader"
-                visible={true}
+              )}
+            </>
+          )}
+          {storyblokContent && !submitted && (
+            <div className="prompter-section__button-row">
+              <PrompterButton variant="secondary" label="Discard Content" />
+              <PrompterButton
+                label="Save Content"
+                icon="save"
+                onClick={submitStory}
               />
-            )}
-            {submitted && (
-              <>
-                <PrompterSectionInput style={{ padding: "2rem" }}>
-                  <div style={{ padding: "1.25rem" }}>
-                    <PrompterSubmittedText
-                      text="Um deinen neuen Content nicht zu überschreiben, musst Du die
+            </div>
+          )}
+          {loading && (
+            <ThreeDots
+              style={{ margin: "auto", alignSelf: "center" }}
+              height="30"
+              width="80"
+              radius="9"
+              color="var(--prompter-color)"
+              ariaLabel="three-dots-loading"
+              wrapperClass="custom-loader"
+              visible={true}
+            />
+          )}
+          {submitted && (
+            <>
+              <PrompterSubmittedText
+                text="Um deinen neuen Content nicht zu überschreiben, musst Du die
                   Seite jetzt neu laden."
-                    />
-                    <PrompterButton
-                      style={{ marginLeft: "auto", marginTop: "2rem" }}
-                      icon="reload"
-                      label="Jetzt neu laden"
-                    />
-                  </div>
-                </PrompterSectionInput>
-              </>
-            )}
-          </PrompterSectionInput>
+              />
+              <PrompterButton icon="reload" label="Jetzt neu laden" />
+            </>
+          )}
         </PrompterSection>
 
         {generatedContent && !submitted && (

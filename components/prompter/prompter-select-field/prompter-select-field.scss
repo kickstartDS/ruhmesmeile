@@ -27,22 +27,13 @@
 
   .c-form-field__field {
     svg.icon {
-      display: none;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 1.75rem;
+      margin: 0;
+      width: 1.75rem;
+      height: 1.75rem;
+      pointer-events: none;
     }
-  }
-
-  &__icon {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: auto;
-    height: 46px;
-    right: 24px;
-    pointer-events: none;
-    background-color: var(--prompter-color);
-    padding: 0.5em;
-    color: white;
-    border-radius: 8px;
-    transition: all 0.2s;
   }
 }

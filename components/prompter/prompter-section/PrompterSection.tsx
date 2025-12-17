@@ -1,6 +1,7 @@
 import classnames from "classnames";
 import React from "react";
 import PrompterHeadline from "../prompter-headline/PrompterHeadline";
+import PrompterSectionInput from "../prompter-section-input/PrompterSectionInput";
 interface PrompterSectionProps {
   children: React.ReactNode;
   headline?: string;
@@ -21,7 +22,7 @@ const PrompterSection: React.FC<PrompterSectionProps> = ({
             <span className="prompter-section__description">{text}</span>
           )}
         </div>
-        {children}
+        <div className="prompter-section__children">{children}</div>
       </div>
     </div>
   );

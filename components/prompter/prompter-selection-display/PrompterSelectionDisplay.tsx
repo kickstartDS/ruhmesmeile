@@ -1,18 +1,28 @@
 import classnames from "classnames";
 import React from "react";
+import PrompterSection from "../prompter-section-input/PrompterSectionInput";
+import PrompterSectionInput from "../prompter-section-input/PrompterSectionInput";
 
 interface PrompterSelectionDisplayProps {
+  idea: string;
   text: string;
   children?: React.ReactNode;
 }
 
 const PrompterSelectionDisplay: React.FC<PrompterSelectionDisplayProps> = ({
   text,
+  idea,
   children,
 }) => {
   return (
     <div className={classnames("prompter-selection-display", {})}>
-      <span className="prompter-selection-display__text">{text}</span>
+      <div className="prompter-selection-display__text">
+        <div className="prompter-selection-display__topic">
+          Gewählte Idee:
+          {text}
+        </div>
+        <div className="prompter-selection-display__idea">{idea}</div>
+      </div>
       {children}
     </div>
   );

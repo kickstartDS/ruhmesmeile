@@ -1,16 +1,24 @@
 .prompter-selection-display {
   font-family: var(--prompter-font-family);
-  padding: 1.25rem;
   line-height: 1.5;
   min-height: 5rem;
   font-size: 1.25rem;
-  display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  align-items: flex-end;
+  color: rgba(0, 0, 0, 0.675);
+  line-height: 1.35;
 
   &__text {
-    color: rgba(0, 0, 0, 0.675);
-    line-height: 1.35;
+    display: block;
+    margin-bottom: 0.5em;
+    padding: 1.25rem;
+  }
+
+  &__topic {
+    color: black;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  &__idea {
   }
 }

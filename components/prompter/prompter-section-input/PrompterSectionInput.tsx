@@ -1,6 +1,5 @@
 import classnames from "classnames";
 import React, { useRef, useLayoutEffect, useState } from "react";
-import PrompterHeadline from "../prompter-headline/PrompterHeadline";
 
 interface PrompterSectionProps {
   children: React.ReactNode;
