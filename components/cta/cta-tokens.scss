@@ -1,0 +1,11 @@
+.dsa-cta {
+  --dsa-cta__copy--color: var(--ks-text-color-copy);
+}
+
+// Adjust top padding when the CTA is the first section after a floating header
+.dsa-header--floating + main > section:first-child .dsa-cta {
+  padding-top: calc(var(--ks-spacing-xxl) * 1.125);
+  &:has(.c-storytelling__image) {
+    padding-top: 0;
+  }
+}
