@@ -1,7 +1,6 @@
 import classnames from "classnames";
 import React from "react";
 import PrompterHeadline from "../prompter-headline/PrompterHeadline";
-
 interface PrompterSectionProps {
   children: React.ReactNode;
   headline?: string;

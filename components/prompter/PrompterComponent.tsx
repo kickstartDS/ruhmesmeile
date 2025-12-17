@@ -16,6 +16,7 @@ import { PrompterSelectField } from "./prompter-select-field/PrompterSelectField
 import { JSONSchema } from "json-schema-typed/draft-07";
 import schemaTraverse from "json-schema-traverse";
 import merge from "deepmerge";
+import { ThreeDots } from "react-loader-spinner";
 
 import { Section } from "@kickstartds/ds-agency-premium/section";
 import { Button } from "@kickstartds/ds-agency-premium/button";
@@ -42,8 +43,9 @@ import PrompterBadge from "./prompter-badge/PrompterBadge";
 import PrompterHeadline from "./prompter-headline/PrompterHeadline";
 import PrompterButton from "./prompter-button/PrompterButton";
 import PrompterSection from "./prompter-section/PrompterSection";
+import PrompterSectionInput from "./prompter-section-input/PrompterSectionInput";
 import PrompterSelectionDisplay from "./prompter-selection-display/PrompterSelectionDisplay";
-import { ThreeDots, Oval, TailSpin } from "react-loader-spinner";
+import PrompterSubmittedText from "./prompter-submitted-text/PrompterSubmittedText";
 
 type Idea = {
   id: string;
@@ -736,74 +738,90 @@ export const PrompterComponent = forwardRef<
     return (
       <div className="prompter" {...props} ref={ref}>
         <PrompterSection
-          headline="Prompter"
-          text="Erstelle jetzt einen Content-Draft,
-schnell, markentreu, nahtlos eingefügt."
+          headline={!submitted ? "Prompter" : "Dein Content wurde gespeichert"}
+          text={
+            !submitted
+              ? "Erstelle jetzt einen Content-Draft, schnell, markentreu, nahtlos eingefügt."
+              : undefined
+          }
         >
-          {!loading && !submitted && !idea && ideas && ideas.length > 0 && (
-            <>
-              <PrompterSelectField
-                ref={ideaSelectRef}
-                value={idea}
-                onChange={(e) => setIdea(e.target.value)}
-                options={[
-                  { label: "Idee wählen...", value: "", disabled: true },
-                  ...ideas.map((idea) => ({
-                    value: idea.id,
-                    label: idea.name,
-                    disabled: false,
-                  })),
-                ]}
-              />
-              <PrompterButton
-                disabled={!idea}
-                label="Generate Content"
-                icon="wand"
-                onClick={handleGenerate}
-              />
-            </>
-          )}
-
-          {idea && !loading && !generatedContent && (
-            <>
-              <PrompterSelectionDisplay
-                text={`${ideas.find((object) => object.id === idea)?.name}`}
-              >
+          <PrompterSectionInput>
+            {!loading && !submitted && !idea && ideas && ideas.length > 0 && (
+              <>
+                <PrompterSelectField
+                  ref={ideaSelectRef}
+                  value={idea}
+                  onChange={(e) => setIdea(e.target.value)}
+                  options={[
+                    { label: "Idee wählen...", value: "", disabled: true },
+                    ...ideas.map((idea) => ({
+                      value: idea.id,
+                      label: idea.name,
+                      disabled: false,
+                    })),
+                  ]}
+                />
                 <PrompterButton
+                  disabled={!idea}
                   label="Generate Content"
                   icon="wand"
                   onClick={handleGenerate}
                 />
-              </PrompterSelectionDisplay>
-            </>
-          )}
-          {storyblokContent && (
-            <div className="prompter-section__button-row">
-              <PrompterButton variant="secondary" label="Discard Content" />
-              <PrompterButton
-                label="Save Content"
-                icon="save"
-                onClick={submitStory}
+              </>
+            )}
+
+            {idea && !loading && !generatedContent && (
+              <>
+                <PrompterSelectionDisplay
+                  text={`${ideas.find((object) => object.id === idea)?.name}`}
+                >
+                  <PrompterButton
+                    label="Generate Content"
+                    icon="wand"
+                    onClick={handleGenerate}
+                  />
+                </PrompterSelectionDisplay>
+              </>
+            )}
+            {storyblokContent && !submitted && (
+              <div className="prompter-section__button-row">
+                <PrompterButton variant="secondary" label="Discard Content" />
+                <PrompterButton
+                  label="Save Content"
+                  icon="save"
+                  onClick={submitStory}
+                />
+              </div>
+            )}
+            {loading && (
+              <ThreeDots
+                height="30"
+                width="80"
+                radius="9"
+                color="var(--prompter-color)"
+                ariaLabel="three-dots-loading"
+                wrapperClass="custom-loader"
+                visible={true}
               />
-            </div>
-          )}
-          {loading && (
-            <ThreeDots
-              height="30"
-              width="80"
-              radius="9"
-              color="var(--prompter-color)"
-              ariaLabel="three-dots-loading"
-              wrapperClass="custom-loader"
-              visible={true}
-            />
-          )}
-          {submitted && (
-            <>
-              <Text text="Successfully submitted" />
-              <Button label="Refresh page" />
-            </>
-          )}
+            )}
+            {submitted && (
+              <>
+                <PrompterSectionInput style={{ padding: "2rem" }}>
+                  <div style={{ padding: "1.25rem" }}>
+                    <PrompterSubmittedText
+                      text="Um deinen neuen Content nicht zu überschreiben, musst Du die
+                  Seite jetzt neu laden."
+                    />
+                    <PrompterButton
+                      style={{ marginLeft: "auto", marginTop: "2rem" }}
+                      icon="reload"
+                      label="Jetzt neu laden"
+                    />
+                  </div>
+                </PrompterSectionInput>
+              </>
+            )}
+          </PrompterSectionInput>
         </PrompterSection>
 
         {generatedContent && !submitted && (
