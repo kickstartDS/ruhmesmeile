@@ -1,6 +1,5 @@
 import { forwardRef } from "react";
 import { SelectField } from "@kickstartds/form/lib/select-field";
-import PrompterSectionInput from "../prompter-section-input/PrompterSectionInput";
 
 export const PrompterSelectField = forwardRef<HTMLSelectElement>(
   (props, ref) => {

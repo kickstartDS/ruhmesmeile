@@ -742,7 +742,7 @@ export const PrompterComponent = forwardRef<
           headline={
             !submitted
               ? "Prompter - erstelle jetzt einen Content-Draft, schnell, markentreu, nahtlos eingefügt."
-              : "Dein Content wurde gespeichert"
+              : "Dein neuer Content wurde gespeichert"
           }
           text={!submitted ? "" : undefined}
         >
@@ -787,6 +787,7 @@ export const PrompterComponent = forwardRef<
               )}
               {!submitted && !loading && !generatedContent && (
                 <PrompterButton
+                  spacingTop={!useIdea}
                   disabled={useIdea && !idea}
                   label="Generate Content"
                   icon="wand"
@@ -813,7 +814,7 @@ export const PrompterComponent = forwardRef<
               radius="9"
               color="var(--prompter-color)"
               ariaLabel="three-dots-loading"
-              wrapperClass="custom-loader"
+              wrapperClass="prompter-loading-indicator"
               visible={true}
             />
           )}

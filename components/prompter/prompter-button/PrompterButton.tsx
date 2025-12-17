@@ -6,12 +6,14 @@ interface PrompterButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   label: string;
   icon?: string;
+  spacingTop?: boolean;
   variant?: "primary" | "secondary";
 }
 
 const PrompterButton: React.FC<PrompterButtonProps> = ({
   label,
   icon,
+  spacingTop,
   variant = "primary",
   className,
   ...props
@@ -21,6 +23,7 @@ const PrompterButton: React.FC<PrompterButtonProps> = ({
       className={classnames(
         "prompter-button",
         `prompter-button--${variant}`,
+        { "prompter-button--spacing-top": spacingTop },
         className
       )}
       {...props}

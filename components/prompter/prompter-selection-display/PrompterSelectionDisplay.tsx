@@ -1,7 +1,5 @@
 import classnames from "classnames";
 import React from "react";
-import PrompterSection from "../prompter-section-input/PrompterSectionInput";
-import PrompterSectionInput from "../prompter-section-input/PrompterSectionInput";
 
 interface PrompterSelectionDisplayProps {
   idea: string;
