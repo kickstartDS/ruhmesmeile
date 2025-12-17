@@ -1,19 +1,6 @@
 @import "./section-tokens.scss";
 
 :root {
-  --ai-color: #800080;
-
-  @mixin deco-line {
-    content: "";
-    top: 3em;
-    bottom: 2em;
-    width: 1px;
-    border-left: 4px solid var(--ai-color);
-    position: absolute;
-    border-radius: 99px;
-    left: 1em;
-  }
-
   .dsa-section.l-section--full {
     .l-section__container--headline {
       padding: 0;
@@ -24,34 +11,16 @@
     position: relative;
     z-index: 2;
 
-    > :first-child {
-      // AI Draft Badge
-      &::before {
-        content: "KI Draft";
-        position: absolute;
-        left: 1em;
-        top: 1em;
-        font: var(--ks-font-interface-s);
-        font-weight: var(--ks-font-weight-semi-bold);
-        color: white;
-        background-color: var(--ai-color);
-        border-radius: 99px;
-        padding: 0.25em 0.75em;
-      }
-
-      // Decorative line along the left section edge
-      &::after {
-        @include deco-line;
-      }
-    }
-
-    &::before {
-      top: 0;
-    }
-
+    // Decorative line along the left section edge
     &::after {
-      bottom: 0;
-      transform: rotate(180deg);
+      content: "";
+      top: 4rem;
+      bottom: 2rem;
+      width: 1px;
+      border-left: 4px solid var(--prompter-color);
+      position: absolute;
+      border-radius: 99px;
+      left: 1rem;
     }
   }
 }

@@ -1,68 +1,42 @@
+@import "./prompter-badge/prompter-badge.scss";
+@import "./prompter-headline/prompter-headline.scss";
+@import "./prompter-button/prompter-button.scss";
+@import "./prompter-section/prompter-section.scss";
+@import "./prompter-section-input/prompter-section-input.scss";
+@import "./prompter-select-field/prompter-select-field.scss";
+@import "./prompter-selection-display/prompter-selection-display.scss";
+@import "./prompter-submitted-text/prompter-submitted-text.scss";
+@import "./prompter-loading-indicator/prompter-loading-indicator.scss";
+
 :root {
-  @mixin deco-line {
-    content: "";
-    top: 4em;
-    bottom: 4em;
-    width: 1px;
-    border: 0;
-    border-left: 4px dashed var(--ai-color);
-    position: absolute;
-    left: 1em;
-  }
+  --prompter-color: #800080;
+  --prompter-font-family:
+    system-ui, -apple-system, BlinkMacSystemFont, "Avenir Next", "Avenir", "Segoe UI", "Lucida Grande",
+    "Helvetica Neue", "Helvetica", "Fira Sans", "Roboto", "Noto", "Droid Sans", "Cantarell", "Oxygen", "Ubuntu",
+    "Franklin Gothic Medium", "Century Gothic", "Liberation Sans", sans-serif;
 
   .prompter {
     position: relative;
-    background-color: rgb(27, 22, 29);
 
-    &__section {
-      background-color: rgb(27, 22, 29);
+    &__generated-content {
+      position: relative;
 
-      .l-section__content {
-        background-image: url("../../public/input-bg.png");
-        background-size: cover;
-        background-repeat: no-repeat;
-        border-radius: 20px;
-        padding: 40px;
-        box-shadow: 0 0 20px 2px rgba(255, 255, 255, 0.4);
-        border: 1px solid rgba(255, 255, 255, 0.5);
-      }
-    }
-
-    &::after {
-      @include deco-line;
-    }
-
-    &::before {
-      z-index: 99;
-      content: "🤖 Prompt content ✨";
-      position: absolute;
-      left: 1em;
-      top: 1em;
-      font: var(--ks-font-interface-s);
-      font-weight: var(--ks-font-weight-semi-bold);
-      color: white;
-      background-image: url("../../public/input-bg.png");
-      box-shadow: 0 0 10px 1px rgba(255, 255, 255, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      background-size: cover;
-      border-radius: 99px;
-      padding: 0.25em 0.75em;
-    }
-
-    &__input-field {
-      cursor: pointer;
-      color: rgba(255, 255, 255, 0.8);
-      background-color: rgba(255, 255, 255, 0.125);
-
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.175);
+      &::after {
+        content: "";
+        top: 4rem;
+        bottom: 2rem;
+        width: 1px;
+        border: 0;
+        border-left: 4px dashed var(--prompter-color);
+        position: absolute;
+        left: 1rem;
       }
     }
 
     &__story {
       position: relative;
       background-color: rgb(27, 22, 29) !important;
-      color: var(--ks-color-fg);
+      color: white;
 
       summary {
         box-shadow: 0 0 10px 1px rgba(255, 255, 255, 0.2);
@@ -70,7 +44,7 @@
         cursor: pointer;
         top: 0;
         transform: translateY(calc(-100% - 0.75em));
-        left: 1em;
+        right: 1em;
         z-index: 99;
         border-radius: 99px;
         padding: 0.35em 1.125em;
