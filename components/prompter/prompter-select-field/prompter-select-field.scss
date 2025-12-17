@@ -1,0 +1,48 @@
+.prompter-select-field {
+  position: relative;
+
+  &:hover {
+    .prompter-select-field__icon {
+      filter: brightness(1.25);
+    }
+  }
+
+  .c-form-field__input {
+    background: transparent;
+    cursor: pointer;
+    padding: 1.25rem;
+    min-height: 5rem;
+    font-size: 1.25rem;
+
+    &:active,
+    &:focus,
+    &:focus-visible,
+    &:hover {
+      border-color: none;
+      background: transparent;
+      outline: 0;
+      box-shadow: none;
+    }
+  }
+
+  .c-form-field__field {
+    svg.icon {
+      display: none;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    height: 46px;
+    right: 24px;
+    pointer-events: none;
+    background-color: var(--prompter-color);
+    padding: 0.5em;
+    color: white;
+    border-radius: 8px;
+    transition: all 0.2s;
+  }
+}

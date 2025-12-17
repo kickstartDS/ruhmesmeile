@@ -12,9 +12,8 @@ import {
 } from "react";
 import { traverse as objectTraverse } from "object-traversal";
 import { defaultObjectForSchema } from "@kickstartds/cambria";
-import { SelectField } from "@kickstartds/form/lib/select-field";
+import { PrompterSelectField } from "./prompter-select-field/PrompterSelectField";
 import { JSONSchema } from "json-schema-typed/draft-07";
-import { InfinitySpin } from "react-loader-spinner";
 import schemaTraverse from "json-schema-traverse";
 import merge from "deepmerge";
 
@@ -39,6 +38,12 @@ import { ISbStoryData, getStoryblokApi } from "@storyblok/react";
 import { fetchStory, initStoryblok } from "@/helpers/storyblok";
 import { unflatten } from "@/helpers/unflatten";
 import { SectionProps } from "../section/SectionProps";
+import PrompterBadge from "./prompter-badge/PrompterBadge";
+import PrompterHeadline from "./prompter-headline/PrompterHeadline";
+import PrompterButton from "./prompter-button/PrompterButton";
+import PrompterSection from "./prompter-section/PrompterSection";
+import PrompterSelectionDisplay from "./prompter-selection-display/PrompterSelectionDisplay";
+import { ThreeDots, Oval, TailSpin } from "react-loader-spinner";
 
 type Idea = {
   id: string;
@@ -544,7 +549,7 @@ export const PrompterComponent = forwardRef<
 
       delete clonedSchema.properties.header;
       delete clonedSchema.properties.footer;
-      delete clonedSchema.properties.section.items.properties.content; // TODO check this, could possibly be improved by better AI guidance for those types of values
+      delete clonedSchema.properties.section.items.properties.content; // TODO check this, could possibly be improved by better Prompter guidance for those types of values
 
       clonedSchema.properties.section.minItems = sections;
       clonedSchema.properties.section.maxItems = sections;
@@ -730,91 +735,91 @@ export const PrompterComponent = forwardRef<
 
     return (
       <div className="prompter" {...props} ref={ref}>
-        <Section
-          className="prompter__header prompter__section"
-          width="narrow"
-          spaceAfter="small"
-          spaceBefore="default"
-          ks-inverted="true"
-          content={{ mode: "list", gutter: "small" }}
+        <PrompterSection
+          headline="Prompter"
+          text="Erstelle jetzt einen Content-Draft,
+schnell, markentreu, nahtlos eingefügt."
         >
           {!loading && !submitted && !idea && ideas && ideas.length > 0 && (
-            <div className="prompter__input-section">
-              <Headline
-                level="h2"
-                style="h2"
-                text="Pick an Idea from your Ideation Room"
-                spaceAfter="minimum"
-              />
-              <SelectField
-                className="prompter__input-field"
-                hideLabel
+            <>
+              <PrompterSelectField
                 ref={ideaSelectRef}
                 value={idea}
                 onChange={(e) => setIdea(e.target.value)}
                 options={[
-                  { label: "Choose Idea...", value: "", disabled: true },
-                ].concat(
-                  ideas.map((idea) => {
-                    return {
-                      value: idea.id,
-                      label: idea.name,
-                      disabled: false,
-                    };
-                  })
-                )}
+                  { label: "Idee wählen...", value: "", disabled: true },
+                  ...ideas.map((idea) => ({
+                    value: idea.id,
+                    label: idea.name,
+                    disabled: false,
+                  })),
+                ]}
               />
-            </div>
+              <PrompterButton
+                disabled={!idea}
+                label="Generate Content"
+                icon="wand"
+                onClick={handleGenerate}
+              />
+            </>
           )}
+
           {idea && !loading && !generatedContent && (
             <>
-              <Text
-                text={`💡 **Selected**: ${
-                  ideas.find((object) => object.id === idea)?.name
-                }`}
-              />
-              <Button label="Generate Content" onClick={handleGenerate} />
+              <PrompterSelectionDisplay
+                text={`${ideas.find((object) => object.id === idea)?.name}`}
+              >
+                <PrompterButton
+                  label="Generate Content"
+                  icon="wand"
+                  onClick={handleGenerate}
+                />
+              </PrompterSelectionDisplay>
             </>
           )}
           {storyblokContent && (
-            <Button label="Submit Story" onClick={submitStory} />
-          )}
-        </Section>
-        {loading && (
-          <Section
-            width="narrow"
-            spaceAfter="small"
-            spaceBefore="none"
-            className="prompter__loadin prompter__section"
-            content={{ mode: "list", width: "narrow" }}
-          >
-            <div style={{ marginLeft: "auto", marginRight: "auto" }}>
-              <InfinitySpin width="200" color="white" />
+            <div className="prompter-section__button-row">
+              <PrompterButton variant="secondary" label="Discard Content" />
+              <PrompterButton
+                label="Save Content"
+                icon="save"
+                onClick={submitStory}
+              />
             </div>
-          </Section>
-        )}
-        {submitted && (
-          <Section
-            width="narrow"
-            spaceAfter="small"
-            className="prompter__submitted prompter__section"
-            spaceBefore="default"
-            content={{ mode: "list", width: "narrow" }}
-          >
-            <Text text="Successfully submitted" />
-            <Button label="Refresh page" />
-          </Section>
-        )}
+          )}
+          {loading && (
+            <ThreeDots
+              height="30"
+              width="80"
+              radius="9"
+              color="var(--prompter-color)"
+              ariaLabel="three-dots-loading"
+              wrapperClass="custom-loader"
+              visible={true}
+            />
+          )}
+          {submitted && (
+            <>
+              <Text text="Successfully submitted" />
+              <Button label="Refresh page" />
+            </>
+          )}
+        </PrompterSection>
+
         {generatedContent && !submitted && (
-          <Page
-            {...generatedContent}
-            seo={{
-              title: "TODO remove this, only added to satisfy typings for now",
-            }}
-          />
+          <div className="prompter__generated-content">
+            <PrompterBadge label="KI Draft" state="unsaved" />
+            <Page
+              {...generatedContent}
+              seo={{
+                title:
+                  "TODO remove this, only added to satisfy typings for now",
+              }}
+            />
+          </div>
         )}
         {story && (
-          <details className="prompter__story" ks-inverted="true">
+          <details className="prompter__story">
             <summary>Story JSON</summary>
 
             <pre className="prompter__story-code">
