@@ -2,11 +2,11 @@ const path = require("path");
 
 const cspHeader = `
     default-src 'self';
-    connect-src 'self' https://api.storyblok.com https://*.${process.env.NEXT_PUBLIC_PRIMARY_PUBLIC_SITE_DOMAIN} https://journeyengine.production.wlp.cloud;
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' https://app.storyblok.com https://*.${process.env.NEXT_PUBLIC_PRIMARY_PUBLIC_SITE_DOMAIN} https://journeyengine.production.wlp.cloud;
-    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://journeyengine.production.wlp.cloud;
-    frame-src 'self' https://youtube.com https://www.youtube.com https://player.vimeo.com *.google.com;
-    img-src 'self' blob: data: https://a.storyblok.com https://placehold.co https://journeyengine.production.wlp.cloud;
+    connect-src 'self' localhost:3010 https://api.storyblok.com https://*.ruhmesmeile.com https://app.lemcal.com https://pzdzoelitkqizxopmwfg.supabase.co;
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' https://app.storyblok.com https://*.ruhmesmeile.com https://cdn.lemcal.com;
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+    frame-src 'self' https://youtube.com https://www.youtube.com https://player.vimeo.com https://www.youtube-nocookie.com/ *.google.com;
+    img-src 'self' blob: data: https://a.storyblok.com https://placehold.co https://assets.lemcal.com https://videos.lemcal.com https://app.lemcal.com https://*.ruhmesmeile.com;
     media-src 'self' blob: data: https://a.storyblok.com https://placehold.co;
     font-src 'self' https://fonts.gstatic.com;
     object-src 'none';
@@ -94,6 +94,29 @@ module.exports = {
         destination: `https://${process.env.NEXT_PUBLIC_PRIMARY_PUBLIC_SITE_DOMAIN}/:path*`,
         permanent: true,
       },
+      // Legacy URLs carried over from the pre-migration site (authoritative
+      // list lived in `netlify.toml`, which never applied under Kamal).
+      // Every `source` 404s on the current site and every `destination`
+      // resolves; `/ueber-uns` was dropped because that path is a live page.
+      { source: "/brauche-ich-ein-design-system", destination: "/design-system-services/brauche-ich-ein-design-system", permanent: true },
+      { source: "/headless-cms", destination: "/headless-cms/headless-cms-services", permanent: true },
+      { source: "/internetagentur/partner", destination: "/ueber-uns/partner", permanent: true },
+      { source: "/kontakt", destination: "/ueber-uns/kontakt", permanent: true },
+      { source: "/leistungen/ux-strategie-und-beratung", destination: "/ux-strategie-beratung", permanent: true },
+      { source: "/referenzen", destination: "/ueber-uns/referenzen", permanent: true },
+      { source: "/vorteile-eines-design-systems", destination: "/design-system-services/vorteile-eines-design-systems", permanent: true },
+      { source: "/was-sind-headless-cms", destination: "/headless-cms/was-ist-ein-headless-cms", permanent: true },
+      { source: "/web-frontends/design-system-implementierung", destination: "/design-system-services/design-system-implementierung", permanent: true },
+      { source: "/web-frontends/design-system-implementierung/storybook", destination: "/glossar/storybook", permanent: true },
+      { source: "/web-frontends/frontend-architektur/atomic-design", destination: "/glossar/atomic-design", permanent: true },
+      { source: "/design-system-services/uebersicht-ueber-unsere-design-system-services", destination: "/design-system-services", permanent: true },
+      { source: "/design-system-services/mehrwerte-von-kickstartds", destination: "/design-system-services/design-system-starterkit-kickstartds", permanent: true },
+      { source: "/services/digitales-marketing/typo3", destination: "/ueber-uns/kontakt", permanent: true },
+      { source: "/cms-starter-paket", destination: "/headless-cms/cms-website-accelerator", permanent: true },
+      { source: "/headless-cms/cms-starter-paket", destination: "/headless-cms/cms-website-accelerator", permanent: true },
+      { source: "/projekte", destination: "/case-studies", permanent: true },
+      { source: "/insights", destination: "/design-system-insights", permanent: true },
+      { source: "/blog", destination: "/design-system-insights", permanent: true },
     ];
   },
   images: {

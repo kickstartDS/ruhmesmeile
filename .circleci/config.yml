@@ -17,9 +17,12 @@ jobs:
           command: gem install kamal
       - run:
           name: Build & Deploy Website
-          command: kamal deploy
+          command: kamal deploy -c config/deploy-website.yml
 
 workflows:
   release:
     jobs:
-      - deploy
+      - deploy:
+          filters:
+            branches:
+              only: [main]
