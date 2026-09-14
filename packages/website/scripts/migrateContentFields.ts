@@ -52,6 +52,23 @@ const RENAMES: Record<string, Record<string, string>> = {
 };
 
 /**
+ * The redesign moved two section background styles out of `style` — which now
+ * only carries `default`/`framed`/`deko` — into the new `transition` field, and
+ * renamed the values while doing it. So this is a move plus a value
+ * translation, not a plain rename: the old style is only retired once the new
+ * field is free.
+ *
+ * The remaining legacy values (`horizontalGradient`, `verticalGradient`,
+ * `symmetricGlow`, `anchorGlow`, `stagelights`) are deliberately left in place;
+ * the design system still renders them as classes and
+ * `components/section/section.scss` supplies their gradients.
+ */
+const SECTION_STYLE_TO_TRANSITION: Record<string, string> = {
+  accentTransition: "to_accent",
+  boldTransition: "to_bold",
+};
+
+/**
  * Fields upstream removed outright. Carrying them forward only leaves dead keys
  * in the content, so they are deleted rather than counted.
  *
@@ -182,6 +199,26 @@ function migrateContent(node: unknown, stats: Stats, slug: string): boolean {
         delete obj[field];
         const key = `${component}.${field}`;
         stats.drops[key] = (stats.drops[key] || 0) + 1;
+        changed = true;
+      }
+    }
+
+    if (component === "section" && typeof obj.style === "string") {
+      const transition = SECTION_STYLE_TO_TRANSITION[obj.style];
+      if (transition) {
+        const current = obj.transition;
+        const transitionIsFree =
+          current === undefined || current === null || current === "" || current === "none";
+
+        if (transitionIsFree) {
+          obj.transition = transition;
+          const key = `section.style(${obj.style}) -> transition(${transition})`;
+          stats.renames[key] = (stats.renames[key] || 0) + 1;
+          changed = true;
+        }
+
+        // Retire the legacy value either way: it is not a valid `style` any more.
+        obj.style = "default";
         changed = true;
       }
     }

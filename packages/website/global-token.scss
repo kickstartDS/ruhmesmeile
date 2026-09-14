@@ -337,3 +337,275 @@
     --dsa-content--spacing: var(--ks-spacing-inset-xl);
   }
 }
+
+/* ---------------------------------------------------------------------------
+ * Legacy type scale
+ *
+ * The design system's type scale was rebuilt: each level now carries its own
+ * growth and breakpoint factor instead of the pre-migration model of one
+ * factor per family, and the display sizes came out ~20% smaller (h2 measured
+ * 39.99px against the legacy 51.2px at desktop). The legacy model is restored
+ * here — the same level bases in rem, the same single factor per family, the
+ * same breakpoints and line heights — so the rendered scale matches
+ * legacy.ruhmesmeile.com again, responsively.
+ *
+ * Loaded after `@kickstartds/design-system/global.css` (see `_app.tsx`), so
+ * these declarations win. Remove if the design system ever ships a scale that
+ * the site actually wants.
+ * ------------------------------------------------------------------------- */
+:root,
+[ks-inverted="false"],
+[ks-inverted="true"],
+[ks-theme] {
+  // One level base per size, exactly as the legacy brand compiled them.
+  --ks-font-size-display-xxs-base: 0.7397rem;
+  --ks-font-size-display-xs-base: 0.8507rem;
+  --ks-font-size-display-s-base: 0.9783rem;
+  --ks-font-size-display-m-base: 1.25rem;
+  --ks-font-size-display-l-base: 1.2938rem;
+  --ks-font-size-display-xl-base: 1.4878rem;
+  --ks-font-size-display-xxl-base: 2rem;
+
+  --ks-font-size-copy-xxs-base: 0.6575rem;
+  --ks-font-size-copy-xs-base: 0.7561rem;
+  --ks-font-size-copy-s-base: 0.8696rem;
+  --ks-font-size-copy-m-base: 1.125rem;
+  --ks-font-size-copy-l-base: 1.15rem;
+  --ks-font-size-copy-xl-base: 1.3225rem;
+  --ks-font-size-copy-xxl-base: 1.5209rem;
+
+  --ks-font-size-interface-xxs-base: 0.6575rem;
+  --ks-font-size-interface-xs-base: 0.7561rem;
+  --ks-font-size-interface-s-base: 0.8696rem;
+  --ks-font-size-interface-m-base: 1rem;
+  --ks-font-size-interface-l-base: 1.15rem;
+  --ks-font-size-interface-xl-base: 1.3225rem;
+  --ks-font-size-interface-xxl-base: 1.5209rem;
+
+  --ks-font-size-mono-xxs-base: 0.6575rem;
+  --ks-font-size-mono-xs-base: 0.7561rem;
+  --ks-font-size-mono-s-base: 0.8696rem;
+  --ks-font-size-mono-m-base: 1.125rem;
+  --ks-font-size-mono-l-base: 1.15rem;
+  --ks-font-size-mono-xl-base: 1.3225rem;
+  --ks-font-size-mono-xxl-base: 1.5209rem;
+
+  // One factor per family, switched at the legacy breakpoints.
+  --ks-font-size-display-bp-factor: 1;
+  --ks-font-size-copy-bp-factor: 1;
+  --ks-font-size-interface-bp-factor: 1;
+  --ks-font-size-mono-bp-factor: 1;
+
+  --ks-font-size-display-xxs: calc(var(--ks-font-size-display-xxs-base) * var(--ks-font-size-display-bp-factor, 1));
+  --ks-font-size-display-xs: calc(var(--ks-font-size-display-xs-base) * var(--ks-font-size-display-bp-factor, 1));
+  --ks-font-size-display-s: calc(var(--ks-font-size-display-s-base) * var(--ks-font-size-display-bp-factor, 1));
+  --ks-font-size-display-m: calc(var(--ks-font-size-display-m-base) * var(--ks-font-size-display-bp-factor, 1));
+  --ks-font-size-display-l: calc(var(--ks-font-size-display-l-base) * var(--ks-font-size-display-bp-factor, 1));
+  --ks-font-size-display-xl: calc(var(--ks-font-size-display-xl-base) * var(--ks-font-size-display-bp-factor, 1));
+  --ks-font-size-display-xxl: calc(var(--ks-font-size-display-xxl-base) * var(--ks-font-size-display-bp-factor, 1));
+  --ks-font-size-copy-xxs: calc(var(--ks-font-size-copy-xxs-base) * var(--ks-font-size-copy-bp-factor, 1));
+  --ks-font-size-copy-xs: calc(var(--ks-font-size-copy-xs-base) * var(--ks-font-size-copy-bp-factor, 1));
+  --ks-font-size-copy-s: calc(var(--ks-font-size-copy-s-base) * var(--ks-font-size-copy-bp-factor, 1));
+  --ks-font-size-copy-m: calc(var(--ks-font-size-copy-m-base) * var(--ks-font-size-copy-bp-factor, 1));
+  --ks-font-size-copy-l: calc(var(--ks-font-size-copy-l-base) * var(--ks-font-size-copy-bp-factor, 1));
+  --ks-font-size-copy-xl: calc(var(--ks-font-size-copy-xl-base) * var(--ks-font-size-copy-bp-factor, 1));
+  --ks-font-size-copy-xxl: calc(var(--ks-font-size-copy-xxl-base) * var(--ks-font-size-copy-bp-factor, 1));
+  --ks-font-size-interface-xxs: calc(var(--ks-font-size-interface-xxs-base) * var(--ks-font-size-interface-bp-factor, 1));
+  --ks-font-size-interface-xs: calc(var(--ks-font-size-interface-xs-base) * var(--ks-font-size-interface-bp-factor, 1));
+  --ks-font-size-interface-s: calc(var(--ks-font-size-interface-s-base) * var(--ks-font-size-interface-bp-factor, 1));
+  --ks-font-size-interface-m: calc(var(--ks-font-size-interface-m-base) * var(--ks-font-size-interface-bp-factor, 1));
+  --ks-font-size-interface-l: calc(var(--ks-font-size-interface-l-base) * var(--ks-font-size-interface-bp-factor, 1));
+  --ks-font-size-interface-xl: calc(var(--ks-font-size-interface-xl-base) * var(--ks-font-size-interface-bp-factor, 1));
+  --ks-font-size-interface-xxl: calc(var(--ks-font-size-interface-xxl-base) * var(--ks-font-size-interface-bp-factor, 1));
+  --ks-font-size-mono-xxs: calc(var(--ks-font-size-mono-xxs-base) * var(--ks-font-size-mono-bp-factor, 1));
+  --ks-font-size-mono-xs: calc(var(--ks-font-size-mono-xs-base) * var(--ks-font-size-mono-bp-factor, 1));
+  --ks-font-size-mono-s: calc(var(--ks-font-size-mono-s-base) * var(--ks-font-size-mono-bp-factor, 1));
+  --ks-font-size-mono-m: calc(var(--ks-font-size-mono-m-base) * var(--ks-font-size-mono-bp-factor, 1));
+  --ks-font-size-mono-l: calc(var(--ks-font-size-mono-l-base) * var(--ks-font-size-mono-bp-factor, 1));
+  --ks-font-size-mono-xl: calc(var(--ks-font-size-mono-xl-base) * var(--ks-font-size-mono-bp-factor, 1));
+  --ks-font-size-mono-xxl: calc(var(--ks-font-size-mono-xxl-base) * var(--ks-font-size-mono-bp-factor, 1));
+
+  // Line heights: display is tight, everything else is 1.5.
+  --ks-line-height-display-xxs: 1.15;
+  --ks-line-height-display-xs: 1.15;
+  --ks-line-height-display-s: 1.15;
+  --ks-line-height-display-m: 1.15;
+  --ks-line-height-display-l: 1.15;
+  --ks-line-height-display-xl: 1.15;
+  --ks-line-height-display-xxl: 1.15;
+  --ks-line-height-copy-xxs: 1.5;
+  --ks-line-height-copy-xs: 1.5;
+  --ks-line-height-copy-s: 1.5;
+  --ks-line-height-copy-m: 1.5;
+  --ks-line-height-copy-l: 1.5;
+  --ks-line-height-copy-xl: 1.5;
+  --ks-line-height-copy-xxl: 1.5;
+  --ks-line-height-interface-xxs: 1.5;
+  --ks-line-height-interface-xs: 1.5;
+  --ks-line-height-interface-s: 1.5;
+  --ks-line-height-interface-m: 1.5;
+  --ks-line-height-interface-l: 1.5;
+  --ks-line-height-interface-xl: 1.5;
+  --ks-line-height-interface-xxl: 1.5;
+  --ks-line-height-mono-xxs: 1.5;
+  --ks-line-height-mono-xs: 1.5;
+  --ks-line-height-mono-s: 1.5;
+  --ks-line-height-mono-m: 1.5;
+  --ks-line-height-mono-l: 1.5;
+  --ks-line-height-mono-xl: 1.5;
+  --ks-line-height-mono-xxl: 1.5;
+
+  @media (min-width: 36em) {
+    --ks-font-size-display-bp-factor: 1.125;
+  }
+  @media (min-width: 48em) {
+    --ks-font-size-display-bp-factor: 1.25;
+  }
+  @media (min-width: 62em) {
+    --ks-font-size-display-bp-factor: 1.45;
+  }
+  @media (min-width: 75em) {
+    --ks-font-size-display-bp-factor: 1.6;
+  }
+  @media (min-width: 122em) {
+    --ks-font-size-display-bp-factor: 1.75;
+  }
+
+  @media (min-width: 48em) {
+    --ks-font-size-copy-bp-factor: 1.125;
+  }
+  @media (min-width: 122em) {
+    --ks-font-size-copy-bp-factor: 1.25;
+  }
+
+  @media (min-width: 48em) {
+    --ks-font-size-interface-bp-factor: 1.125;
+  }
+  @media (min-width: 122em) {
+    --ks-font-size-interface-bp-factor: 1.25;
+  }
+
+  @media (min-width: 48em) {
+    --ks-font-size-mono-bp-factor: 1.125;
+  }
+  @media (min-width: 122em) {
+    --ks-font-size-mono-bp-factor: 1.25;
+  }
+
+}
+
+/* ---------------------------------------------------------------------------
+ * Legacy spacing scale
+ *
+ * Same story as the type scale: the design system interpolates a factor per
+ * step, the pre-migration brand multiplied a step base by one factor per
+ * breakpoint, and the result ran 7-21% smaller (a medium gap measured 23.7px
+ * against the legacy 29.3px at desktop). Restoring the legacy bases and
+ * factors reproduces the old rhythm exactly; the design system's
+ * `stack`/`inline`/`inset` aliases derive from these steps and follow along.
+ * ------------------------------------------------------------------------- */
+:root,
+[ks-inverted="false"],
+[ks-inverted="true"],
+[ks-theme] {
+  // Step bases, in rem.
+  --ks-spacing-xxs-base: 0.15rem;
+  --ks-spacing-xs-base: 0.25rem;
+  --ks-spacing-s-base: 0.5rem;
+  --ks-spacing-m-base: 0.75rem;
+  --ks-spacing-l-base: 1rem;
+  --ks-spacing-xl-base: 1.5rem;
+  --ks-spacing-xxl-base: 2.25rem;
+
+  // Below the first breakpoint the factor is 1.
+  --ks-spacing-xxs-bp-factor: 1;
+  --ks-spacing-xs-bp-factor: 1;
+  --ks-spacing-s-bp-factor: 1;
+  --ks-spacing-m-bp-factor: 1;
+  --ks-spacing-l-bp-factor: 1;
+  --ks-spacing-xl-bp-factor: 1;
+  --ks-spacing-xxl-bp-factor: 1;
+
+  @media (min-width: 36em) {
+    --ks-spacing-xxs-bp-factor: 1.25;
+    --ks-spacing-xs-bp-factor: 1.25;
+    --ks-spacing-s-bp-factor: 1.25;
+    --ks-spacing-m-bp-factor: 1.25;
+    --ks-spacing-l-bp-factor: 1.25;
+    --ks-spacing-xl-bp-factor: 1.25;
+    --ks-spacing-xxl-bp-factor: 1.25;
+  }
+
+  @media (min-width: 48em) {
+    --ks-spacing-xxs-bp-factor: 1.5625;
+    --ks-spacing-xs-bp-factor: 1.5625;
+    --ks-spacing-s-bp-factor: 1.5625;
+    --ks-spacing-m-bp-factor: 1.5625;
+    --ks-spacing-l-bp-factor: 1.5625;
+    --ks-spacing-xl-bp-factor: 1.5625;
+    --ks-spacing-xxl-bp-factor: 1.5625;
+  }
+
+  @media (min-width: 62em) {
+    --ks-spacing-xxs-bp-factor: 1.9531;
+    --ks-spacing-xs-bp-factor: 1.9531;
+    --ks-spacing-s-bp-factor: 1.9531;
+    --ks-spacing-m-bp-factor: 1.9531;
+    --ks-spacing-l-bp-factor: 1.9531;
+    --ks-spacing-xl-bp-factor: 1.9531;
+    --ks-spacing-xxl-bp-factor: 1.9531;
+  }
+
+  @media (min-width: 75em) {
+    --ks-spacing-xxs-bp-factor: 2.4414;
+    --ks-spacing-xs-bp-factor: 2.4414;
+    --ks-spacing-s-bp-factor: 2.4414;
+    --ks-spacing-m-bp-factor: 2.4414;
+    --ks-spacing-l-bp-factor: 2.4414;
+    --ks-spacing-xl-bp-factor: 2.4414;
+    --ks-spacing-xxl-bp-factor: 2.2;
+  }
+
+  @media (min-width: 122em) {
+    --ks-spacing-xxs-bp-factor: 2.75;
+    --ks-spacing-xs-bp-factor: 2.75;
+    --ks-spacing-s-bp-factor: 2.75;
+    --ks-spacing-m-bp-factor: 2.75;
+    --ks-spacing-l-bp-factor: 2.75;
+    --ks-spacing-xl-bp-factor: 2.75;
+    --ks-spacing-xxl-bp-factor: 2.75;
+  }
+
+}
+
+/* ---------------------------------------------------------------------------
+ * Derived semantic backgrounds
+ *
+ * The redesign derives `accent` and `bold` from different palette steps than
+ * the pre-migration brand. `bold` is the visible one: one step darker than
+ * before on light backgrounds (173,192,192 against 204,216,216) and — the
+ * reason this is here — mid-grey instead of the primary teal when inverted
+ * (120,121,123 against 44,93,93), which every section glow and background
+ * transition blends into. `accent` came out one step lighter (244,244,244
+ * against 228,234,234).
+ *
+ * Only the `-base` variables are set, so the design system's own light/inverted
+ * switching keeps working. The inverted `bold` referenced the
+ * context-independent primary before, hence `--ks-brand-color-primary` rather
+ * than `--ks-color-primary` (which is white in an inverted context).
+ *
+ * The inverted values and the teal glows now match the legacy exactly. The
+ * light variants land ~2.4% short of it (bold 198,211,211 against 204,216,216;
+ * accent 223,231,231 against 228,234,234) because the design system's ramp
+ * interpolates between the same palette steps slightly differently. Referencing
+ * the steps keeps these colours tied to the brand instead of freezing three
+ * literals for a difference no one can see.
+ * ------------------------------------------------------------------------- */
+:root,
+[ks-inverted="false"],
+[ks-inverted="true"],
+[ks-theme] {
+  --ks-background-color-bold-base: var(--ks-color-primary-to-bg-7);
+  --ks-background-color-bold-inverted-base: var(--ks-brand-color-primary);
+  --ks-background-color-accent-base: var(--ks-color-primary-to-bg-8);
+}

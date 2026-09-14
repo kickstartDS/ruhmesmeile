@@ -7,6 +7,88 @@
     }
   }
 
+  // Background gradients. The redesign moved the accent/bold transitions to
+  // `section.transition` and trimmed `style` to default/framed/deko, but it
+  // still renders the raw option value as the class — so the legacy values in
+  // the content now emit camelCase classes (`dsa-section-style--anchorGlow`)
+  // that no design-system rule matches. The gradient definitions themselves
+  // survived untouched in `section-tokens.scss`; only their selectors are gone,
+  // so they are re-declared here for the legacy values the content still uses.
+  .l-section.dsa-section {
+    &.dsa-section-style--horizontalGradient {
+      background-image: var(
+        --dsa-section_horizontal-gradient--background-image
+      );
+    }
+
+    &.dsa-section-style--verticalGradient {
+      background-image: var(--dsa-section_vertical-gradient--background-image);
+    }
+
+    &.dsa-section-style--symmetricGlow {
+      background-image: var(--dsa-section_symmetric-glow--background-image);
+    }
+
+    &.dsa-section-style--anchorGlow {
+      background-image: var(--dsa-section_anchor-glow--background-image);
+    }
+
+    &.dsa-section-style--stagelights {
+      background-image: var(--dsa-section_stagelights--background-image);
+    }
+  }
+
+  // Section transitions. The `transition` option values are snake_case
+  // (`to_accent`) but the design system's stylesheet keys the gradients off
+  // kebab-case (`--transition-to-accent`), so the class it renders never
+  // matched a rule and every transition came out as `background-image: none`.
+  // Re-declared here against the names the component actually emits.
+  .l-section.dsa-section {
+    &.dsa-section--transition-to_accent {
+      background-image: var(
+        --dsa-section--transition_to_accent,
+        linear-gradient(
+          180deg,
+          transparent 0%,
+          var(--ks-background-color-accent) 100%
+        )
+      );
+    }
+
+    &.dsa-section--transition-to_bold {
+      background-image: var(
+        --dsa-section--transition_to_bold,
+        linear-gradient(
+          180deg,
+          transparent 0%,
+          var(--ks-background-color-bold) 100%
+        )
+      );
+    }
+
+    &.dsa-section--transition-to_default {
+      background-image: var(
+        --dsa-section--transition_to_default,
+        linear-gradient(
+          180deg,
+          transparent 0%,
+          var(--ks-background-color-default) 100%
+        )
+      );
+    }
+
+    &.dsa-section--transition-to_inverted {
+      background-image: var(
+        --dsa-section--transition_to_inverted,
+        linear-gradient(
+          180deg,
+          transparent 80%,
+          var(--ks-background-color-default-inverted) 80%
+        )
+      );
+    }
+  }
+
   .dsa-section[data-ai-draft] {
     position: relative;
     z-index: 2;
