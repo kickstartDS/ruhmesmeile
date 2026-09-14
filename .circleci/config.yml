@@ -9,7 +9,11 @@ jobs:
   deploy:
     <<: *defaults
     steps:
-      - checkout
+      - checkout:
+          # `packages/design-system/static/**` and the website's
+          # `types/components-*.json` are Git LFS objects; without this the
+          # build sees pointer files instead of the real assets and JSON.
+          lfs: true
       - setup_remote_docker:
           docker_layer_caching: true
       - run:
