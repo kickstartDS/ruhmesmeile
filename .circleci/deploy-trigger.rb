@@ -68,10 +68,13 @@ def halt(reason)
   exit 0
 end
 
-pipeline_id = ENV["CIRCLE_PIPELINE_ID"]
-pipeline_number = ENV["CIRCLE_PIPELINE_NUMBER"].to_i
-unless pipeline_id && pipeline_number.positive?
-  puts "deploy-trigger: no pipeline context (local run) -- nothing to resolve"
+# `<< pipeline.id >>` and `<< pipeline.number >>` from the job definition. Only the id is a
+# built-in environment variable; the number has to be interpolated in the config.
+pipeline_id = (ARGV[0] || ENV["CIRCLE_PIPELINE_ID"]).to_s
+pipeline_number = (ARGV[1] || ENV["CIRCLE_PIPELINE_NUMBER"]).to_i
+if pipeline_id.empty? || !pipeline_number.positive?
+  puts "deploy-trigger: no pipeline context (id #{pipeline_id.inspect}, number #{pipeline_number})" \
+       " -- nothing to resolve"
   exit 0
 end
 

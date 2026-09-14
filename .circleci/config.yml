@@ -20,7 +20,7 @@ jobs:
           # the site. This coalesces a burst of publishes into one run and gives a
           # content rebuild its own image tag, so concurrent runs cannot collide
           # on the deploy host. Code pushes are never touched.
-          command: ruby .circleci/deploy-trigger.rb
+          command: ruby .circleci/deploy-trigger.rb "<< pipeline.id >>" "<< pipeline.number >>"
       - setup_remote_docker:
           docker_layer_caching: true
       - run:
