@@ -237,7 +237,43 @@ async function ensureFolder(
   return parentId;
 }
 
-main().catch((err) => {
+/**
+ * Storyblok's client throws a plain object carrying the HTTP status either
+ * directly or on a `response`. Narrow it instead of casting.
+ */
+function httpStatusOf(err: unknown): number | undefined {
+  if (err && typeof err === "object") {
+    if ("status" in err && typeof err.status === "number") return err.status;
+    if ("response" in err) {
+      const { response } = err;
+      if (
+        response &&
+        typeof response === "object" &&
+        "status" in response &&
+        typeof response.status === "number"
+      ) {
+        return response.status;
+      }
+    }
+  }
+  return undefined;
+}
+
+main().catch((err: unknown) => {
+  const status = httpStatusOf(err);
+
+  // Same contract as a missing variable: the default theme is a CMS artefact,
+  // not a build input, so a rejected token must not fail a deploy. The story is
+  // `system: true` and already exists in the space; it keeps its content until
+  // the token is refreshed.
+  if (status === 401 || status === 403) {
+    console.warn(
+      `⚠️  sync-default-theme: skipping — the Management API rejected NEXT_STORYBLOK_OAUTH_TOKEN (${status}). ` +
+        "Refresh the token (or run `storyblok-login`) to sync the default theme again.",
+    );
+    return;
+  }
+
   console.error("❌ sync-default-theme:", err);
   process.exit(1);
 });

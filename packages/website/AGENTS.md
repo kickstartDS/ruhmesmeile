@@ -40,6 +40,8 @@ pnpm --filter @kickstartds/ruhmesmeile-storyblok-starter netrc    # plop → ~/.
 
 `build` writes to Storyblok twice (`sync-default-theme` upserts the default theme, `blurhashes` only reads), and both need `NEXT_STORYBLOK_OAUTH_TOKEN`. To build without touching the CMS, prefix the command: `NEXT_STORYBLOK_OAUTH_TOKEN= …` — `dotenvx` never overrides an already-set variable, so the scripts see an empty token and take their documented skip path. `blurhashes` has no skip path; skip the step instead if `public/blurhashes/` is already populated.
 
+A **rejected** token is treated like a missing one: `sync-default-theme` warns and exits 0 on 401/403 (the theme story is `system: true` and keeps its content), and `createBlurHashes.js` already catches per-image failures. Neither can block a deploy — CI's token is the one thing a build must not depend on.
+
 ## Runtime: the website runs on Node 18, the tooling on Node 24
 
 `packages/website/Dockerfile` builds and serves on **`node:18-alpine`**, and that is the version the site actually ships with. Next.js 13.5.6 is not compatible with Node 24 everywhere it matters: `res.setPreviewData()` — the draft-mode half of `/api/preview/` — throws `TypeError: Cannot read properties of undefined (reading 'prototype')` from Next's bundled `jsonwebtoken`. Under Node 18 the same route returns 200 and redirects to `/_preview/<slug>` with the draft cookies set (verified on the deployed site and locally).
