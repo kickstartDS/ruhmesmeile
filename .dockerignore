@@ -4,3 +4,6 @@ npm-debug.log
 **/.env.local
 **/.env.sh
 **/*.pem
+# The website image builds the design system from source; a host-side dist is
+# never an input (see packages/website/Dockerfile).
+packages/design-system/dist

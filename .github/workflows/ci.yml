@@ -23,6 +23,16 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
+      # `injectWorkspacePackages` snapshots workspace output at install time, so
+      # every package that consumes the design system through `node_modules`
+      # needs the dist to exist *before* the install that follows its build.
+      # Order: build design-system -> re-install -> everything else.
+      - name: Build design system
+        run: pnpm --filter @kickstartds/design-system run build
+
+      - name: Re-inject workspace output
+        run: pnpm install --frozen-lockfile
+
       - name: Build all packages
         run: pnpm -r run build
 

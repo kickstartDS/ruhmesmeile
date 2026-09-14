@@ -140,6 +140,8 @@ These hold across packages; violating them produces invalid CMS content or broke
 
 **Build order for anything that reads design-system output.** The website's `kickstartDS schema …` / `cms storyblok` scripts (`create-storyblok-config`, `generate-props`, `dereference-schemas`, `update-storyblok-config`) resolve the design system through `packages/website/node_modules/@kickstartds/design-system/dist/`, which `injectWorkspacePackages` only populates at install time. Order: **build design-system → `pnpm install` → schema/CMS tooling → website build.** Skipping the re-install fails with `Couldn't find a reffed json in json allOf graph generation`.
 
+The **website image is exempt**: `packages/website/Dockerfile` builds the design system from source in its own stage and re-injects it, so `docker build` works from a clean checkout with no host-side `dist`. `.dockerignore` excludes `packages/design-system/dist` for that reason.
+
 ## Destructive commands — confirm before running
 
 - `pnpm --filter @kickstartds/ruhmesmeile-storyblok-starter init` → `packages/website/scripts/prepareProject.js`: **deletes stories, components, and asset folders in the live Storyblok space**, uploads presets. Fresh spaces only (it exits if a default "Home" story exists). Note `pnpm --filter … init` hits pnpm's own built-in `init`; the seed script needs `pnpm --filter … run init`.

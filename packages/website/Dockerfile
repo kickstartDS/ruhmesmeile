@@ -15,8 +15,6 @@ COPY patches/ ./patches/
 # Copy package.json files for all workspace packages (pnpm needs the full workspace graph)
 COPY packages/component-builder-mcp/package.json ./packages/component-builder-mcp/
 COPY packages/design-system/package.json ./packages/design-system/
-# Copy pre-built design system dist (injectWorkspacePackages copies it into the store at install time)
-COPY packages/design-system/dist/ ./packages/design-system/dist/
 COPY packages/design-tokens-editor/package.json ./packages/design-tokens-editor/
 COPY packages/design-tokens-mcp/package.json ./packages/design-tokens-mcp/
 COPY packages/schema-layer-editor/package.json ./packages/schema-layer-editor/
@@ -26,12 +24,27 @@ COPY packages/storyblok-mcp/package.json ./packages/storyblok-mcp/
 COPY packages/storyblok-n8n/package.json ./packages/storyblok-n8n/
 COPY packages/storyblok-services/package.json ./packages/storyblok-services/
 COPY packages/storyblok-theme-select-field-plugin/package.json ./packages/storyblok-theme-select-field-plugin/
+# Consumed by the design system's `token-graph` step, which imports `graphology`
+COPY packages/token-graph/package.json ./packages/token-graph/
 COPY packages/website/package.json ./packages/website/
 RUN pnpm install --frozen-lockfile --ignore-scripts
 # Run only native addon postinstall scripts that were skipped above
 RUN pnpm rebuild
 
-FROM base AS builder
+# Build the design system from source, then re-run the install so the freshly
+# built `dist/` is re-injected into every package that resolves it through
+# `node_modules` (`injectWorkspacePackages` snapshots workspace output at
+# install time). Doing this here rather than on the host means the image builds
+# from a clean checkout — CI has no pre-built `packages/design-system/dist`.
+FROM deps AS design-system
+# `token-graph` is consumed by path (`../token-graph/scripts/extractTokenGraph.mjs`),
+# not as a package build — it has no `build` script of its own.
+COPY packages/token-graph/ ./packages/token-graph/
+COPY packages/design-system/ ./packages/design-system/
+RUN pnpm --filter @kickstartds/design-system run build \
+ && pnpm install --frozen-lockfile --ignore-scripts
+
+FROM design-system AS builder
 ARG NEXT_STORYBLOK_SPACE_ID
 ENV NEXT_STORYBLOK_SPACE_ID=$NEXT_STORYBLOK_SPACE_ID
 ARG NEXT_STORYBLOK_API_TOKEN
@@ -41,7 +54,6 @@ ENV NEXT_STORYBLOK_OAUTH_TOKEN=$NEXT_STORYBLOK_OAUTH_TOKEN
 ARG NEXT_OPENAI_API_KEY
 ENV NEXT_OPENAI_API_KEY=$NEXT_OPENAI_API_KEY
 WORKDIR /app
-COPY --from=deps /app ./
 
 # Cache-bust: everything below here rebuilds when source changes.
 # Pass --build-arg CACHEBUST=$(date +%s) to force a fresh build.
