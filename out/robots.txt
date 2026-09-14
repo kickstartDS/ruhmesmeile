@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.ruhmesmeile.com
+
+# Sitemaps
+Sitemap: https://www.ruhmesmeile.com/sitemap.xml
+Sitemap: https://www.ruhmesmeile.com/server-sitemap.xml
