@@ -22,6 +22,8 @@ export const FeatureContextDefault = forwardRef<
     <div
       {...rest}
       ref={ref}
+      // `besideLarge` renders the `large` variant, as it did before the
+      // redesign (the pre-migration component never emitted `--medium`).
       className={classnames(
         `dsa-feature dsa-feature--${
           style === `stack`
@@ -29,7 +31,7 @@ export const FeatureContextDefault = forwardRef<
             : style === `besideSmall`
               ? `beside dsa-feature--small`
               : style === `besideLarge`
-                ? `beside dsa-feature--medium`
+                ? `beside dsa-feature--large`
                 : style === `intext`
                   ? `intext dsa-feature--small`
                   : style === `centered`
@@ -51,7 +53,11 @@ export const FeatureContextDefault = forwardRef<
         <span className="dsa-feature__title">{title}</span>
       </div>
       {text || cta.style === "intext" ? (
-        <p className="dsa-feature__text">
+        // Markdown renders the copy as a paragraph when it carries a trailing
+        // newline; a `<p>` wrapper cannot contain that, and the HTML parser
+        // closes it early - the copy and an intext link then fall out of the
+        // box in the server-rendered page.
+        <div className="dsa-feature__text">
           <Markdown>{text}</Markdown>
           {cta.style === "intext" && cta.toggle ? (
             <>
@@ -67,7 +73,7 @@ export const FeatureContextDefault = forwardRef<
           ) : (
             ""
           )}
-        </p>
+        </div>
       ) : (
         ""
       )}

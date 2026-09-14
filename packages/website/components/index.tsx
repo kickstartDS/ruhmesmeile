@@ -212,8 +212,8 @@ export const components = {
   ),
   features: editable(
     dynamic(() =>
-      import("@kickstartds/design-system/features").then(
-        (mod) => mod.FeaturesContextDefault,
+      import("./features/FeaturesComponent").then(
+        (mod) => mod.FeaturesComponent,
       ),
     ),
   ),

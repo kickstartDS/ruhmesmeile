@@ -65,7 +65,12 @@ export const CtaContextDefault = forwardRef<
             box={{
               text: text,
               textAlign: textAlign,
-              vAlign: align,
+              /* `image_align` positions the text box against the image, which is
+               * what the pre-migration cta did: a `cta` with `image_align: bottom`
+               * rendered `.c-storytelling__box--bottom`, and the component here
+               * only fed the ds' own `align` prop through. The legacy field wins,
+               * with `align` as the fallback. */
+              vAlign: image?.align ?? align,
               link: {
                 buttons,
                 colorNeutral: colorNeutral,

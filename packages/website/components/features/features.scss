@@ -3,6 +3,19 @@
 .dsa-features {
   .dsa-feature {
     &__text {
+      // The copy used to be rendered by the rich text component, which reset
+      // the outer margins of its first and last block (`.c-rich-text
+      // :first-child` / `:last-child`). The copy is Markdown output now: a
+      // trailing newline in the CMS text makes Markdown emit a paragraph, and
+      // its margins would grow the text box (94px -> 125px on the home page).
+      > :first-child {
+        margin-top: 0;
+      }
+
+      > :last-child {
+        margin-bottom: 0;
+      }
+
       .c-rich-text {
         // color: var(--dsa-feature__copy--color, var(--ks-text-color-default));
       }

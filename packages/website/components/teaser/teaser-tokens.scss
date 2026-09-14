@@ -6,6 +6,21 @@
     --dsa-teaser-card__copy--color: var(--ks-text-color-copy);
     --dsa-teaser-card--shadow: none;
 
+    // Pre-migration card hover shadow: `0 1px 11px rgba(33,35,39,.3)`, i.e.
+    // `ks.box-shadow.card.hover` resolved against `ks.box-shadow.color.card.hover`.
+    // The vendored design system re-authored that token as a composition of
+    // `--ks-brand-box-shadow-card-blur` (0.5 × spacing-m), `--ks-box-shadow-spread`
+    // and `--ks-box-shadow-opacity`, which resolves to `0 14.65px 43.95px
+    // rgba(0,0,0,.25)` — a far larger, softer shadow. The site's own hover chain
+    // (`--c-teaser--shadow-hover` → `--dsa-teaser-card--shadow_hover` →
+    // `--ks-box-shadow-card-hover`) is otherwise unchanged, so the legacy value
+    // is restored on the global token, scoped to the card. Inverted cards used
+    // the same value pre-migration, so no `[ks-inverted]` variant is needed.
+    // (Belongs in `token/box-shadow-token.scss` if card shadows everywhere
+    // should go back to the pre-migration geometry — see the nav dropdown box
+    // shadow, which reads the same token.)
+    --ks-box-shadow-card-hover: 0 1px 11px rgba(33, 35, 39, 0.3);
+
     --dsa-teaser-card--border-color: transparent;
     --dsa-teaser-card--border-color_hover: transparent;
 

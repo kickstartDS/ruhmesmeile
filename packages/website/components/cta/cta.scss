@@ -19,8 +19,39 @@
  * pre-migration stylesheet could express (it had no `--no-padding` rule at all).
  * Matching its specificity and loading later restores the old box for every
  * storytelling cta. */
-.dsa-cta.c-storytelling.c-storytelling .c-storytelling__box {
+.dsa-cta.c-storytelling.c-storytelling.c-storytelling .c-storytelling__box {
   width: 100%;
   padding: var(--dsa-cta--vertical-padding, var(--l-section--space-default))
     var(--dsa-cta--horizontal-padding, var(--dsa-content--spacing));
+  /* The redesign zeroes only the right padding from an `@container` rule
+   * (`.dsa-cta.c-storytelling.c-storytelling--order-desktop-image-last
+   * .c-storytelling__box { padding-right: 0 }`, same 0,4,0 specificity), which the
+   * layout above does not want — the old box was symmetric. The extra class
+   * outranks it, and the logical property covers the alias. Verified by
+   * injection: without it the box computes `79.2px 0 79.2px 58.59px`. */
+  padding-right: var(--dsa-cta--horizontal-padding, var(--dsa-content--spacing));
+  padding-inline-end: var(--dsa-cta--horizontal-padding, var(--dsa-content--spacing));
+}
+
+/* A subheadline inside a storytelling box takes the cta's subheadline font
+ * rather than the level's `em` size — the rule the redesign dropped (see the
+ * token block in `global-token.scss` for the values and the measurements). Two
+ * rules because the `highlight-text` cta variant (the homepage hero) uses
+ * copy-xl where every other one uses copy-l. */
+.dsa-cta.c-storytelling .c-storytelling__box .dsa-headline__subheadline {
+  font: var(--dsa-cta__subheadline--font, var(--dsa-headline_h2__subheadline--font, var(--ks-font-copy-l)));
+}
+
+.dsa-cta--highlight-text.c-storytelling .c-storytelling__box .dsa-headline__subheadline {
+  font: var(--dsa-cta_highlight-text__subheadline--font, var(--dsa-headline_h1__subheadline--font, var(--ks-font-copy-xl)));
+}
+
+/* Outside a cta, the dropped base rule still matters for everything but the
+ * size: the pre-migration subheadline took its line-height and family from the
+ * same font shorthand, and the per-level `em` rule below it only overrode the
+ * size. Without this, a plain section subheadline renders 1.15 line-height
+ * against the legacy 1.5. Declared at the same specificity as the design
+ * system's old rule, so the level `em` sizes keep winning for the size. */
+.dsa-headline .dsa-headline__subheadline {
+  font: var(--subheadline--font, var(--ks-font-copy-l));
 }

@@ -53,4 +53,15 @@
     // legacy labels had no hover transition
     transition: none;
   }
+
+  // The vendored design system still bolds the current item
+  // (`.dsa-nav-topbar__item--active .dsa-nav-topbar__label` →
+  // `--dsa-nav-topbar__label--font-weight_active`, still `bold` = 700). The
+  // override right above has the same specificity (0,3,0) but comes later in
+  // the cascade, and its `font` shorthand resets `font-weight`, so it silently
+  // won and the active item rendered at the regular weight. One extra class of
+  // specificity restores the pre-migration bold active state.
+  .dsa-nav-topbar .dsa-nav-topbar__item--active .dsa-nav-topbar__label {
+    font-weight: var(--dsa-nav-topbar__label--font-weight_active);
+  }
 }

@@ -11,8 +11,11 @@ module.exports = ({ dictionary }) => {
     svgProperties.class = (svgProperties.class ? " " : "") + "REPLACEME";
     const jsx = toJsx(tree);
     result += `  "${icon.name}": (className?: string) => ${jsx.replaceAll(
+      // `className` is optional and callers do leave it out (the design
+      // system's feature link icon passes none); string-concatenating it
+      // put the literal `undefined` into the class list.
       '"REPLACEME"',
-      '{`${className+" icon"}`}'
+      '{`${className ? className + " icon" : "icon"}`}'
     )},\n`;
   }
   result += "};";

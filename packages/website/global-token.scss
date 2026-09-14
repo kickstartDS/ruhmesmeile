@@ -710,6 +710,40 @@
   --dsa-cta--border-radius: 0;
   --dsa-cta--horizontal-padding: var(--dsa-content--spacing);
   --dsa-cta__content--horizontal-padding: var(--dsa-content--spacing);
+  /* The redesign introduced a gap between the cta's text box and its image
+   * (`--dsa-cta--gap`, a token the pre-migration bundle did not have at all);
+   * the old layout split the width 50/50 and let the box's own padding do the
+   * spacing, so the homepage hero text column measured 603px there against 585px
+   * with the gap. Zero keeps the fallback (`--ks-spacing-inline-m`) out of it. */
+  --dsa-cta--gap: 0;
+}
+
+/* ---------------------------------------------------------------------------
+ * Storytelling subheadline
+ *
+ * The redesign dropped the rule that gave a subheadline *inside* a
+ * `c-storytelling` box its own font shorthand:
+ *
+ *   .dsa-cta.c-storytelling .c-storytelling__box .dsa-headline__subheadline
+ *     { font: var(--dsa-cta__subheadline--font, …) }
+ *
+ * Without it the level's `em` size wins (`:root .dsa-headline--h1
+ * .dsa-headline__subheadline`), so a homepage hero subheadline rendered 33.28px
+ * where the pre-migration site had 23.805px, and a section cta 28.57px where it
+ * had 20.7px. The tokens below are the pre-migration ones; `copy-m` is the
+ * non-highlight fallback and `copy-l` the `highlight-text` variant, which is the
+ * pair the legacy site actually rendered.
+ * ------------------------------------------------------------------------- */
+:root,
+[ks-inverted],
+[ks-theme] {
+  --dsa-headline_h1__subheadline--font: var(--ks-font-copy-xl);
+  --dsa-headline_h2__subheadline--font: var(--ks-font-copy-l);
+  --dsa-headline_h3__subheadline--font: var(--ks-font-copy-m);
+  --dsa-headline_h4__subheadline--font: var(--ks-font-copy-s);
+  --dsa-headline_p__subheadline--font: var(--ks-font-copy-s);
+  --dsa-headline__subheadline_p--font: var(--ks-font-copy-s);
+  --dsa-cta_highlight-text__subheadline--font: var(--dsa-headline_h1__subheadline--font);
 }
 
 /* ---------------------------------------------------------------------------
