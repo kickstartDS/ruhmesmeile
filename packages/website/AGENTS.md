@@ -38,7 +38,9 @@ pnpm --filter @kickstartds/ruhmesmeile-storyblok-starter netrc    # plop → ~/.
 
 `postbuild` runs `next-sitemap` + `pagefind`. There is no `typecheck`/`test` script in this package — use `npx tsc --noEmit -p packages/website/tsconfig.json`.
 
-`build` writes to Storyblok once (`sync-default-theme` upserts the default theme) and reads once (`blurhashes` refreshes the committed blurhash cache); both need `NEXT_STORYBLOK_OAUTH_TOKEN`. To build without touching the CMS, prefix the command: `NEXT_STORYBLOK_OAUTH_TOKEN= …` — `dotenvx` never overrides an already-set variable, so the scripts see an empty token and take their documented skip path.
+`build` touches Storyblok twice: `sync-default-theme` upserts the default theme **only when it differs** from what the design system compiles, and `blurhashes` refreshes the committed blurhash cache. Both need `NEXT_STORYBLOK_OAUTH_TOKEN`. To build without touching the CMS, prefix the command: `NEXT_STORYBLOK_OAUTH_TOKEN= …` — `dotenvx` never overrides an already-set variable, so the scripts see an empty token and take their documented skip path.
+
+Keep that "only when it differs" property: with a Storyblok *publish* webhook wired to CI, an unconditional republish turns every deploy into a burst of no-op pipelines. Two details make it work — the stories list endpoint returns metadata only (fetch the story by id to see its `content`), and `tokens` comes back as a string, so compare it structurally rather than with `===`.
 
 A **rejected** token is treated like a missing one: `sync-default-theme` warns and exits 0 on 401/403 (the theme story is `system: true` and keeps its content), and `createBlurHashes.js` already catches per-image failures. Both CMS scripts also **skip when the token or space id is absent** (`blurhashes` keeps the committed cache) — neither can block a deploy, and `pnpm -r run build` gets as far as `next build`, which is the one step that genuinely needs `NEXT_STORYBLOK_API_TOKEN` to enumerate the page list.
 

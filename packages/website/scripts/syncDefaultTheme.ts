@@ -97,9 +97,33 @@ async function main(): Promise<void> {
 
   if (existingStory) {
     // ── Compare content — skip if identical ────────────────────
-    const existingContent = existingStory.content || {};
+    //
+    // Two things made this check useless and republished the theme on every
+    // build (and each publish fires the space's Storyblok webhook, which is
+    // wired to CI — every deploy produced a wave of no-op pipelines):
+    //
+    // 1. the stories *list* endpoint returns metadata only, `content` is
+    //    empty, so the comparison always saw `{}` — hence the fetch by id;
+    // 2. `tokens` round-trips through the CMS as a string, so a plain `===`
+    //    against freshly serialised JSON never matched even when the two were
+    //    the same document. Compare structurally.
+    const fullStoryResponse = await managementClient.get(
+      `spaces/${spaceId}/stories/${existingStory.id}`,
+    );
+    const existingStoryContent = (fullStoryResponse.data as any).story;
+
+    const existingContent = existingStoryContent?.content || {};
+    const tokensMatch = (() => {
+      if (typeof existingContent.tokens !== "string") return false;
+      try {
+        return JSON.stringify(JSON.parse(existingContent.tokens)) === tokensJson;
+      } catch {
+        return false;
+      }
+    })();
+
     if (
-      existingContent.tokens === tokensJson &&
+      tokensMatch &&
       existingContent.css === css &&
       existingContent.system === true
     ) {
@@ -111,10 +135,7 @@ async function main(): Promise<void> {
 
     // ── Update existing story ──────────────────────────────────
     console.log("🔄 sync-default-theme: updating default theme...");
-    const storyResponse = await managementClient.get(
-      `spaces/${spaceId}/stories/${existingStory.id}`,
-    );
-    const story = (storyResponse.data as any).story;
+    const story = existingStoryContent;
     const content = story.content as Record<string, unknown>;
 
     content.name = THEME_NAME;

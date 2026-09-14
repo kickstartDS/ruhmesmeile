@@ -147,7 +147,7 @@ The **website image is exempt**: `packages/website/Dockerfile` builds the design
 - `pnpm --filter @kickstartds/ruhmesmeile-storyblok-starter init` → `packages/website/scripts/prepareProject.js`: **deletes stories, components, and asset folders in the live Storyblok space**, uploads presets. Fresh spaces only (it exits if a default "Home" story exists). Note `pnpm --filter … init` hits pnpm's own built-in `init`; the seed script needs `pnpm --filter … run init`.
 - `update-storyblok-config`, `push-components`, `push-component` → write the live CMS schema.
 - `generate-content-types` → pulls live schema, overwrites `types/`.
-- `sync-default-theme` → writes the default `token-theme` story.
+- `sync-default-theme` → writes the default `token-theme` story, but only when it actually differs from what the design system compiles (it compares the story's `tokens` structurally — the CMS returns them as a string, and the stories *list* endpoint omits `content` entirely, so the check fetches the story by id first).
 - `pnpm --filter @kickstartds/design-system create-component-previews` → `test` **wipes `__snapshots__/`** before re-capturing; requires a prior `build-storybook` (and `pnpm exec playwright install`).
 - `bash scripts/purge-history.sh` → `git-filter-repo` rewrite + force-push.
 
