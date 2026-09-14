@@ -14,6 +14,13 @@ jobs:
           # `types/components-*.json` are Git LFS objects; without this the
           # build sees pointer files instead of the real assets and JSON.
           lfs: true
+      - run:
+          name: Resolve deploy trigger
+          # Content publishes arrive through a project webhook trigger and deploy
+          # the site. This coalesces a burst of publishes into one run and gives a
+          # content rebuild its own image tag, so concurrent runs cannot collide
+          # on the deploy host. Code pushes are never touched.
+          command: ruby .circleci/deploy-trigger.rb
       - setup_remote_docker:
           docker_layer_caching: true
       - run:
