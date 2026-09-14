@@ -29,6 +29,14 @@ const nextConfig = {
 };
 
 module.exports = {
+  // `pages/server-sitemap.xml` is server-rendered and cannot be static-exported.
+  // Drop it from the exported path map; the frozen snapshot is served by nginx
+  // with no Node runtime, and `public/sitemap.xml` (next-sitemap) still ships.
+  exportPathMap: async (defaultPathMap) => {
+    const pathMap = { ...defaultPathMap };
+    delete pathMap["/server-sitemap.xml"];
+    return pathMap;
+  },
   async headers() {
     return [
       {
