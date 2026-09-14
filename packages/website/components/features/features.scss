@@ -1,0 +1,11 @@
+@import "./features-tokens.scss";
+
+.dsa-features {
+  .dsa-feature {
+    &__text {
+      .c-rich-text {
+        // color: var(--dsa-feature__copy--color, var(--ks-text-color-default));
+      }
+    }
+  }
+}

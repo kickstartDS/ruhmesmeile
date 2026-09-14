@@ -1,0 +1,50 @@
+@import "./teaser-tokens.scss";
+
+.c-teaser.dsa-teaser-card {
+  --c-teaser_text--spacing: 0;
+
+  .c-teaser__topic {
+    transition-property: padding-left;
+    transition: var(--ks-transition-hover);
+    margin-bottom: 0.5em;
+    position: relative;
+
+    .dsa-teaser-card__label {
+      top: calc(var(--dsa-teaser-card--padding) * -1);
+      right: calc(var(--dsa-teaser-card--padding) * -1);
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 100%;
+      background-color: var(--ks-color-secondary);
+      transition: inherit;
+    }
+
+    span:not(.dsa-teaser-card__label) {
+      transition: inherit;
+      display: block;
+    }
+  }
+
+  .c-teaser__link {
+    .c-button {
+      --c-button--font: var(--dsa-teaser-card__button--font, var(--ks-font-interface-m));
+    }
+  }
+
+  &:hover {
+    .c-teaser__topic {
+      span:not(.dsa-teaser-card__label) {
+        transform: translateX(0.5em);
+      }
+
+      &::before {
+        content: "";
+        width: 4px;
+      }
+    }
+  }
+}

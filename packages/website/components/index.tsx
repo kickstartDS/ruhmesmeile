@@ -20,7 +20,7 @@ import {
   GlobalStoryblok,
 } from "@/types/components-schema";
 
-export const locale = "en";
+export const locale = "de";
 
 export const Global: FC<GlobalStoryblok & SbBlokData> = (props) =>
   isGlobal(props.blok) &&

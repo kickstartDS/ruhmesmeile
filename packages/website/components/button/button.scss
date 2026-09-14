@@ -1,0 +1,13 @@
+@import "./button-tokens.scss";
+
+.dsa-button {
+  &.c-button--solid {
+    border: 0;
+    box-shadow: inset 0px -3px 0px var(--ks-color-fg-alpha-6-base);
+    --dsa-button--padding: calc(0.5em + var(--dsa-button--border-width)) calc(1em + var(--dsa-button--border-width));
+  }
+
+  &.c-button--clear {
+    box-shadow: inset 0px -3px 0px var(--ks-color-primary-alpha-7);
+  }
+}

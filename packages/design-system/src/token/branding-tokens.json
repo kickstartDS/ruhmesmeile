@@ -5,14 +5,22 @@
         "$type": "color",
         "$value": {
           "colorSpace": "srgb",
-          "components": [0.1882, 0.3961, 0.7529]
+          "components": [
+            0.1725,
+            0.3647,
+            0.3647
+          ]
         }
       },
       "inverted": {
         "$type": "color",
         "$value": {
           "colorSpace": "srgb",
-          "components": [0.3059, 0.5137, 0.8784]
+          "components": [
+            1.0,
+            1.0,
+            1.0
+          ]
         }
       }
     },
@@ -21,14 +29,22 @@
         "$type": "color",
         "$value": {
           "colorSpace": "srgb",
-          "components": [1, 1, 1]
+          "components": [
+            1.0,
+            1.0,
+            1.0
+          ]
         }
       },
       "inverted": {
         "$type": "color",
         "$value": {
           "colorSpace": "srgb",
-          "components": [1, 1, 1]
+          "components": [
+            0.1294,
+            0.1373,
+            0.1529
+          ]
         }
       }
     },
@@ -37,14 +53,22 @@
         "$type": "color",
         "$value": {
           "colorSpace": "srgb",
-          "components": [1, 1, 1]
+          "components": [
+            1.0,
+            1.0,
+            1.0
+          ]
         }
       },
       "inverted": {
         "$type": "color",
         "$value": {
           "colorSpace": "srgb",
-          "components": [0.0588, 0.1255, 0.2431]
+          "components": [
+            0.1294,
+            0.1373,
+            0.1529
+          ]
         }
       }
     },
@@ -53,14 +77,22 @@
         "$type": "color",
         "$value": {
           "colorSpace": "srgb",
-          "components": [0.0235, 0.0314, 0.1216]
+          "components": [
+            0.1294,
+            0.1373,
+            0.1529
+          ]
         }
       },
       "inverted": {
         "$type": "color",
         "$value": {
           "colorSpace": "srgb",
-          "components": [1, 1, 1]
+          "components": [
+            1.0,
+            1.0,
+            1.0
+          ]
         }
       }
     },
@@ -69,14 +101,22 @@
         "$type": "color",
         "$value": {
           "colorSpace": "srgb",
-          "components": [0.1882, 0.3961, 0.7529]
+          "components": [
+            0.1725,
+            0.3647,
+            0.3647
+          ]
         }
       },
       "inverted": {
         "$type": "color",
         "$value": {
           "colorSpace": "srgb",
-          "components": [0.5961, 0.698, 0.8784]
+          "components": [
+            1.0,
+            1.0,
+            1.0
+          ]
         }
       }
     },
@@ -85,14 +125,22 @@
         "$type": "color",
         "$value": {
           "colorSpace": "srgb",
-          "components": [0.1373, 0.5137, 0.1059]
+          "components": [
+            0.4314,
+            0.8588,
+            0.3922
+          ]
         }
       },
       "inverted": {
         "$type": "color",
         "$value": {
           "colorSpace": "srgb",
-          "components": [0.4314, 0.8588, 0.3922]
+          "components": [
+            0.1373,
+            0.5137,
+            0.1059
+          ]
         }
       }
     },
@@ -101,30 +149,22 @@
         "$type": "color",
         "$value": {
           "colorSpace": "srgb",
-          "components": [1, 0.102, 0.3412]
+          "components": [
+            1.0,
+            0.102,
+            0.3412
+          ]
         }
       },
       "inverted": {
         "$type": "color",
         "$value": {
           "colorSpace": "srgb",
-          "components": [0.8235, 0.1137, 0.2824]
-        }
-      }
-    },
-    "notice": {
-      "$root": {
-        "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0.3922, 0.7608, 0.8588]
-        }
-      },
-      "inverted": {
-        "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [0, 0.4431, 0.5608]
+          "components": [
+            0.8235,
+            0.1137,
+            0.2824
+          ]
         }
       }
     },
@@ -133,14 +173,46 @@
         "$type": "color",
         "$value": {
           "colorSpace": "srgb",
-          "components": [0.3922, 0.7608, 0.8588]
+          "components": [
+            0.3922,
+            0.7608,
+            0.8588
+          ]
         }
       },
       "inverted": {
         "$type": "color",
         "$value": {
           "colorSpace": "srgb",
-          "components": [0, 0.4431, 0.5608]
+          "components": [
+            0.0,
+            0.4431,
+            0.5608
+          ]
+        }
+      }
+    },
+    "notice": {
+      "$root": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9765,
+            0.8706,
+            0.3333
+          ]
+        }
+      },
+      "inverted": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1.0,
+            0.3647,
+            0.3255
+          ]
         }
       }
     },
@@ -188,7 +260,7 @@
       "display": {
         "$type": "fontFamily",
         "$value": [
-          "Montserrat",
+          "Metropolis",
           "Baskerville",
           "Baskerville Old Face",
           "Hoefler Text",
@@ -199,53 +271,29 @@
       "copy": {
         "$type": "fontFamily",
         "$value": [
-          "Montserrat",
           "system-ui",
-          "-apple-system",
-          "BlinkMacSystemFont",
-          "Avenir Next",
-          "Avenir",
           "Segoe UI",
-          "Lucida Grande",
-          "Helvetica Neue",
-          "Helvetica",
-          "Fira Sans",
           "Roboto",
-          "Noto",
-          "Droid Sans",
-          "Cantarell",
-          "Oxygen",
-          "Ubuntu",
-          "Franklin Gothic Medium",
-          "Century Gothic",
-          "Liberation Sans",
-          "sans-serif"
+          "Helvetica",
+          "Arial",
+          "sans-serif",
+          "Apple Color Emoji",
+          "Segoe UI Emoji",
+          "Segoe UI Symbol"
         ]
       },
       "interface": {
         "$type": "fontFamily",
         "$value": [
-          "Montserrat",
           "system-ui",
-          "-apple-system",
-          "BlinkMacSystemFont",
-          "Avenir Next",
-          "Avenir",
           "Segoe UI",
-          "Lucida Grande",
-          "Helvetica Neue",
-          "Helvetica",
-          "Fira Sans",
           "Roboto",
-          "Noto",
-          "Droid Sans",
-          "Cantarell",
-          "Oxygen",
-          "Ubuntu",
-          "Franklin Gothic Medium",
-          "Century Gothic",
-          "Liberation Sans",
-          "sans-serif"
+          "Helvetica",
+          "Arial",
+          "sans-serif",
+          "Apple Color Emoji",
+          "Segoe UI Emoji",
+          "Segoe UI Symbol"
         ]
       },
       "mono": {

@@ -160,7 +160,7 @@ export default function App({
     return () => router.events.off("routeChangeStart", handleRouteChange);
   }, [router.events]);
 
-  const SUPPORTED_LANGS = ["en", "de"];
+  const SUPPORTED_LANGS = ["de"];
   const url = new URL(router.asPath, "http://dummy-base");
   let pathSegments = url.pathname.split("/").filter(Boolean);
   // Strip _preview prefix (internal preview route)

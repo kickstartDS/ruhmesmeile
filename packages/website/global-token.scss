@@ -1,0 +1,339 @@
+:root,
+[ks-inverted],
+[ks-theme] {
+  --dsa-text-color-on-primary: var(--ks-color-fg-inverted);
+  --dsa-text_highlight--font: var(--ks-font-copy-xl) !important;
+
+  --dsa-typo--highlight: var(--ks-color-primary);
+  --dsa-border-radius-image: var(--ks-border-radius-card);
+
+  // Logo
+  --dsa-logo--height: 1.5rem;
+
+  @media (min-width: "94rem") {
+    --dsa-logo--height: 1.35rem;
+  }
+
+  @media (min-width: "102rem") {
+    --dsa-logo--height: 1.75rem;
+  }
+
+  // Topic
+  --dsa-topic--font-weight: var(--ks-font-weight-bold);
+
+  // Link
+  --dsa-link--text-decoration: underline;
+  --dsa-link--text-decoration_hover: none;
+
+  // Rich Text
+  --dsa-rich-text--vertical-spacing: 1em;
+}
+
+/* ---------------------------------------------------------------------------
+ * `secondary` colour family restoration
+ *
+ * The pre-migration brand had a `secondary` family (#FF5C00) with 270 derived
+ * custom properties. Unified theming has no slot for it (nine fixed pairs), so
+ * the design system no longer emits it — but this site's own component
+ * overrides (headline, nav-topbar, teaser, section) still consume
+ * `--ks-color-secondary` and `--ks-color-secondary-alpha-7-base`.
+ *
+ * Restored verbatim from the pre-migration bundle, kept split across the same
+ * three layers and contexts it used before: the `-base` defaults, then the
+ * non-inverted and inverted aliases.
+ *
+ * See packages/website/AGENTS.md.
+ * ------------------------------------------------------------------------- */
+:root,[ks-theme] {
+  --ks-background-color-secondary-base: var(--ks-color-secondary-base);
+  --ks-background-color-secondary-interactive-base: var(--ks-color-secondary-base);
+  --ks-background-color-secondary-interactive-hover-base: var(--ks-color-secondary-to-bg-2-base);
+  --ks-background-color-secondary-interactive-active-base: var(--ks-color-secondary-to-bg-2-base);
+  --ks-background-color-secondary-interactive-selected-base: var(--ks-color-secondary-to-bg-4-base);
+  --ks-background-color-secondary-translucent-base: var(--ks-color-secondary-alpha-5-base);
+  --ks-background-color-secondary-inverted-base: var(--ks-color-secondary-inverted-base);
+  --ks-background-color-secondary-inverted-interactive-base: var(--ks-color-secondary-inverted-base);
+  --ks-background-color-secondary-inverted-interactive-hover-base: var(--ks-color-secondary-inverted-to-bg-2-base);
+  --ks-background-color-secondary-inverted-interactive-active-base: var(--ks-color-secondary-inverted-to-bg-2-base);
+  --ks-background-color-secondary-inverted-interactive-selected-base: var(--ks-color-secondary-inverted-to-bg-4-base);
+  --ks-background-color-secondary-inverted-translucent-base: var(--ks-color-secondary-inverted-alpha-5-base);
+  --ks-border-color-secondary-base: var(--ks-color-secondary-base);
+  --ks-border-color-secondary-interactive-base: var(--ks-color-secondary-base);
+  --ks-border-color-secondary-interactive-hover-base: var(--ks-color-secondary-to-bg-2-base);
+  --ks-border-color-secondary-interactive-active-base: var(--ks-color-secondary-to-bg-3-base);
+  --ks-border-color-secondary-interactive-selected-base: var(--ks-color-secondary-base);
+  --ks-border-color-secondary-translucent-base: var(--ks-color-secondary-alpha-2-base);
+  --ks-border-color-secondary-inverted-base: var(--ks-color-secondary-inverted-base);
+  --ks-border-color-secondary-inverted-interactive-base: var(--ks-color-secondary-inverted-base);
+  --ks-border-color-secondary-inverted-interactive-hover-base: var(--ks-color-secondary-inverted-to-bg-2-base);
+  --ks-border-color-secondary-inverted-interactive-active-base: var(--ks-color-secondary-inverted-to-bg-3-base);
+  --ks-border-color-secondary-inverted-interactive-selected-base: var(--ks-color-secondary-inverted-base);
+  --ks-border-color-secondary-inverted-translucent-base: var(--ks-color-secondary-inverted-alpha-2-base);
+  --ks-color-secondary-base: #ff5c00;
+  --ks-color-secondary-alpha-1-base: rgba(255,92,0,.95);
+  --ks-color-secondary-alpha-2-base: rgba(255,92,0,.87);
+  --ks-color-secondary-alpha-3-base: rgba(255,92,0,.76);
+  --ks-color-secondary-alpha-4-base: rgba(255,92,0,.63);
+  --ks-color-secondary-alpha-5-base: rgba(255,92,0,.5);
+  --ks-color-secondary-alpha-6-base: rgba(255,92,0,.37);
+  --ks-color-secondary-alpha-7-base: rgba(255,92,0,.24);
+  --ks-color-secondary-alpha-8-base: rgba(255,92,0,.13);
+  --ks-color-secondary-alpha-9-base: rgba(255,92,0,.05);
+  --ks-color-secondary-to-bg-1-base: #ff640d;
+  --ks-color-secondary-to-bg-2-base: #ff7121;
+  --ks-color-secondary-to-bg-3-base: #ff833d;
+  --ks-color-secondary-to-bg-4-base: #ff985e;
+  --ks-color-secondary-to-bg-5-base: #ffae80;
+  --ks-color-secondary-to-bg-6-base: #ffc3a1;
+  --ks-color-secondary-to-bg-7-base: #ffd8c2;
+  --ks-color-secondary-to-bg-8-base: #ffeade;
+  --ks-color-secondary-to-bg-9-base: #fff7f2;
+  --ks-color-secondary-to-fg-1-base: #f45902;
+  --ks-color-secondary-to-fg-2-base: #e25505;
+  --ks-color-secondary-to-fg-3-base: #ca4e09;
+  --ks-color-secondary-to-fg-4-base: #ad470e;
+  --ks-color-secondary-to-fg-5-base: #904014;
+  --ks-color-secondary-to-fg-6-base: #733819;
+  --ks-color-secondary-to-fg-7-base: #56311e;
+  --ks-color-secondary-to-fg-8-base: #3e2a22;
+  --ks-color-secondary-to-fg-9-base: #2c2625;
+  --ks-color-secondary-inverted-base: #ff5c00;
+  --ks-color-secondary-inverted-alpha-1-base: rgba(255,92,0,.95);
+  --ks-color-secondary-inverted-alpha-2-base: rgba(255,92,0,.87);
+  --ks-color-secondary-inverted-alpha-3-base: rgba(255,92,0,.76);
+  --ks-color-secondary-inverted-alpha-4-base: rgba(255,92,0,.63);
+  --ks-color-secondary-inverted-alpha-5-base: rgba(255,92,0,.5);
+  --ks-color-secondary-inverted-alpha-6-base: rgba(255,92,0,.37);
+  --ks-color-secondary-inverted-alpha-7-base: rgba(255,92,0,.24);
+  --ks-color-secondary-inverted-alpha-8-base: rgba(255,92,0,.13);
+  --ks-color-secondary-inverted-alpha-9-base: rgba(255,92,0,.05);
+  --ks-color-secondary-inverted-to-bg-1-base: #f45902;
+  --ks-color-secondary-inverted-to-bg-2-base: #e25505;
+  --ks-color-secondary-inverted-to-bg-3-base: #ca4e09;
+  --ks-color-secondary-inverted-to-bg-4-base: #ad470e;
+  --ks-color-secondary-inverted-to-bg-5-base: #904014;
+  --ks-color-secondary-inverted-to-bg-6-base: #733819;
+  --ks-color-secondary-inverted-to-bg-7-base: #56311e;
+  --ks-color-secondary-inverted-to-bg-8-base: #3e2a22;
+  --ks-color-secondary-inverted-to-bg-9-base: #2c2625;
+  --ks-color-secondary-inverted-to-fg-1-base: #ff640d;
+  --ks-color-secondary-inverted-to-fg-2-base: #ff7121;
+  --ks-color-secondary-inverted-to-fg-3-base: #ff833d;
+  --ks-color-secondary-inverted-to-fg-4-base: #ff985e;
+  --ks-color-secondary-inverted-to-fg-5-base: #ffae80;
+  --ks-color-secondary-inverted-to-fg-6-base: #ffc3a1;
+  --ks-color-secondary-inverted-to-fg-7-base: #ffd8c2;
+  --ks-color-secondary-inverted-to-fg-8-base: #ffeade;
+  --ks-color-secondary-inverted-to-fg-9-base: #fff7f2;
+  --ks-text-color-secondary-base: var(--ks-color-secondary-base);
+  --ks-text-color-secondary-interactive-base: var(--ks-color-secondary-base);
+  --ks-text-color-secondary-interactive-hover-base: var(--ks-color-secondary-alpha-2-base);
+  --ks-text-color-secondary-interactive-active-base: var(--ks-color-secondary-alpha-2-base);
+  --ks-text-color-secondary-interactive-selected-base: var(--ks-color-secondary-alpha-2-base);
+  --ks-text-color-secondary-inverted-base: var(--ks-color-secondary-inverted-base);
+  --ks-text-color-secondary-inverted-interactive-base: var(--ks-color-secondary-inverted-alpha-2-base);
+  --ks-text-color-secondary-inverted-interactive-hover-base: var(--ks-color-secondary-inverted-alpha-2-base);
+  --ks-text-color-secondary-inverted-interactive-active-base: var(--ks-color-secondary-inverted-alpha-2-base);
+  --ks-text-color-secondary-inverted-interactive-selected-base: var(--ks-color-secondary-inverted-alpha-2-base);
+}
+
+:root,[ks-inverted=false],[ks-theme] {
+  --ks-background-color-secondary: var(--ks-background-color-secondary-base);
+  --ks-background-color-secondary-interactive: var(--ks-background-color-secondary-interactive-base);
+  --ks-background-color-secondary-interactive-hover: var(--ks-background-color-secondary-interactive-hover-base);
+  --ks-background-color-secondary-interactive-active: var(--ks-background-color-secondary-interactive-active-base);
+  --ks-background-color-secondary-interactive-selected: var(--ks-background-color-secondary-interactive-selected-base);
+  --ks-background-color-secondary-translucent: var(--ks-background-color-secondary-translucent-base);
+  --ks-background-color-secondary-inverted: var(--ks-background-color-secondary-inverted-base);
+  --ks-background-color-secondary-inverted-interactive: var(--ks-background-color-secondary-inverted-interactive-base);
+  --ks-background-color-secondary-inverted-interactive-hover: var(--ks-background-color-secondary-inverted-interactive-hover-base);
+  --ks-background-color-secondary-inverted-interactive-active: var(--ks-background-color-secondary-inverted-interactive-active-base);
+  --ks-background-color-secondary-inverted-interactive-selected: var(--ks-background-color-secondary-inverted-interactive-selected-base);
+  --ks-background-color-secondary-inverted-translucent: var(--ks-background-color-secondary-inverted-translucent-base);
+  --ks-border-color-secondary: var(--ks-border-color-secondary-base);
+  --ks-border-color-secondary-interactive: var(--ks-border-color-secondary-interactive-base);
+  --ks-border-color-secondary-interactive-hover: var(--ks-border-color-secondary-interactive-hover-base);
+  --ks-border-color-secondary-interactive-active: var(--ks-border-color-secondary-interactive-active-base);
+  --ks-border-color-secondary-interactive-selected: var(--ks-border-color-secondary-interactive-selected-base);
+  --ks-border-color-secondary-translucent: var(--ks-border-color-secondary-translucent-base);
+  --ks-border-color-secondary-inverted: var(--ks-border-color-secondary-inverted-base);
+  --ks-border-color-secondary-inverted-interactive: var(--ks-border-color-secondary-inverted-interactive-base);
+  --ks-border-color-secondary-inverted-interactive-hover: var(--ks-border-color-secondary-inverted-interactive-hover-base);
+  --ks-border-color-secondary-inverted-interactive-active: var(--ks-border-color-secondary-inverted-interactive-active-base);
+  --ks-border-color-secondary-inverted-interactive-selected: var(--ks-border-color-secondary-inverted-interactive-selected-base);
+  --ks-border-color-secondary-inverted-translucent: var(--ks-border-color-secondary-inverted-translucent-base);
+  --ks-color-secondary: var(--ks-color-secondary-base);
+  --ks-color-secondary-alpha-1: var(--ks-color-secondary-alpha-1-base);
+  --ks-color-secondary-alpha-2: var(--ks-color-secondary-alpha-2-base);
+  --ks-color-secondary-alpha-3: var(--ks-color-secondary-alpha-3-base);
+  --ks-color-secondary-alpha-4: var(--ks-color-secondary-alpha-4-base);
+  --ks-color-secondary-alpha-5: var(--ks-color-secondary-alpha-5-base);
+  --ks-color-secondary-alpha-6: var(--ks-color-secondary-alpha-6-base);
+  --ks-color-secondary-alpha-7: var(--ks-color-secondary-alpha-7-base);
+  --ks-color-secondary-alpha-8: var(--ks-color-secondary-alpha-8-base);
+  --ks-color-secondary-alpha-9: var(--ks-color-secondary-alpha-9-base);
+  --ks-color-secondary-to-bg-1: var(--ks-color-secondary-to-bg-1-base);
+  --ks-color-secondary-to-bg-2: var(--ks-color-secondary-to-bg-2-base);
+  --ks-color-secondary-to-bg-3: var(--ks-color-secondary-to-bg-3-base);
+  --ks-color-secondary-to-bg-4: var(--ks-color-secondary-to-bg-4-base);
+  --ks-color-secondary-to-bg-5: var(--ks-color-secondary-to-bg-5-base);
+  --ks-color-secondary-to-bg-6: var(--ks-color-secondary-to-bg-6-base);
+  --ks-color-secondary-to-bg-7: var(--ks-color-secondary-to-bg-7-base);
+  --ks-color-secondary-to-bg-8: var(--ks-color-secondary-to-bg-8-base);
+  --ks-color-secondary-to-bg-9: var(--ks-color-secondary-to-bg-9-base);
+  --ks-color-secondary-to-fg-1: var(--ks-color-secondary-to-fg-1-base);
+  --ks-color-secondary-to-fg-2: var(--ks-color-secondary-to-fg-2-base);
+  --ks-color-secondary-to-fg-3: var(--ks-color-secondary-to-fg-3-base);
+  --ks-color-secondary-to-fg-4: var(--ks-color-secondary-to-fg-4-base);
+  --ks-color-secondary-to-fg-5: var(--ks-color-secondary-to-fg-5-base);
+  --ks-color-secondary-to-fg-6: var(--ks-color-secondary-to-fg-6-base);
+  --ks-color-secondary-to-fg-7: var(--ks-color-secondary-to-fg-7-base);
+  --ks-color-secondary-to-fg-8: var(--ks-color-secondary-to-fg-8-base);
+  --ks-color-secondary-to-fg-9: var(--ks-color-secondary-to-fg-9-base);
+  --ks-color-secondary-inverted: var(--ks-color-secondary-inverted-base);
+  --ks-color-secondary-inverted-alpha-1: var(--ks-color-secondary-inverted-alpha-1-base);
+  --ks-color-secondary-inverted-alpha-2: var(--ks-color-secondary-inverted-alpha-2-base);
+  --ks-color-secondary-inverted-alpha-3: var(--ks-color-secondary-inverted-alpha-3-base);
+  --ks-color-secondary-inverted-alpha-4: var(--ks-color-secondary-inverted-alpha-4-base);
+  --ks-color-secondary-inverted-alpha-5: var(--ks-color-secondary-inverted-alpha-5-base);
+  --ks-color-secondary-inverted-alpha-6: var(--ks-color-secondary-inverted-alpha-6-base);
+  --ks-color-secondary-inverted-alpha-7: var(--ks-color-secondary-inverted-alpha-7-base);
+  --ks-color-secondary-inverted-alpha-8: var(--ks-color-secondary-inverted-alpha-8-base);
+  --ks-color-secondary-inverted-alpha-9: var(--ks-color-secondary-inverted-alpha-9-base);
+  --ks-color-secondary-inverted-to-bg-1: var(--ks-color-secondary-inverted-to-bg-1-base);
+  --ks-color-secondary-inverted-to-bg-2: var(--ks-color-secondary-inverted-to-bg-2-base);
+  --ks-color-secondary-inverted-to-bg-3: var(--ks-color-secondary-inverted-to-bg-3-base);
+  --ks-color-secondary-inverted-to-bg-4: var(--ks-color-secondary-inverted-to-bg-4-base);
+  --ks-color-secondary-inverted-to-bg-5: var(--ks-color-secondary-inverted-to-bg-5-base);
+  --ks-color-secondary-inverted-to-bg-6: var(--ks-color-secondary-inverted-to-bg-6-base);
+  --ks-color-secondary-inverted-to-bg-7: var(--ks-color-secondary-inverted-to-bg-7-base);
+  --ks-color-secondary-inverted-to-bg-8: var(--ks-color-secondary-inverted-to-bg-8-base);
+  --ks-color-secondary-inverted-to-bg-9: var(--ks-color-secondary-inverted-to-bg-9-base);
+  --ks-color-secondary-inverted-to-fg-1: var(--ks-color-secondary-inverted-to-fg-1-base);
+  --ks-color-secondary-inverted-to-fg-2: var(--ks-color-secondary-inverted-to-fg-2-base);
+  --ks-color-secondary-inverted-to-fg-3: var(--ks-color-secondary-inverted-to-fg-3-base);
+  --ks-color-secondary-inverted-to-fg-4: var(--ks-color-secondary-inverted-to-fg-4-base);
+  --ks-color-secondary-inverted-to-fg-5: var(--ks-color-secondary-inverted-to-fg-5-base);
+  --ks-color-secondary-inverted-to-fg-6: var(--ks-color-secondary-inverted-to-fg-6-base);
+  --ks-color-secondary-inverted-to-fg-7: var(--ks-color-secondary-inverted-to-fg-7-base);
+  --ks-color-secondary-inverted-to-fg-8: var(--ks-color-secondary-inverted-to-fg-8-base);
+  --ks-color-secondary-inverted-to-fg-9: var(--ks-color-secondary-inverted-to-fg-9-base);
+  --ks-text-color-secondary: var(--ks-text-color-secondary-base);
+  --ks-text-color-secondary-interactive: var(--ks-text-color-secondary-interactive-base);
+  --ks-text-color-secondary-interactive-hover: var(--ks-text-color-secondary-interactive-hover-base);
+  --ks-text-color-secondary-interactive-active: var(--ks-text-color-secondary-interactive-active-base);
+  --ks-text-color-secondary-interactive-selected: var(--ks-text-color-secondary-interactive-selected-base);
+  --ks-text-color-secondary-inverted: var(--ks-text-color-secondary-inverted-base);
+  --ks-text-color-secondary-inverted-interactive: var(--ks-text-color-secondary-inverted-interactive-base);
+  --ks-text-color-secondary-inverted-interactive-hover: var(--ks-text-color-secondary-inverted-interactive-hover-base);
+  --ks-text-color-secondary-inverted-interactive-active: var(--ks-text-color-secondary-inverted-interactive-active-base);
+}
+
+[ks-inverted=true] {
+  --ks-background-color-secondary: var(--ks-background-color-secondary-inverted-base);
+  --ks-background-color-secondary-inverted: var(--ks-background-color-secondary-base);
+  --ks-background-color-secondary-interactive: var(--ks-background-color-secondary-inverted-interactive-base);
+  --ks-background-color-secondary-inverted-interactive: var(--ks-background-color-secondary-interactive-base);
+  --ks-background-color-secondary-interactive-hover: var(--ks-background-color-secondary-inverted-interactive-hover-base);
+  --ks-background-color-secondary-inverted-interactive-hover: var(--ks-background-color-secondary-interactive-hover-base);
+  --ks-background-color-secondary-interactive-active: var(--ks-background-color-secondary-inverted-interactive-active-base);
+  --ks-background-color-secondary-inverted-interactive-active: var(--ks-background-color-secondary-interactive-active-base);
+  --ks-background-color-secondary-interactive-selected: var(--ks-background-color-secondary-inverted-interactive-selected-base);
+  --ks-background-color-secondary-inverted-interactive-selected: var(--ks-background-color-secondary-interactive-selected-base);
+  --ks-background-color-secondary-translucent: var(--ks-background-color-secondary-inverted-translucent-base);
+  --ks-background-color-secondary-inverted-translucent: var(--ks-background-color-secondary-translucent-base);
+  --ks-border-color-secondary: var(--ks-border-color-secondary-inverted-base);
+  --ks-border-color-secondary-inverted: var(--ks-border-color-secondary-base);
+  --ks-border-color-secondary-interactive: var(--ks-border-color-secondary-inverted-interactive-base);
+  --ks-border-color-secondary-inverted-interactive: var(--ks-border-color-secondary-interactive-base);
+  --ks-border-color-secondary-interactive-hover: var(--ks-border-color-secondary-inverted-interactive-hover-base);
+  --ks-border-color-secondary-inverted-interactive-hover: var(--ks-border-color-secondary-interactive-hover-base);
+  --ks-border-color-secondary-interactive-active: var(--ks-border-color-secondary-inverted-interactive-active-base);
+  --ks-border-color-secondary-inverted-interactive-active: var(--ks-border-color-secondary-interactive-active-base);
+  --ks-border-color-secondary-interactive-selected: var(--ks-border-color-secondary-inverted-interactive-selected-base);
+  --ks-border-color-secondary-inverted-interactive-selected: var(--ks-border-color-secondary-interactive-selected-base);
+  --ks-border-color-secondary-translucent: var(--ks-border-color-secondary-inverted-translucent-base);
+  --ks-border-color-secondary-inverted-translucent: var(--ks-border-color-secondary-translucent-base);
+  --ks-color-secondary: var(--ks-color-secondary-inverted-base);
+  --ks-color-secondary-inverted: var(--ks-color-secondary-base);
+  --ks-color-secondary-alpha-1: var(--ks-color-secondary-inverted-alpha-1-base);
+  --ks-color-secondary-inverted-alpha-1: var(--ks-color-secondary-alpha-1-base);
+  --ks-color-secondary-alpha-2: var(--ks-color-secondary-inverted-alpha-2-base);
+  --ks-color-secondary-inverted-alpha-2: var(--ks-color-secondary-alpha-2-base);
+  --ks-color-secondary-alpha-3: var(--ks-color-secondary-inverted-alpha-3-base);
+  --ks-color-secondary-inverted-alpha-3: var(--ks-color-secondary-alpha-3-base);
+  --ks-color-secondary-alpha-4: var(--ks-color-secondary-inverted-alpha-4-base);
+  --ks-color-secondary-inverted-alpha-4: var(--ks-color-secondary-alpha-4-base);
+  --ks-color-secondary-alpha-5: var(--ks-color-secondary-inverted-alpha-5-base);
+  --ks-color-secondary-inverted-alpha-5: var(--ks-color-secondary-alpha-5-base);
+  --ks-color-secondary-alpha-6: var(--ks-color-secondary-inverted-alpha-6-base);
+  --ks-color-secondary-inverted-alpha-6: var(--ks-color-secondary-alpha-6-base);
+  --ks-color-secondary-alpha-7: var(--ks-color-secondary-inverted-alpha-7-base);
+  --ks-color-secondary-inverted-alpha-7: var(--ks-color-secondary-alpha-7-base);
+  --ks-color-secondary-alpha-8: var(--ks-color-secondary-inverted-alpha-8-base);
+  --ks-color-secondary-inverted-alpha-8: var(--ks-color-secondary-alpha-8-base);
+  --ks-color-secondary-alpha-9: var(--ks-color-secondary-inverted-alpha-9-base);
+  --ks-color-secondary-inverted-alpha-9: var(--ks-color-secondary-alpha-9-base);
+  --ks-color-secondary-to-bg-1: var(--ks-color-secondary-inverted-to-bg-1-base);
+  --ks-color-secondary-inverted-to-bg-1: var(--ks-color-secondary-to-bg-1-base);
+  --ks-color-secondary-to-bg-2: var(--ks-color-secondary-inverted-to-bg-2-base);
+  --ks-color-secondary-inverted-to-bg-2: var(--ks-color-secondary-to-bg-2-base);
+  --ks-color-secondary-to-bg-3: var(--ks-color-secondary-inverted-to-bg-3-base);
+  --ks-color-secondary-inverted-to-bg-3: var(--ks-color-secondary-to-bg-3-base);
+  --ks-color-secondary-to-bg-4: var(--ks-color-secondary-inverted-to-bg-4-base);
+  --ks-color-secondary-inverted-to-bg-4: var(--ks-color-secondary-to-bg-4-base);
+  --ks-color-secondary-to-bg-5: var(--ks-color-secondary-inverted-to-bg-5-base);
+  --ks-color-secondary-inverted-to-bg-5: var(--ks-color-secondary-to-bg-5-base);
+  --ks-color-secondary-to-bg-6: var(--ks-color-secondary-inverted-to-bg-6-base);
+  --ks-color-secondary-inverted-to-bg-6: var(--ks-color-secondary-to-bg-6-base);
+  --ks-color-secondary-to-bg-7: var(--ks-color-secondary-inverted-to-bg-7-base);
+  --ks-color-secondary-inverted-to-bg-7: var(--ks-color-secondary-to-bg-7-base);
+  --ks-color-secondary-to-bg-8: var(--ks-color-secondary-inverted-to-bg-8-base);
+  --ks-color-secondary-inverted-to-bg-8: var(--ks-color-secondary-to-bg-8-base);
+  --ks-color-secondary-to-bg-9: var(--ks-color-secondary-inverted-to-bg-9-base);
+  --ks-color-secondary-inverted-to-bg-9: var(--ks-color-secondary-to-bg-9-base);
+  --ks-color-secondary-to-fg-1: var(--ks-color-secondary-inverted-to-fg-1-base);
+  --ks-color-secondary-inverted-to-fg-1: var(--ks-color-secondary-to-fg-1-base);
+  --ks-color-secondary-to-fg-2: var(--ks-color-secondary-inverted-to-fg-2-base);
+  --ks-color-secondary-inverted-to-fg-2: var(--ks-color-secondary-to-fg-2-base);
+  --ks-color-secondary-to-fg-3: var(--ks-color-secondary-inverted-to-fg-3-base);
+  --ks-color-secondary-inverted-to-fg-3: var(--ks-color-secondary-to-fg-3-base);
+  --ks-color-secondary-to-fg-4: var(--ks-color-secondary-inverted-to-fg-4-base);
+  --ks-color-secondary-inverted-to-fg-4: var(--ks-color-secondary-to-fg-4-base);
+  --ks-color-secondary-to-fg-5: var(--ks-color-secondary-inverted-to-fg-5-base);
+  --ks-color-secondary-inverted-to-fg-5: var(--ks-color-secondary-to-fg-5-base);
+  --ks-color-secondary-to-fg-6: var(--ks-color-secondary-inverted-to-fg-6-base);
+  --ks-color-secondary-inverted-to-fg-6: var(--ks-color-secondary-to-fg-6-base);
+  --ks-color-secondary-to-fg-7: var(--ks-color-secondary-inverted-to-fg-7-base);
+  --ks-color-secondary-inverted-to-fg-7: var(--ks-color-secondary-to-fg-7-base);
+  --ks-color-secondary-to-fg-8: var(--ks-color-secondary-inverted-to-fg-8-base);
+  --ks-color-secondary-inverted-to-fg-8: var(--ks-color-secondary-to-fg-8-base);
+  --ks-color-secondary-to-fg-9: var(--ks-color-secondary-inverted-to-fg-9-base);
+  --ks-color-secondary-inverted-to-fg-9: var(--ks-color-secondary-to-fg-9-base);
+  --ks-text-color-secondary: var(--ks-text-color-secondary-inverted-base);
+  --ks-text-color-secondary-inverted: var(--ks-text-color-secondary-base);
+  --ks-text-color-secondary-interactive: var(--ks-text-color-secondary-inverted-interactive-base);
+  --ks-text-color-secondary-inverted-interactive: var(--ks-text-color-secondary-interactive-base);
+  --ks-text-color-secondary-interactive-hover: var(--ks-text-color-secondary-inverted-interactive-hover-base);
+  --ks-text-color-secondary-inverted-interactive-hover: var(--ks-text-color-secondary-interactive-hover-base);
+  --ks-text-color-secondary-interactive-active: var(--ks-text-color-secondary-inverted-interactive-active-base);
+  --ks-text-color-secondary-inverted-interactive-active: var(--ks-text-color-secondary-interactive-active-base);
+  --ks-text-color-secondary-interactive-selected: var(--ks-text-color-secondary-inverted-interactive-selected-base);
+}
+
+/* ---------------------------------------------------------------------------
+ * `--dsa-content--spacing` restoration
+ *
+ * The DS redesign dropped this content-gutter token, but
+ * `components/footer/footer.scss` still pads with it. Values are the
+ * pre-migration ones (`--ks-spacing-inset-l`, `-xl` from 48em up).
+ * ------------------------------------------------------------------------- */
+:root,
+[ks-inverted],
+[ks-theme] {
+  --dsa-content--spacing: var(--ks-spacing-inset-l);
+
+  @media (min-width: 48em) {
+    --dsa-content--spacing: var(--ks-spacing-inset-xl);
+  }
+}

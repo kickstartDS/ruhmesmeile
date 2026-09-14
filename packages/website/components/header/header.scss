@@ -6,3 +6,10 @@
   position: relative;
   z-index: var(--dsa-header--z-index);
 }
+
+// Legacy override: keep the sticky header above every section stacking context.
+:root {
+  .dsa-header {
+    z-index: 999;
+  }
+}

@@ -61,6 +61,7 @@ import {
 
 import { StoryblokSubComponent } from "./StoryblokSubComponent";
 import { IconProvider } from "./icon/IconProvider";
+import { FooterProvider } from "./footer/FooterComponent";
 import { DownloadsProvider } from "./downloads/DownloadsProvider";
 
 import { useHeaderButton } from "./HeaderButtonContext";
@@ -444,7 +445,7 @@ const StorytellingProvider: FC<PropsWithChildren> = (props) => (
   <StorytellingContext.Provider {...props} value={Storytelling} />
 );
 
-const SUPPORTED_LANGS = ["en", "de"] as const;
+const SUPPORTED_LANGS = ["de"] as const;
 type SupportedLang = (typeof SUPPORTED_LANGS)[number];
 
 function getAltPath(currentPath: string, altLang: SupportedLang): string {
@@ -480,37 +481,39 @@ const NavMainWithCta = forwardRef<
     <div ref={ref} className="dsa-nav-main">
       {hasItems && <NavToggle />}
       {hasItems && <NavTopbar items={items} inverted={dropdownInverted} />}
-      <div className="dsa-language-switcher">
-        {SUPPORTED_LANGS.map((lang, idx) => (
-          <>
-            {idx > 0 && (
-              <span
-                className="dsa-language-switcher__separator"
-                aria-hidden="true"
-              >
-                |
-              </span>
-            )}
-            {lang === language ? (
-              <span
-                key={lang}
-                className="dsa-language-switcher__item dsa-language-switcher__item--active"
-              >
-                {lang.toUpperCase()}
-              </span>
-            ) : (
-              <a
-                key={lang}
-                href={getTranslatedPath(lang, alternates, router.asPath)}
-                className="dsa-language-switcher__item dsa-language-switcher__item--link"
-                lang={lang}
-              >
-                {lang.toUpperCase()}
-              </a>
-            )}
-          </>
-        ))}
-      </div>
+      {SUPPORTED_LANGS.length > 1 && (
+        <div className="dsa-language-switcher">
+          {SUPPORTED_LANGS.map((lang, idx) => (
+            <>
+              {idx > 0 && (
+                <span
+                  className="dsa-language-switcher__separator"
+                  aria-hidden="true"
+                >
+                  |
+                </span>
+              )}
+              {lang === language ? (
+                <span
+                  key={lang}
+                  className="dsa-language-switcher__item dsa-language-switcher__item--active"
+                >
+                  {lang.toUpperCase()}
+                </span>
+              ) : (
+                <a
+                  key={lang}
+                  href={getTranslatedPath(lang, alternates, router.asPath)}
+                  className="dsa-language-switcher__item dsa-language-switcher__item--link"
+                  lang={lang}
+                >
+                  {lang.toUpperCase()}
+                </a>
+              )}
+            </>
+          ))}
+        </div>
+      )}
       {hasButton && (
         <a
           href={headerButton.url}
@@ -540,33 +543,35 @@ const ComponentProviders = (props: PropsWithChildren) => (
                 <SplitWeightedProvider>
                   <HeroProvider>
                     <LinkProvider>
-                      <CtaContext.Provider value={StoryblokSubComponent}>
-                        <FeatureContext.Provider value={StoryblokSubComponent}>
-                          <StatContext.Provider value={StoryblokSubComponent}>
-                            <TestimonialContext.Provider
-                              value={StoryblokSubComponent}
-                            >
-                              <BlogHeadContext.Provider
+                      <FooterProvider>
+                        <CtaContext.Provider value={StoryblokSubComponent}>
+                          <FeatureContext.Provider value={StoryblokSubComponent}>
+                            <StatContext.Provider value={StoryblokSubComponent}>
+                              <TestimonialContext.Provider
                                 value={StoryblokSubComponent}
                               >
-                                <BlogAsideContext.Provider
+                                <BlogHeadContext.Provider
                                   value={StoryblokSubComponent}
                                 >
-                                  <BlogTeaserContext.Provider
+                                  <BlogAsideContext.Provider
                                     value={StoryblokSubComponent}
                                   >
-                                    <BlogAuthorContext.Provider
+                                    <BlogTeaserContext.Provider
                                       value={StoryblokSubComponent}
                                     >
-                                      {props.children}
-                                    </BlogAuthorContext.Provider>
-                                  </BlogTeaserContext.Provider>
-                                </BlogAsideContext.Provider>
-                              </BlogHeadContext.Provider>
-                            </TestimonialContext.Provider>
-                          </StatContext.Provider>
-                        </FeatureContext.Provider>
-                      </CtaContext.Provider>
+                                      <BlogAuthorContext.Provider
+                                        value={StoryblokSubComponent}
+                                      >
+                                        {props.children}
+                                      </BlogAuthorContext.Provider>
+                                    </BlogTeaserContext.Provider>
+                                  </BlogAsideContext.Provider>
+                                </BlogHeadContext.Provider>
+                              </TestimonialContext.Provider>
+                            </StatContext.Provider>
+                          </FeatureContext.Provider>
+                        </CtaContext.Provider>
+                      </FooterProvider>
                     </LinkProvider>
                   </HeroProvider>
                 </SplitWeightedProvider>
