@@ -609,3 +609,190 @@
   --ks-background-color-bold-inverted-base: var(--ks-brand-color-primary);
   --ks-background-color-accent-base: var(--ks-color-primary-to-bg-8);
 }
+
+/* ---------------------------------------------------------------------------
+ * Pre-migration geometry: radii and border widths
+ *
+ * The design system now derives every radius from a brand factor multiplied by
+ * the spacing scale; the pre-migration brand used flat literals. Measured at
+ * desktop, a teaser card came out 21.97px against the legacy 6px, a button
+ * 10.99px against 6px and the cta box 32.96px against 0 (the box had no radius
+ * at all). `--dsa-border-radius-image` resolves through the same token, which is
+ * why cta and image-text images are rounded now too. Restoring the literals takes
+ * buttons, cards, surfaces and images back to the old geometry in one place.
+ *
+ * `--ks-brand-border-width-emphasized` is never emitted by the brand layer, so
+ * the 2px emphasized border (outline buttons, card outlines) silently collapsed
+ * to 1px.
+ * ------------------------------------------------------------------------- */
+:root,
+[ks-inverted],
+[ks-theme] {
+  --ks-border-radius-card: 6px;
+  --ks-border-radius-control: 6px;
+  --ks-border-radius-surface: 6px;
+
+  --ks-border-width-default: 1px;
+  --ks-border-width-emphasized: 2px;
+}
+
+/* ---------------------------------------------------------------------------
+ * Content widths
+ *
+ * The wide content width grew by 12% and the largest tile by 10% (`* 64` ->
+ * `* 72` and `* 38` -> `* 42` of the copy-m size), which is what makes sections
+ * read wider than before. On top of that the section gutter moved from
+ * `--dsa-content--spacing` to the new `--dsa-content--horizontal-spacing`, a
+ * narrower value, so content inside a section ran wider a second time.
+ * ------------------------------------------------------------------------- */
+:root,
+[ks-inverted],
+[ks-theme] {
+  --dsa-content--width_wide: calc(var(--ks-font-size-copy-m) * 64);
+  --dsa-tile--width_largest: calc(var(--ks-font-size-copy-m) * 38);
+}
+
+.dsa-section.dsa-section {
+  --dsa-section__content--padding: var(--dsa-content--spacing);
+  --dsa-section--space_default: var(--ks-spacing-xxl);
+}
+
+/* ---------------------------------------------------------------------------
+ * Header
+ *
+ * The header was rebuilt as an inset, blurred bar: it shrank to the wide content
+ * width, picked up a 20px backdrop blur and traded its top-to-bottom gradient
+ * for an opaque overlay colour. The pre-migration header spanned the viewport
+ * (`--dsa-content--width_max` is `100vw`) and carried nothing but that gradient,
+ * which is the faint dark band it overlays the next section with.
+ *
+ * The inset geometry, the rounded corners and the fixed positioning are rules in
+ * the design system, not tokens -- see `components/header/header.scss`.
+ * ------------------------------------------------------------------------- */
+.dsa-header.dsa-header {
+  --dsa-header--max-width: var(--dsa-content--width_max);
+  --dsa-header_floating--background: linear-gradient(var(--ks-color-bg), transparent);
+  --dsa-header_floating--backdrop-filter: none;
+}
+
+/* ---------------------------------------------------------------------------
+ * Teaser card
+ *
+ * The redesign inverted the card label: it is white on primary text with a
+ * primary border now, where the pre-migration label was white text on a primary
+ * background and had no border. The image also gained the card padding plus a
+ * radius of its own, where it used to sit flush in the card box and be clipped
+ * by the card; and the card's border width token was dropped entirely.
+ * ------------------------------------------------------------------------- */
+.dsa-teaser-card.dsa-teaser-card {
+  --dsa-teaser-card__label--background-color: var(--ks-background-color-primary);
+  --dsa-teaser-card__label--color: var(--dsa-text-color-on-primary);
+  --dsa-teaser-card__label--border: 0;
+
+  --dsa-teaser-card__image--padding: 0;
+  --dsa-teaser-card__image--border-radius: 0;
+
+  /* The redesign added a hover zoom on the card image (`scale(1.05)` with a
+   * transform transition). The pre-migration card had no motion on hover — the
+   * only hover cue was the orange link — so the tokens are off here. Reverting
+   * this is one line if the zoom is wanted after all. */
+  --dsa-teaser-card__image--transform_hover: none;
+  --dsa-teaser-card__image--transition: none;
+
+  --dsa-teaser-card--border-width: var(--ks-border-width-default);
+}
+
+/* The cta box gained a surface radius; the pre-migration box was square. Its
+ * content padding also moved from `--dsa-content--spacing` to the narrower
+ * `--dsa-content--horizontal-spacing`, which is what widened the hero's text
+ * column (measured 700px against the legacy 603px at 1440px). */
+.dsa-cta.dsa-cta {
+  --dsa-cta--border-radius: 0;
+  --dsa-cta--horizontal-padding: var(--dsa-content--spacing);
+  --dsa-cta__content--horizontal-padding: var(--dsa-content--spacing);
+}
+
+/* ---------------------------------------------------------------------------
+ * Links and footer
+ *
+ * `--dsa-link--font-weight` came down from semi-bold to medium. The footer's own
+ * weight declaration is a legacy quirk: it passed a font *shorthand* into
+ * `font-weight`, which browsers dropped, so footer links inherited the footer's
+ * weight rather than picking up the link weight. Keeping that behaviour is why
+ * the footer re-inherits instead of following the restored link weight.
+ * ------------------------------------------------------------------------- */
+:root,
+[ks-inverted],
+[ks-theme] {
+  --dsa-link--font-weight: var(--ks-font-weight-semi-bold);
+
+  --dsa-footer__byline--font: var(--ks-font-copy-xs);
+  --dsa-footer__byline--color: var(--ks-text-color-default);
+  --dsa-footer__links--gap: var(--ks-spacing-stack-s) var(--ks-spacing-inline-m);
+}
+
+.dsa-footer.dsa-footer {
+  --dsa-footer--gap-vertical: var(--ks-spacing-stack-m);
+  --dsa-footer__link--font-weight: inherit;
+  --dsa-footer__logo--height: 1.5rem;
+
+  @media (min-width: 62em) {
+    --dsa-footer__logo--height: 4rem;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Tokens the current stylesheet consumes but no longer defines
+ *
+ * The redesign renamed or dropped a set of derived tokens while the stylesheet
+ * that reads them survived the migration. A custom property that is not defined
+ * makes the whole declaration invalid at computed-value time, so each of these is
+ * a silently dead rule today -- not a visible fallback:
+ *
+ *   --ks-color-fg-alpha-6-base       the primary button's `inset 0 -3px 0` 3d
+ *                                    edge (`.c-button--solid`), which is why the
+ *                                    button reads flat now
+ *   --ks-color-primary-alpha-3-base  `stagelights` section background
+ *   --ks-color-primary-alpha-4-base  `symmetric-glow` section background
+ *   --ks-color-primary-alpha-7-base  horizontal/vertical gradient backgrounds
+ *   --ks-color-transparent           feeds every `--ks-border-color-*-clear-base`
+ *   --g-header-height                used as `calc(100vh - var(--g-header-height))`
+ *   --g-scroll-offset                anchor `scroll-margin-top`
+ *   --ks-depth-modal                 header and lightbox z-index
+ *   --ks-color-fg-alpha-2-base       the open mobile flyout's backdrop
+ *
+ * Values are the pre-migration ones.
+ * ------------------------------------------------------------------------- */
+:root,
+[ks-inverted],
+[ks-theme] {
+  --ks-color-transparent-base: transparent;
+  --ks-color-transparent: var(--ks-color-transparent-base);
+
+  /* The design system's own brand layer emits a `system-ui` stack for the copy
+   * and interface families (its `dist/global.css`), which shadows whatever the
+   * site's token dictionary declares — `--ks-font-family-copy` is defined as
+   * `var(--ks-brand-font-family-copy)`. Overriding the brand value here is what
+   * actually swaps the typeface, because this stylesheet loads after
+   * `@kickstartds/design-system/global.css`. The site's dictionary and
+   * `branding-token.json` carry the same families so the generated theme story
+   * (and with it the editor preview) stays consistent. */
+  --ks-brand-font-family-copy: Mulish, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --ks-brand-font-family-interface: Mulish, system-ui, -apple-system, BlinkMacSystemFont,
+    "Avenir Next", "Avenir", "Segoe UI", "Lucida Grande", "Helvetica Neue", Helvetica,
+    "Fira Sans", Roboto, Noto, "Droid Sans", Cantarell, Oxygen, Ubuntu,
+    "Franklin Gothic Medium", "Century Gothic", "Liberation Sans", sans-serif;
+
+  --ks-color-fg-alpha-2-base: rgba(33, 35, 39, 0.87);
+  --ks-color-fg-alpha-6-base: rgba(33, 35, 39, 0.37);
+
+  --ks-color-primary-alpha-3-base: rgba(44, 93, 93, 0.76);
+  --ks-color-primary-alpha-4-base: rgba(44, 93, 93, 0.63);
+  --ks-color-primary-alpha-7-base: rgba(44, 93, 93, 0.24);
+
+  --ks-depth-modal: 1000;
+  --g-header-height: 0px;
+  --g-scroll-offset: var(--g-header-height);
+
+  --ks-font-size-display-bp-factor-phone: 1.125;
+}

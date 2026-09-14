@@ -251,7 +251,7 @@ export default function App({
                               storyProps?.header?.logo ||
                               headerProps?.logo?.src,
                             homepageHref: headerProps?.logo?.homepageHref
-                              ? `/${headerProps.logo.homepageHref}`
+                              ? `/${String(headerProps.logo.homepageHref).replace(/^\/+/, "")}`
                               : `/${language}/`,
                           }}
                         />

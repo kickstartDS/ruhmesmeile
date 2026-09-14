@@ -5,3 +5,22 @@
     border-radius: var(--dsa-border-radius-image);
   }
 }
+
+/* The redesign dropped the padding rule the pre-migration cta box carried, so a
+ * `c-storytelling` cta (the homepage hero, for one) laid its text out against the
+ * bare box edge: measured 700px wide against the legacy 603px, with no top
+ * offset either. Values and fallbacks are the pre-migration ones — the vertical
+ * one resolves through `--l-section--space-default` because the redesign no
+ * longer emits `--dsa-cta--vertical-padding`.
+ *
+ * The doubled class is deliberate: the redesign also added a
+ * `.dsa-cta.c-storytelling.dsa-cta--no-padding .c-storytelling__box { padding: 0 }`
+ * rule, which the hero's markup now matches, and "no padding" is not something the
+ * pre-migration stylesheet could express (it had no `--no-padding` rule at all).
+ * Matching its specificity and loading later restores the old box for every
+ * storytelling cta. */
+.dsa-cta.c-storytelling.c-storytelling .c-storytelling__box {
+  width: 100%;
+  padding: var(--dsa-cta--vertical-padding, var(--l-section--space-default))
+    var(--dsa-cta--horizontal-padding, var(--dsa-content--spacing));
+}

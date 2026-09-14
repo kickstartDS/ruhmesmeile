@@ -82,7 +82,9 @@ export const TeaserCardContextDefault = forwardRef<
           link={{
             hidden: button?.hidden || !hasLink,
             label: button.label,
-            variant: "primary",
+            // The card's button rendered in the "clear" (secondary) style
+            // before the migration, not as a filled primary button.
+            variant: "secondary",
             url: url,
             icon: button?.chevron ? "chevron-right" : undefined,
             // `newTab` isn't part of the base package's generated `link` type

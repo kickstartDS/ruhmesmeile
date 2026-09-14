@@ -7,6 +7,9 @@
     --dsa-nav-dropdown__label--font: var(--ks-font-interface-m);
     --dsa-nav-dropdown__label--font-weight: var(--ks-font-weight-regular);
     --dsa-nav-dropdown__label--padding: 0.5em 0.35em;
+    // the vendored design system gives dropdown labels a hover/focus
+    // background pill; the pre-migration ones were plain text
+    --dsa-nav-dropdown__label--background-color_hover: transparent;
     --dsa-nav-dropdown__label_dimmed--opacity: 0.65;
   }
 }

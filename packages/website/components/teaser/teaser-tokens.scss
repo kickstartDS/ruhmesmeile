@@ -9,6 +9,12 @@
     --dsa-teaser-card--border-color: transparent;
     --dsa-teaser-card--border-color_hover: transparent;
 
+    // The vendored design system builds the card border from a single border
+    // shorthand token; the transparent colour above only reaches the hover
+    // state on its own.
+    --dsa-teaser-card--border: var(--dsa-teaser-card--border-width) solid
+      var(--dsa-teaser-card--border-color);
+
     // Scaling for Mobile Breakpoint
     --dsa-teaser-card--padding: var(--ks-spacing-inset-xl);
     --dsa-teaser-card__topic--font: var(--ks-font-display-xl);

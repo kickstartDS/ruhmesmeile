@@ -2,6 +2,10 @@
 
 .dsa-footer {
   --dsa-footer--border-top: var(--dsa-footer__content--border);
+  // the vendored design system adds `gap: var(--dsa-footer__column--gap,
+  // var(--ks-spacing-stack-s))` to the column; the legacy footer stacked the
+  // address lines with no gap at all
+  --dsa-footer__column--gap: 0;
   flex-direction: column;
 
   ul,
@@ -61,6 +65,21 @@
     li {
       display: flex;
     }
+  }
+
+  // Legacy design system rule (`.dsa-footer__links`), dropped from the vendored
+  // design system: without it the top link `ul` is `display: block`, so the three
+  // navigation columns stack vertically, and the bottom meta links lose their gap.
+  // Declared before the `--top` / `--bottom` modifiers so those keep overriding it,
+  // as they did before.
+  .dsa-footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(
+      --dsa-footer__links--gap,
+      var(--ks-spacing-stack-s) var(--ks-spacing-inline-m)
+    );
   }
 
   .dsa-footer__links--top {

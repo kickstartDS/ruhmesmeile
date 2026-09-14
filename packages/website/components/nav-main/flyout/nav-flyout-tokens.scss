@@ -1,5 +1,7 @@
 :root {
   .dsa-nav-flyout {
+    // legacy drawer width: 78vw capped at 18em, 30em from 48em up (below)
+    --dsa-nav-flyout--max-width: 18em;
     --dsa-nav-flyout--shadow: 20px 0px 30px var(--ks-color-fg-inverted);
     --dsa-nav-flyout--background: linear-gradient(
       125deg,
