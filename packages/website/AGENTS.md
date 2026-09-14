@@ -75,6 +75,40 @@ The pre-migration site overrode most design-system components. They were ported 
 - **`secondary` colour family.** The pre-migration brand had a tenth family (`#FF5C00`) that unified theming cannot express, so the design system no longer emits it. `global-token.scss` restores all 268 derived custom properties verbatim, split across the same three layers the old bundle used (`-base` defaults, non-inverted aliases, `[ks-inverted=true]` aliases). `--dsa-content--spacing`, also dropped by the redesign, is restored there too.
 - Six variables the ported SCSS reads are undefined in both the old and the new build (`--ks-color-primary-interactive-hover`/`-active`, `--ks-font-weight-thin`, `--ks-background-color-default-interactive{,-hover}`, `--ks-text-color-on-secondary`). That is faithful, not broken: the pre-migration bundle did not define them either, and the declarations were already inert. Everything else resolves.
 
+### Legacy compatibility layers
+
+`global-token.scss` and `components/section/section.scss` carry everything the DS redesign changed out from under this site's existing content and look. Each block is commented at its source; this is the index:
+
+| What | Why it is here |
+| --- | --- |
+| `secondary` colour family (268 declarations) | The tenth brand family has no slot in the nine-pair model; the ported component overrides still consume it. |
+| `--dsa-content--spacing` | Dropped by the redesign; `footer.scss` still pads with it. |
+| **Legacy type scale** | Rebuilt upstream around per-step growth and breakpoint factors, ~20 % smaller (h2: 39.99px vs 51.2px). Restores the legacy step bases, one factor per family per breakpoint, and the 1.15/1.5 line heights. |
+| **Legacy spacing scale** | Same story: a medium gap measured 23.7px against 29.3px. Restores the legacy step bases and factors; the `stack`/`inline`/`inset` aliases follow automatically. |
+| **`accent` / `bold` backgrounds** | Derived from different palette steps, and `bold` came out mid-grey instead of the primary teal when inverted — the colour every section glow blends into. Inverted values now match exactly; light ones land ~2.4 % short (documented in the block). |
+| **Section gradients + transitions** | See below. |
+
+### Section backgrounds
+
+Two separate changes here, both invisible-without-a-diff:
+
+- The redesign moved the accent/bold background transitions out of `section.style` into the new `section.transition` field and trimmed `style` to `default`/`framed`/`deko`. `migrateContentFields.ts` moves the legacy values (`accentTransition` → `to_accent`, `boldTransition` → `to_bold`, 40 sections); the surviving `horizontalGradient`/`verticalGradient`/`symmetricGlow`/`anchorGlow`/`stagelights` values stay in the content and get their gradients from `section.scss`.
+- The system renders the raw option value as the class and its `transition` values are snake_case (`to_accent`) while its stylesheet keys the gradients off kebab-case (`--transition-to-accent`) — so nothing matched and every transition rendered as `background-image: none`. `section.scss` re-declares the gradients against the class names the component actually emits, and the five decorative styles under their camelCase class names (`dsa-section-style--anchorGlow`).
+
+### Client behaviours belong to the app
+
+The design system *defines* components like `base.teaser`, `content.count-up` and `base.lightbox-image`; it never instantiates them. Something in the app has to import each one, which is what `components/**/*.client.js` is for (`bundle-static-assets` globs that path). The site has an entry per behaviour:
+
+| File | Registers |
+| --- | --- |
+| `components/teaser/teaser.client.js` | `base.teaser` — makes a whole teaser card clickable, `teaser-card` and blog cards alike. Without it nothing in a `.c-teaser` is clickable. |
+| `components/stats/stats.client.js` | `content.count-up` — the stats numbers |
+| `components/image-text/image-text.client.js` | `base.lightbox-image` — full-screen image lightbox |
+
+**When porting a component from the pre-migration tree, port its `.client.js` as well as its SCSS.** The migration that produced this branch ported only the styles, which is exactly how the clickable cards went missing.
+
+To find gaps: collect every `ks-component="…"` identifier from a rendered page and check each one is defined in `public/_/*.js` (`base.container`, `buttons` and `logo` are inert markers, not components).
+
 ### Client scripts
 
 Behaviour goes in `<name>.client.js` — plain DOM, no framework — which `bundle-static-assets` bundles into `public/_/client.js`. **After adding or editing a client script, re-run `bundle-static-assets`** — `next dev` serves the previously built bundle, so the behaviour silently won't run locally until you do. `public/_/`, `public/client.js` and `public/blurhashes/` are the outputs; `blurhashes` is committed, the other two are generated.
@@ -106,6 +140,8 @@ Stored content still uses the pre-migration names until `migrate-content-fields 
 | `footer` | `byline` | `copyright` | 2 |
 
 (`items.href` → `url`, `tile.button_target` → `button_url` and `slider.typeProp` → `variant` are in the same table and match nothing in this space. `blog-author.byline` is a *different*, still valid field — the rename is component-scoped.)
+
+One table entry is a **move** rather than a rename, because the field changed as well as the name: `section.style: accentTransition|boldTransition` becomes `section.transition: to_accent|to_bold` and `style` is retired to `default` (40 sections). The `transition` value is only written when that field is free, so re-running is a no-op. The other legacy `style` values stay in the content and get their gradients from `components/section/section.scss`.
 
 Fields the redesign removed, which content still carries and the script only counts (`migrate-content-fields` prints the live numbers): `cta.width` (88 bloks, 28 carrying a value), `feature.style` (141 / 135), `feature.cta_style` (141 / 135), `feature.cta_toggle` (135 / 37), `cta.fullWidth` (125 / 72), `buttons.icon` (136 / 109). `feature.icon` still exists and still renders, so it is not in that list.
 
