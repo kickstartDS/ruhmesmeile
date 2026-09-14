@@ -7,10 +7,22 @@ const PromiseThrottle = require("promise-throttle");
 
 require("@dotenvx/dotenvx").config({ path: ".env.local" });
 
-if (!process.env.NEXT_STORYBLOK_SPACE_ID)
-  throw new Error("Missing NEXT_STORYBLOK_SPACE_ID env variable");
-if (!process.env.NEXT_STORYBLOK_OAUTH_TOKEN)
-  throw new Error("Missing NEXT_STORYBLOK_OAUTH_TOKEN env variable");
+// The cache under `public/blurhashes/` is committed, so this step is a refresh,
+// not a build input. Without CMS credentials (CI, a preview build, a fresh
+// clone) skip it the same way `sync-default-theme` skips, instead of failing
+// the whole build.
+if (!process.env.NEXT_STORYBLOK_SPACE_ID) {
+  console.warn(
+    "⚠️  blurhashes: skipping — missing NEXT_STORYBLOK_SPACE_ID (using the committed cache in public/blurhashes)",
+  );
+  process.exit(0);
+}
+if (!process.env.NEXT_STORYBLOK_OAUTH_TOKEN) {
+  console.warn(
+    "⚠️  blurhashes: skipping — missing NEXT_STORYBLOK_OAUTH_TOKEN (using the committed cache in public/blurhashes)",
+  );
+  process.exit(0);
+}
 
 const Storyblok = new StoryblokClient({
   oauthToken: process.env.NEXT_STORYBLOK_OAUTH_TOKEN,
