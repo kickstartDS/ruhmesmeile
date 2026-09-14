@@ -104,7 +104,13 @@ What this does:
 pnpm --filter @kickstartds/ruhmesmeile-storyblok-starter dev
 ```
 
-The dev server starts with an SSL proxy on `https://localhost:3010`.
+The dev server starts with an SSL proxy on `https://localhost:3010`. That needs local certificates — generate them once, from `packages/website/`:
+
+```bash
+mkcert -cert-file localhost.pem -key-file localhost-key.pem localhost 127.0.0.1 ::1
+```
+
+**Run the website on Node 18.** `packages/website/Dockerfile` serves production on `node:18-alpine`, and Next.js 13.5.6's draft-mode `res.setPreviewData()` throws on Node 24, which breaks `/api/preview/` — the half of the setup that matters here. The monorepo tooling around the website (pnpm, the design-system build, the CMS scripts) needs Node 24.
 
 Set the Storyblok Visual Editor preview URL to `https://localhost:3010/api/preview/`.
 

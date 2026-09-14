@@ -17,7 +17,15 @@ jobs:
           command: gem install kamal
       - run:
           name: Build & Deploy Website
-          command: kamal deploy -c config/deploy-website.yml
+          # `config/deploy-website.yml` is ERB-evaluated against the process
+          # environment; the committed, secret-free `packages/website/.env`
+          # supplies the domains, image name and host, so only the tokens have
+          # to live in this project's env vars.
+          command: |
+            set -a
+            . packages/website/.env
+            set +a
+            kamal deploy -c config/deploy-website.yml
 
 workflows:
   release:

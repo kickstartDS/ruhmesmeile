@@ -58,7 +58,9 @@ Storyblok CMS ──► storyblok-services (schema, transform, validate, generat
 
 ## Setup
 
-Requirements: **Node 24** (`.nvmrc`; every package that declares `engines` requires `>= 24.0.0` — the website, `token-graph`, and the field plugins declare none) and **pnpm 10.30.3** (`corepack enable && corepack prepare pnpm@10.30.3 --activate`). `mkcert` is required for local SSL (Storyblok Visual Editor iframes `https://localhost:3010`).
+Requirements: **Node 24** (`.nvmrc`; every package that declares `engines` requires `>= 24.0.0` — the website, `token-graph`, and the field plugins declare none) and **pnpm 10.30.3** (`corepack enable && corepack prepare pnpm@10.30.3 --activate`). `mkcert` is required for local SSL (Storyblok Visual Editor iframes `https://localhost:3010`) — `mkcert -cert-file localhost.pem -key-file localhost-key.pem localhost 127.0.0.1 ::1` inside `packages/website`.
+
+**The website itself runs on Node 18** (`packages/website/Dockerfile` uses `node:18-alpine`), and Next 13.5.6's `res.setPreviewData` breaks on Node 24, so run the website's `next dev` on Node 18 whenever you need the Visual Editor preview. Details in [packages/website/AGENTS.md](packages/website/AGENTS.md#runtime-the-website-runs-on-node-18-the-tooling-on-node-24).
 
 ```bash
 pnpm install
