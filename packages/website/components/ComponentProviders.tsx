@@ -61,6 +61,8 @@ import {
 
 import { StoryblokSubComponent } from "./StoryblokSubComponent";
 import { IconProvider } from "./icon/IconProvider";
+import { NavTopbarProvider } from "./nav-main/topbar/NavTopbarComponent";
+import { NavFlyoutProvider } from "./nav-main/flyout/NavFlyoutComponent";
 import { FooterProvider } from "./footer/FooterComponent";
 import { DownloadsProvider } from "./downloads/DownloadsProvider";
 
@@ -534,7 +536,9 @@ const NavMainProvider: FC<PropsWithChildren> = (props) => (
 );
 
 const ComponentProviders = (props: PropsWithChildren) => (
-  <NavMainProvider>
+  <NavTopbarProvider>
+    <NavFlyoutProvider>
+      <NavMainProvider>
       <IconProvider>
         <DownloadsProvider>
           <StorytellingProvider>
@@ -580,7 +584,9 @@ const ComponentProviders = (props: PropsWithChildren) => (
           </StorytellingProvider>
         </DownloadsProvider>
       </IconProvider>
-    </NavMainProvider>
+      </NavMainProvider>
+    </NavFlyoutProvider>
+  </NavTopbarProvider>
 );
 
 export default ComponentProviders;
