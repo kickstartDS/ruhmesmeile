@@ -26,17 +26,29 @@ export type HideBreadcrumbs = boolean;
  */
 export type Theme = string;
 /**
- * Show a fixed 'Book a Demo' button on all pages
+ * Show a CTA button at the right of the header navigation
  */
 export type Enabled = boolean;
 /**
- * Label text for the Book a Demo button
+ * Label text for the header CTA button
  */
 export type Label = string;
 /**
- * URL the Book a Demo button links to
+ * URL the header CTA button links to (opens in new tab)
  */
 export type URL = string;
+/**
+ * Show a fixed 'Book a Demo' button on all pages
+ */
+export type Enabled1 = boolean;
+/**
+ * Label text for the Book a Demo button
+ */
+export type Label1 = string;
+/**
+ * URL the Book a Demo button links to
+ */
+export type URL1 = string;
 /**
  * Visual variant of the Book a Demo button
  */
@@ -62,14 +74,23 @@ export interface SettingsProps {
   token?: CSSCustomPropertyOverrides;
   hideBreadcrumbs?: HideBreadcrumbs;
   theme?: Theme;
+  headerButton?: HeaderButton;
   bookDemoButton?: BookADemoButton;
+}
+/**
+ * Configure a CTA button shown at the far right of the header navigation (opens in new tab)
+ */
+export interface HeaderButton {
+  enabled?: Enabled;
+  label?: Label;
+  url?: URL;
 }
 /**
  * Configure the fixed Book a Demo button shown on all pages
  */
 export interface BookADemoButton {
-  enabled?: Enabled;
-  label?: Label;
-  url?: URL;
+  enabled?: Enabled1;
+  label?: Label1;
+  url?: URL1;
   variant?: Variant;
 }

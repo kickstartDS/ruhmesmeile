@@ -7,16 +7,18 @@
 
 import type {BlogTeaserProps} from "@kickstartds/design-system/blog-teaser";
 import type {BusinessCardProps} from "@kickstartds/design-system/business-card";
+import type {ButtonProps} from "@kickstartds/design-system/button";
 import type {ContactProps} from "@kickstartds/design-system/contact";
 import type {ContentNavProps} from "@kickstartds/design-system/content-nav";
 import type {CtaProps} from "@kickstartds/design-system/cta";
 import type {DividerProps} from "@kickstartds/design-system/divider";
-import type {DownloadsProps} from "@kickstartds/design-system/downloads";
+import type {DownloadsProps} from "../downloads/DownloadsProps";
 import type {EventLatestTeaserProps} from "@kickstartds/design-system/event-latest-teaser";
 import type {EventListTeaserProps} from "@kickstartds/design-system/event-list-teaser";
 import type {FaqProps} from "@kickstartds/design-system/faq";
 import type {FeaturesProps} from "@kickstartds/design-system/features";
 import type {GalleryProps} from "@kickstartds/design-system/gallery";
+import type {HeadlineProps} from "@kickstartds/design-system/headline";
 import type {HeroProps} from "@kickstartds/design-system/hero";
 import type {HtmlProps} from "@kickstartds/design-system/html";
 import type {ImageStoryProps} from "@kickstartds/design-system/image-story";
@@ -33,7 +35,6 @@ import type {TextProps} from "@kickstartds/design-system/text";
 import type {VideoCurtainProps} from "@kickstartds/design-system/video-curtain";
 import type {InfoTableProps} from "../info-table/InfoTableProps";
 import type {PrompterProps} from "../prompter/PrompterProps";
-import type {ButtonProps} from "@kickstartds/design-system/button";
 
 /**
  * Width of section to use
@@ -129,6 +130,7 @@ export type TileWidth = "smallest" | "default" | "medium" | "large" | "largest" 
 export type Content = (
   | BlogTeaserProps
   | BusinessCardProps
+  | ButtonProps
   | ContactProps
   | ContentNavProps
   | CtaProps
@@ -139,6 +141,7 @@ export type Content = (
   | FaqProps
   | FeaturesProps
   | GalleryProps
+  | HeadlineProps
   | HeroProps
   | HtmlProps
   | ImageStoryProps
@@ -164,6 +167,10 @@ export type Buttons = ButtonProps[];
  * If true, the section is marked as an AI-generated draft
  */
 export type AIDraft = boolean;
+/**
+ * Optional unique ID for this section, enabling direct anchor links (e.g. /page#my-section)
+ */
+export type AnchorID = string;
 
 /**
  * Component used to layout components into pages
@@ -198,4 +205,5 @@ export interface SectionProps {
   components?: Content;
   buttons?: Buttons;
   aiDraft?: AIDraft;
+  anchorId?: AnchorID;
 }

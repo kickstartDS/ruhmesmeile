@@ -81,23 +81,43 @@ These three scripts exist because the migration to the monorepo renamed fields a
 
 ### Field renames applied to content
 
-Stored content still uses the pre-migration names until `migrate-content-fields -- --apply` runs. **Write new content with the right-hand names.** Counts are bloks in space `297364`.
+Stored content still uses the pre-migration names until `migrate-content-fields -- --apply` runs. **Write new content with the right-hand names.** Counts are bloks across all stories in space `297364`, as reported by the migration's own dry run.
 
 | Component | was | now | bloks |
 | --- | --- | --- | --- |
-| `buttons` | `target` | `url` | 102 |
-| `teaser-card` | `target` | `url` | 92 |
-| `feature` | `cta_target` | `cta_url` | 89 |
+| `buttons` | `target` | `url` | 136 |
+| `teaser-card` | `target` | `url` | 124 |
+| `feature` | `cta_target` | `cta_url` | 135 |
 | `links` | `href` | `url` | 17 |
 | `socialSharing` | `href` | `url` | 15 |
 | `navItems` | `href` | `url` | 11 |
 | `blog-teaser` | `link_label` | `link_text` | 9 |
-| `cta` | `contentAlign` | `align` | 96 |
-| `footer` | `byline` | `copyright` | 1 |
+| `cta` | `contentAlign` | `image_align` | 125 |
+| `footer` | `byline` | `copyright` | 2 |
 
 (`items.href` → `url`, `tile.button_target` → `button_url` and `slider.typeProp` → `variant` are in the same table and match nothing in this space. `blog-author.byline` is a *different*, still valid field — the rename is component-scoped.)
 
-Fields the redesign removed, which content still carries and the script only counts: `cta.width` (67), `feature.style` (95), `feature.cta_style` (95), `feature.cta_toggle` (95), `cta.fullWidth` (96), `buttons.icon` (102). The per-feature layout options moved to the `features` container (`layout`, `style`, `ctas_style`, `ctas_toggle`) — set them per `features` instance. `feature.icon` still exists and still renders (89 bloks), so it is not in that list.
+Fields the redesign removed, which content still carries and the script only counts (`migrate-content-fields` prints the live numbers): `cta.width` (88 bloks, 28 carrying a value), `feature.style` (141 / 135), `feature.cta_style` (141 / 135), `feature.cta_toggle` (135 / 37), `cta.fullWidth` (125 / 72), `buttons.icon` (136 / 109). `feature.icon` still exists and still renders, so it is not in that list.
+
+**Which of those actually change the page** was decided by reading the *rendered* legacy HTML, not the schema:
+
+- `feature.style`, `feature.cta_style`, `feature.cta_toggle` and `cta.width` are inert. The legacy `.dsa-feature--*` classes were produced by the **`features` container** (`style`, `layout`, `ctas_style`, `ctas_toggle`) — values that survive unchanged into the merged schema, so those containers keep rendering as before. `cta.width` never emitted a class at all (the legacy `.dsa-cta--*` set is `align`, `full-width`, `color-neutral`, `highlight-text`). No CMS edits needed.
+- `cta.fullWidth` was live (`dsa-cta--full-width`) and has no counterpart: the new `Cta` has no full-width prop. The nearest CMS levers are the *section's* `width: full` or the cta's `padding`.
+- `buttons.icon` was live (an `<svg class="icon">` inside the button) and has no counterpart in the new button schema.
+
+Both real losses are accepted redesign differences rather than special-cased in website code; re-adding a field nothing renders would only put content back into a dead key.
+
+## Content compatibility after the migration
+
+Validating every story against the dereferenced design-system schemas (a one-off `auditContentCompat.ts`, since deleted) reported **no structural errors** — nothing is missing a `component` discriminator, nothing carries both `component` and `type`, and no container holds the wrong child type. The remaining findings are all artefacts of the *rule source*, not content defects, and are worth knowing before trusting that validator again:
+
+| Reported | Why it is not a defect |
+| --- | --- |
+| `Component "buttons" cannot be a direct child of "section.buttons"` (also `image-story.buttons`) | The live CMS schema whitelists exactly `["buttons"]` for those slots. The design system models the slot's children more narrowly than the CMS stores them. |
+| `Unknown component "tags"` | `blog-teaser.tags` whitelists `["tags"]` in the CMS; `BlogTeaserContextDefault` maps `tags.map(tag => tag.entry)`. The DS schema models tags as an inline array, so the rule builder never sees a nested component. |
+| `Unknown component "global_reference"` | A real site-level component (an internal-story reference picker) handled by `GlobalReference` in the registry. It is not in the design system schemas, and `section.components` has never whitelisted it — pre-existing editor-whitelist drift, unchanged by this migration. |
+
+Site-level components the design system's schemas know nothing about: `global`, `global_reference`, `navSubItems`, `tiles` (plus the `tags`/`buttons`/`links`/`images` array wrappers). Anything that derives validation rules from `packages/design-system/dist/components` alone will flag them.
 
 ## Environment
 

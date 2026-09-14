@@ -42,7 +42,11 @@ const RENAMES: Record<string, Record<string, string>> = {
   feature: { cta_target: "cta_url" },
   // renamed, identical option values / type
   "blog-teaser": { link_label: "link_text" },
-  cta: { contentAlign: "align" },
+  // NOT `cta.align`: the legacy `contentAlign` described itself as "Select a
+  // vertical alignment for the image", which is word-for-word the description
+  // of the new `image_align`. The new `align` is "vertical alignment for the
+  // content" — a different concept that has no predecessor in this space.
+  cta: { contentAlign: "image_align" },
   slider: { typeProp: "variant" },
   footer: { byline: "copyright" },
 };
@@ -81,29 +85,33 @@ const MANUAL_REVIEW: Array<{ component: string; field: string; note: string }> =
     field: "navItems",
     note: "became `navGroups` ({ heading, items }); handled separately by migrateFooterNav.ts, now that a group can carry its own link",
   },
-  // ruhmesmeile.com: fields this space's content carries that the redesign
-  // removed. Counts are bloks in the published content of space 297364, and
-  // every field below was checked against `cms/components.generated.json`
-  // before being listed here.
+  // ruhmesmeile.com. Each of these was checked against the *rendered* legacy
+  // HTML, not just the schema, so the list says what actually changes:
+  //   - cta.width: no class in the legacy markup (the legacy `.dsa-cta--*`
+  //     set is align/full-width/color-neutral/highlight-text) - already inert.
+  //   - feature.style / .cta_style / .cta_toggle: the legacy `.dsa-feature--*`
+  //     classes came from the *features container* (style/layout/ctas_*),
+  //     which still exists and still drives them - already inert.
+  // The redesign dropped `cta.width` outright; nothing to migrate.
   {
     component: "cta",
     field: "width",
-    note: 'dropped by the redesign (67 bloks); the cta container owns its width now - set the per-instance field or accept the loss',
+    note: "dropped by the redesign and already inert in the legacy rendering; the cta container owns its width now",
   },
   {
     component: "feature",
     field: "style",
-    note: "per-feature layout is gone (95 bloks); use the `features` container's `layout`",
+    note: "per-feature layout is gone, but it never drove the legacy markup - the `features` container's `style`/`layout` did, and those survive",
   },
   {
     component: "feature",
     field: "cta_style",
-    note: "per-feature CTA style is gone (95 bloks); use the `features` container's `ctas_style`",
+    note: "per-feature CTA style is gone, but it never drove the legacy markup - the `features` container's `ctas_style` did, and that survives",
   },
   {
     component: "feature",
     field: "cta_toggle",
-    note: "per-feature CTA toggle is gone (95 bloks); use the `features` container's `ctas_toggle`",
+    note: "per-feature CTA toggle is gone, but it never drove the legacy markup - the `features` container's `ctas_toggle` did, and that survives",
   },
 ];
 

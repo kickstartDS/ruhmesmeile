@@ -1,15 +1,15 @@
 [
   {
     "name": "Components",
-    "id": 134345647330503,
-    "uuid": "b2d71812-e4b5-4525-9832-549eb8322725",
+    "id": 371133,
+    "uuid": "a3c44207-2b1a-4ed4-9113-6fdfb114ca95",
     "parent_id": null,
     "parent_uuid": null
   },
   {
     "name": "Global",
-    "id": 134345650963657,
-    "uuid": "92914027-98be-4347-a164-f55476b59eee",
+    "id": 388619,
+    "uuid": "3f8469ab-bd4a-4a74-af42-8de26db501cd",
     "parent_id": null,
     "parent_uuid": null
   }
