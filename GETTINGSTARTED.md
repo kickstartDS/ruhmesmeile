@@ -17,7 +17,6 @@ pnpm install
 
 ## 2. Configure Environment Variables
 
-grep -A2 -B2 "create-component-previews" package.json && echo "===" && grep -A2 -B2 '"test"' package.json | head -20
 
 ### Local Development
 
@@ -200,13 +199,13 @@ Update domain and infra settings in these files for a new deployment target:
 
 ```bash
 # First-time setup
-kamal setup -d website
+kamal setup -c config/deploy-website.yml
 
 # Subsequent deploys
-kamal deploy -d website
+kamal deploy -c config/deploy-website.yml
 
 # MCP server
-kamal deploy -d storyblok-mcp
+kamal deploy -c config/deploy-storyblok-mcp.yml
 ```
 
 ---

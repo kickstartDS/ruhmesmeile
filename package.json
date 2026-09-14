@@ -4,8 +4,8 @@
   "packageManager": "pnpm@10.30.3",
   "scripts": {
     "build": "pnpm -r run build",
-    "dev:web": "pnpm --filter website dev",
-    "dev:mcp": "pnpm --filter storyblok-mcp dev",
+    "dev:web": "pnpm --filter @kickstartds/ruhmesmeile-storyblok-starter dev",
+    "dev:mcp": "pnpm --filter @kickstartds/storyblok-mcp-server dev",
     "dev:design-system": "pnpm --filter @kickstartds/design-system storybook",
     "dev:tokens-editor": "pnpm --filter @kickstartds/design-tokens-editor dev",
     "dev:component-mcp": "pnpm --filter @kickstartds/component-builder-mcp dev",

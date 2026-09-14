@@ -142,7 +142,7 @@ Key capabilities:
 - **Web scraping** — fetch pages as clean Markdown for content migration
 - **Multi-content-type support** — 5 content types with per-type schema validation
 
-Deploy with Kamal: `kamal deploy -d storyblok-mcp`
+Deploy with Kamal: `kamal deploy -c config/deploy-storyblok-mcp.yml`
 
 See [packages/storyblok-mcp/README.md](packages/storyblok-mcp/README.md) for setup and deployment instructions.
 
@@ -266,8 +266,8 @@ See [docs/guides/authentication.md](docs/guides/authentication.md) for the full 
 ### Website (Kamal)
 
 ```bash
-kamal deploy -d website   # Deploy to production
-kamal setup -d website    # First-time server setup
+kamal deploy -c config/deploy-website.yml   # Deploy to production
+kamal setup -c config/deploy-website.yml    # First-time server setup
 ```
 
 Config: [config/deploy-website.yml](config/deploy-website.yml)
@@ -275,8 +275,8 @@ Config: [config/deploy-website.yml](config/deploy-website.yml)
 ### Storyblok MCP Server (Kamal)
 
 ```bash
-kamal deploy -d storyblok-mcp       # Deploy MCP server
-kamal setup -d storyblok-mcp        # First-time setup
+kamal deploy -c config/deploy-storyblok-mcp.yml       # Deploy MCP server
+kamal setup -c config/deploy-storyblok-mcp.yml        # First-time setup
 ```
 
 Config: [config/deploy-storyblok-mcp.yml](config/deploy-storyblok-mcp.yml)
@@ -284,7 +284,7 @@ Config: [config/deploy-storyblok-mcp.yml](config/deploy-storyblok-mcp.yml)
 ### Design Tokens MCP (Kamal)
 
 ```bash
-kamal deploy -d design-tokens-mcp
+kamal deploy -c config/deploy-design-tokens-mcp.yml
 ```
 
 Config: [config/deploy-design-tokens-mcp.yml](config/deploy-design-tokens-mcp.yml)
@@ -292,7 +292,7 @@ Config: [config/deploy-design-tokens-mcp.yml](config/deploy-design-tokens-mcp.ym
 ### Component Builder MCP (Kamal)
 
 ```bash
-kamal deploy -d component-builder-mcp
+kamal deploy -c config/deploy-component-builder-mcp.yml
 ```
 
 Config: [config/deploy-component-builder-mcp.yml](config/deploy-component-builder-mcp.yml)
@@ -300,7 +300,7 @@ Config: [config/deploy-component-builder-mcp.yml](config/deploy-component-builde
 ### Schema Layer Editor (Kamal)
 
 ```bash
-kamal deploy -d schema-layer-editor
+kamal deploy -c config/deploy-schema-layer-editor.yml
 ```
 
 Config: [config/deploy-schema-layer-editor.yml](config/deploy-schema-layer-editor.yml)
@@ -308,7 +308,7 @@ Config: [config/deploy-schema-layer-editor.yml](config/deploy-schema-layer-edito
 ### Design System / Storybook (Kamal)
 
 ```bash
-kamal deploy -d design-system
+kamal deploy -c config/deploy-design-system.yml
 ```
 
 Config: [config/deploy-design-system.yml](config/deploy-design-system.yml)
@@ -320,7 +320,7 @@ Deployed on Netlify — see `packages/design-tokens-editor/netlify.toml` for bui
 ### Analytics (Kamal)
 
 ```bash
-kamal deploy -d umami-analytics
+kamal deploy -c config/deploy-umami-analytics.yml
 ```
 
 Config: [config/deploy-umami-analytics.yml](config/deploy-umami-analytics.yml)
