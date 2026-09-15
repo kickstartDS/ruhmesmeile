@@ -38,6 +38,7 @@ import HeaderButtonContext from "@/components/HeaderButtonContext";
 import { SettingsContext } from "@/components/SettingsContext";
 import { Section } from "@kickstartds/design-system/components/section/index.js";
 import { StoryblokComponent, useStoryblokState } from "@storyblok/react";
+import { reinitClientScripts } from "@/helpers/reinitClientScripts";
 
 initStoryblok(process.env.NEXT_STORYBLOK_API_TOKEN);
 if (typeof window !== "undefined") {
@@ -89,6 +90,17 @@ export default function App({
   if (isPreview && story?.content) {
     storyProcessing(story.content, true);
   }
+
+  // The editor's bridge swaps the story in without a route change, so the design
+  // system's client behaviours — those of the previous DOM — are all that remains
+  // until something re-initialises them. This runs once per content update, after
+  // React has committed it (see `reinitClientScripts` for why the attribute
+  // toggle is the supported hook, and what was measured).
+  useEffect(() => {
+    if (!isPreview) return;
+
+    reinitClientScripts();
+  }, [isPreview, story]);
 
   const { settings, blurHashes, language } = pageProps;
   const headerProps = settings?.header ? unflatten(settings?.header) : {};
