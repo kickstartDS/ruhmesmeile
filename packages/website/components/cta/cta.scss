@@ -60,6 +60,17 @@
   font-weight: var(--dsa-headline__subheadline--font-weight, var(--ks-font-weight-bold));
 }
 
+/* The redesign pins a cta's image to its own intrinsic size
+ * (`.dsa-cta.c-storytelling .c-storytelling__image img { width: auto }`), so any
+ * image smaller than its box stopped filling it — the home page's 330x330
+ * decoration rendered at 330px inside a 648px `.c-storytelling__image`, where it
+ * used to fill it. Photos were unaffected (their natural width exceeds the box, so
+ * `max-width: 100%` capped them either way), which is why this only showed up on
+ * the small decorations. The doubled class outranks the design system's rule. */
+.dsa-cta.c-storytelling.c-storytelling .c-storytelling__image img {
+  width: 100%;
+}
+
 /* Outside a cta, the dropped base rule still matters for everything but the
  * size: the pre-migration subheadline took its line-height and family from the
  * same font shorthand, and the per-level `em` rule below it only overrode the

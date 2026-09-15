@@ -48,7 +48,11 @@ const SectionProvider: FC<PropsWithChildren> = (props) => {
           Omit<HTMLAttributes<HTMLElement>, "style" | "content">
       >(function SectionImageSize(props, ref) {
         // TODO should also take into account section gap width
-        const childCount = Children.count(props.children) || 1;
+        // The pre-migration provider divided by a hardcoded 2 here; the
+        // migration activated the child count instead, which shrank every image
+        // inside such a section (a blog article's images went from 800px to 533px
+        // with three children — exactly 2/3). Restored to the legacy divisor.
+        // const childCount = Children.count(props.children) || 1;
 
         const sectionWidthName =
           props.content?.width === "unset" || !props.content?.width
@@ -67,7 +71,7 @@ const SectionProvider: FC<PropsWithChildren> = (props) => {
             ? sectionWidth
             : props.content?.mode === "slider"
               ? sectionWidth
-              : sectionWidth / childCount;
+              : sectionWidth / 2;
 
         return (
           <ImageSizeProvider size={componentWidth}>
