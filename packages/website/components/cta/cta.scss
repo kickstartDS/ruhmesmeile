@@ -15,11 +15,12 @@
  *
  * The doubled class is deliberate: the redesign also added a
  * `.dsa-cta.c-storytelling.dsa-cta--no-padding .c-storytelling__box { padding: 0 }`
- * rule, which the hero's markup now matches, and "no padding" is not something the
- * pre-migration stylesheet could express (it had no `--no-padding` rule at all).
- * Matching its specificity and loading later restores the old box for every
- * storytelling cta. */
-.dsa-cta.c-storytelling.c-storytelling.c-storytelling .c-storytelling__box {
+ * rule, which the hero's markup matches by default — "no padding" is what the cta
+ * renders unless its own `padding` field is set, and the pre-migration stylesheet
+ * could not express it (it had no `--no-padding` rule at all). The doubled class
+ * outranks that rule, and the `:not()` exclusion hands the case back to it, so the
+ * field works in both directions while the default stays the pre-migration box. */
+.dsa-cta.c-storytelling.c-storytelling:not(.dsa-cta--no-padding) .c-storytelling__box {
   width: 100%;
   padding: var(--dsa-cta--vertical-padding, var(--l-section--space-default))
     var(--dsa-cta--horizontal-padding, var(--dsa-content--spacing));
@@ -28,7 +29,12 @@
    * .c-storytelling__box { padding-right: 0 }`, same 0,4,0 specificity), which the
    * layout above does not want — the old box was symmetric. The extra class
    * outranks it, and the logical property covers the alias. Verified by
-   * injection: without it the box computes `79.2px 0 79.2px 58.59px`. */
+   * injection: without it the box computes `79.2px 0 79.2px 58.59px`.
+   *
+   * `:not(.dsa-cta--no-padding)` keeps the cta's own `padding` field working: the
+   * component adds that class for `padding: false`, and the design system zeroes
+   * the box padding for it. Without the exclusion this rule would always win and
+   * the field would be inert in both directions. */
   padding-right: var(--dsa-cta--horizontal-padding, var(--dsa-content--spacing));
   padding-inline-end: var(--dsa-cta--horizontal-padding, var(--dsa-content--spacing));
 }
@@ -37,13 +43,21 @@
  * rather than the level's `em` size — the rule the redesign dropped (see the
  * token block in `global-token.scss` for the values and the measurements). Two
  * rules because the `highlight-text` cta variant (the homepage hero) uses
- * copy-xl where every other one uses copy-l. */
+ * copy-xl where every other one uses copy-l.
+ *
+ * The `font-weight` longhand is not optional: a `font:` shorthand without a
+ * weight implies `normal`, and these rules come after the site's token
+ * declarations, so without it every cta subheadline rendered at 400 against the
+ * legacy 700. The legacy bundle carried the same declaration on the same
+ * selector. */
 .dsa-cta.c-storytelling .c-storytelling__box .dsa-headline__subheadline {
   font: var(--dsa-cta__subheadline--font, var(--dsa-headline_h2__subheadline--font, var(--ks-font-copy-l)));
+  font-weight: var(--dsa-headline__subheadline--font-weight, var(--ks-font-weight-bold));
 }
 
 .dsa-cta--highlight-text.c-storytelling .c-storytelling__box .dsa-headline__subheadline {
   font: var(--dsa-cta_highlight-text__subheadline--font, var(--dsa-headline_h1__subheadline--font, var(--ks-font-copy-xl)));
+  font-weight: var(--dsa-headline__subheadline--font-weight, var(--ks-font-weight-bold));
 }
 
 /* Outside a cta, the dropped base rule still matters for everything but the
@@ -54,4 +68,5 @@
  * system's old rule, so the level `em` sizes keep winning for the size. */
 .dsa-headline .dsa-headline__subheadline {
   font: var(--subheadline--font, var(--ks-font-copy-l));
+  font-weight: var(--dsa-headline__subheadline--font-weight, var(--ks-font-weight-bold));
 }

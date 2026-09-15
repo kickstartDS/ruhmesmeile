@@ -51,7 +51,12 @@ export const CtaContextDefault = forwardRef<
               highlightText ? `dsa-cta--highlight-text` : "",
               colorNeutral ? `dsa-cta--color-neutral` : "",
               image?.padding ? `dsa-cta--image-padding` : "",
-              !padding ? `dsa-cta--no-padding` : "",
+              /* Only an explicit `padding: false` turns the content padding off.
+               * With `!padding`, absent values also stripped it — and no cta in
+               * this space sets the field, so every one of them rendered
+               * unpadded, against the pre-migration look (which ignored the field
+               * entirely, having no `--no-padding` rule). */
+              padding === false ? `dsa-cta--no-padding` : "",
               align && align !== "center" ? `dsa-cta--align-${align}` : ""
             )}
             backgroundImage={backgroundImage}

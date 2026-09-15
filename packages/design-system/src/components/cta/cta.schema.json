@@ -10,14 +10,18 @@
       "description": "Headline for the Component element",
       "type": "string",
       "format": "markdown",
-      "examples": ["Headline"]
+      "examples": [
+        "Headline"
+      ]
     },
     "sub": {
       "title": "Component Subheadline",
       "description": "Subheadline below the component headline",
       "type": "string",
       "format": "markdown",
-      "examples": ["Subheadline"]
+      "examples": [
+        "Subheadline"
+      ]
     },
     "text": {
       "title": "Component Text",
@@ -93,7 +97,11 @@
           "title": "Vertical alignment of the image",
           "description": "Select a vertical alignment for the image",
           "type": "string",
-          "enum": ["center", "top", "bottom"],
+          "enum": [
+            "center",
+            "top",
+            "bottom"
+          ],
           "default": "center"
         }
       },
@@ -122,7 +130,10 @@
     "textAlign": {
       "title": "Text Alignment",
       "description": "Choose the alginment of the text",
-      "enum": ["left", "center"],
+      "enum": [
+        "left",
+        "center"
+      ],
       "type": "string",
       "default": "left"
     },
@@ -130,14 +141,18 @@
       "title": "Vertical alignment of the content",
       "description": "Select a vertical alignment for the content",
       "type": "string",
-      "enum": ["center", "top", "bottom"],
+      "enum": [
+        "center",
+        "top",
+        "bottom"
+      ],
       "default": "center"
     },
     "padding": {
       "title": "Padding",
-      "description": "Toggle padding of the content",
+      "description": "Toggle padding of the content. Defaults to on, which is how the pre-migration site rendered every cta.",
       "type": "boolean",
-      "default": false
+      "default": true
     }
   },
   "additionalProperties": false

@@ -56,7 +56,7 @@
         },
         "hidden": {
           "type": "boolean",
-          "title": "Display Button",
+          "title": "Hide Button?",
           "description": "Toggle wether you want the card to have a visible button or not",
           "default": false
         }

@@ -1,0 +1,61 @@
+/* Pre-migration blog-aside tokens, restored.
+ *
+ * The redesign changed three values and lowered the component's container
+ * breakpoint. The blog-post template renders a blog-aside on every article, so
+ * all four show up on every article page. Legacy values come from the
+ * pre-migration bundle (the `.dsa-blog-aside` base rule and its
+ * `@container blog-aside (min-width: 500px)` block), the redesign's from
+ * `_blog-aside-tokens.scss`:
+ *
+ *   --dsa-blog-aside--gap                      legacy var(--ks-spacing-stack-xs)    redesign var(--ks-spacing-stack-s)
+ *   --dsa-blog-aside__author__body--flex-basis legacy 240px                          redesign 100px
+ *   --dsa-blog-aside__author--gap-horizontal   legacy var(--ks-spacing-inline-xs)    redesign var(--ks-spacing-inline-s)
+ *   container breakpoint                       legacy 500px                          redesign 370px
+ *
+ * The body basis is the one that changes the author block's shape: image 120px
+ * + body 240px + gap overflows the legacy 286px column and wraps, so the image
+ * takes a full row (legacy: image-wrap 286x286, body 286px underneath). At the
+ * redesign's 100px both fit on one row instead (232x232 beside a 152px body at
+ * the pre-fix 405px column; 143x143 beside 123px once the column width in
+ * blog-aside.scss is restored).
+ *
+ * Both ladder steps are re-declared here rather than narrowed away, because
+ * container queries carry no specificity: a later plain `.dsa-blog-aside` rule
+ * wins over the redesign's `@container (min-width: 370px)` block at every width.
+ * The base block below therefore restates the redesign's whole base — three
+ * values changed, the other seven repeated only to shadow that query — and the
+ * 500px block restates the legacy large variant. Without the shadowing, a
+ * 370-500px container (viewports roughly 440-512px, where the split has wrapped
+ * and the aside spans the whole column) would render the redesign's large
+ * author variant. Getting that wrong is not theoretical: an earlier version of
+ * this file left `--gap-horizontal` out of the base block, and a ≥500px
+ * container then kept the redesign's 6.25px horizontal author gap where the
+ * legacy bundle has 12.5px.
+ */
+.dsa-blog-aside {
+  --dsa-blog-aside--gap: var(--ks-spacing-stack-xs);
+
+  --dsa-blog-aside__author__image--flex-basis: 120px;
+  --dsa-blog-aside__author__body--flex-basis: 240px;
+  --dsa-blog-aside__author__title--font: var(--ks-font-copy-m);
+  --dsa-blog-aside__author__subtitle--font: var(--ks-font-copy-s);
+  --dsa-blog-aside__author__link--font: var(--ks-font-interface-s);
+  --dsa-blog-aside__author--gap-horizontal: var(--ks-spacing-inline-xs);
+  --dsa-blog-aside__author--gap-vertical: var(--ks-spacing-stack-xs);
+
+  --dsa-blog-aside__meta__item--font: var(--ks-font-interface-s);
+  --dsa-blog-aside__share-bar__icon--size: 1.75em;
+}
+
+@container blog-aside (min-width: 500px) {
+  .dsa-blog-aside {
+    --dsa-blog-aside__author__image--flex-basis: 180px;
+    --dsa-blog-aside__author__title--font: var(--ks-font-copy-l);
+    --dsa-blog-aside__author__subtitle--font: var(--ks-font-copy-m);
+    --dsa-blog-aside__author__link--font: var(--ks-font-interface-m);
+    --dsa-blog-aside__author--gap-horizontal: var(--ks-spacing-stack-s);
+    --dsa-blog-aside__author--gap-vertical: var(--ks-spacing-inline-l);
+    --dsa-blog-aside__meta__item--font: var(--ks-font-interface-m);
+    --dsa-blog-aside__share-bar__icon--size: 2em;
+  }
+}

@@ -36,7 +36,7 @@ export type Icon = boolean;
 /**
  * Toggle wether you want the card to have a visible button or not
  */
-export type DisplayButton = boolean;
+export type HideButton = boolean;
 /**
  * Image to display as cover
  */
@@ -66,7 +66,7 @@ export interface TeaserCardProps {
   button?: {
     label: Label1;
     chevron?: Icon;
-    hidden?: DisplayButton;
+    hidden?: HideButton;
   };
   image?: Image;
   imageAlt?: ImageAlt;

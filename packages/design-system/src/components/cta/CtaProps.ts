@@ -82,7 +82,7 @@ export type TextAlignment = "left" | "center";
  */
 export type VerticalAlignmentOfTheContent = "center" | "top" | "bottom";
 /**
- * Toggle padding of the content
+ * Toggle padding of the content. Defaults to on, which is how the pre-migration site rendered every cta.
  */
 export type Padding1 = boolean;
 

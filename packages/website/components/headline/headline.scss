@@ -119,3 +119,19 @@ h4 {
     --g-link--font-weight: var(--ks-font-weight-semi-bold);
   }
 }
+
+/* Remove the link icon that appears on headline hover.
+ *
+ * It is `.dsa-headline__anchor`, rendered by the design system's headline for a
+ * headline that has an `id` (`<a class="dsa-headline__anchor"><svg class="icon">`,
+ * the link/chain glyph), revealed by `.dsa-headline:hover .dsa-headline__anchor
+ * { visibility: visible }`. The site's own `HeadlineProvider` slugs each headline's
+ * text into that id, so any such headline grows the icon on hover.
+ *
+ * Note this is *not* a restoration: the pre-migration bundle carries the same rule
+ * and the frozen legacy deployment shows the icon on the same headlines. The icon
+ * was removed on request, and hiding it here keeps the design system untouched —
+ * delete this block to bring the anchor link (and its deep-link affordance) back. */
+.dsa-headline__anchor {
+  display: none;
+}
