@@ -1,5 +1,5 @@
 import path from "path";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
@@ -38,7 +38,7 @@ import HeaderButtonContext from "@/components/HeaderButtonContext";
 import { SettingsContext } from "@/components/SettingsContext";
 import { Section } from "@kickstartds/design-system/components/section/index.js";
 import { StoryblokComponent, useStoryblokState } from "@storyblok/react";
-import { reinitClientScripts } from "@/helpers/reinitClientScripts";
+import { reinitClientScripts, contentHash } from "@/helpers/reinitClientScripts";
 
 initStoryblok(process.env.NEXT_STORYBLOK_API_TOKEN);
 if (typeof window !== "undefined") {
@@ -93,13 +93,45 @@ export default function App({
 
   // The editor's bridge swaps the story in without a route change, so the design
   // system's client behaviours — those of the previous DOM — are all that remains
-  // until something re-initialises them. This runs once per content update, after
-  // React has committed it (see `reinitClientScripts` for why the attribute
-  // toggle is the supported hook, and what was measured).
-  useEffect(() => {
-    if (!isPreview) return;
+  // until something re-initialises them. Only the sections whose content actually
+  // changed are re-initialised: touching the whole page would tear down and
+  // restart behaviour in parts nobody edited, which is what makes the preview
+  // jump or lose its scroll position. Runs after React has committed the update.
+  const previewSectionHashes = useRef<Record<string, string> | null>(null);
 
-    reinitClientScripts();
+  useEffect(() => {
+    if (!isPreview || !story?.content) return;
+
+    const sections: Array<{ _uid?: string }> = Array.isArray(
+      story.content.section,
+    )
+      ? story.content.section
+      : [];
+    const hashes: Record<string, string> = {};
+    const changed: string[] = [];
+
+    for (const section of sections) {
+      const uid = section?._uid;
+      if (!uid) continue;
+
+      const hash = `${contentHash(section)}`;
+      hashes[uid] = hash;
+
+      // A section that is new to this update is re-initialised as well: its DOM
+      // was inserted, and inserted DOM does not get its behaviour on its own.
+      if (previewSectionHashes.current?.[uid] !== hash) changed.push(uid);
+    }
+
+    const isFirstRun = previewSectionHashes.current === null;
+    previewSectionHashes.current = hashes;
+
+    if (isFirstRun || changed.length === 0) return;
+
+    reinitClientScripts(
+      changed
+        .map((uid) => document.querySelector(`[data-uid="${uid}"]`))
+        .filter((element): element is Element => element !== null),
+    );
   }, [isPreview, story]);
 
   const { settings, blurHashes, language } = pageProps;
