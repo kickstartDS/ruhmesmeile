@@ -131,6 +131,9 @@ importers:
       '@storybook/addon-mcp':
         specifier: ^0.1.8
         version: 0.1.8(storybook@10.2.15(patch_hash=9fc02117c2392276c66b7c2bf4f9d99038187b9af8a0201c2886d4f4b3a5db57)(@testing-library/dom@9.3.4)(prettier@3.8.1)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(typescript@5.9.3)
+      '@storybook/mcp':
+        specifier: ^0.2.1
+        version: 0.2.1(typescript@5.9.3)
       '@storybook/react-vite':
         specifier: ^10.2.0-beta.1
         version: 10.2.15(esbuild@0.27.3)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(rollup@4.59.0)(storybook@10.2.15(patch_hash=9fc02117c2392276c66b7c2bf4f9d99038187b9af8a0201c2886d4f4b3a5db57)(@testing-library/dom@9.3.4)(prettier@3.8.1)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(typescript@5.9.3)(vite@7.3.1(@types/node@20.4.5)(jiti@2.6.1)(sass@1.97.3)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.2))(webpack@5.105.3(@swc/core@1.15.18)(esbuild@0.27.3))

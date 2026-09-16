@@ -30,34 +30,35 @@ COPY packages/design-system/ ./packages/design-system/
 # Build Storybook (tokens → schema → token extraction → search index → storybook build)
 RUN cd packages/design-system && pnpm run build-storybook
 
-# Serve stage — minimal nginx to serve static Storybook
-FROM nginx:alpine AS production
+# Serve stage — node, so `/mcp` can be a real endpoint rather than an SPA fallback.
+#
+# The Storybook config registers `@storybook/addon-mcp`, but that addon hooks the
+# dev server only, so a `storybook build` never mounts it. `server/mcp-server.mjs`
+# imports the addon's own dependency (`@storybook/mcp`) directly and serves the
+# documentation toolset from the manifests this build already emits. It replaces
+# nginx rather than sitting behind it: one process, no sidecar, and the static
+# behaviour (SPA fallback, immutable caching, gzip) is reproduced there.
+FROM node:24-alpine AS production
 
 LABEL org.opencontainers.image.source="https://github.com/kickstartDS/ruhmesmeile-storyblok-starter"
 LABEL org.opencontainers.image.description="kickstartDS Design System Storybook"
 
-# Custom nginx config for port 8080 and SPA routing
-RUN printf 'server {\n\
-    listen 8080;\n\
-    root /usr/share/nginx/html;\n\
-    index index.html;\n\
-    location / {\n\
-        try_files $uri $uri/ /index.html;\n\
-    }\n\
-    # Cache static assets aggressively\n\
-    location ~* \\.(js|css|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot)$ {\n\
-        expires 30d;\n\
-        add_header Cache-Control "public, immutable";\n\
-    }\n\
-    # Gzip compression\n\
-    gzip on;\n\
-    gzip_types text/plain text/css application/json application/javascript text/xml application/xml text/javascript image/svg+xml;\n\
-}\n' > /etc/nginx/conf.d/default.conf
+WORKDIR /app
+
+# Pinned to the version the design system's lockfile resolves for this package.
+RUN npm install --omit=dev --no-save @storybook/mcp@0.2.1
+
+COPY packages/design-system/server/mcp-server.mjs ./
 
 # Copy Storybook static output
-COPY --from=builder /app/packages/design-system/storybook-static /usr/share/nginx/html
+COPY --from=builder /app/packages/design-system/storybook-static ./storybook-static
+
+ENV PORT=8080 \
+    STORYBOOK_STATIC_DIR=/app/storybook-static
 
 EXPOSE 8080
 
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD wget -qO- http://localhost:8080/ || exit 1
+  CMD node -e "fetch('http://127.0.0.1:8080/health').then((r) => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"
+
+CMD ["node", "mcp-server.mjs"]
