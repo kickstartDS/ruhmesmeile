@@ -38,7 +38,13 @@
   --dsa-hero__textbox--backdrop-filter: var(--dsa-overlay-box_transparent--backdrop-filter);
   --dsa-hero__textbox--box-shadow: var(--dsa-overlay-box_transparent--box-shadow);
   --dsa-hero__textbox--border-radius: var(--ks-border-radius-card);
-  --dsa-hero__textbox--max-width: var(--dsa-content--width_narrow);
+  // Pre-migration the text box ran up to the *default* content width; the
+  // redesign narrowed it to `width_narrow` and, above 640px, to 50vw (declared
+  // in the `@container` blocks at the top of this rule, which this plain
+  // declaration already outranks — it comes later, and the site's own
+  // `packages/website/components/hero/hero.scss` only had to restate the value
+  // because it loaded after the design system).
+  --dsa-hero__textbox--max-width: var(--dsa-content--width_default);
   --dsa-hero__textbox--padding: var(--ks-spacing-inset-l);
   --dsa-hero_below__textbox--padding: var(--dsa-content--vertical-spacing);
   --dsa-hero_offset__textbox--padding: var(--dsa-content--vertical-spacing);

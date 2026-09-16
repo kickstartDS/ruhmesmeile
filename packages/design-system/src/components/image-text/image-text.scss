@@ -12,4 +12,12 @@
       --c-rich-text--color: var(--dsa-image-text_highlight--color, var(--ks-text-color-default));
     }
   }
+
+  // Pre-migration the image carried the brand's image radius; the redesign left
+  // it square (packages/website/components/image-text/image-text.scss restored
+  // it). The token is a global one — `--dsa-border-radius-image` resolves to
+  // `--ks-border-radius-card`.
+  img {
+    border-radius: var(--dsa-border-radius-image);
+  }
 }

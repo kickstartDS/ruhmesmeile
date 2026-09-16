@@ -78,6 +78,16 @@
   }
 
   .dsa-headline__subheadline {
+    // Pre-migration base rule, restored from the site's stylesheet
+    // (packages/website/components/cta/cta.scss, where it had to live because
+    // the redesign dropped it): the subheadline took its family, weight and
+    // line-height from a font shorthand — 1.5 against the 1.15 the level's
+    // display font implies — and the per-level `em` size rule only overrode the
+    // size. The longhands below repeat what that shorthand implied, so they must
+    // keep following it: the level size arrives as the `--subheadline--font-size`
+    // custom property set on the variant class, and loses to a shorthand that
+    // came after it.
+    font: var(--subheadline--font, var(--ks-font-copy-l));
     font-family: var(--dsa-headline__subheadline--font-family);
     font-size: var(--subheadline--font-size, 50%);
     margin: 0;
@@ -139,4 +149,110 @@ h5 {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+}
+
+/* ---------------------------------------------------------------------------
+ * Pre-migration headline layer
+ *
+ * Moved here from packages/website/components/headline/headline.scss, which had
+ * carried it since the redesign: the h1's secondary-coloured rules, the margins
+ * that space a headline's own blocks (the redesign spaces them with the flex
+ * `gap` instead, restored to 0 in the tokens) and the semi-bold weight on links
+ * inside headings.
+ *
+ * The `:root` wrapper is the pre-migration bundle's own and is load-bearing: it
+ * lifts these rules above the base declarations further up this file, the same
+ * way the pre-migration per-level rules did.
+ * ------------------------------------------------------------------------- */
+:root {
+  .dsa-headline {
+    .dsa-headline__headline:not(:last-child) {
+      margin-bottom: var(--dsa-headline__headline-spacing);
+    }
+
+    .dsa-headline__headline:not(:first-child) {
+      margin-top: var(--dsa-headline__headline-spacing);
+    }
+
+    &--h1 {
+      .dsa-headline__headline:not(:last-child),
+      .dsa-headline__headline:only-child {
+        display: flex;
+        flex-direction: column;
+
+        &:after {
+          content: "";
+          font-size: inherit;
+          background-color: var(--ks-color-secondary);
+          height: 6px;
+          width: 10%;
+          min-width: 3rem;
+          max-width: 4rem;
+          margin-top: var(--dsa-headline__headline-spacing);
+        }
+      }
+
+      .dsa-headline__headline:not(:first-child) {
+        display: flex;
+        flex-direction: column;
+
+        &:before {
+          content: "";
+          font-size: inherit;
+          background-color: var(--ks-color-secondary);
+          height: 6px;
+          width: 10%;
+          min-width: 3rem;
+          max-width: 4rem;
+          margin-bottom: var(--dsa-headline__headline-spacing);
+        }
+      }
+
+      &.dsa-headline--align-center {
+        .dsa-headline__headline,
+        .dsa-headline__subheadline {
+          align-items: center;
+        }
+      }
+
+      &.dsa-headline--align-left {
+        .dsa-headline__headline,
+        .dsa-headline__subheadline {
+          align-items: flex-start;
+        }
+      }
+
+      &.dsa-headline--align-right {
+        .dsa-headline__headline,
+        .dsa-headline__subheadline {
+          align-items: flex-end;
+        }
+      }
+    }
+  }
+}
+
+h1,
+h2,
+h3,
+h4 {
+  a {
+    --g-link--font-weight: var(--ks-font-weight-semi-bold);
+  }
+}
+
+/* Remove the link icon that appears on headline hover.
+ *
+ * It is `.dsa-headline__anchor` (rendered for a headline that has an `id`, and
+ * revealed by the `&:hover` rule above). The site's own `HeadlineProvider` slugs
+ * each headline's text into that id, so any such headline grows the icon on
+ * hover.
+ *
+ * This one is *not* a pre-migration restoration: the pre-migration bundle showed
+ * the icon on the same headlines, and this rule is what the site added to hide
+ * it (moved here from packages/website/components/headline/headline.scss, where
+ * it was deliberately kept out of the design system). Delete this block to bring
+ * the anchor link — and its deep-link affordance — back. */
+.dsa-headline__anchor {
+  display: none;
 }

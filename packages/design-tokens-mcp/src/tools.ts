@@ -183,6 +183,9 @@ export function getToolDefinitions(): Tool[] {
               "fg",
               "bg",
               "link",
+              // Tenth pair — the pre-migration brand's #ff5c00 family, back in the
+              // brand layer after unified theming dropped it (see branding.ts).
+              "secondary",
             ],
             description: "Filter by specific color type",
           },

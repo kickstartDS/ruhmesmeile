@@ -4,20 +4,35 @@
   --dsa-nav-topbar__label--color_hover: var(--ks-text-color-interface-interactive-hover);
   --dsa-nav-topbar__label--color_active: var(--ks-text-color-interface-interactive-active);
   --dsa-nav-topbar__label--background-color: transparent;
-  --dsa-nav-topbar__label--background-color_hover: var(--ks-color-fg-alpha-8);
+  // The redesign gave the labels a hover/focus background pill
+  // (`--ks-color-fg-alpha-8`); the pre-migration labels were plain text links.
+  --dsa-nav-topbar__label--background-color_hover: transparent;
   --dsa-nav-topbar__label--background-color_active: transparent;
+  // Legacy labels were wired to the `--font` shorthand below; the redesign's
+  // `--font-size` token stays declared for the token catalogue but no longer
+  // reaches the label.
   --dsa-nav-topbar__label--font-size: var(--ks-font-size-interface-s);
+  --dsa-nav-topbar__label--font: var(--ks-font-interface-s);
   --dsa-nav-topbar__label--font-family: var(--ks-font-family-display);
-  --dsa-nav-topbar__label--font-weight: var(--ks-font-weight-semi-bold);
+  --dsa-nav-topbar__label--font-weight: var(--ks-font-weight-regular);
   --dsa-nav-topbar__label--font-weight_active: var(--ks-font-weight-bold);
-  --dsa-nav-topbar__label--padding: 0.45em 0.75em;
+  // legacy label padding, shortened to 0.45em by the redesign
+  --dsa-nav-topbar__label--padding: 0.75em 0.75em;
   --dsa-nav-topbar__label--text-decoration: none;
   --dsa-nav-topbar__label--text-decoration_hover: none;
-  --dsa-nav-topbar__label_dimmed--opacity: 1;
-  --dsa-nav-topbar__label--transition: var(--ks-transition-hover);
+  --dsa-nav-topbar__label_dimmed--opacity: 0.8;
+  // legacy labels had no hover transition
+  --dsa-nav-topbar__label--transition: none;
   --dsa-nav-topbar__label--transition-property: background-color, color, opacity;
 
   --dsa-nav-topbar__label__icon--size: 1.5em;
+
+  // Legacy labels grew from interface-s to interface-m from 82em up
+  // (`packages/website/components/nav-main/topbar/nav-topbar-tokens.scss`, the
+  // site's pre-migration override layer).
+  @media (min-width: "82em") {
+    --dsa-nav-topbar__label--font: var(--ks-font-interface-m);
+  }
 
   /// Floating
   --dsa-nav-topbar_floating__label_dimmed--opacity: 0.85;

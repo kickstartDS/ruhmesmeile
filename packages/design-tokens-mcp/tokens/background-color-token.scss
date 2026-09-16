@@ -1,9 +1,33 @@
+/*
+  `accent` and `bold` — pre-migration palette steps.
+
+  The redesign derives both from different palette steps. `bold` is the visible
+  one: one step darker than the pre-migration brand on light backgrounds
+  (173,192,192 against 204,216,216) and — the reason this matters — mid-grey
+  instead of the primary teal when inverted (120,121,123 against 44,93,93),
+  which every section glow and background transition blends into. `accent` came
+  out one step lighter (244,244,244 against 228,234,234).
+
+  Only the `-base` values change, so the light/inverted switching further down
+  keeps working. The inverted `bold` referenced the context-independent
+  `--ks-brand-color-primary` rather than `--ks-color-primary` (which is white in
+  an inverted context), so it is expressed through the brand token here.
+
+  The inverted values and the teal glows match the pre-migration bundle exactly,
+  and so do the light variants now that `color.scale` carries the pre-migration
+  ramp: `bold` computes to 204,216,216 and `accent` to 228,234,234, verified in
+  Chromium. Referencing the palette steps keeps these colours tied to the brand
+  instead of freezing three literals.
+
+  Values extracted from `packages/website/global-token.scss` (the site's
+  pre-migration override layer, now absorbed into the design system).
+*/
 :root {
-  --ks-background-color-accent-base: var(--ks-color-fg-to-bg-9);
+  --ks-background-color-accent-base: var(--ks-color-primary-to-bg-8);
   --ks-background-color-accent-inverted-base: var(--ks-color-primary-inverted-to-bg-8);
 
-  --ks-background-color-bold-base: var(--ks-color-primary-to-bg-6);
-  --ks-background-color-bold-inverted-base: var(--ks-color-primary-inverted-to-bg-6);
+  --ks-background-color-bold-base: var(--ks-color-primary-to-bg-7);
+  --ks-background-color-bold-inverted-base: var(--ks-brand-color-primary);
 
   --ks-background-color-clear-base: var(--ks-color-transparent);
   --ks-background-color-clear-inverted-base: var(--ks-color-transparent);
@@ -76,6 +100,42 @@
 
   --ks-background-color-primary-translucent-base: var(--ks-color-primary-alpha-5);
   --ks-background-color-primary-inverted-translucent-base: var(--ks-color-primary-inverted-alpha-5);
+
+  /*
+    `secondary` — the pre-migration brand's tenth colour family (#ff5c00).
+
+    Unified theming has no slot for it (the model is nine fixed pairs), so the
+    redesign stopped emitting it. This is its `background` alias family, kept in the
+    same three layers the pre-migration bundle used — these `-base` defaults, the
+    non-inverted aliases below, then the `[ks-inverted="true"]` swap — and mirroring
+    how `primary` is declared above. The family and its ramps live in `color-token.scss`.
+
+    Values extracted from `packages/website/global-token.scss` (the site's
+    pre-migration override layer, now absorbed into the design system), with the
+    legacy `-base` step names rewritten to the canonical names this layer emits.
+
+    Unconsumed today: no rule in the design system or on the site reads a
+    `--ks-background-color-secondary-*` token. They are ported because the design
+    system is the source of truth for the legacy layer, not because a rule needs
+    them.
+  */
+  --ks-background-color-secondary-base: var(--ks-color-secondary);
+  --ks-background-color-secondary-inverted-base: var(--ks-color-secondary-inverted);
+
+  --ks-background-color-secondary-interactive-base: var(--ks-color-secondary);
+  --ks-background-color-secondary-inverted-interactive-base: var(--ks-color-secondary-inverted);
+
+  --ks-background-color-secondary-interactive-hover-base: var(--ks-color-secondary-to-bg-2);
+  --ks-background-color-secondary-inverted-interactive-hover-base: var(--ks-color-secondary-inverted-to-bg-2);
+
+  --ks-background-color-secondary-interactive-active-base: var(--ks-color-secondary-to-bg-2);
+  --ks-background-color-secondary-inverted-interactive-active-base: var(--ks-color-secondary-inverted-to-bg-2);
+
+  --ks-background-color-secondary-interactive-selected-base: var(--ks-color-secondary-to-bg-4);
+  --ks-background-color-secondary-inverted-interactive-selected-base: var(--ks-color-secondary-inverted-to-bg-4);
+
+  --ks-background-color-secondary-translucent-base: var(--ks-color-secondary-alpha-5);
+  --ks-background-color-secondary-inverted-translucent-base: var(--ks-color-secondary-inverted-alpha-5);
 
   --ks-background-color-positive-base: var(--ks-color-positive);
   --ks-background-color-positive-inverted-base: var(--ks-color-positive-inverted);
@@ -256,6 +316,31 @@
 
   --ks-background-color-primary-translucent: var(--ks-background-color-primary-translucent-base);
   --ks-background-color-primary-inverted-translucent: var(--ks-background-color-primary-inverted-translucent-base);
+
+  // `secondary` aliases — see the note on the `-base` layer above.
+  --ks-background-color-secondary: var(--ks-background-color-secondary-base);
+  --ks-background-color-secondary-inverted: var(--ks-background-color-secondary-inverted-base);
+
+  --ks-background-color-secondary-interactive: var(--ks-background-color-secondary-interactive-base);
+  --ks-background-color-secondary-inverted-interactive: var(--ks-background-color-secondary-inverted-interactive-base);
+
+  --ks-background-color-secondary-interactive-hover: var(--ks-background-color-secondary-interactive-hover-base);
+  --ks-background-color-secondary-inverted-interactive-hover: var(
+    --ks-background-color-secondary-inverted-interactive-hover-base
+  );
+
+  --ks-background-color-secondary-interactive-active: var(--ks-background-color-secondary-interactive-active-base);
+  --ks-background-color-secondary-inverted-interactive-active: var(
+    --ks-background-color-secondary-inverted-interactive-active-base
+  );
+
+  --ks-background-color-secondary-interactive-selected: var(--ks-background-color-secondary-interactive-selected-base);
+  --ks-background-color-secondary-inverted-interactive-selected: var(
+    --ks-background-color-secondary-inverted-interactive-selected-base
+  );
+
+  --ks-background-color-secondary-translucent: var(--ks-background-color-secondary-translucent-base);
+  --ks-background-color-secondary-inverted-translucent: var(--ks-background-color-secondary-inverted-translucent-base);
 
   --ks-background-color-positive: var(--ks-background-color-positive-base);
   --ks-background-color-positive-inverted: var(--ks-background-color-positive-inverted-base);
@@ -458,6 +543,37 @@
 
   --ks-background-color-primary-translucent: var(--ks-background-color-primary-inverted-translucent-base);
   --ks-background-color-primary-inverted-translucent: var(--ks-background-color-primary-translucent-base);
+
+  // `secondary` swap — see the note on the `-base` layer above.
+  --ks-background-color-secondary: var(--ks-background-color-secondary-inverted-base);
+  --ks-background-color-secondary-inverted: var(--ks-background-color-secondary-base);
+
+  --ks-background-color-secondary-interactive: var(--ks-background-color-secondary-inverted-interactive-base);
+  --ks-background-color-secondary-inverted-interactive: var(--ks-background-color-secondary-interactive-base);
+
+  --ks-background-color-secondary-interactive-hover: var(
+    --ks-background-color-secondary-inverted-interactive-hover-base
+  );
+  --ks-background-color-secondary-inverted-interactive-hover: var(
+    --ks-background-color-secondary-interactive-hover-base
+  );
+
+  --ks-background-color-secondary-interactive-active: var(
+    --ks-background-color-secondary-inverted-interactive-active-base
+  );
+  --ks-background-color-secondary-inverted-interactive-active: var(
+    --ks-background-color-secondary-interactive-active-base
+  );
+
+  --ks-background-color-secondary-interactive-selected: var(
+    --ks-background-color-secondary-inverted-interactive-selected-base
+  );
+  --ks-background-color-secondary-inverted-interactive-selected: var(
+    --ks-background-color-secondary-interactive-selected-base
+  );
+
+  --ks-background-color-secondary-translucent: var(--ks-background-color-secondary-inverted-translucent-base);
+  --ks-background-color-secondary-inverted-translucent: var(--ks-background-color-secondary-translucent-base);
 
   --ks-background-color-positive: var(--ks-background-color-positive-inverted-base);
   --ks-background-color-positive-inverted: var(--ks-background-color-positive-base);

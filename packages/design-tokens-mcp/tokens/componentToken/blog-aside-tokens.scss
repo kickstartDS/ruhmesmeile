@@ -2,14 +2,22 @@
 @include container.wrapper("blog-aside");
 
 .dsa-blog-aside {
-  --dsa-blog-aside--gap: var(--ks-spacing-stack-s);
+  // Pre-migration values. The redesign widened both gaps — the aside's own
+  // (`--ks-spacing-stack-s` against `--ks-spacing-stack-xs`) and the author
+  // block's horizontal one — and shrank the author body's flex-basis from 240px
+  // to 100px. The body basis is the visible one: image 120px + body 240px + gap
+  // overflows the legacy 286px column, so the image takes a full row (legacy:
+  // image-wrap 286x286 with the body underneath); at 100px both fit on one row.
+  // The container breakpoint below moved with it (legacy 500px, redesign
+  // 370px). Every other value in this file is unchanged from the redesign.
+  --dsa-blog-aside--gap: var(--ks-spacing-stack-xs);
 
   --dsa-blog-aside__author__title--font: var(--ks-font-copy-m);
   --dsa-blog-aside__author__subtitle--font: var(--ks-font-copy-s);
   --dsa-blog-aside__author__image--flex-basis: 120px;
-  --dsa-blog-aside__author__body--flex-basis: 100px;
+  --dsa-blog-aside__author__body--flex-basis: 240px;
   --dsa-blog-aside__author__link--font: var(--ks-font-interface-s);
-  --dsa-blog-aside__author--gap-horizontal: var(--ks-spacing-inline-s);
+  --dsa-blog-aside__author--gap-horizontal: var(--ks-spacing-inline-xs);
   --dsa-blog-aside__author--gap-vertical: var(--ks-spacing-stack-xs);
 
   --dsa-blog-aside__meta__item--font: var(--ks-font-interface-s);
@@ -20,7 +28,10 @@
   --dsa-blog-aside__sharebar__link--color: var(--dsa-link--color);
   --dsa-blog-aside__sharebar__link--color_hover: var(--dsa-link--color_hover);
 
-  @include container.size("≥", 370px, "blog-aside") {
+  // The large variant kicks in at the pre-migration 500px container width; the
+  // redesign had lowered it to 370px, which a wide-enough aside hit on every
+  // article page. The values inside are unchanged.
+  @include container.size("≥", 500px, "blog-aside") {
     --dsa-blog-aside__author__image--flex-basis: 180px;
     --dsa-blog-aside__author__title--font: var(--ks-font-copy-l);
     --dsa-blog-aside__author__subtitle--font: var(--ks-font-copy-m);

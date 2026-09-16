@@ -192,7 +192,49 @@
       --dsa-teaser-card--shadow_hover,
       var(--ks-box-shadow-card-hover)
     );
-    --c-teaser_text--spacing: var(--dsa-teaser-card__copy--margin-top, 0.5em);
+    // Pre-migration the copy carried no top margin: the topic's own
+    // `margin-bottom` below supplied the spacing instead.
+    --c-teaser_text--spacing: 0;
+
+    // The card's button font also reaches the button through the base
+    // component's own hook. The pre-migration rule sat one level deeper
+    // (`.c-teaser .c-teaser__link .c-button`) than the `.dsa-button` rule
+    // further down, which is what let it outrank the size variant's
+    // `--c-button--font` on `.dsa-button.c-button.c-button--medium`.
+    .c-teaser__link .c-button {
+      --c-button--font: var(
+        --dsa-teaser-card__button--font,
+        var(--ks-font-interface-m)
+      );
+    }
+
+    // Pre-migration topic geometry, kept at the depth the pre-migration
+    // selector used (`.dsa-teaser-card .c-teaser .c-teaser__topic`): the
+    // headline carries its own bottom margin — the copy above has none, see
+    // `--c-teaser_text--spacing` — and acts as the anchor for the hover bar the
+    // card grows into its left padding. `transition-property` is immediately
+    // overridden by the shorthand below (which transitions everything), exactly
+    // as in the pre-migration bundle.
+    .c-teaser__topic {
+      transition-property: padding-left;
+      transition: var(--ks-transition-hover);
+      margin-bottom: 0.5em;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 100%;
+        background-color: var(--ks-color-secondary);
+        transition: inherit;
+      }
+
+      span:not(.dsa-teaser-card__label) {
+        transition: inherit;
+        display: block;
+      }
+    }
 
     position: relative;
     transition: var(--ks-transition-hover);
@@ -200,8 +242,14 @@
     box-shadow: var(--dsa-teaser-card--shadow, var(--ks-box-shadow-card));
     cursor: pointer;
 
+    // The cover image sits flush in the card (see the image padding/radius
+    // tokens) and is clipped by this wrapper, so the wrapper — not the image —
+    // carries the card's top corner radius. It stays square at the bottom,
+    // where the card body continues.
     > :first-child:not(.c-teaser__body) {
       overflow: hidden;
+      border-radius: var(--dsa-teaser-card--border-radius)
+        var(--dsa-teaser-card--border-radius) 0 0;
     }
 
     &:hover {
@@ -217,6 +265,22 @@
 
       .c-teaser__image {
         transform: var(--dsa-teaser-card__image--transform_hover, scale(1.05));
+      }
+
+      // Pre-migration hover affordance: an orange bar grows into the topic's
+      // left padding while the headline slides right. The bar is drawn in
+      // `--ks-color-secondary`, the brand's tenth colour family — the redesign's
+      // nine-pair model had no slot for it, and the extended colour model emits
+      // it again.
+      .c-teaser__topic {
+        span:not(.dsa-teaser-card__label) {
+          transform: translateX(0.5em);
+        }
+
+        &::before {
+          content: "";
+          width: 4px;
+        }
       }
     }
 

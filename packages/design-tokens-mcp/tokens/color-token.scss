@@ -28,6 +28,20 @@
 
   --ks-color-notice-base: var(--ks-brand-color-notice);
   --ks-color-notice-inverted-base: var(--ks-brand-color-notice-inverted);
+
+  // Tenth family, restored from the pre-migration brand — see `// Secondary`
+  // in the SCALES block below.
+  --ks-color-secondary-base: var(--ks-brand-color-secondary);
+  --ks-color-secondary-inverted-base: var(--ks-brand-color-secondary-inverted);
+
+  /*
+    `transparent` has no brand slot — it is context-independent — but the clear
+    background and border colours resolve through it. The redesign stopped
+    emitting it while those consumers survived, which left every
+    `--ks-*-color-clear-*` declaration invalid at computed-value time.
+    Pre-migration value, extracted from `packages/website/global-token.scss`.
+  */
+  --ks-color-transparent-base: transparent;
 }
 
 :root {
@@ -57,6 +71,12 @@
 
   --ks-color-notice: var(--ks-color-notice-base);
   --ks-color-notice-inverted: var(--ks-color-notice-inverted-base);
+
+  --ks-color-secondary: var(--ks-color-secondary-base);
+  --ks-color-secondary-inverted: var(--ks-color-secondary-inverted-base);
+
+  // Context-independent, so there is no inverted alias to switch.
+  --ks-color-transparent: var(--ks-color-transparent-base);
 }
 
 [ks-inverted="true"] {
@@ -83,9 +103,19 @@
 
   --ks-color-notice: var(--ks-color-notice-inverted-base);
   --ks-color-notice-inverted: var(--ks-color-notice-base);
+
+  --ks-color-secondary: var(--ks-color-secondary-inverted-base);
+  --ks-color-secondary-inverted: var(--ks-color-secondary-base);
 }
 
 /// SCALES
+///
+/// Every family's derived steps mix through the shared `color.scale` ramp, which
+/// carries the pre-migration values (95/87/76/63/50/37/24/13/5) rather than the
+/// redesign's (95/85/73/61/50/39/27/15/5) — see the `$description` on
+/// `color.scale` in `branding-tokens.json` for what that difference moves. The
+/// percentages in the fallbacks below are the ramp's older linear default, used
+/// only by a theme that defines no scale at all.
 :root,
 [ks-inverted],
 [ks-inverted="true"],
@@ -2129,4 +2159,359 @@
     var(--ks-color-notice-inverted) var(--ks-brand-color-scale-9, 90%),
     var(--ks-color-fg-inverted)
   );
+
+  /*
+    Tenth colour family, restored from the pre-migration brand.
+
+    The pre-migration brand had a `secondary` family (#ff5c00) with 168 derived
+    custom properties of its own — the orange the topic bars, teaser hovers and
+    section gradients were built on. Unified theming models nine fixed pairs, so
+    the redesign dropped it and `packages/website/global-token.scss` restores the
+    whole family by hand (268 declarations, colour ramps included). Here it is a
+    brand family again, derived exactly like the other eight.
+
+    This family carries its own ramp (`color.scale.secondary` in
+    `branding-tokens.json`, emitted as `--ks-brand-color-scale-secondary-*`) with
+    the pre-migration per-step values: today those are the same numbers as the
+    shared `color.scale`, but the family owns them so that a retune of the shared
+    ramp cannot move the literals the website's restored block pins —
+    rgba(255,92,0,.95) down to .05, and the `to-bg` / `to-fg` values they produce.
+    The fallbacks here are those historic values, so the family still derives
+    correctly for a theme that defines no `color.scale.secondary`.
+
+    Values extracted from `packages/website/global-token.scss`.
+  */
+  // Secondary
+
+  --ks-color-secondary-alpha-1: color-mix(
+    in srgb,
+    var(--ks-color-secondary) var(--ks-brand-color-scale-secondary-1, 95%),
+    transparent
+  );
+  --ks-color-secondary-alpha-2: color-mix(
+    in srgb,
+    var(--ks-color-secondary) var(--ks-brand-color-scale-secondary-2, 87%),
+    transparent
+  );
+  --ks-color-secondary-alpha-3: color-mix(
+    in srgb,
+    var(--ks-color-secondary) var(--ks-brand-color-scale-secondary-3, 76%),
+    transparent
+  );
+  --ks-color-secondary-alpha-4: color-mix(
+    in srgb,
+    var(--ks-color-secondary) var(--ks-brand-color-scale-secondary-4, 63%),
+    transparent
+  );
+  --ks-color-secondary-alpha-5: color-mix(
+    in srgb,
+    var(--ks-color-secondary) var(--ks-brand-color-scale-secondary-5, 50%),
+    transparent
+  );
+  --ks-color-secondary-alpha-6: color-mix(
+    in srgb,
+    var(--ks-color-secondary) var(--ks-brand-color-scale-secondary-6, 37%),
+    transparent
+  );
+  --ks-color-secondary-alpha-7: color-mix(
+    in srgb,
+    var(--ks-color-secondary) var(--ks-brand-color-scale-secondary-7, 24%),
+    transparent
+  );
+  --ks-color-secondary-alpha-8: color-mix(
+    in srgb,
+    var(--ks-color-secondary) var(--ks-brand-color-scale-secondary-8, 13%),
+    transparent
+  );
+  --ks-color-secondary-alpha-9: color-mix(
+    in srgb,
+    var(--ks-color-secondary) var(--ks-brand-color-scale-secondary-9, 5%),
+    transparent
+  );
+
+  --ks-color-secondary-inverted-alpha-1: color-mix(
+    in srgb,
+    var(--ks-color-secondary-inverted) var(--ks-brand-color-scale-secondary-1, 95%),
+    transparent
+  );
+  --ks-color-secondary-inverted-alpha-2: color-mix(
+    in srgb,
+    var(--ks-color-secondary-inverted) var(--ks-brand-color-scale-secondary-2, 87%),
+    transparent
+  );
+  --ks-color-secondary-inverted-alpha-3: color-mix(
+    in srgb,
+    var(--ks-color-secondary-inverted) var(--ks-brand-color-scale-secondary-3, 76%),
+    transparent
+  );
+  --ks-color-secondary-inverted-alpha-4: color-mix(
+    in srgb,
+    var(--ks-color-secondary-inverted) var(--ks-brand-color-scale-secondary-4, 63%),
+    transparent
+  );
+  --ks-color-secondary-inverted-alpha-5: color-mix(
+    in srgb,
+    var(--ks-color-secondary-inverted) var(--ks-brand-color-scale-secondary-5, 50%),
+    transparent
+  );
+  --ks-color-secondary-inverted-alpha-6: color-mix(
+    in srgb,
+    var(--ks-color-secondary-inverted) var(--ks-brand-color-scale-secondary-6, 37%),
+    transparent
+  );
+  --ks-color-secondary-inverted-alpha-7: color-mix(
+    in srgb,
+    var(--ks-color-secondary-inverted) var(--ks-brand-color-scale-secondary-7, 24%),
+    transparent
+  );
+  --ks-color-secondary-inverted-alpha-8: color-mix(
+    in srgb,
+    var(--ks-color-secondary-inverted) var(--ks-brand-color-scale-secondary-8, 13%),
+    transparent
+  );
+  --ks-color-secondary-inverted-alpha-9: color-mix(
+    in srgb,
+    var(--ks-color-secondary-inverted) var(--ks-brand-color-scale-secondary-9, 5%),
+    transparent
+  );
+
+  --ks-color-secondary-to-bg-1: color-mix(
+    in srgb,
+    var(--ks-color-secondary) var(--ks-brand-color-scale-secondary-1, 95%),
+    var(--ks-color-bg)
+  );
+  --ks-color-secondary-to-bg-2: color-mix(
+    in srgb,
+    var(--ks-color-secondary) var(--ks-brand-color-scale-secondary-2, 87%),
+    var(--ks-color-bg)
+  );
+  --ks-color-secondary-to-bg-3: color-mix(
+    in srgb,
+    var(--ks-color-secondary) var(--ks-brand-color-scale-secondary-3, 76%),
+    var(--ks-color-bg)
+  );
+  --ks-color-secondary-to-bg-4: color-mix(
+    in srgb,
+    var(--ks-color-secondary) var(--ks-brand-color-scale-secondary-4, 63%),
+    var(--ks-color-bg)
+  );
+  --ks-color-secondary-to-bg-5: color-mix(
+    in srgb,
+    var(--ks-color-secondary) var(--ks-brand-color-scale-secondary-5, 50%),
+    var(--ks-color-bg)
+  );
+  --ks-color-secondary-to-bg-6: color-mix(
+    in srgb,
+    var(--ks-color-secondary) var(--ks-brand-color-scale-secondary-6, 37%),
+    var(--ks-color-bg)
+  );
+  --ks-color-secondary-to-bg-7: color-mix(
+    in srgb,
+    var(--ks-color-secondary) var(--ks-brand-color-scale-secondary-7, 24%),
+    var(--ks-color-bg)
+  );
+  --ks-color-secondary-to-bg-8: color-mix(
+    in srgb,
+    var(--ks-color-secondary) var(--ks-brand-color-scale-secondary-8, 13%),
+    var(--ks-color-bg)
+  );
+  --ks-color-secondary-to-bg-9: color-mix(
+    in srgb,
+    var(--ks-color-secondary) var(--ks-brand-color-scale-secondary-9, 5%),
+    var(--ks-color-bg)
+  );
+
+  --ks-color-secondary-inverted-to-bg-1: color-mix(
+    in srgb,
+    var(--ks-color-secondary-inverted) var(--ks-brand-color-scale-secondary-1, 95%),
+    var(--ks-color-bg-inverted)
+  );
+  --ks-color-secondary-inverted-to-bg-2: color-mix(
+    in srgb,
+    var(--ks-color-secondary-inverted) var(--ks-brand-color-scale-secondary-2, 87%),
+    var(--ks-color-bg-inverted)
+  );
+  --ks-color-secondary-inverted-to-bg-3: color-mix(
+    in srgb,
+    var(--ks-color-secondary-inverted) var(--ks-brand-color-scale-secondary-3, 76%),
+    var(--ks-color-bg-inverted)
+  );
+  --ks-color-secondary-inverted-to-bg-4: color-mix(
+    in srgb,
+    var(--ks-color-secondary-inverted) var(--ks-brand-color-scale-secondary-4, 63%),
+    var(--ks-color-bg-inverted)
+  );
+  --ks-color-secondary-inverted-to-bg-5: color-mix(
+    in srgb,
+    var(--ks-color-secondary-inverted) var(--ks-brand-color-scale-secondary-5, 50%),
+    var(--ks-color-bg-inverted)
+  );
+  --ks-color-secondary-inverted-to-bg-6: color-mix(
+    in srgb,
+    var(--ks-color-secondary-inverted) var(--ks-brand-color-scale-secondary-6, 37%),
+    var(--ks-color-bg-inverted)
+  );
+  --ks-color-secondary-inverted-to-bg-7: color-mix(
+    in srgb,
+    var(--ks-color-secondary-inverted) var(--ks-brand-color-scale-secondary-7, 24%),
+    var(--ks-color-bg-inverted)
+  );
+  --ks-color-secondary-inverted-to-bg-8: color-mix(
+    in srgb,
+    var(--ks-color-secondary-inverted) var(--ks-brand-color-scale-secondary-8, 13%),
+    var(--ks-color-bg-inverted)
+  );
+  --ks-color-secondary-inverted-to-bg-9: color-mix(
+    in srgb,
+    var(--ks-color-secondary-inverted) var(--ks-brand-color-scale-secondary-9, 5%),
+    var(--ks-color-bg-inverted)
+  );
+
+  --ks-color-secondary-to-fg-1: color-mix(
+    in srgb,
+    var(--ks-color-secondary) var(--ks-brand-color-scale-secondary-1, 95%),
+    var(--ks-color-fg)
+  );
+  --ks-color-secondary-to-fg-2: color-mix(
+    in srgb,
+    var(--ks-color-secondary) var(--ks-brand-color-scale-secondary-2, 87%),
+    var(--ks-color-fg)
+  );
+  --ks-color-secondary-to-fg-3: color-mix(
+    in srgb,
+    var(--ks-color-secondary) var(--ks-brand-color-scale-secondary-3, 76%),
+    var(--ks-color-fg)
+  );
+  --ks-color-secondary-to-fg-4: color-mix(
+    in srgb,
+    var(--ks-color-secondary) var(--ks-brand-color-scale-secondary-4, 63%),
+    var(--ks-color-fg)
+  );
+  --ks-color-secondary-to-fg-5: color-mix(
+    in srgb,
+    var(--ks-color-secondary) var(--ks-brand-color-scale-secondary-5, 50%),
+    var(--ks-color-fg)
+  );
+  --ks-color-secondary-to-fg-6: color-mix(
+    in srgb,
+    var(--ks-color-secondary) var(--ks-brand-color-scale-secondary-6, 37%),
+    var(--ks-color-fg)
+  );
+  --ks-color-secondary-to-fg-7: color-mix(
+    in srgb,
+    var(--ks-color-secondary) var(--ks-brand-color-scale-secondary-7, 24%),
+    var(--ks-color-fg)
+  );
+  --ks-color-secondary-to-fg-8: color-mix(
+    in srgb,
+    var(--ks-color-secondary) var(--ks-brand-color-scale-secondary-8, 13%),
+    var(--ks-color-fg)
+  );
+  --ks-color-secondary-to-fg-9: color-mix(
+    in srgb,
+    var(--ks-color-secondary) var(--ks-brand-color-scale-secondary-9, 5%),
+    var(--ks-color-fg)
+  );
+
+  --ks-color-secondary-inverted-to-fg-1: color-mix(
+    in srgb,
+    var(--ks-color-secondary-inverted) var(--ks-brand-color-scale-secondary-1, 95%),
+    var(--ks-color-fg-inverted)
+  );
+  --ks-color-secondary-inverted-to-fg-2: color-mix(
+    in srgb,
+    var(--ks-color-secondary-inverted) var(--ks-brand-color-scale-secondary-2, 87%),
+    var(--ks-color-fg-inverted)
+  );
+  --ks-color-secondary-inverted-to-fg-3: color-mix(
+    in srgb,
+    var(--ks-color-secondary-inverted) var(--ks-brand-color-scale-secondary-3, 76%),
+    var(--ks-color-fg-inverted)
+  );
+  --ks-color-secondary-inverted-to-fg-4: color-mix(
+    in srgb,
+    var(--ks-color-secondary-inverted) var(--ks-brand-color-scale-secondary-4, 63%),
+    var(--ks-color-fg-inverted)
+  );
+  --ks-color-secondary-inverted-to-fg-5: color-mix(
+    in srgb,
+    var(--ks-color-secondary-inverted) var(--ks-brand-color-scale-secondary-5, 50%),
+    var(--ks-color-fg-inverted)
+  );
+  --ks-color-secondary-inverted-to-fg-6: color-mix(
+    in srgb,
+    var(--ks-color-secondary-inverted) var(--ks-brand-color-scale-secondary-6, 37%),
+    var(--ks-color-fg-inverted)
+  );
+  --ks-color-secondary-inverted-to-fg-7: color-mix(
+    in srgb,
+    var(--ks-color-secondary-inverted) var(--ks-brand-color-scale-secondary-7, 24%),
+    var(--ks-color-fg-inverted)
+  );
+  --ks-color-secondary-inverted-to-fg-8: color-mix(
+    in srgb,
+    var(--ks-color-secondary-inverted) var(--ks-brand-color-scale-secondary-8, 13%),
+    var(--ks-color-fg-inverted)
+  );
+  --ks-color-secondary-inverted-to-fg-9: color-mix(
+    in srgb,
+    var(--ks-color-secondary-inverted) var(--ks-brand-color-scale-secondary-9, 5%),
+    var(--ks-color-fg-inverted)
+  );
+}
+
+/*
+  Pre-migration `-base` alpha steps — compatibility name layer.
+
+  The pre-migration bundle hand-tuned its alpha ramp (87% / 76% / 63% / 24% at
+  the steps below) and its consumers read the `-base` names; the redesign
+  renamed the names and derived the ramp from `--ks-brand-color-scale-*`, so
+  those consumers silently lost their values — an undefined custom property
+  makes the whole declaration invalid at computed-value time, not a fallback.
+
+  `color.scale` has since been retuned to the pre-migration ramp, so on the light
+  context the canonical steps below now carry exactly these values too — verified
+  in Chromium for `--ks-color-fg-alpha-2` / `-6` and
+  `--ks-color-primary-alpha-3` / `-4` / `-7`.
+
+  They are nevertheless NOT interchangeable, and this block is not a duplicate
+  name layer waiting to be renamed away. The canonical steps are
+  *context-dependent*: they are built from `--ks-color-primary` / `--ks-color-fg`,
+  which flip under `[ks-inverted]`. `-base` names the *context-independent* light
+  literal, which is what the pre-migration consumers read in both contexts.
+  Measured inside a `ks-inverted="true"` element: `--ks-color-primary-alpha-7`
+  resolves to white at 24% and `--ks-color-fg-alpha-6` to white at 37%, against
+  rgba(44,93,93,.24) and rgba(33,35,39,.37) here. That difference is why the
+  inverted section glows stay teal and the inverted solid button edge stays dark
+  in production; renaming these readers to the canonical names would change every
+  one of those renders. The readers below therefore have to keep reading `-base`
+  until someone decides the inverted behaviour deliberately — which is a design
+  decision, not a rename.
+
+  Readers that still need it, as of this change:
+
+    components/section/_section-tokens.scss:92,97,109,123,137,142,149,154
+      `--ks-color-primary-alpha-{3,4,7}-base`            (AbsorbChrome)
+    components/button/button.scss:39
+      `--ks-color-fg-alpha-6-base`                       (AbsorbButtonCta)
+    packages/website/components/section/section-tokens.scss:5,8,18,32,46,49,54,57
+    packages/website/components/button/button.scss:6
+      (website files are read-only from here; that override layer is deleted in
+      a later pass)
+
+  The values are literals because they pin the pre-migration ramp rather than
+  following `--ks-brand-color-scale-*`. `--ks-color-fg` is the light-context
+  foreground (33,35,39) and `--ks-color-primary` the light-context teal
+  (44,93,93); like the pre-migration bundle, both are used as-is in either
+  context rather than switched.
+*/
+:root,
+[ks-inverted],
+[ks-theme] {
+  --ks-color-fg-alpha-2-base: rgba(33, 35, 39, 0.87);
+  --ks-color-fg-alpha-6-base: rgba(33, 35, 39, 0.37);
+
+  --ks-color-primary-alpha-3-base: rgba(44, 93, 93, 0.76);
+  --ks-color-primary-alpha-4-base: rgba(44, 93, 93, 0.63);
+  --ks-color-primary-alpha-7-base: rgba(44, 93, 93, 0.24);
 }

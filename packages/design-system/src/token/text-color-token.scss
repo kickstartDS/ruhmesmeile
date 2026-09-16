@@ -141,6 +141,52 @@
     --ks-color-primary-inverted-alpha-2
   );
 
+  /*
+    `secondary` — the pre-migration brand's tenth colour family (#ff5c00).
+
+    Unified theming modelled nine fixed pairs, so the redesign dropped it; it is a
+    pair again now, and `color-token.scss` holds the family and its ramps. This is
+    its `text` alias family, kept in the same three layers the pre-migration bundle
+    used — these `-base` defaults, the non-inverted aliases below, then the
+    `[ks-inverted="true"]` swap — mirroring how `primary` is declared above.
+
+    The swap is load-bearing, and this family's shape hides that. The pair itself
+    is context-invariant (root and inverted are both #ff5c00), so the family colour
+    never moves — but the step-reading names do: on an inverted element the
+    `-inverted-` steps carry the *inverted* alpha (87% where the light side is
+    opaque), so turning the swap into a no-op because "the colour is the same
+    anyway" hands `-secondary-inverted-interactive` the non-inverted step instead
+    (measured 33/255 off in the alpha channel). The pre-migration bundle's own token
+    output swaps the same way (its `[ks-inverted=true]` block); keep it.
+
+    Values extracted from `packages/website/global-token.scss` (the site's
+    pre-migration override layer, now absorbed into the design system), with the
+    legacy `-base` step names rewritten to the canonical names this layer emits.
+
+    The pre-migration block carried 10 steps in this layer but only 9 in the two
+    below it (it omitted `-inverted-interactive-selected`); the port carries all 10
+    in every layer, matching every other family the design system declares.
+
+    Unconsumed today: no rule in the design system or on the site reads a
+    `--ks-text-color-secondary-*` token. They are ported because the design
+    system is the source of truth for the legacy layer, not because a rule needs
+    them.
+  */
+  --ks-text-color-secondary-base: var(--ks-color-secondary);
+  --ks-text-color-secondary-inverted-base: var(--ks-color-secondary-inverted);
+
+  --ks-text-color-secondary-interactive-base: var(--ks-color-secondary);
+  --ks-text-color-secondary-inverted-interactive-base: var(--ks-color-secondary-inverted-alpha-2);
+
+  --ks-text-color-secondary-interactive-hover-base: var(--ks-color-secondary-alpha-2);
+  --ks-text-color-secondary-inverted-interactive-hover-base: var(--ks-color-secondary-inverted-alpha-2);
+
+  --ks-text-color-secondary-interactive-active-base: var(--ks-color-secondary-alpha-2);
+  --ks-text-color-secondary-inverted-interactive-active-base: var(--ks-color-secondary-inverted-alpha-2);
+
+  --ks-text-color-secondary-interactive-selected-base: var(--ks-color-secondary-alpha-2);
+  --ks-text-color-secondary-inverted-interactive-selected-base: var(--ks-color-secondary-inverted-alpha-2);
+
   --ks-text-color-on-primary-base: var(--ks-color-on-primary);
   --ks-text-color-on-primary-inverted-base: var(--ks-color-on-primary-inverted);
 
@@ -444,6 +490,26 @@
   );
   --ks-text-color-primary-inverted-interactive-selected: var(
     --ks-text-color-primary-inverted-interactive-selected-base
+  );
+
+  // `secondary` aliases — see the note on the `-base` layer above.
+  --ks-text-color-secondary: var(--ks-text-color-secondary-base);
+  --ks-text-color-secondary-inverted: var(--ks-text-color-secondary-inverted-base);
+
+  --ks-text-color-secondary-interactive: var(--ks-text-color-secondary-interactive-base);
+  --ks-text-color-secondary-inverted-interactive: var(--ks-text-color-secondary-inverted-interactive-base);
+
+  --ks-text-color-secondary-interactive-hover: var(--ks-text-color-secondary-interactive-hover-base);
+  --ks-text-color-secondary-inverted-interactive-hover: var(--ks-text-color-secondary-inverted-interactive-hover-base);
+
+  --ks-text-color-secondary-interactive-active: var(--ks-text-color-secondary-interactive-active-base);
+  --ks-text-color-secondary-inverted-interactive-active: var(
+    --ks-text-color-secondary-inverted-interactive-active-base
+  );
+
+  --ks-text-color-secondary-interactive-selected: var(--ks-text-color-secondary-interactive-selected-base);
+  --ks-text-color-secondary-inverted-interactive-selected: var(
+    --ks-text-color-secondary-inverted-interactive-selected-base
   );
 
   --ks-text-color-on-primary: var(--ks-text-color-on-primary-base);
@@ -768,6 +834,22 @@
   --ks-text-color-primary-inverted-interactive-selected: var(
     --ks-text-color-primary-interactive-selected-base
   );
+
+  // `secondary` swap — see the note on the `-base` layer above.
+  --ks-text-color-secondary: var(--ks-text-color-secondary-inverted-base);
+  --ks-text-color-secondary-inverted: var(--ks-text-color-secondary-base);
+
+  --ks-text-color-secondary-interactive: var(--ks-text-color-secondary-inverted-interactive-base);
+  --ks-text-color-secondary-inverted-interactive: var(--ks-text-color-secondary-interactive-base);
+
+  --ks-text-color-secondary-interactive-hover: var(--ks-text-color-secondary-inverted-interactive-hover-base);
+  --ks-text-color-secondary-inverted-interactive-hover: var(--ks-text-color-secondary-interactive-hover-base);
+
+  --ks-text-color-secondary-interactive-active: var(--ks-text-color-secondary-inverted-interactive-active-base);
+  --ks-text-color-secondary-inverted-interactive-active: var(--ks-text-color-secondary-interactive-active-base);
+
+  --ks-text-color-secondary-interactive-selected: var(--ks-text-color-secondary-inverted-interactive-selected-base);
+  --ks-text-color-secondary-inverted-interactive-selected: var(--ks-text-color-secondary-interactive-selected-base);
 
   --ks-text-color-on-primary: var(--ks-text-color-on-primary-inverted-base);
   --ks-text-color-on-primary-inverted: var(--ks-text-color-on-primary-base);

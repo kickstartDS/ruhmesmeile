@@ -216,22 +216,47 @@
         }
       }
     },
+    "secondary": {
+      "$root": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1.0,
+            0.3608,
+            0.0
+          ]
+        }
+      },
+      "inverted": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1.0,
+            0.3608,
+            0.0
+          ]
+        }
+      }
+    },
     "scale": {
+      "$description": "Alpha ramp shared by every colour family: step N is the brand colour's weight in `color-mix` for `--ks-color-*-alpha-N`, `-to-bg-N` and `-to-fg-N`, emitted as the `--ks-brand-color-scale-N` percentages. The redesign shipped 95/85/73/61/50/39/27/15/5; the pre-migration bundle computed 95/87/76/63/50/37/24/13/5 (a Bezier lookup, `alphaScale` in @kickstartds/style-dictionary's templates/_helper.js) and production still renders those. Six steps therefore differ, and the difference is visible: the primary button's `inset 0 -3px 0` 3d edge reads foreground step 6, the section gradients read primary steps 3, 4 and 7. These are the pre-migration values so the derived tokens land on the site's current output; `scale.secondary` below carries the tenth family's own copy of them.",
       "1": {
         "$type": "number",
         "$value": 0.95
       },
       "2": {
         "$type": "number",
-        "$value": 0.85
+        "$value": 0.87
       },
       "3": {
         "$type": "number",
-        "$value": 0.73
+        "$value": 0.76
       },
       "4": {
         "$type": "number",
-        "$value": 0.61
+        "$value": 0.63
       },
       "5": {
         "$type": "number",
@@ -239,19 +264,57 @@
       },
       "6": {
         "$type": "number",
-        "$value": 0.39
+        "$value": 0.37
       },
       "7": {
         "$type": "number",
-        "$value": 0.27
+        "$value": 0.24
       },
       "8": {
         "$type": "number",
-        "$value": 0.15
+        "$value": 0.13
       },
       "9": {
         "$type": "number",
         "$value": 0.05
+      },
+      "secondary": {
+        "1": {
+          "$type": "number",
+          "$value": 0.95
+        },
+        "2": {
+          "$type": "number",
+          "$value": 0.87
+        },
+        "3": {
+          "$type": "number",
+          "$value": 0.76
+        },
+        "4": {
+          "$type": "number",
+          "$value": 0.63
+        },
+        "5": {
+          "$type": "number",
+          "$value": 0.5
+        },
+        "6": {
+          "$type": "number",
+          "$value": 0.37
+        },
+        "7": {
+          "$type": "number",
+          "$value": 0.24
+        },
+        "8": {
+          "$type": "number",
+          "$value": 0.13
+        },
+        "9": {
+          "$type": "number",
+          "$value": 0.05
+        }
       }
     }
   },

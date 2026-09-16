@@ -31,8 +31,14 @@
   }
 
   .dsa-feature {
+    // Pre-migration the large icon was sized off the copy font size (20.25px ×
+    // 2.5 = 50.63px); the redesign rebased it on the small icon size (27px × 2.5
+    // = 67.5px), which is what made it grow. Back on copy-m
+    // (packages/website/components/features/features-tokens.scss set the same
+    // expression on `.dsa-feature`, one level down from the token file, to
+    // outrank the derivation below).
     --dsa-feature_large__icon--size: calc(
-      var(--dsa-feature_small__icon--size) * var(--dsa-feature_large__icon--size-multiplier, 2.5)
+      var(--ks-font-size-copy-m) * var(--dsa-feature_large__icon--size-multiplier, 2.5)
     );
 
     --dsa-feature_medium__icon--size: calc(
@@ -126,6 +132,20 @@
       color: var(--dsa-feature__copy--color, var(--ks-text-color-copy));
       font: var(--dsa-feature__copy--font, var(--ks-font-copy-s));
       margin: 0;
+
+      // Pre-migration the copy was rendered by the rich text component, which
+      // reset the outer margins of its first and last block (`.c-rich-text
+      // :first-child` / `:last-child`). The copy is Markdown output now: a
+      // trailing newline in the CMS text makes Markdown emit a paragraph, and its
+      // margins would grow the text box (94px -> 125px on the home page)
+      // (packages/website/components/features/features.scss).
+      > :first-child {
+        margin-top: 0;
+      }
+
+      > :last-child {
+        margin-bottom: 0;
+      }
     }
 
     &__icon {

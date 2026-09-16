@@ -454,3 +454,11 @@
     height: calc(100vh - var(--dsa-header--height));
   }
 }
+
+/* The hero renders a solid text box (`box.background: solid`, driven by the
+ * cta's `textbox` field) — a box variant the redesign no longer styles at all,
+ * so the pre-migration surface shadow is the only one it has. Moved here from
+ * packages/website/components/hero/hero.scss, which restored it verbatim. */
+.dsa-hero .c-visual__box--solid {
+  box-shadow: var(--ks-box-shadow-surface);
+}

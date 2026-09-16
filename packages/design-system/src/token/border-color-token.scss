@@ -74,6 +74,52 @@
   --ks-border-color-primary-translucent-base: var(--ks-color-primary-alpha-2);
   --ks-border-color-primary-inverted-translucent-base: var(--ks-color-primary-inverted-alpha-2);
 
+  /*
+    `secondary` — the pre-migration brand's tenth colour family (#ff5c00).
+
+    Unified theming modelled nine fixed pairs, so the redesign dropped it; it is a
+    pair again now, and `color-token.scss` holds the family and its ramps. This is
+    its `border` alias family, kept in the same three layers the pre-migration
+    bundle used — these `-base` defaults, the non-inverted aliases below, then the
+    `[ks-inverted="true"]` swap — mirroring how `primary` is declared above.
+
+    The swap is load-bearing, and this family's shape hides that. The pair itself
+    is context-invariant (root and inverted are both #ff5c00), so the family colour
+    never moves — but the ramp-reading names do: on an inverted element
+    `-inverted-to-bg-*` carries the mix against the *dark* background, which is the
+    legacy `-inverted-` literal (#e25505 there, against #ff7121 for the light mix).
+    Turning the swap into a no-op because "the colour is the same anyway" resolves
+    those names to the light-background mixes instead — measured up to 53/255 away
+    from the pre-migration values. The pre-migration bundle's own token output swaps
+    the same way (its `[ks-inverted=true]` block); keep it.
+
+    Values extracted from `packages/website/global-token.scss` (the site's
+    pre-migration override layer, now absorbed into the design system), with the
+    legacy `-base` step names rewritten to the canonical names this layer emits.
+
+    Unconsumed today: no rule in the design system or on the site reads a
+    `--ks-border-color-secondary-*` token. They are ported because the design
+    system is the source of truth for the legacy layer, not because a rule needs
+    them.
+  */
+  --ks-border-color-secondary-base: var(--ks-color-secondary);
+  --ks-border-color-secondary-inverted-base: var(--ks-color-secondary-inverted);
+
+  --ks-border-color-secondary-interactive-base: var(--ks-color-secondary);
+  --ks-border-color-secondary-inverted-interactive-base: var(--ks-color-secondary-inverted);
+
+  --ks-border-color-secondary-interactive-hover-base: var(--ks-color-secondary-to-bg-2);
+  --ks-border-color-secondary-inverted-interactive-hover-base: var(--ks-color-secondary-inverted-to-bg-2);
+
+  --ks-border-color-secondary-interactive-active-base: var(--ks-color-secondary-to-bg-3);
+  --ks-border-color-secondary-inverted-interactive-active-base: var(--ks-color-secondary-inverted-to-bg-3);
+
+  --ks-border-color-secondary-interactive-selected-base: var(--ks-color-secondary);
+  --ks-border-color-secondary-inverted-interactive-selected-base: var(--ks-color-secondary-inverted);
+
+  --ks-border-color-secondary-translucent-base: var(--ks-color-secondary-alpha-2);
+  --ks-border-color-secondary-inverted-translucent-base: var(--ks-color-secondary-inverted-alpha-2);
+
   --ks-border-color-positive-base: var(--ks-color-positive);
   --ks-border-color-positive-inverted-base: var(--ks-color-positive-inverted);
 
@@ -235,6 +281,31 @@
 
   --ks-border-color-primary-translucent: var(--ks-border-color-primary-translucent-base);
   --ks-border-color-primary-inverted-translucent: var(--ks-border-color-primary-inverted-translucent-base);
+
+  // `secondary` aliases — see the note on the `-base` layer above.
+  --ks-border-color-secondary: var(--ks-border-color-secondary-base);
+  --ks-border-color-secondary-inverted: var(--ks-border-color-secondary-inverted-base);
+
+  --ks-border-color-secondary-interactive: var(--ks-border-color-secondary-interactive-base);
+  --ks-border-color-secondary-inverted-interactive: var(--ks-border-color-secondary-inverted-interactive-base);
+
+  --ks-border-color-secondary-interactive-hover: var(--ks-border-color-secondary-interactive-hover-base);
+  --ks-border-color-secondary-inverted-interactive-hover: var(
+    --ks-border-color-secondary-inverted-interactive-hover-base
+  );
+
+  --ks-border-color-secondary-interactive-active: var(--ks-border-color-secondary-interactive-active-base);
+  --ks-border-color-secondary-inverted-interactive-active: var(
+    --ks-border-color-secondary-inverted-interactive-active-base
+  );
+
+  --ks-border-color-secondary-interactive-selected: var(--ks-border-color-secondary-interactive-selected-base);
+  --ks-border-color-secondary-inverted-interactive-selected: var(
+    --ks-border-color-secondary-inverted-interactive-selected-base
+  );
+
+  --ks-border-color-secondary-translucent: var(--ks-border-color-secondary-translucent-base);
+  --ks-border-color-secondary-inverted-translucent: var(--ks-border-color-secondary-inverted-translucent-base);
 
   --ks-border-color-positive: var(--ks-border-color-positive-base);
   --ks-border-color-positive-inverted: var(--ks-border-color-positive-inverted-base);
@@ -404,6 +475,25 @@
 
   --ks-border-color-primary-translucent: var(--ks-border-color-primary-inverted-translucent-base);
   --ks-border-color-primary-inverted-translucent: var(--ks-border-color-primary-translucent-base);
+
+  // `secondary` swap — see the note on the `-base` layer above.
+  --ks-border-color-secondary: var(--ks-border-color-secondary-inverted-base);
+  --ks-border-color-secondary-inverted: var(--ks-border-color-secondary-base);
+
+  --ks-border-color-secondary-interactive: var(--ks-border-color-secondary-inverted-interactive-base);
+  --ks-border-color-secondary-inverted-interactive: var(--ks-border-color-secondary-interactive-base);
+
+  --ks-border-color-secondary-interactive-hover: var(--ks-border-color-secondary-inverted-interactive-hover-base);
+  --ks-border-color-secondary-inverted-interactive-hover: var(--ks-border-color-secondary-interactive-hover-base);
+
+  --ks-border-color-secondary-interactive-active: var(--ks-border-color-secondary-inverted-interactive-active-base);
+  --ks-border-color-secondary-inverted-interactive-active: var(--ks-border-color-secondary-interactive-active-base);
+
+  --ks-border-color-secondary-interactive-selected: var(--ks-border-color-secondary-inverted-interactive-selected-base);
+  --ks-border-color-secondary-inverted-interactive-selected: var(--ks-border-color-secondary-interactive-selected-base);
+
+  --ks-border-color-secondary-translucent: var(--ks-border-color-secondary-inverted-translucent-base);
+  --ks-border-color-secondary-inverted-translucent: var(--ks-border-color-secondary-translucent-base);
 
   --ks-border-color-positive: var(--ks-border-color-positive-inverted-base);
   --ks-border-color-positive-inverted: var(--ks-border-color-positive-base);

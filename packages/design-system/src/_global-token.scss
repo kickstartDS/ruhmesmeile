@@ -1,8 +1,16 @@
 @use "./selectors" as *;
 
 #{$selectors} {
-  // Text color on primary backgrounds (e.g., buttons)
-  --dsa-text-color-on-primary-base: var(--ks-brand-color-on-primary);
+  // Text color on primary backgrounds (e.g., buttons).
+  //
+  // Resolved through `--ks-color-fg-inverted` rather than the brand's `onPrimary`
+  // pair: the redesign inverted the teaser card's label (dark text on the primary
+  // colour), and `onPrimary` carries that inversion, so resolving through it makes
+  // the label dark. The pre-migration card — and therefore the website, which set
+  // exactly this declaration at `:root,[ks-inverted],[ks-theme]` in the layer this
+  // design system has now absorbed — was white text on the primary colour. Same
+  // selector set, same value, one consumer: the teaser card label.
+  --dsa-text-color-on-primary-base: var(--ks-color-fg-inverted);
   --dsa-text-color-on-primary-inverted-base: var(--ks-brand-color-on-primary-inverted);
 
   // Overlay styles
@@ -26,16 +34,25 @@
   --dsa-overlay-text--text-color-inverted-base: var(--ks-text-color-display);
 
   // Topic font styles
+  // Pre-migration weight: the redesign came down to semi-bold.
   --dsa-topic--font: var(--ks-font-display-m);
-  --dsa-topic--font-weight: var(--ks-font-weight-semi-bold);
+  --dsa-topic--font-weight: var(--ks-font-weight-bold);
   --dsa-topic--color: var(--ks-text-color-display);
   --dsa-topic--font-family: var(--ks-font-family-display);
 
-  // Link styles
-  --dsa-link--font-weight: var(--ks-font-weight-medium);
+  /*
+    Link styles — pre-migration values.
+
+    Two deltas: the redesign dropped the link weight from semi-bold to medium,
+    and dropped the underline for the plain `none`/`none` pair.
+
+    Extracted from `packages/website/global-token.scss` (the site's
+    pre-migration override layer, now absorbed into the design system).
+  */
+  --dsa-link--font-weight: var(--ks-font-weight-semi-bold);
   --dsa-link--color: var(--ks-text-color-default-interactive);
   --dsa-link--color_hover: var(--ks-text-color-default-interactive-hover);
-  --dsa-link--text-decoration: none;
+  --dsa-link--text-decoration: underline;
   --dsa-link--text-decoration_hover: none;
 
   // Highlight typography (e.g., gradients in text)
@@ -45,14 +62,24 @@
   --dsa-content--horizontal-spacing: var(--ks-spacing-inset-l);
   --dsa-content--vertical-spacing: var(--ks-spacing-xxl);
 
+  /*
+    Section gutter — dropped by the redesign while the rules that pad with it
+    survived. Pre-migration values (`--ks-spacing-inset-l`, `-xl` from 48em up),
+    extracted from `packages/website/global-token.scss`.
+  */
+  --dsa-content--spacing: var(--ks-spacing-inset-l);
+
   @media (min-width: 48em) {
     --dsa-content--horizontal-spacing: var(--ks-spacing-inset-xl);
+    --dsa-content--spacing: var(--ks-spacing-inset-xl);
   }
 
   // Content width options (for content displayed in a width constrained container)
+  // `wide` is the pre-migration width: the redesign grew it by 12% (* 64 → * 72),
+  // one of the three widenings that made sections read wider than before.
   --dsa-content--width_narrow: calc(var(--ks-font-size-copy-m) * 34);
   --dsa-content--width_default: calc(var(--ks-font-size-copy-m) * 50);
-  --dsa-content--width_wide: calc(var(--ks-font-size-copy-m) * 72);
+  --dsa-content--width_wide: calc(var(--ks-font-size-copy-m) * 64);
   --dsa-content--width_max: 100vw;
   --dsa-content--width_full: 100vw;
 
@@ -61,19 +88,102 @@
   --dsa-tile--width_small: calc(var(--ks-font-size-copy-m) * 14);
   --dsa-tile--width_medium: calc(var(--ks-font-size-copy-m) * 20);
   --dsa-tile--width_large: calc(var(--ks-font-size-copy-m) * 28);
-  --dsa-tile--width_largest: calc(var(--ks-font-size-copy-m) * 42);
+  // 10% smaller than the redesign's * 42 — the pre-migration largest tile.
+  --dsa-tile--width_largest: calc(var(--ks-font-size-copy-m) * 38);
 
-  // Logo height
-  --dsa-logo--height: 2rem;
+  /*
+    Logo height — pre-migration values. The redesign scales the logo with the
+    breakpoints (2rem / 2.25rem / 2.5rem); the pre-migration header logo stayed
+    small and only stepped up on very wide viewports, then back down in between.
+    Feeds `--dsa-header--height` and, through it, the header's own height.
+    Extracted from `packages/website/global-token.scss`.
+  */
+  --dsa-logo--height: 1.5rem;
 
-  @media (min-width: 48em) {
-    --dsa-logo--height: 2.25rem;
+  @media (min-width: 94rem) {
+    --dsa-logo--height: 1.35rem;
   }
 
-  @media (min-width: 62em) {
-    --dsa-logo--height: 2.5rem;
+  @media (min-width: 102rem) {
+    --dsa-logo--height: 1.75rem;
   }
 
   // Header height calculation
   --dsa-header--height: calc(var(--dsa-logo--height) + var(--ks-spacing-stack-m) + var(--ks-spacing-stack-m));
+
+  /*
+    Globals the redesign stopped emitting while their consumers survived. A
+    custom property that is not defined makes the whole declaration invalid at
+    computed-value time, so each of these was silently dead rather than falling
+    back to something visible:
+
+      --ks-depth-modal   header and lightbox z-index. Its dictionary group
+                         ("Depth") has no token file of its own, which is why it
+                         is declared here.
+      --g-header-height  read as `calc(100vh - var(--g-header-height))`
+      --g-scroll-offset  anchor `scroll-margin-top`
+
+    Pre-migration values, extracted from `packages/website/global-token.scss`.
+    The tenth token of that block, `--ks-font-size-display-bp-factor-phone`, is
+    deliberately not restored: it only fed the design system's own breakpoint
+    MQs, which the pre-migration type scale in `font-size-token.scss` no longer
+    reads.
+  */
+  --ks-depth-modal: 1000;
+  --g-header-height: 0px;
+  --g-scroll-offset: var(--g-header-height);
+}
+
+/* ---------------------------------------------------------------------------
+ * Pre-migration `--dsa-*` globals
+ *
+ * Tokens the redesign dropped or moved elsewhere, restored at the pre-migration
+ * values. Their consumers are the site's own component styles (cta
+ * subheadlines, cta/image-text/image-story images, the footer byline), which
+ * read these names directly.
+ *
+ * Extracted from `packages/website/global-token.scss` (the site's pre-migration
+ * override layer, now absorbed into the design system).
+ * ------------------------------------------------------------------------- */
+:root,
+[ks-inverted],
+[ks-theme] {
+  /*
+    The redesign dropped the rule that gave a subheadline *inside* a
+    `c-storytelling` box its own font shorthand; without it the headline level's
+    `em` size wins, so a homepage hero subheadline rendered 33.28px where the
+    pre-migration site had 23.805px (and a section cta 28.57px against 20.7px).
+    These are the pre-migration fonts: `copy-m` is the non-highlight fallback and
+    `copy-l` the `highlight-text` variant, the pair the pre-migration site
+    actually rendered.
+  */
+  --dsa-headline_h1__subheadline--font: var(--ks-font-copy-xl);
+  --dsa-headline_h2__subheadline--font: var(--ks-font-copy-l);
+  --dsa-headline_h3__subheadline--font: var(--ks-font-copy-m);
+  --dsa-headline_h4__subheadline--font: var(--ks-font-copy-s);
+  --dsa-headline_p__subheadline--font: var(--ks-font-copy-s);
+  // Legacy name kept verbatim: it duplicates `--dsa-headline_p__subheadline--font`
+  // with a typo that the pre-migration bundle shipped and some rules still read.
+  --dsa-headline__subheadline_p--font: var(--ks-font-copy-s);
+  --dsa-cta_highlight-text__subheadline--font: var(--dsa-headline_h1__subheadline--font);
+
+  // Highlighted text is one size up from the redesign's `--ks-font-copy-l`,
+  // which `components/text` declares after this layer — hence `!important`.
+  --dsa-text_highlight--font: var(--ks-font-copy-xl) !important;
+
+  // Images that the pre-migration card clipped instead take the card radius.
+  --dsa-border-radius-image: var(--ks-border-radius-card);
+
+  // One value, not the redesign's `1em 0 0`, which `components/rich-text`
+  // declares after this layer — hence `!important`.
+  --dsa-rich-text--vertical-spacing: 1em !important;
+
+  /*
+    Footer tokens. The redesign reworked the byline and the links gap; the
+    footer's own `.dsa-footer` geometry (vertical gap, link weight, logo height)
+    is component-scoped and lives in `components/footer`.
+  */
+  --dsa-footer__byline--font: var(--ks-font-copy-xs);
+  --dsa-footer__byline--color: var(--ks-text-color-default);
+  --dsa-footer__links--gap: var(--ks-spacing-stack-s) var(--ks-spacing-inline-m);
 }

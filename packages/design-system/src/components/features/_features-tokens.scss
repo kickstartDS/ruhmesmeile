@@ -3,7 +3,10 @@
   --dsa-features--gap-horizontal: var(--ks-spacing-inline-m);
 
   --dsa-feature__title--color: var(--dsa-topic--color);
-  --dsa-feature__title--font: var(--ks-font-copy-m);
+  // Pre-migration the feature title used the interface size (18px at desktop),
+  // not the copy size the redesign switched it to (20.25px)
+  // (packages/website/components/features/features-tokens.scss).
+  --dsa-feature__title--font: var(--ks-font-interface-m);
   --dsa-feature__title--font-family: var(--dsa-topic--font-family);
 
   --dsa-feature__copy--color: var(--ks-text-color-copy);
@@ -22,11 +25,15 @@
   --dsa-feature_medium__icon--size-multiplier: 2;
   --dsa-feature_large__icon--size-multiplier: 2.5;
 
+  // Pre-migration the large variant stacked its blocks with `spacing-s`, the
+  // redesign tightened it to `spacing-xs`; the small variant's icon gap went the
+  // other way (`spacing-xs` -> `spacing-xxs`). Both restored from
+  // packages/website/components/features/features-tokens.scss.
   --dsa-feature_small--gap: var(--ks-spacing-xs);
   --dsa-feature_medium--gap: var(--ks-spacing-xs);
-  --dsa-feature_large--gap: var(--ks-spacing-xs);
+  --dsa-feature_large--gap: var(--ks-spacing-s);
 
-  --dsa-feature_small__icon--gap: var(--ks-spacing-xxs);
+  --dsa-feature_small__icon--gap: var(--ks-spacing-xs);
   --dsa-feature_medium__icon--gap: var(--ks-spacing-s);
   --dsa-feature_large__icon--gap: var(--ks-spacing-s);
 }

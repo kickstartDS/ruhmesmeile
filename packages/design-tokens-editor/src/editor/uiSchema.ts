@@ -8,6 +8,10 @@ export const uischema = {
         {
           type: "VerticalLayout",
           elements: [
+            // `secondary` is the tenth pair: the pre-migration brand's #ff5c00
+            // family, dropped when unified theming settled on nine fixed pairs and
+            // restored by hand in `packages/website/global-token.scss` until the
+            // brand layer modelled it again.
             ...[
               "primary",
               "onPrimary",
@@ -18,6 +22,7 @@ export const uischema = {
               "negative",
               "notice",
               "informative",
+              "secondary",
             ].map((name) => ({
               type: "HorizontalLayout",
               elements: [

@@ -5,6 +5,13 @@
     var(--dsa-cta__content--horizontal-padding, var(--dsa-content--horizontal-spacing));
 }
 
+// A cta rounds every image it carries, as it did pre-migration. The design system
+// does not define `--dsa-border-radius-image`; the site's token layer resolved it to
+// `--ks-border-radius-card`, which is the fallback here.
+.dsa-cta img {
+  border-radius: var(--dsa-border-radius-image, var(--ks-border-radius-card));
+}
+
 .dsa-cta.c-storytelling {
   --c-storytelling--horizontal-padding: var(--dsa-cta__content--horizontal-padding);
   --c-storytelling--vertical-padding: var(--dsa-cta__content--vertical-padding);
@@ -25,6 +32,17 @@
   &.dsa-cta--highlight-text {
     --dsa-cta__copy--font: var(--dsa-cta_highlight-text__copy--font, var(--ks-font-copy-l));
     --dsa-cta__headline--font: var(--dsa-cta_highlight-text__headline--font, var(--dsa-headline_h1--font));
+
+    // The `highlight-text` cta (the homepage hero) gives its subheadline `copy-xl`
+    // where every other one takes `copy-l`. Same required `font-weight` longhand as
+    // the base rule under Elements — see the note there.
+    .c-storytelling__box .dsa-headline__subheadline {
+      font: var(
+        --dsa-cta_highlight-text__subheadline--font,
+        var(--dsa-headline_h1__subheadline--font, var(--ks-font-copy-xl))
+      );
+      font-weight: var(--dsa-headline__subheadline--font-weight, var(--ks-font-weight-bold));
+    }
   }
   &.dsa-cta--no-padding .c-storytelling__box {
     padding: 0;
@@ -34,11 +52,14 @@
   }
 
   // Elements
-  .c-storytelling__image {
-    img {
-      width: auto;
-    }
-  }
+
+  // The redesign pinned the image to its own intrinsic size here
+  // (`.c-storytelling__image img { width: auto }`), which stopped images smaller
+  // than their box from filling it — the home page's 330x330 decoration rendered at
+  // 330px inside a 648px `.c-storytelling__image`, where the pre-migration cta filled
+  // it. Removed rather than overridden: the base `.c-storytelling--full img { width:
+  // 100% }` applies again, and a cta always renders `full`, so that is the
+  // pre-migration paint.
   .c-storytelling__box {
     &__content {
       max-width: var(--dsa-cta__content--max-width, var(--dsa-tile--width_largest));
@@ -52,7 +73,22 @@
     .dsa-headline__headline {
       color: var(--dsa-cta__headline--color, var(--ks-text-color-display));
     }
+    // The redesign dropped the rule that gave a subheadline *inside* a cta box its
+    // own font shorthand, so the level's `em` size won: a homepage hero subheadline
+    // rendered 33.28px against the pre-migration 23.805px, and a section cta 28.57px
+    // against 20.7px. `copy-l` is the non-highlight fallback, the `highlight-text`
+    // variant above uses `copy-xl`; that pair is what the pre-migration site rendered.
+    //
+    // The `font-weight` longhand is not optional: a `font:` shorthand without a
+    // weight implies `normal`, so every cta subheadline would render at 400 against
+    // the pre-migration 700. The pre-migration bundle carried the same declaration on
+    // the same selector.
     .dsa-headline__subheadline {
+      font: var(
+        --dsa-cta__subheadline--font,
+        var(--dsa-headline_h2__subheadline--font, var(--ks-font-copy-l))
+      );
+      font-weight: var(--dsa-headline__subheadline--font-weight, var(--ks-font-weight-bold));
       color: var(--dsa-cta__subheadline--color, var(--ks-text-color-primary));
     }
     .c-rich-text {
@@ -105,6 +141,39 @@
   }
 }
 
+// The redesign dropped the padding a pre-migration cta box carried, so a
+// `c-storytelling` cta (the homepage hero, for one) laid its text out against the
+// bare box edge: it measured 700px wide against the pre-migration 603px, with no top
+// offset either. Values and fallbacks are the pre-migration ones, and the rule is
+// declared here, after the `@container` blocks, because of them: the doubled class
+// takes it to 0,5,0, which the mobile `:not(:only-child)` rule and the desktop
+// `:not(:only-child)` rule tie — source order gives this one the win, and the
+// explicit `padding-right`/`padding-inline-end` cover the `@container` rule that
+// zeroes only the right side (and its logical alias). Without that pair the site
+// computes the box as `79.2px 0 79.2px 58.59px`; the pre-migration box is symmetric.
+//
+// `:not(.dsa-cta--no-padding)` hands the "no padding" case back to
+// `&.dsa-cta--no-padding .c-storytelling__box { padding: 0 }` above, so the cta's own
+// `padding` field keeps working in both directions (the pre-migration stylesheet had
+// no `--no-padding` rule at all).
+//
+// The vertical padding resolves through the *section's* space token
+// (`--l-section--space-default`), so a section's `space` field still moves the box as
+// it did pre-migration. That token only exists inside a section, and a `padding`
+// shorthand is one declaration — resolving it outside a section would take the
+// horizontal padding down with it — so `--dsa-cta__content--vertical-padding` (the
+// cta's own token, the same spacing value) closes the chain.
+.dsa-cta.c-storytelling.c-storytelling:not(.dsa-cta--no-padding) .c-storytelling__box {
+  width: 100%;
+  padding: var(
+      --dsa-cta--vertical-padding,
+      var(--l-section--space-default, var(--dsa-cta__content--vertical-padding))
+    )
+    var(--dsa-cta--horizontal-padding, var(--dsa-content--spacing));
+  padding-right: var(--dsa-cta--horizontal-padding, var(--dsa-content--spacing));
+  padding-inline-end: var(--dsa-cta--horizontal-padding, var(--dsa-content--spacing));
+}
+
 .dsa-header--floating + .l-container--storytelling,
 .dsa-header--floating + .l-section .l-container--storytelling:first-child {
   @media (min-width: 640px) {
@@ -114,5 +183,19 @@
       );
       z-index: 1;
     }
+  }
+}
+
+// The pre-migration cta pulled itself out from under a floating header by a fixed
+// spacing factor instead, and started at the top of that first section when it
+// carried an image (`packages/website/components/cta/cta-tokens.scss`). It sits next
+// to the container rule above because the two answer the same situation in different
+// markup: the site puts the header next to `main`, not next to the cta's container,
+// so only this rule matches there.
+.dsa-header--floating + main > section:first-child .dsa-cta {
+  padding-top: calc(var(--ks-spacing-xxl) * 1.125);
+
+  &:has(.c-storytelling__image) {
+    padding-top: 0;
   }
 }

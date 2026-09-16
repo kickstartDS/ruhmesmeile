@@ -1,5 +1,8 @@
 .dsa-nav-toggle {
-  --dsa-nav-toggle--size: var(--dsa-logo--height);
+  // the pre-migration burger was one and a quarter times the logo height; the
+  // redesign pinned it to the logo height itself
+  // (packages/website/components/nav-main/nav-toggle-tokens.scss)
+  --dsa-nav-toggle--size: calc(var(--dsa-logo--height) * 1.25);
   --dsa-nav-toggle--color: var(--ks-text-color-default);
   --dsa-nav-toggle--color_open: var(--ks-text-color-default);
   --dsa-nav-toggle--shadow: none;

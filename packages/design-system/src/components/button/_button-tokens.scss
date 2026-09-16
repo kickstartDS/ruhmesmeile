@@ -1,8 +1,15 @@
+// These are the pre-migration values ruhmesmeile.com renders: the site carried
+// them in its own override layer
+// (`packages/website/components/button/button-tokens.scss`), which loaded after
+// this stylesheet and therefore won every one of these declarations. Absorbed
+// here, the design system's own defaults are the site's rendering again — the
+// redesign's values (wider padding, default border width, text/background/border
+// colour tokens instead of these) are the ones that moved aside.
 .dsa-button {
-  --dsa-button--padding: 0.75em 1.5em;
-  --dsa-button--border-width: var(--ks-border-width-default);
+  --dsa-button--padding: 0.5em 1em;
+  --dsa-button--border-width: var(--ks-border-width-emphasized);
   --dsa-button--border-radius: var(--ks-border-radius-control);
-  --dsa-button--font-weight: var(--ks-font-weight-semi-bold, var(--ks-font-weight-bold));
+  --dsa-button--font-weight: var(--ks-font-weight-semi-bold);
   --dsa-button--text-transform: default;
 
   // Sizes
@@ -13,23 +20,40 @@
 
   //PRIMARY
 
-  --dsa-button_primary--color: var(--ks-text-color-on-primary);
-  --dsa-button_primary--color_hover: var(--ks-text-color-on-primary);
-  --dsa-button_primary--color_active: var(--ks-text-color-on-primary);
+  --dsa-button_primary--color: var(--ks-color-fg-inverted);
+  --dsa-button_primary--color_hover: var(--ks-color-fg-inverted);
+  --dsa-button_primary--color_active: var(--ks-color-fg-inverted);
 
-  --dsa-button_primary--background-color: var(--ks-background-color-primary-interactive);
-  --dsa-button_primary--background-color_hover: var(--ks-background-color-primary-interactive-hover);
-  --dsa-button_primary--background-color_active: var(--ks-background-color-primary-interactive-active);
+  --dsa-button_primary--background-color: var(--ks-color-primary);
+  // `--ks-color-primary-interactive-hover`/`-active` are undefined in both the
+  // pre-migration and the current build, which is faithful rather than broken (the
+  // pre-migration bundle did not define them either — `packages/website/AGENTS.md`).
+  // `button.scss` answers for them through the `--c-button--background-color-*`
+  // fallbacks, which is what the site renders on hover and while active.
+  --dsa-button_primary--background-color_hover: var(--ks-color-primary-interactive-hover);
+  --dsa-button_primary--background-color_active: var(--ks-color-primary-interactive-active);
+
+  // The solid variant's skin drops this border (`border: 0` in `button.scss`, the
+  // pre-migration look), so the value is inert for the button itself; it is kept
+  // because the pre-migration layer declared it and the variant's border tokens are
+  // part of the token surface the editor and the token catalogue read.
+  --dsa-button_primary--border-color: transparent;
+  --dsa-button_primary--border-color_hover: transparent;
+  --dsa-button_primary--border-color_active: transparent;
 
   //SECONDARY
 
-  --dsa-button_secondary--color: var(--ks-text-color-default);
-  --dsa-button_secondary--color_hover: var(--ks-text-color-default);
-  --dsa-button_secondary--color_active: var(--ks-text-color-default);
+  --dsa-button_secondary--color: var(--ks-color-primary);
+  --dsa-button_secondary--color_hover: var(--ks-color-primary);
+  --dsa-button_secondary--color_active: var(--ks-color-primary);
 
-  --dsa-button_secondary--background-color: var(--ks-background-color-interface-interactive);
-  --dsa-button_secondary--background-color_hover: var(--ks-background-color-interface-interactive-hover);
-  --dsa-button_secondary--background-color_active: var(--ks-background-color-interface-interactive-active);
+  --dsa-button_secondary--background-color: transparent;
+  --dsa-button_secondary--background-color_hover: var(--ks-color-primary-alpha-8);
+  --dsa-button_secondary--background-color_active: var(--ks-color-primary-alpha-7);
+
+  --dsa-button_secondary--border-color: var(--ks-border-color-primary-interactive);
+  --dsa-button_secondary--border-color_hover: var(--ks-border-color-primary-interactive-hover);
+  --dsa-button_secondary--border-color_active: var(--ks-border-color-primary-interactive-active);
 
   //TERCIARY
 
@@ -43,4 +67,22 @@
 
   --dsa-button_terciary--background-color_hover: transparent;
   --dsa-button_terciary--background-color_active: transparent;
+
+  // Padding is per variant, and the two rules below are order-dependent: both
+  // resolve to 0,2,0, and the pre-migration bundle handed the icon variant the win
+  // (`:root .dsa-button:has(.icon)` outranked `.dsa-button.c-button--solid`), so the
+  // `:has(.icon)` rule has to stay last.
+  //
+  // The solid variant carries the border width in its padding rather than painting
+  // it — its skin drops the border (`border: 0` in `button.scss`) — which keeps a
+  // solid button the same size as a bordered one.
+  &.c-button--solid {
+    --dsa-button--padding: calc(0.5em + var(--dsa-button--border-width)) calc(1em + var(--dsa-button--border-width));
+  }
+
+  // A trailing icon takes less padding on the right, and this is also what a solid
+  // button with an icon renders (see the note above).
+  &:has(.icon) {
+    --dsa-button--padding: 0.5em 0.75em 0.5em 1em;
+  }
 }

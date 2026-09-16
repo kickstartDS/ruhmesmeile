@@ -16,6 +16,9 @@
     display: flex;
     flex-wrap: nowrap;
     align-items: stretch;
+    // legacy entry spacing, which the redesign dropped from the list
+    // (`packages/website/components/nav-main/topbar/nav-topbar.scss`)
+    gap: var(--ks-spacing-inline-xs);
 
     > ul.dsa-nav-main__list {
       display: none;
@@ -56,6 +59,20 @@
     }
 
     &--active {
+      // The redesign marked the current entry with colour, background and weight
+      // only; pre-migration it also carried a 4px bar along the bottom edge of
+      // its entry, painted in the (now model-owned) `secondary` family
+      // (`packages/website/components/nav-main/topbar/nav-topbar.scss`).
+      &::after {
+        position: absolute;
+        background-color: var(--ks-color-secondary);
+        content: "";
+        left: 0;
+        width: 100%;
+        height: 4px;
+        bottom: 0;
+      }
+
       .dsa-nav-topbar__label {
         color: var(--dsa-nav-topbar__label--color_active);
         background-color: var(--dsa-nav-topbar__label--background-color_active);
@@ -76,9 +93,14 @@
 
   .dsa-nav-topbar__label {
     display: flex;
-    font-family: var(--dsa-nav-topbar__label--font-family);
-    font-size: var(--dsa-nav-topbar__label--font-size);
+    // Legacy label typography came from the `--font` shorthand, which carries
+    // size, line height, family and weight at once; the redesign replaced it
+    // with `--dsa-nav-topbar__label--font-size`, one step smaller — 15.65px
+    // instead of 18px at 1440px. A `font` shorthand resets both longhands below,
+    // so they are re-declared after it.
+    font: var(--dsa-nav-topbar__label--font);
     font-weight: var(--dsa-nav-topbar__label--font-weight);
+    font-family: var(--dsa-nav-topbar__label--font-family);
     color: var(--dsa-nav-topbar__label--color);
     background-color: var(--dsa-nav-topbar__label--background-color);
     border-radius: var(--ks-border-radius-control);
@@ -113,6 +135,15 @@
       width: var(--dsa-nav-topbar__label__icon--size);
       height: var(--dsa-nav-topbar__label__icon--size);
     }
+  }
+
+  // The `font` shorthand in the label rule above resets `font-weight`, and that
+  // rule sits later in this sheet than the `--active` rule (which declares the
+  // same weight at the same specificity), so the current entry rendered at the
+  // regular weight. One extra class of specificity restores the pre-migration
+  // bold active state, exactly as the site's own layer did.
+  .dsa-nav-topbar__item--active .dsa-nav-topbar__label {
+    font-weight: var(--dsa-nav-topbar__label--font-weight_active);
   }
 
   .dsa-nav-topbar__label:not(.dsa-nav-topbar__link) {

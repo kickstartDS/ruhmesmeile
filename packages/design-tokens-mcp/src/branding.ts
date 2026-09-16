@@ -44,6 +44,13 @@ export function getBrandingSchemaDescription(): Record<string, string> {
     "color.notice.$root":
       "Warning/notice semantic color (W3C DTCG color, typically orange/yellow).",
     "color.notice.inverted": "Warning color for dark backgrounds.",
+    // Tenth colour pair — the pre-migration brand's #ff5c00 family. Unified
+    // theming settled on nine fixed pairs, so the redesign dropped it and the
+    // website restored it by hand until the brand layer modelled it again.
+    "color.secondary.$root":
+      "Second brand color (W3C DTCG color), distinct from primary. The pre-migration brand used #ff5c00 here.",
+    "color.secondary.inverted":
+      "Second brand color for dark/inverted backgrounds (W3C DTCG color).",
     "font.family.display":
       "Display/heading font family CSS stack (fontFamily token). Identify the heading typeface style.",
     "font.family.copy":

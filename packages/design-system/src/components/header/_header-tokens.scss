@@ -9,22 +9,40 @@
   --dsa-header_floating--spacing-horizontal: var(--ks-spacing-inset-l);
   --dsa-header_open--shadow: 0 0 0 100px var(--ks-color-fg-alpha-3);
 
+  // The redesign derives the header's inner spacing from the content gutter
+  // (`--dsa-content--horizontal-spacing`) and keeps the mobile vertical padding
+  // at every width. The pre-migration header used the wider legacy
+  // `--dsa-content--spacing` for that gutter and tightened the vertical padding
+  // from `inset-m` to `stack-s` from 62em up, which is what made the bar
+  // shorter on desktop
+  // (`packages/website/components/header/header.scss`, values restored in the
+  // site's global-token.scss).
   @media (min-width: 62em) {
-    --dsa-header--spacing-horizontal: var(--dsa-content--horizontal-spacing);
+    --dsa-header--spacing-vertical: var(--ks-spacing-stack-s);
+    --dsa-header--spacing-horizontal: var(--dsa-content--spacing);
   }
 }
 
 .dsa-header {
-  --dsa-header--max-width: var(--dsa-content--width_wide);
+  // The redesign shrank the header to the *wide* content width
+  // (`--ks-font-size-copy-m` × 72), which is what turned the bar into an inset
+  // pill. The pre-migration header was capped at `--dsa-content--width_max`
+  // (`100vw`): the bar spanned the viewport and its own content box did the
+  // constraining.
+  --dsa-header--max-width: var(--dsa-content--width_max);
   --dsa-header--background: var(--ks-background-color-default);
   --dsa-header--z-index: var(--ks-depth-modal);
 
-  --dsa-header_floating--background: var(
-    --dsa-overlay-box_opaque--background-color
+  // Pre-migration the floating header carried nothing but its own top-to-bottom
+  // gradient — the faint band it lays over the section below it. The redesign
+  // replaced that with the opaque overlay-box colour and a 20px backdrop blur,
+  // i.e. the "glass pill". The `backdrop-filter` token stays in place (the rule
+  // still reads it), it just resolves to `none` again.
+  --dsa-header_floating--background: linear-gradient(
+    var(--ks-color-bg),
+    transparent
   );
-  --dsa-header_floating--backdrop-filter: var(
-    --dsa-overlay-box_opaque--backdrop-filter
-  );
+  --dsa-header_floating--backdrop-filter: none;
 
   --dsa-header__logo--height: var(--dsa-logo--height);
 }

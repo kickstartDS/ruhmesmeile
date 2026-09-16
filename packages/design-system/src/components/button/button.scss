@@ -25,6 +25,21 @@
   }
 
   &.c-button--solid {
+    // The pre-migration solid button painted a 3d edge with an inset shadow; the
+    // redesign dropped it, which left the button flat. The colour reference is the
+    // site layer's own — the compat step `--ks-color-fg-alpha-6-base`, which carries
+    // the pre-migration literal `rgba(33, 35, 39, 0.37)` — and it has to stay this
+    // name: the `-base` steps are context-independent by construction, while the
+    // canonical `--ks-color-fg-alpha-6` is mixed from `--ks-color-fg`, which flips to
+    // white inside `[ks-inverted]`. The site reads `-base`, so an inverted solid
+    // button keeps the dark literal there, and parity requires the same here.
+    // `border: 0` is the other half of the look: the variant's border colour is
+    // `transparent`, so the 2px border it would otherwise paint is layout only — the
+    // padding compensation that replaces it lives with the padding token in
+    // `_button-tokens.scss`.
+    border: 0;
+    box-shadow: inset 0px -3px 0px var(--ks-color-fg-alpha-6-base);
+
     --c-button--color: var(--dsa-button_primary--color, var(--ks-text-color-on-primary));
     --c-button--color-hover: var(--dsa-button_primary--color_hover, var(--ks-text-color-on-primary));
     --c-button--color-active: var(--dsa-button_primary--color_active, var(--ks-text-color-on-primary));
@@ -53,6 +68,13 @@
   }
 
   &.c-button--clear {
+    // The same 3d edge as the solid variant, drawn in the accent colour rather than
+    // the foreground alpha the solid one uses — the site layer's own reference, kept
+    // verbatim. Unlike the solid edge this one is a canonical step, so it follows
+    // `--ks-color-primary` and flips to the inverted family inside `[ks-inverted]`;
+    // the site renders that too, so the flipped value is the parity-correct one here.
+    box-shadow: inset 0px -3px 0px var(--ks-color-primary-alpha-7);
+
     padding: var(--dsa-button--padding);
 
     --c-button--color: var(--dsa-button_secondary--color, var(--ks-text-color-default));

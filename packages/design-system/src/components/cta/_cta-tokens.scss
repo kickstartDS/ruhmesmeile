@@ -1,16 +1,29 @@
+// The box geometry below is the pre-migration one, absorbed from the site's own
+// override layer (`packages/website/global-token.scss`): the redesign squared the
+// box off, narrowed its content padding from `--dsa-content--spacing` to
+// `--dsa-content--horizontal-spacing` and split the text box from the image with a
+// gap, none of which the pre-migration layout had — it split the width 50/50 and let
+// the box's own padding do the spacing. In the homepage hero that is the difference
+// between a 603px text column and 700px (narrower padding) or 585px (with the gap).
+//
+// `--dsa-cta--horizontal-padding` is the cta-level alias the box padding rule reads
+// (`cta.scss`), and `--dsa-cta__copy--color` is the copy colour the pre-migration
+// bundle used for a cta's rich text. `--dsa-cta--gap: 0` keeps the redesign's
+// fallback (`--ks-spacing-inline-m`) out of the layout entirely.
 .dsa-cta {
-  --dsa-cta--gap: var(--ks-spacing-stack-l) var(--ks-spacing-inline-l);
-  --dsa-cta--border-radius: var(--ks-border-radius-surface);
+  --dsa-cta--gap: 0;
+  --dsa-cta--border-radius: 0;
 
   --dsa-cta__content--vertical-padding: var(--dsa-content--vertical-spacing);
-  --dsa-cta__content--horizontal-padding: var(--dsa-content--horizontal-spacing);
+  --dsa-cta__content--horizontal-padding: var(--dsa-content--spacing);
+  --dsa-cta--horizontal-padding: var(--dsa-content--spacing);
   --dsa-cta__content--max-width: var(--dsa-tile--width_largest);
 
   --dsa-cta__headline--color: var(--dsa-headline--color);
   --dsa-cta__subheadline--color: var(--dsa-headline__subheadline--color);
 
   --dsa-cta__copy--font: var(--ks-font-copy-m);
-  --dsa-cta__copy--color: var(--ks-text-color-default);
+  --dsa-cta__copy--color: var(--ks-text-color-copy);
 
   --dsa-cta__image--padding: var(--ks-spacing-inset-m);
 

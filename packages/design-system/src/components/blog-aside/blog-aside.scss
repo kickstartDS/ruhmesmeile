@@ -47,3 +47,53 @@
     --c-divider--background: var(--dsa-blog-aside__divider--color, var(--ks-border-color-accent));
   }
 }
+
+// Pre-migration article layout, restored.
+//
+// The pre-migration article body was laid out by the design system's
+// `Split(layout="sidebarRight")` — `.l-split.l-split--sidebar-right.l-split--medium`
+// — which the redesign dropped when `blog-post` moved to `SplitWeighted`. With
+// no layout props, an aside in a weighted split falls back to the component
+// default `--dsa-tile--width_medium` (405px against the article's 1296px
+// container, narrowing the content column from 971px to 852px, and every image
+// in the body with it) and stops sticking. Restored verbatim from the
+// pre-migration bundle:
+//
+//   .l-split > * { flex-grow: 1; flex-shrink: 1 }
+//   .l-split--sidebar-right > :first-child {
+//     flex-basis: calc(var(--split__main--flex-basis) - var(--dsa-content--spacing) * 2)
+//   }
+//   .l-split--sidebar-right > :last-child {
+//     flex-basis: var(--dsa-split__side--flex-basis, 210px);
+//     position: sticky;
+//     top: var(--dsa-split__side--top-offset, var(--ks-spacing-stack-l));
+//     height: fit-content;
+//     margin-top: var(--dsa-split__side-top-margin, var(--ks-spacing-stack-l))
+//   }
+//
+// with `--split__main--flex-basis: var(--dsa-content--width_default)`. The
+// `--dsa-split__side--*` variables only ever held those defaults, so they are
+// inlined, and the legacy `.l-split` gap already equals the current
+// `--dsa-split-weighted--h-gutter_default` (both `--ks-spacing-inline-l`).
+//
+// The `:has()` guard keeps this on an article split only — CMS-authored
+// `split-weighted` sections share the component. `SplitWeighted`'s own
+// `--align-sticky` hook is not an option: it targets a
+// `.l-split-weighted__content-container` the component never renders.
+.l-split-weighted:has(.dsa-blog-aside) {
+  > .l-split-weighted__main {
+    flex-basis: calc(
+      var(--dsa-content--width_default) - var(--dsa-content--spacing) * 2
+    );
+    flex-grow: 1;
+  }
+
+  > .l-split-weighted__aside {
+    flex-basis: 210px;
+    flex-grow: 1;
+    position: sticky;
+    top: var(--ks-spacing-stack-l);
+    height: fit-content;
+    margin-top: var(--ks-spacing-stack-l);
+  }
+}

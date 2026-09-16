@@ -5,10 +5,19 @@
   --dsa-stats__item--gap: var(--ks-spacing-stack-xs);
 
   --dsa-stats__icon--color: var(--ks-text-color-primary);
-  --dsa-stats__icon--size: 5em;
+  // Pre-migration icon size; the redesign enlarged it to 5em.
+  --dsa-stats__icon--size: 4em;
 
-  --dsa-stats__number--font: var(--ks-font-interface-xxl);
-  --dsa-stats__number--font-weight: var(--ks-font-weight-semi-bold);
+  // Pre-migration the figure was the display face at `display-xxl`, bold, in
+  // the primary colour; the redesign moved it to the interface face at
+  // semi-bold. `--dsa-stats__number--color` has no consumer in the
+  // pre-migration bundle either — the number is painted by
+  // `--dsa-stats__number--background`, a gradient clipped to the text — but the
+  // site declared it on `.dsa-stats`, so it is kept as part of the component's
+  // token surface.
+  --dsa-stats__number--font: var(--ks-font-display-xxl);
+  --dsa-stats__number--color: var(--ks-color-primary);
+  --dsa-stats__number--font-weight: var(--ks-font-weight-bold);
   --dsa-stats__number--background: var(--dsa-typo--highlight);
   --dsa-stats__topic--font: var(--ks-font-copy-l);
   --dsa-stats__topic--font-family: var(--ks-font-family-display);

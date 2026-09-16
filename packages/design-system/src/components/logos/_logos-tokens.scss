@@ -7,8 +7,15 @@
   --dsa-logos__tagline--font-weight: var(--dsa-headline--font-weight);
   --dsa-logos__tagline--color: var(--dsa-headline--color);
 
-  --dsa-logos__grid--gap-horizontal: var(--ks-spacing-xxl);
-  --dsa-logos__grid--gap-vertical: var(--ks-spacing-stack-m);
+  // Pre-migration grid gaps. The redesign widened both, and the horizontal one
+  // is not just spacing: `.c-logo-tiles__col` sizes itself
+  // `calc(100% / cols - gutter)`, so a larger gutter shrinks every tile —
+  // `--ks-spacing-xxl` (79.2px) against `--ks-spacing-inline-l` (39.06px), and
+  // `--ks-spacing-stack-m` (29.3px) against `--ks-spacing-stack-s` (19.53px).
+  // Measured on the customer wall at 1440px (6 columns in a 1322.84px
+  // container, so the gutter is the only variable): 181.41px per tile.
+  --dsa-logos__grid--gap-horizontal: var(--ks-spacing-inline-l);
+  --dsa-logos__grid--gap-vertical: var(--ks-spacing-stack-s);
 
   --dsa-logos__grid_mobile--cols: 2;
   --dsa-logos__grid_tablet--cols: 3;

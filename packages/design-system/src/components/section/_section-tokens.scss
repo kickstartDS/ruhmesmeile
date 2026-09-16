@@ -12,7 +12,13 @@
   --dsa-section__col--min-width_largest: var(--dsa-tile--width_largest);
 
   //Vertical Space After & Before
-  --dsa-section--space_default: var(--dsa-content--vertical-spacing);
+  // The site's pre-migration component token file pinned the section's vertical
+  // space to the spacing scale directly; the redesign re-derived it from
+  // `--dsa-content--vertical-spacing`. Both resolve to `--ks-spacing-xxl` for the
+  // current brand, but the legacy link is kept so a retuned content vertical
+  // spacing does not move section padding
+  // (`packages/website/global-token.scss`, `.dsa-section.dsa-section`).
+  --dsa-section--space_default: var(--ks-spacing-xxl);
   --dsa-section--space_small: calc(var(--ks-spacing-xxl) / 2);
 
   //Gutter
@@ -29,7 +35,11 @@
   --dsa-section__content--width_wide: var(--dsa-content--width_wide);
   --dsa-section__content--width_max: 100vw;
   --dsa-section__content--width_full: 100vw;
-  --dsa-section__content--padding: var(--dsa-content--horizontal-spacing);
+  // The redesign moved the section gutter to `--dsa-content--horizontal-spacing`;
+  // the pre-migration section padded with the legacy `--dsa-content--spacing`
+  // restore (`packages/website/global-token.scss`, `.dsa-section.dsa-section`),
+  // which is what the site's sections measure today.
+  --dsa-section__content--padding: var(--dsa-content--spacing);
 
   //Background Color
   --dsa-section--background-color_default: var(--ks-background-color-default);
@@ -64,8 +74,93 @@
 
   //Background Styles
 
+  // Legacy decorative backgrounds. The redesign trimmed `section.style` to
+  // `default` / `framed` / `deko` and moved the accent/bold transitions into a
+  // separate `section.transition` field, but the gradients themselves are the
+  // pre-migration ones and the surviving content still asks for them — so they
+  // are restored here (they were never removed from the component's own token
+  // set, only their consumers went away). Absorbed from
+  // `packages/website/components/section/section-tokens.scss` (the site's
+  // pre-migration override layer).
+  //
+  // `stagelights`, `symmetric-glow`, `horizontal-gradient` and
+  // `vertical-gradient` read the pinned pre-migration alpha ramp, which is why
+  // they carry the `-base` step names: the un-suffixed steps are the redesign's
+  // `color-mix` derivation and other components read those.
+  --dsa-section_stagelights--background-image: radial-gradient(
+      50% 150% at 100% -50%,
+      var(--ks-color-primary-alpha-3-base) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      50% 150% at 0% -50%,
+      var(--ks-color-primary-alpha-3-base) 0%,
+      transparent 100%
+    );
+
+  --dsa-section_anchor-glow--background-image: radial-gradient(
+    50% 50% at 50% 100%,
+    var(--ks-background-color-bold) 0%,
+    transparent 100%
+  );
+
+  --dsa-section_horizontal-gradient--background-image: linear-gradient(
+    90deg,
+    var(--ks-color-primary-alpha-7-base),
+    var(--ks-color-secondary-alpha-7)
+  );
+
+  &[ks-inverted="true"] {
+    --dsa-section_horizontal-gradient--background-image: linear-gradient(
+      90deg,
+      var(--ks-color-bg),
+      var(--ks-color-bg-to-fg-3)
+    );
+  }
+
+  --dsa-section_vertical-gradient--background-image: linear-gradient(
+    0deg,
+    var(--ks-color-primary-alpha-7-base),
+    var(--ks-color-secondary-alpha-7)
+  );
+
+  &[ks-inverted="true"] {
+    --dsa-section_vertical-gradient--background-image: linear-gradient(
+      0deg,
+      var(--ks-color-bg),
+      var(--ks-color-bg-to-fg-3)
+    );
+  }
+
+  --dsa-section_symmetric-glow--background-image: radial-gradient(
+      20vw 20vw at 0% 10%,
+      var(--ks-color-primary-alpha-7-base) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      20vw 20vw at 100% 90%,
+      var(--ks-color-primary-alpha-7-base) 0%,
+      transparent 100%
+    );
+
+  &[ks-inverted="true"] {
+    --dsa-section_symmetric-glow--background-image: radial-gradient(
+        20vw 20vw at 0% 10%,
+        var(--ks-color-primary-alpha-4-base) 0%,
+        transparent 100%
+      ),
+      radial-gradient(
+        20vw 20vw at 100% 90%,
+        var(--ks-color-primary-alpha-4-base) 0%,
+        transparent 100%
+      );
+  }
+
   //Spotlight
-  --dsa-section__spotlight--size: 50px;
-  --dsa-section__spotlight--blur: 0%;
-  --dsa-section__spotlight--color: var(--ks-color-primary-alpha-5);
+  // The pre-migration spotlight was a full-strength 200px glow in the site's
+  // own `secondary` colour; the redesign narrowed it to 50px with no blur and
+  // moved it onto `--ks-color-primary-alpha-5`.
+  --dsa-section__spotlight--size: 200px;
+  --dsa-section__spotlight--blur: 100%;
+  --dsa-section__spotlight--color: var(--ks-color-secondary);
 }

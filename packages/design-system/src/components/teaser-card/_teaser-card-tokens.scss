@@ -8,10 +8,18 @@
   );
 
   --dsa-teaser-card--border-radius: var(--ks-border-radius-card);
-  --dsa-teaser-card--border: var(--ks-border-card-interactive);
-  --dsa-teaser-card--border-color_hover: var(
-    --ks-border-color-card-interactive-hover
-  );
+
+  // Pre-migration card: a transparent hairline border in both states. The
+  // redesign replaced it with `--ks-border-card-interactive` and dropped
+  // `--dsa-teaser-card--border-width` outright — the shorthand below reads that
+  // token, so it is restored rather than inlined
+  // (packages/website/global-token.scss put it back on the card for the same
+  // reason).
+  --dsa-teaser-card--border-width: var(--ks-border-width-default);
+  --dsa-teaser-card--border-color: transparent;
+  --dsa-teaser-card--border-color_hover: transparent;
+  --dsa-teaser-card--border: var(--dsa-teaser-card--border-width) solid
+    var(--dsa-teaser-card--border-color);
 
   --dsa-teaser-card_compact--border: 0;
   --dsa-teaser-card_compact--border-color_hover: unset;
@@ -26,51 +34,83 @@
     var(--ks-color-bg-alpha-1)
   );
 
-  --dsa-teaser-card--shadow: var(--ks-box-shadow-card);
+  // The pre-migration card carried no resting shadow; the redesign added one.
+  --dsa-teaser-card--shadow: none;
   --dsa-teaser-card--shadow_hover: var(--ks-box-shadow-card-hover);
 
-  --dsa-teaser-card__image--transform_hover: scale(1.05);
-  --dsa-teaser-card__image--transition: transform var(--ks-transition-fade);
-  --dsa-teaser-card__image--padding: var(--dsa-teaser-card--padding);
-  --dsa-teaser-card__image--border-radius: var(
-    --dsa-teaser-card--border-radius
-  );
+  // Pre-migration hover shadow: `0 1px 11px rgba(33,35,39,.3)`, i.e.
+  // `ks.box-shadow.card.hover` resolved against
+  // `ks.box-shadow.color.card.hover`. The redesign re-authored
+  // `--ks-box-shadow-card-hover` as a composition of
+  // `--ks-brand-box-shadow-card-blur`, `--ks-box-shadow-spread` and
+  // `--ks-box-shadow-opacity`, which resolves to
+  // `0 14.65px 43.95px rgba(0,0,0,.25)` — a far larger, softer shadow.
+  // Pinning the token on the card keeps the design system's own hover chain
+  // (`--c-teaser--shadow-hover` → `--dsa-teaser-card--shadow_hover` →
+  // `--ks-box-shadow-card-hover`) and the inversion handling for every other
+  // consumer of the token intact; only the card resolves the legacy literal.
+  // Inverted cards used the same value pre-migration, so no separate inverted
+  // value exists — but the compact layout puts `ks-inverted="true"` on the card
+  // element itself, where a bare `.dsa-teaser-card` would tie with (and by
+  // source order could lose to) the token layer's `[ks-inverted="true"]` rule.
+  &,
+  &[ks-inverted="true"] {
+    --ks-box-shadow-card-hover: 0 1px 11px rgba(33, 35, 39, 0.3);
+  }
+
+  // Pre-migration the cover image sat flush in the card box — no padding of its
+  // own, no radius of its own, clipped by the card and by the top corners the
+  // card puts on the image wrapper (see `teaser-card.scss`) — and it did not
+  // move on hover. The redesign gave it the card padding, a radius and the
+  // `scale(1.05)` zoom transition; all four deltas are reverted here.
+  // (`--dsa-teaser-card--no-image-hover` in `teaser-card.scss` remains the
+  // per-card opt-out of the same token.)
+  --dsa-teaser-card__image--transform_hover: none;
+  --dsa-teaser-card__image--transition: none;
+  --dsa-teaser-card__image--padding: 0;
+  --dsa-teaser-card__image--border-radius: 0;
 
   --dsa-teaser-card__body--gap: var(--ks-spacing-stack-s)
     var(--ks-spacing-inline-m);
 
   --dsa-teaser-card__topic--color: var(--dsa-topic--color);
 
-  --dsa-teaser-card__label--font: var(--ks-font-interface-s);
+  // Pre-migration the label was white text on the primary colour and had no
+  // border — the redesign inverted it to primary-on-white, with a primary
+  // border. `--dsa-text-color-on-primary` carries the design system's own
+  // inversion handling, which the pre-migration label used too.
+  --dsa-teaser-card__label--font: var(--ks-font-interface-m);
   --dsa-teaser-card__label--font-weight: var(--ks-font-weight-semi-bold);
-  --dsa-teaser-card__label--color: var(--ks-text-color-primary);
+  --dsa-teaser-card__label--color: var(--dsa-text-color-on-primary);
   --dsa-teaser-card__label--background-color: var(
-    --ks-background-color-default
+    --ks-background-color-primary
   );
   --dsa-teaser-card__label--padding: 0.5em 1em;
   --dsa-teaser-card__label--border-radius: var(--ks-border-radius-pill);
-  --dsa-teaser-card__label--border: var(--ks-border-width-default) solid
-    var(--ks-border-color-primary);
+  --dsa-teaser-card__label--border: 0;
 
   --dsa-teaser-card__button--font: var(--ks-font-interface-m);
 
   // Scaling for Mobile Breakpoint
-  --dsa-teaser-card--padding: var(--ks-spacing-inset-m);
+  --dsa-teaser-card--padding: var(--ks-spacing-inset-xl);
 
-  --dsa-teaser-card__topic--font: var(--ks-font-display-m);
+  --dsa-teaser-card__topic--font: var(--ks-font-display-xl);
   --dsa-teaser-card__topic--font-weight: var(--dsa-topic--font-weight);
 
   --dsa-teaser-card__copy--font: var(--ks-font-copy-s);
-  --dsa-teaser-card__copy--color: var(--ks-text-color-default);
+  --dsa-teaser-card__copy--color: var(--ks-text-color-copy);
   --dsa-teaser-card__copy--margin-top: 0.5em;
 
   --dsa-teaser-card__button--font: var(--ks-font-interface-s);
 
   // Scaling for Mobile Breakpoint Large Tiles
   @include container.size("≥", 400px, "teaser-card") {
-    --dsa-teaser-card--padding: var(--ks-spacing-inset-l);
+    // The padding is *not* stepped here: pre-migration the card-level rule that
+    // set it outranked this container query, so a large tile used the same
+    // padding as a small one on mobile. Same for the topic font.
+    --dsa-teaser-card__topic--font: var(--ks-font-display-xl);
 
-    --dsa-teaser-card__topic--font: var(--ks-font-display-l);
+    --dsa-teaser-card__label--font: var(--ks-font-interface-s);
 
     --dsa-teaser-card__copy--font: var(--ks-font-copy-m);
 
@@ -85,13 +125,16 @@
     --dsa-teaser-card--padding: var(--ks-spacing-inset-m);
 
     --dsa-teaser-card__button--font: var(--ks-font-interface-s);
+    --dsa-teaser-card__label--font: var(--ks-font-interface-xs);
 
     // Scaling for Desktop Breakpoint Large Tiles
     @include container.size("≥", 400px, "teaser-card") {
-      --dsa-teaser-card__topic--font: var(--ks-font-display-m);
+      --dsa-teaser-card--padding: var(--ks-spacing-inset-l);
+      --dsa-teaser-card__topic--font: var(--ks-font-display-s);
       --dsa-teaser-card__copy--font: var(--ks-font-copy-m);
 
       --dsa-teaser-card__button--font: var(--ks-font-interface-m);
+      --dsa-teaser-card__label--font: var(--ks-font-interface-m);
     }
   }
 }

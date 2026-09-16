@@ -2,23 +2,38 @@
 @use "bourbon/core/bourbon";
 @use "nav-flyout-tokens";
 
+// Mobile menu, restored to the pre-migration layout.
+//
+// The redesign renders `.dsa-nav-flyout` as an inline accordion under the header
+// bar (`top: var(--dsa-header--height); left: 0; width: 100%; max-width: 100%;
+// opacity: 0`, revealed by fading in). Pre-migration it was an off-canvas drawer
+// that slides in from the left, over the header. Absorbed from
+// `packages/website/components/nav-main/flyout/nav-flyout.scss` (the site's
+// pre-migration override layer); the tokens live in `_nav-flyout-tokens.scss`.
 .dsa-nav-flyout {
   display: flex;
   font: var(--dsa-nav-flyout__label--font);
   flex-direction: column;
   gap: var(--dsa-nav-flyout--gap);
-  top: var(--dsa-header--height);
-  opacity: 0;
-  left: 0;
+  top: 0;
+  opacity: 1;
+  left: -100%;
   overflow: hidden;
   position: fixed;
-  width: 100%;
+  width: 78vw;
+  height: 100vh;
   transition: all var(--ks-duration-slow);
   transition-delay: var(--dsa-nav-flyout--transition-delay);
   padding: var(--dsa-nav-flyout--padding);
   right: 0;
   bottom: 0;
   overflow-y: auto;
+  // The drawer is opaque and covers the header's own logo, so exactly one logo
+  // is visible while the menu is open — which is what the pre-migration site
+  // showed. (The design system's header renders a logo of its own next to the
+  // flyout's; see HeaderComponent.) The redesign left the background token
+  // declared but unused in favour of the header's own bar.
+  background: var(--dsa-nav-flyout--background);
   backface-visibility: hidden;
   -webkit-overflow-scrolling: touch;
   max-width: var(--dsa-nav-flyout--max-width);
@@ -28,13 +43,17 @@
     margin: 0;
   }
 
-  .dsa-header--floating & {
-    border-radius: var(--ks-border-radius-surface);
-    padding: 0 var(--dsa-header_floating--spacing-horizontal);
-  }
+  // The redesign re-gutters the drawer inside the floating (pill) header and
+  // rounds its corners with `var(--ks-border-radius-surface)`. The legacy drawer
+  // sits inside the full-bleed bar and keeps its own padding and square corners,
+  // so no floating override is left here.
 
+  // The open drawer slides in from the left and casts its shadow over the page.
+  // The redesign revealed it by fading (`opacity: 0` → `1`) under a full-viewport
+  // dimming shadow; both are gone with the tokens above.
   .overlay-open & {
-    opacity: 1;
+    left: 0;
+    box-shadow: var(--dsa-nav-flyout--shadow);
   }
 
   .dsa-nav-flyout__logo {
@@ -43,7 +62,9 @@
   }
 
   .dsa-nav-flyout__list {
-    padding-top: var(--ks-spacing-xs);
+    padding-top: calc(
+      var(--dsa-header--spacing-vertical) - var(--ks-spacing-s)
+    );
     padding-bottom: 15vh;
 
     &:hover {
@@ -71,9 +92,11 @@
 
   .dsa-nav-flyout__label {
     text-decoration: var(--dsa-nav-flyout__label--text-decoration);
-    display: block;
-    width: fit-content;
+    display: flex;
+    width: auto;
     font: var(--dsa-nav-flyout__label--font);
+    // the site's own layer re-asserted `font-family: var(--ks-font-family-display)`
+    // on the label; the token above already resolves to it, so the rule was a no-op
     font-family: var(--dsa-nav-flyout__label--font-family);
     font-weight: var(--dsa-nav-flyout__label--font-weight);
     color: var(--dsa-nav-flyout__label--color);

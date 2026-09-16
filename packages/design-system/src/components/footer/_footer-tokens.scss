@@ -1,11 +1,28 @@
 .dsa-footer {
   --dsa-footer--background-color: var(--ks-background-color-default);
-  --dsa-footer--border-top: var(--ks-border-width-default) solid var(--ks-border-color-default);
+  // The pre-migration bundle carried its top border through a content token of
+  // its own, hardcoding the 1px width; the redesign inlined
+  // `--ks-border-width-default` here. `--dsa-footer__content--border` is
+  // restored (the site's own layer re-declared the indirection) so themes that
+  // set it keep working.
+  --dsa-footer__content--border: 1px solid var(--ks-border-color-default);
+  --dsa-footer--border-top: var(--dsa-footer__content--border);
   --dsa-footer--max-width: var(--dsa-content--width_wide);
-  --dsa-footer--gap-vertical: var(--ks-spacing-stack-l);
+
+  // The site's layer carries two competing restorations of this token:
+  // `stack-m` in its global-token, and `inline-xl` in the ported component token
+  // file, which ties on specificity (`:root .dsa-footer` against
+  // `.dsa-footer.dsa-footer`) but lands later in the bundle — so `inline-xl` is
+  // what the page renders today, and it is live: the legacy footer stacks two
+  // `.dsa-footer__content` blocks, whose row gap this token is. The redesign
+  // widened it to `stack-l`.
+  --dsa-footer--gap-vertical: var(--ks-spacing-inline-xl);
+
+  // The redesign added a gap between a column's heading and its nav list; the
+  // pre-migration footer stacked the address lines with no gap at all.
+  --dsa-footer__column--gap: 0;
 
   --dsa-footer__columns--gap: var(--ks-spacing-stack-l) var(--ks-spacing-inline-xl);
-  --dsa-footer__column--gap: var(--ks-spacing-stack-s);
 
   --dsa-footer__column-heading--font: var(--ks-font-interface-s);
   --dsa-footer__column-heading--font-weight: var(--ks-font-weight-bold);
@@ -13,12 +30,29 @@
   --dsa-footer__column-heading--letter-spacing: 0.05em;
   --dsa-footer__column-heading--color: var(--ks-text-color-default);
 
+  // The legacy footer named its column headings `__headline` and its address /
+  // legal lines `__item`; both tokens are restored from the site's pre-migration
+  // component token file (`packages/website/components/footer/footer-tokens.scss`).
+  --dsa-footer__headline--color: var(--ks-text-color-default);
+  --dsa-footer__headline--font: var(--ks-font-interface-s);
+  --dsa-footer__headline--font-weight: var(--ks-font-weight-bold);
+
   --dsa-footer__nav-list--gap: var(--ks-spacing-stack-xs);
 
   --dsa-footer__link--font: var(--ks-font-interface-s);
-  --dsa-footer__link--font-weight: var(--dsa-link--font-weight);
+  // Pre-migration footer links *inherited* their weight instead of picking up
+  // the link weight: the legacy rule passed the font *shorthand* into
+  // `font-weight`, which browsers drop, so the declaration never applied. The
+  // redesign replaced it with `--dsa-link--font-weight` (semi-bold → medium),
+  // which is exactly what made the links read heavier; `inherit` restores the
+  // legacy behaviour. The site declares this twice — `inherit` in its
+  // global-token and `var(--ks-font-weight-regular)` in the ported component
+  // token file, which lands later and therefore wins; both compute to the same
+  // weight, but only `inherit` keeps following the footer's own.
+  --dsa-footer__link--font-weight: inherit;
   --dsa-footer__link--color: var(--ks-text-color-interface-interactive);
-  --dsa-footer__link--color_hover: var(--ks-text-color-interface-interactive-hover);
+  // legacy hover colour is the plain foreground, not the interactive one
+  --dsa-footer__link--color_hover: var(--ks-color-fg);
   --dsa-footer__link--text-decoration: none;
   --dsa-footer__link--text-decoration_hover: underline;
 
@@ -37,5 +71,12 @@
   --dsa-footer__legal-link--color: var(--ks-text-color-interface-interactive);
   --dsa-footer__legal-link--color_hover: var(--ks-text-color-interface-interactive-hover);
   --dsa-footer__legal-link--text-decoration: underline;
-}
 
+  // The redesign dropped the footer logo's height from the token set; the
+  // pre-migration footer rendered it at 1.5rem, 4rem from 62em up.
+  --dsa-footer__logo--height: 1.5rem;
+
+  @media (min-width: 62em) {
+    --dsa-footer__logo--height: 4rem;
+  }
+}

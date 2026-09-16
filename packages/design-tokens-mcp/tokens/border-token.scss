@@ -7,17 +7,37 @@
   --ks-border-surface: var(--ks-border-width-default) solid var(--ks-border-color-surface);
 
   --ks-border-width-default: var(--ks-brand-border-width-default);
-  --ks-border-width-emphasized: var(--ks-brand-border-width-emphasized);
+  /*
+    `--ks-brand-border-width-emphasized` is never emitted by the brand layer, so
+    this custom property used to resolve to nothing and every 2px emphasized
+    border (outline buttons, card outlines) silently collapsed to 1px. The
+    fallback carries the pre-migration value while leaving the brand layer able
+    to override it.
+  */
+  --ks-border-width-emphasized: var(--ks-brand-border-width-emphasized, 2px);
 
   /*
-    Border-radius scaling:
-    If --ks-brand-border-radius-factor is 1, border-radius = 0 (no radius)
-    If --ks-brand-border-radius-factor is 2, border-radius = 2 × --ks-spacing-m
-    Formula: (factor - 1) * 2 * spacing-m
+    Border radius — pre-migration geometry.
+
+    Upstream derives every radius from `--ks-brand-border-radius-factor` × the
+    spacing scale; the pre-migration brand used flat literals, and this layer
+    restores them. Measured at desktop, a teaser card came out 21.97px against
+    the pre-migration 6px, a button 10.99px against 6px and the cta box 32.96px
+    against 0 (the box had no radius at all). `--dsa-border-radius-image`
+    resolves through the card token, which is why cta and image-text images were
+    rounded as well.
+
+    The literals cannot be expressed through the brand factor: one factor feeds
+    all three variants, so at desktop it yields 3px / 6px / 9px for control /
+    card / surface — never 6px three times — and it scales with the spacing
+    rhythm instead of staying flat.
+
+    Values extracted from `packages/website/global-token.scss` (the site's
+    pre-migration override layer, now absorbed into the design system).
   */
-  --ks-border-radius-control: calc((var(--ks-brand-border-radius-factor) - 1) * 3 * var(--ks-spacing-m) * 0.25);
-  --ks-border-radius-card: calc((var(--ks-brand-border-radius-factor) - 1) * 3 * var(--ks-spacing-m) * 0.5);
-  --ks-border-radius-surface: calc((var(--ks-brand-border-radius-factor) - 1) * 3 * var(--ks-spacing-m) * 0.75);
+  --ks-border-radius-control: 6px;
+  --ks-border-radius-card: 6px;
+  --ks-border-radius-surface: 6px;
   --ks-border-radius-pill: 999px;
   --ks-border-radius-circle: 50%;
 }

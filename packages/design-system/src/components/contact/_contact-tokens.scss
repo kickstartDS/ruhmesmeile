@@ -30,7 +30,9 @@
   --dsa-contact__link--color_hover: var(--dsa-link--color_hover);
   --dsa-contact__link--font: var(--ks-font-interface-m);
   --dsa-contact__link--font-weight: var(--dsa-link--font-weight);
-  --dsa-contact__link__icon--margin-right: 0.5em;
+  // Pre-migration the link icon sat closer to its label (0.25em); the redesign
+  // loosened it to 0.5em (packages/website/components/contact/contact-tokens.scss).
+  --dsa-contact__link__icon--margin-right: 0.25em;
   --dsa-contact__link__icon--size: 1.5em;
   --dsa-contact__link__icon--color: inherit;
   --dsa-contact__link--text-decoration: none;

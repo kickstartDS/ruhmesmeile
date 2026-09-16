@@ -116,6 +116,13 @@ export function isPrimitiveColorToken(tokenName: string): boolean {
     /^--ks-color-notice-to-/,
     /^--ks-color-informative-alpha-/,
     /^--ks-color-informative-to-/,
+    // Tenth pair — the pre-migration brand's #ff5c00 family. Mirrors the
+    // `primary` patterns above: `color-token.scss` derives the same alpha/to and
+    // inverted alpha/to ramps for it.
+    /^--ks-color-secondary-alpha-/,
+    /^--ks-color-secondary-to-/,
+    /^--ks-color-secondary-inverted-alpha-/,
+    /^--ks-color-secondary-inverted-to-/,
   ];
   return primitivePatterns.some((p) => p.test(tokenName));
 }

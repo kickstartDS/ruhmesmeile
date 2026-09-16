@@ -1,5 +1,11 @@
 .dsa-nav-dropdown {
-  --dsa-nav-dropdown--padding: var(--ks-spacing-xxs) var(--ks-spacing-xxs) var(--ks-spacing-m) var(--ks-spacing-xxs);
+  // Pre-migration dropdown: a 20em card on the card *hover* shadow with the
+  // card's own 1px hairline border and `inset-s` padding, regular-weight labels
+  // one type step larger than the redesigned ones, and no hover pill/dimming as
+  // aggressive as the redesign's. Absorbed from
+  // `packages/website/components/nav-main/nav-dropdown-tokens.scss` (the site's
+  // pre-migration override layer).
+  --dsa-nav-dropdown--padding: var(--ks-spacing-inset-s);
   --dsa-nav-dropdown--background: var(--ks-background-color-default);
 
   &[ks-inverted="true"] {
@@ -7,20 +13,26 @@
   }
 
   --dsa-nav-dropdown--border-radius: var(--ks-border-radius-card);
-  --dsa-nav-dropdown--box-shadow: var(--ks-box-shadow-card);
-  --dsa-nav-dropdown--border: var(--ks-border-card);
-  --dsa-nav-dropdown--min-width: 14em;
+  --dsa-nav-dropdown--box-shadow: var(--ks-box-shadow-card-hover);
+  // the pre-migration bundle hardcoded the 1px width here instead of reading
+  // `--ks-border-card` (which resolves to the same `--ks-border-width-default`)
+  --dsa-nav-dropdown--border: 1px solid var(--ks-border-color-card);
+  --dsa-nav-dropdown--min-width: 20em;
 
   --dsa-nav-dropdown__label--color: var(--ks-color-fg);
   --dsa-nav-dropdown__label--color_hover: var(--ks-text-color-interface-interactive-hover);
   --dsa-nav-dropdown__label--color_active: var(--ks-text-color-interface-interactive-active);
-  --dsa-nav-dropdown__label--background-color_hover: var(--ks-color-fg-alpha-8);
+  // The redesign gave the labels a hover/focus background pill
+  // (`--ks-color-fg-alpha-8`); the pre-migration labels were plain text.
+  --dsa-nav-dropdown__label--background-color_hover: transparent;
   --dsa-nav-dropdown__label--background-color_active: unset;
   --dsa-nav-dropdown__label--border-radius: var(--ks-border-radius-control);
-  --dsa-nav-dropdown__label--font: var(--ks-font-interface-s);
+  // legacy labels were one step larger than the redesigned ones and sat at the
+  // regular weight instead of semi-bold
+  --dsa-nav-dropdown__label--font: var(--ks-font-interface-m);
   --dsa-nav-dropdown__label--font-family: var(--ks-font-family-display);
-  --dsa-nav-dropdown__label--font-weight: var(--ks-font-weight-semi-bold);
+  --dsa-nav-dropdown__label--font-weight: var(--ks-font-weight-regular);
   --dsa-nav-dropdown__label--font-weight_active: var(--ks-font-weight-bold);
-  --dsa-nav-dropdown__label--padding: 0.45em 0.75em;
-  --dsa-nav-dropdown__label_dimmed--opacity: 1;
+  --dsa-nav-dropdown__label--padding: 0.5em 0.35em;
+  --dsa-nav-dropdown__label_dimmed--opacity: 0.65;
 }

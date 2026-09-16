@@ -2,16 +2,44 @@
 @use "bourbon/core/bourbon";
 
 .dsa-nav-main {
-  .dsa-nav-flyout,
+  // Legacy breakpoint: the mobile menu (toggle + drawer) handed over to the
+  // desktop topbar at 64em, one step later than the redesign's 62rem — between
+  // 992px and 1024px the pre-migration nav still rendered the mobile variant of
+  // the same markup.
   .dsa-nav-toggle {
-    @media (min-width: "62rem") {
-      display: none;
-    }
+    display: block;
+  }
+
+  .dsa-nav-flyout {
+    display: flex;
   }
 
   .dsa-nav-topbar {
-    @media (max-width: "62rem") {
+    display: none;
+  }
+
+  @media (min-width: "64em") {
+    .dsa-nav-toggle,
+    .dsa-nav-flyout {
       display: none;
     }
+
+    .dsa-nav-topbar {
+      display: block;
+    }
+  }
+
+  // The pre-migration nav was a centred flex row; the redesign left the wrapper
+  // as a plain block, which is fine for its single visible child but not for the
+  // app's own nav composition: the site renders a header CTA and a language
+  // switcher next to the toggle/topbar
+  // (`packages/website/components/ComponentProviders.tsx`) and spaces them with
+  // this row's `gap`. The rule arrived here through the site's
+  // `nav-header-cta.scss`, whose other two blocks style elements only that site
+  // renders.
+  @media (min-width: 62rem) {
+    display: flex;
+    align-items: center;
+    gap: var(--ks-spacing-m);
   }
 }

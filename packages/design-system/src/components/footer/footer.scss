@@ -133,3 +133,136 @@
     }
   }
 }
+
+// ---------------------------------------------------------------------------
+// Pre-migration footer layout
+//
+// The site renders a footer of its own — the address, phone, mail and LinkedIn
+// link are hardcoded in `packages/website/components/footer/FooterComponent.tsx`
+// — and that component reproduces the *pre-migration* footer markup: two
+// `.dsa-footer__content` blocks, `.dsa-footer__links` with `--top`/`--bottom`
+// variants, `.dsa-footer__sublist`, `__contact`, `__address`, `__headline` and
+// `__item`. The redesign replaced that structure with the `__columns` /
+// `__nav-list` / `__bottom` one above, dropping (or re-authoring) several of its
+// rules.
+//
+// The rules below are that layer, absorbed from
+// `packages/website/components/footer/footer.scss`, and they sit last — the
+// position the site's own stylesheet had in the cascade — so they still override
+// the redesigned rules above on the class names the two markups share
+// (`__content`, `__column`, `__link`). Their tokens live in
+// `_footer-tokens.scss`.
+// ---------------------------------------------------------------------------
+.dsa-footer {
+  flex-direction: column;
+
+  ul,
+  li {
+    list-style: none;
+  }
+
+  .dsa-footer__content {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    &--bottom {
+      padding: var(--ks-spacing-stack-s) var(--dsa-content--spacing);
+      align-items: center;
+      gap: var(--ks-spacing-stack-s) var(--ks-spacing-inline-m);
+    }
+
+    &--top {
+      align-items: flex-start;
+      border-top: 0;
+    }
+  }
+
+  .dsa-footer__headline {
+    margin-bottom: 0.5em;
+    font: var(--dsa-footer__headline--font);
+    font-weight: var(--dsa-footer__headline--font-weight);
+    color: var(--dsa-footer__headline--color);
+    text-decoration: none;
+  }
+
+  .dsa-footer__column {
+    display: flex;
+    flex-grow: 1;
+    padding: 0;
+    margin: 0;
+    flex-direction: column;
+
+    @media (max-width: 490px) {
+      flex-basis: 100%;
+    }
+
+    &.dsa-footer__address {
+      flex-shrink: 1;
+      flex-grow: 0;
+      flex-basis: max-content;
+    }
+  }
+
+  .dsa-footer__sublist {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+
+    li {
+      display: flex;
+    }
+  }
+
+  // Legacy design system rule, dropped by the redesign: without it the top link
+  // `ul` is `display: block`, so the three navigation columns stack vertically,
+  // and the bottom meta links lose their gap. Declared before the `--top` /
+  // `--bottom` modifiers so those keep overriding it, as they did before.
+  .dsa-footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(
+      --dsa-footer__links--gap,
+      var(--ks-spacing-stack-s) var(--ks-spacing-inline-m)
+    );
+  }
+
+  .dsa-footer__links--top {
+    margin: 0;
+    padding: 0;
+    grid-gap: var(--ks-spacing-s) var(--ks-spacing-m);
+  }
+
+  .dsa-footer__links--bottom {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .dsa-footer__item {
+    color: var(--dsa-footer__link--color);
+    font: var(--dsa-footer__link--font);
+  }
+
+  .dsa-footer__link {
+    padding: 0.35em 0;
+  }
+
+  .dsa-footer__contact {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-shrink: 1;
+    flex-grow: 0;
+    flex-wrap: wrap;
+    gap: 0 var(--ks-spacing-inline-m);
+    margin-bottom: 0.5em;
+
+    .dsa-footer__headline {
+      margin-bottom: 0;
+    }
+  }
+}

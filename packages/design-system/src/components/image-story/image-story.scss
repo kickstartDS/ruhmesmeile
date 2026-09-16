@@ -71,3 +71,13 @@
     }
   }
 }
+
+/* Pre-migration the storytelling image carried the brand's image radius; the
+ * redesign left it square (packages/website/components/image-story/image-story.scss
+ * restored it). The token is a global one — `--dsa-border-radius-image` resolves
+ * to `--ks-border-radius-card`. Kept at the site's own selector rather than
+ * folded into the `.c-storytelling.dsa-image-story` scope above so nothing else
+ * in that scope inherits the extra specificity. */
+.dsa-image-story .c-storytelling__image img {
+  border-radius: var(--dsa-border-radius-image);
+}

@@ -4,13 +4,20 @@
 
   --dsa-testimonials--gap: var(--ks-spacing-stack-s) var(--ks-spacing-inline-m);
 
-  --dsa-testimonials__quote--font: var(--ks-font-copy-l);
-  --dsa-testimonials__quote--font-weight: var(--ks-font-weight-regular);
+  // Pre-migration: the quote rendered in the display face at `display-xl` and
+  // the source in the primary colour at `copy-xl`, against the redesign's
+  // `copy-l` quote in the default colour.
+  --dsa-testimonials__quote--font: var(--ks-font-display-xl);
+  // `--ks-font-weight-thin` is defined by neither the pre-migration nor the
+  // current token set, so this declaration is invalid at computed-value time
+  // and `.c-quote__text`'s own fallback (`--ks-font-weight-regular`) applies.
+  // Kept verbatim: that inertness *is* the pre-migration rendering.
+  --dsa-testimonials__quote--font-weight: var(--ks-font-weight-thin);
   --dsa-testimonials__quote--margin-bottom: var(--ks-spacing-stack-s);
 
-  --dsa-testimonials__source--font: var(--ks-font-copy-m);
+  --dsa-testimonials__source--font: var(--ks-font-copy-xl);
   --dsa-testimonials__source--font-style: normal;
-  --dsa-testimonials__source--color: var(--ks-text-color-default);
+  --dsa-testimonials__source--color: var(--ks-text-color-primary);
   --dsa-testimonials__source--text-transform: normal;
   --dsa-testimonials__source--font-weight: var(--ks-font-weight-bold);
 

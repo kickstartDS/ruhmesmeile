@@ -18,7 +18,8 @@
     "--ks-color-positive-*",
     "--ks-color-negative-*",
     "--ks-color-notice-*",
-    "--ks-color-informative-*"
+    "--ks-color-informative-*",
+    "--ks-color-secondary-*"
   ],
   "semanticAlternatives": {
     "color (text)": "Use --ks-text-color-* tokens for text/foreground colors",

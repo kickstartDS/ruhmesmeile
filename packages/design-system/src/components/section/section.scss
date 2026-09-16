@@ -329,3 +329,105 @@
     content: unset;
   }
 }
+
+// ---------------------------------------------------------------------------
+// Pre-migration section backgrounds
+//
+// The redesign moved the accent/bold transitions out of `section.style` into the
+// new `section.transition` field and trimmed `style` to
+// `default` / `framed` / `deko`. The surviving content kept its legacy option
+// values, and the component renders the *raw option value* as the class name:
+//
+//   style      → `dsa-section-style--${style}`, e.g. `--anchorGlow`
+//   transition → `dsa-section--transition-${value}`, e.g. `--transition-to_accent`
+//
+// The legacy values are camelCase and snake_case while this stylesheet keys its
+// gradients off kebab-case (`--transition-to-accent`), so nothing matched and
+// every one of those sections rendered as `background-image: none`. The rules
+// below are the site's re-declaration, absorbed from
+// `packages/website/components/section/section.scss`: same class names and same
+// values, so the design system renders the five decorative styles and the four
+// transitions the content still asks for. The gradients themselves live in
+// `_section-tokens.scss`.
+//
+// The `var(--dsa-section--transition_to_*)` references are deliberately left
+// naming the snake_case tokens: those are undefined in both the pre-migration
+// and the current bundle, so each rule falls back to its literal gradient — which
+// is what the site renders. The kebab-case tokens (`--transition-to-accent`,
+// 50% stop) stay declared and are what a *new* `to_accent` value would need if
+// the component ever renders kebab-case class names.
+// ---------------------------------------------------------------------------
+.l-section.dsa-section {
+  // `.l-section__container` pads every container of the section; the base
+  // stylesheet only zeroes it for the content container of a full-width section,
+  // so the pre-migration bundle did the same for the headline container.
+  &.l-section--full {
+    .l-section__container--headline {
+      padding: 0;
+    }
+  }
+
+  &.dsa-section-style--horizontalGradient {
+    background-image: var(--dsa-section_horizontal-gradient--background-image);
+  }
+
+  &.dsa-section-style--verticalGradient {
+    background-image: var(--dsa-section_vertical-gradient--background-image);
+  }
+
+  &.dsa-section-style--symmetricGlow {
+    background-image: var(--dsa-section_symmetric-glow--background-image);
+  }
+
+  &.dsa-section-style--anchorGlow {
+    background-image: var(--dsa-section_anchor-glow--background-image);
+  }
+
+  &.dsa-section-style--stagelights {
+    background-image: var(--dsa-section_stagelights--background-image);
+  }
+
+  &.dsa-section--transition-to_accent {
+    background-image: var(
+      --dsa-section--transition_to_accent,
+      linear-gradient(
+        180deg,
+        transparent 0%,
+        var(--ks-background-color-accent) 100%
+      )
+    );
+  }
+
+  &.dsa-section--transition-to_bold {
+    background-image: var(
+      --dsa-section--transition_to_bold,
+      linear-gradient(
+        180deg,
+        transparent 0%,
+        var(--ks-background-color-bold) 100%
+      )
+    );
+  }
+
+  &.dsa-section--transition-to_default {
+    background-image: var(
+      --dsa-section--transition_to_default,
+      linear-gradient(
+        180deg,
+        transparent 0%,
+        var(--ks-background-color-default) 100%
+      )
+    );
+  }
+
+  &.dsa-section--transition-to_inverted {
+    background-image: var(
+      --dsa-section--transition_to_inverted,
+      linear-gradient(
+        180deg,
+        transparent 80%,
+        var(--ks-background-color-default-inverted) 80%
+      )
+    );
+  }
+}

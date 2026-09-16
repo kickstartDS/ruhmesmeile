@@ -44,7 +44,7 @@ pnpm --filter @kickstartds/design-system typecheck
 The file was translated from the pre-migration (`@kickstartds/ds-agency-premium@1.6.73`) brand. Two naming conventions matter when translating:
 
 - `$root` is the value used in the **default (light)** context, `inverted` the one used under `[ks-inverted=true]`. In the old two-token model `X`/`X-inverted` meant the same thing, so the mapping is direct.
-- The nine pairs are the whole palette. `onPrimary` is the text colour *on top of* a primary surface: white on the light primary (`#2C5D5D`), near-black on the inverted primary (`#FFFFFF`).
+- The ten pairs below are the whole palette. `onPrimary` is the text colour *on top of* a primary surface: white on the light primary (`#2C5D5D`), near-black on the inverted primary (`#FFFFFF`). `secondary` is the tenth pair — the pre-migration brand's `#FF5C00` family, back in the brand layer after the nine-pair model could not express it (see below).
 
 Values as migrated, all verified against the live pre-migration CSS:
 
@@ -59,10 +59,16 @@ Values as migrated, all verified against the live pre-migration CSS:
 | `negative` | `#FF1A57` | `#D21D48` |
 | `informative` | `#64C2DB` | `#00718F` |
 | `notice` | `#F9DE55` | `#FF5D53` |
+| `secondary` | `#FF5C00` | `#FF5C00` |
 
-`fg.$root` is `#212327`, **not** the `#323437` in `packages/website/token/branding-token.json`: the legacy build took the default foreground from its `token/dictionary/color.json` (`ks.color.fg.base`), which overrode the branding token. Same story for `onPrimary`, which the old design system derived from the current context's foreground. `scale`, `font.weight`, `font.size`, `spacing`, `border`, `box-shadow` and `duration` are untouched from the starter.
+`fg.$root` is `#212327`, **not** the `#323437` in `packages/website/token/branding-token.json`: the legacy build took the default foreground from its `token/dictionary/color.json` (`ks.color.fg.base`), which overrode the branding token. Same story for `onPrimary`, which the old design system derived from the current context's foreground. `scale`, `font.weight`, `font.size`, `spacing`, `border`, `box-shadow` and `duration` are untouched from the starter — the only later addition is the `secondary` ramp nested under `scale` (below).
 
-**`secondary` has no slot.** The brand had a tenth family (`#FF5C00`, 270 derived custom properties including its own `bg`/`border`/`text` colour aliases) that the nine-pair model cannot express, so the design system no longer emits it. The site's own component overrides still consume `--ks-color-secondary` and `--ks-color-secondary-alpha-7-base`; they are restored verbatim in `packages/website/global-token.scss`. If a future DS update grows a tenth pair, move them there and delete the restoration.
+**`secondary` is the tenth pair.** The pre-migration brand had a tenth family (`#FF5C00`) with its own `bg`/`border`/`text` colour aliases, which the nine-pair model could not express: the redesign dropped it, and the site restored it by hand, verbatim, in `packages/website/global-token.scss`, because its own component overrides (`headline`, `nav-topbar`, `teaser`, `section`) still consumed `--ks-color-secondary` and `--ks-color-secondary-alpha-7-base`. That is history now — the family is modelled here as `color.secondary`, derived exactly like the other nine in `color-token.scss`, so nothing outside the design system has to restore it.
+
+Two things about the family are unlike the other nine pairs:
+
+- **It pins its own ramp.** `color.scale.secondary` (emitted as `--ks-brand-color-scale-secondary-*`) carries the pre-migration per-step values — today the same numbers as the shared `color.scale` — so that a retune of the shared ramp cannot move the literals the site's restored block hung on: the `-to-bg`/`-to-fg` mixes derived from them, and the steps the topic bars, teaser hovers and section gradients read. `color-token.scss` falls back to those historic values, so a theme that defines no `color.scale.secondary` still derives the family correctly.
+- **It is context-independent.** `$root` and `inverted` both carry `#FF5C00`, unlike the nine pairs, so the `[ks-inverted="true"]` swap is a no-op for this family — it renders the same orange in every context. Tokens that must pin the literal instead of following the context read the `-base` steps (`--ks-color-secondary-base`, `--ks-color-secondary-to-bg-2-base`, `--ks-color-secondary-alpha-5-base`, …); those stay the light literal inside `[ks-inverted]`, because the swap only re-points the non-suffixed aliases.
 
 After any edit to `branding-tokens.json`, run `pnpm --filter @kickstartds/design-system branding-tokens` — it schema-validates against `branding-tokens.schema.json` and writes the sibling `branding-tokens.css`. A validation error means a component is out of range (colors are 0–1 srgb floats), not that the mapping is wrong. `build` runs it as one of its steps.
 

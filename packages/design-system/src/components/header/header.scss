@@ -1,74 +1,90 @@
 @use "header-tokens.scss";
 
+// Header layout, restored to the pre-migration design system.
+//
+// The redesign renders the `floating` header as a centred, rounded "glass pill"
+// (`--dsa-header_floating--*`: max-widthed, shifted with `left: 50%` +
+// `translate(-50%, 0)`, backdrop-blurred), gives `.dsa-header` a fixed height
+// plus a collapse transition, and renders `.dsa-header--overlay`, a fixed
+// full-viewport scrim. Pre-migration the same markup produced a full-bleed bar
+// pinned to the top of the page whose own gradient is the scrim over the
+// section below it. Absorbed from `packages/website/components/header/header.scss`
+// (the site's pre-migration override layer); the tokens live in
+// `_header-tokens.scss`.
 .dsa-header {
   z-index: 999;
   background: var(--dsa-header--background, var(--ks-background-color-default));
   width: 100%;
   display: flex;
   padding: var(--dsa-header--spacing-vertical) 0;
-  transition: height var(--ks-transition-collapse);
-  height: calc(var(--dsa-logo--height) + var(--dsa-header--spacing-vertical) * 2);
-  justify-content: center;
 
+  // Legacy stacking-context fix: the bar is positioned so the flat `z-index`
+  // above actually applies. Scoped with `:not()` so it never fights the
+  // `position: absolute` of the `--floating` variant below — at equal
+  // specificity the winner would depend on stylesheet order.
+  //
+  // The pre-migration layer re-declared `z-index: var(--dsa-header--z-index)`
+  // here, but that rule tied with — and was outranked in source order by — the
+  // flat `z-index: 999` above, so 999 is the value the bar rendered with and
+  // keeps. `--dsa-header--z-index` stays declared for the token catalogue.
+  &:not(.dsa-header--floating) {
+    position: relative;
+  }
+
+  // No `height` or `transition` and no `justify-content: center`: the
+  // pre-migration bar was as tall as its content, never animated, and left the
+  // centring to `&__content`'s `margin: auto`. `--dsa-header--height` stays a
+  // calculation other components read (section header spacing, the flyout's
+  // `top`), it just no longer sets the bar's height.
+
+  // The redesign added a fixed, full-viewport scrim behind the page that
+  // `html.overlay-open` fades in; the legacy header rendered no such element and
+  // the bar's own gradient is the only thing overlaying the section below it.
+  // Nothing else has to correct the open state: the rules that made the header
+  // react to `overlay-open` (the fixed height and the opaque floating
+  // background) are gone with this block, so the mobile menu can no longer
+  // resize the bar or swap its gradient.
   &--overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 998;
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--ks-color-fg-alpha-3);
-    opacity: 0;
-    transition: opacity var(--ks-transition-fade);
-    pointer-events: none;
-
-    .overlay-open & {
-      opacity: 1;
-    }
+    display: none;
   }
 
-  .overlay-open & {
-    height: 100vh;
-  }
-
+  // The floating header is the pre-migration full-bleed bar: absolutely
+  // positioned, viewport-wide and square. The redesign turned the same markup
+  // into an inset pill — `width: calc(100vw - <gutter> * 2)`,
+  // `max-width: calc(--dsa-header--max-width + <gutter> * 2)`, `top: 10px`,
+  // `left: 50%` + `translate(-50%, 0)` and a `--ks-border-radius-surface`
+  // corner — so none of those declarations is left here, the corner stays
+  // square, and the `backdrop-filter` resolves to `none` through its token.
   &--floating {
-    width: calc(100vw - var(--dsa-header_floating--spacing-horizontal) * 2);
-    max-width: calc(var(--dsa-header--max-width) + var(--dsa-header_floating--spacing-horizontal) * 2);
-    top: 10px;
+    width: 100%;
     padding: var(--dsa-header--spacing-vertical) 0;
-    left: 50%;
-    transform: translate(-50%, 0);
-    background: var(--dsa-header_floating--background, var(--dsa-overlay-box_opaque--background-color));
+    background: var(
+      --dsa-header_floating--background,
+      var(--dsa-overlay-box_opaque--background-color)
+    );
     backdrop-filter: var(--dsa-header_floating--backdrop-filter, blur(10px));
     position: absolute;
-    border-radius: var(--ks-border-radius-surface);
-
-    .overlay-open & {
-      background: var(--dsa-header--background, var(--ks-background-color-default));
-      height: 95%;
-    }
+    border-radius: 0;
 
     .c-nav-main__link {
       text-shadow: 0 0 10px var(--ks-color-bg-alpha-5);
     }
   }
 
+  // Legacy content box: capped at `--dsa-header--max-width` and centred by the
+  // box itself, identical for the static and the floating variant. The redesign
+  // added the horizontal gutter to that cap, moved the centring to the parent's
+  // `justify-content: center`, aligned the box to the top below 62rem, and
+  // re-gutted it inside the floating pill
+  // (`--dsa-header_floating--spacing-horizontal`).
   &__content {
     padding: 0 var(--dsa-header--spacing-horizontal);
-    max-width: calc(var(--dsa-header--max-width) + var(--dsa-header--spacing-horizontal) * 2);
+    max-width: var(--dsa-header--max-width);
+    margin: auto;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-
-    @media (min-width: "62rem") {
-      align-items: center;
-    }
-
-    .dsa-header--floating & {
-      max-width: calc(var(--dsa-header--max-width) + var(--dsa-header_floating--spacing-horizontal) * 2);
-      padding: 0 var(--dsa-header_floating--spacing-horizontal);
-    }
+    align-items: center;
   }
 }
 

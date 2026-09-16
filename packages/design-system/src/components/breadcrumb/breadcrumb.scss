@@ -1,6 +1,14 @@
 @use "breadcrumb-tokens.scss";
 
 .dsa-breadcrumb {
+  // Bottom spacing carried over verbatim from the website's own stylesheet
+  // (`packages/website/components/breadcrumb/breadcrumb.scss`, whose single
+  // rule sets this on `.dsa-breadcrumb`). The pre-migration bundle has no
+  // breadcrumb rules at all, so there is no redesign delta behind it — the
+  // value is the site's own, kept here so removing that layer does not change
+  // the spacing above article content.
+  margin-bottom: var(--ks-spacing-xxs);
+
   display: flex;
   gap: var(--dsa-breadcrumb--gap, var(--ks-spacing-xxs));
   flex-wrap: wrap;

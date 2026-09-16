@@ -219,7 +219,7 @@ Get color tokens organized by type.
 }
 ```
 
-Color types: `primary`, `positive`, `negative`, `informative`, `notice`, `fg`, `bg`, `link`
+Color types: `primary`, `positive`, `negative`, `informative`, `notice`, `fg`, `bg`, `link`, `secondary`
 
 #### `get_typography_tokens`
 

@@ -6,6 +6,7 @@
   "properties": {
     "color": {
       "type": "object",
+      "$comment": "`secondary` is the tenth colour pair. The pre-migration brand had it (#ff5c00); unified theming arrived with nine fixed pairs, so the redesign dropped the family and `packages/website/global-token.scss` restored it by hand (268 declarations, ramps included) — it is a brand family again now, modelled as the tenth pair and derived like the other nine. See the note above the family in `color-token.scss`. `color.scale.secondary` is the family's own alpha ramp, so a retune of the shared `color.scale` cannot move the values the website's restored block pins.",
       "properties": {
         "primary": {
           "$ref": "#/definitions/colorPair"
@@ -32,6 +33,9 @@
           "$ref": "#/definitions/colorPair"
         },
         "notice": {
+          "$ref": "#/definitions/colorPair"
+        },
+        "secondary": {
           "$ref": "#/definitions/colorPair"
         },
         "scale": {
@@ -63,6 +67,39 @@
             },
             "9": {
               "$ref": "#/definitions/fraction"
+            },
+            "secondary": {
+              "$comment": "The `secondary` family's own alpha ramp (see the `$comment` on `color`). It carries the pre-migration per-step values — today the same numbers as steps 1-9, but the family owns them so a retune of the shared ramp cannot move the literals the website's restored block pins.",
+              "type": "object",
+              "properties": {
+                "1": {
+                  "$ref": "#/definitions/fraction"
+                },
+                "2": {
+                  "$ref": "#/definitions/fraction"
+                },
+                "3": {
+                  "$ref": "#/definitions/fraction"
+                },
+                "4": {
+                  "$ref": "#/definitions/fraction"
+                },
+                "5": {
+                  "$ref": "#/definitions/fraction"
+                },
+                "6": {
+                  "$ref": "#/definitions/fraction"
+                },
+                "7": {
+                  "$ref": "#/definitions/fraction"
+                },
+                "8": {
+                  "$ref": "#/definitions/fraction"
+                },
+                "9": {
+                  "$ref": "#/definitions/fraction"
+                }
+              }
             }
           }
         }
