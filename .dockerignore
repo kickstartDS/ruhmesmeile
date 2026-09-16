@@ -4,6 +4,9 @@ npm-debug.log
 **/.env.local
 **/.env.sh
 **/*.pem
-# The website image builds the design system from source; a host-side dist is
-# never an input (see packages/website/Dockerfile).
-packages/design-system/dist
+# The website image builds the design system from source, so it does not need a
+# host-side dist. packages/storyblok-mcp/Dockerfile does: it copies the built
+# dist for token extraction and SSR component bundling, and excluding the whole
+# tree made that build fail on "not found". Only the ~105 MB of screenshots under
+# dist/static stay out, which is what that Dockerfile expects.
+packages/design-system/dist/static
