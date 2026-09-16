@@ -43,6 +43,56 @@
   src: url("../static/fonts/Montserrat-Bold.woff2") format("woff2");
 }
 
+/* Metropolis — this brand's display typeface.
+ *
+ * `token/branding-tokens.json` sets `display` to Metropolis and the faces have
+ * been shipped in `static/fonts/` all along, but nothing declared them: the only
+ * place they were ever registered was the website, through `next/font`. Every
+ * other consumer — Storybook, Playroom, the editors, the CMS preview — therefore
+ * fell back to the next family in the stack, Baskerville, and rendered headlines
+ * in a serif. Declaring them here makes the design system self-sufficient.
+ *
+ * The weights mirror what the website loads (300/400/500/600/700). */
+@font-face {
+  font-family: "Metropolis";
+  src: url("../static/fonts/Metropolis-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Metropolis";
+  src: url("../static/fonts/Metropolis-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Metropolis";
+  src: url("../static/fonts/Metropolis-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Metropolis";
+  src: url("../static/fonts/Metropolis-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Metropolis";
+  src: url("../static/fonts/Metropolis-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Mulish — this brand's copy/interface typeface, the same faces the website
  * self-hosts. The vendored fonts above are upstream's Montserrat; the brand's
  * own `copy`/`interface` families are set to Mulish in
