@@ -15,7 +15,24 @@ const processingConfiguration: Partial<IProcessingOptions> = {
   layerOrder: ["language", "visibility", "cms", "schema", "kickstartds"],
 };
 
-const config: StorybookConfig = {
+/**
+ * Storybook resolves a few manager values as presets without declaring them in
+ * `StorybookConfig`. Two of them brand the browser tab, and the manager builder
+ * emits both *before* anything `managerHead` injects, so they are the only way to
+ * change it: `title` is interpolated into `assets/server/template.ejs` as
+ * `<title><%= title %></title>` (the builder appends its own " - Storybook"), and
+ * `favicon` becomes `<link rel="icon" href="./<basename>">` — root-relative, which
+ * is why the icon below is exposed at `/favicon.ico` via `staticDirs` too.
+ */
+type ManagerPresets = {
+  title?: string;
+  favicon?: string;
+};
+
+const config: StorybookConfig & ManagerPresets = {
+  title: "ruhmesmeile Design System",
+  favicon: "static/favicon/favicon.ico",
+
   stories: [
     "../docs/**/*.mdx",
     "../src/**/*.mdx",
@@ -75,7 +92,12 @@ const config: StorybookConfig = {
     experimentalCodeExamples: true,
   },
 
-  staticDirs: ["../static"],
+  staticDirs: [
+    "../static",
+    // `favicon` above resolves to its basename only, so the icon the manager
+    // links (`./favicon.ico`) is root-relative — expose ours there as well.
+    { from: "../static/favicon/favicon.ico", to: "/favicon.ico" },
+  ],
 
   core: {
     disableTelemetry: true,
