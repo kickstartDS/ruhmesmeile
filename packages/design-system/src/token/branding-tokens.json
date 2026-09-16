@@ -271,29 +271,37 @@
       "copy": {
         "$type": "fontFamily",
         "$value": [
-          "system-ui",
-          "Segoe UI",
-          "Roboto",
+          "Mulish",
+          "Helvetica Neue",
           "Helvetica",
           "Arial",
-          "sans-serif",
-          "Apple Color Emoji",
-          "Segoe UI Emoji",
-          "Segoe UI Symbol"
+          "sans-serif"
         ]
       },
       "interface": {
         "$type": "fontFamily",
         "$value": [
+          "Mulish",
           "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Avenir Next",
+          "Avenir",
           "Segoe UI",
-          "Roboto",
+          "Lucida Grande",
+          "Helvetica Neue",
           "Helvetica",
-          "Arial",
-          "sans-serif",
-          "Apple Color Emoji",
-          "Segoe UI Emoji",
-          "Segoe UI Symbol"
+          "Fira Sans",
+          "Roboto",
+          "Noto",
+          "Droid Sans",
+          "Cantarell",
+          "Oxygen",
+          "Ubuntu",
+          "Franklin Gothic Medium",
+          "Century Gothic",
+          "Liberation Sans",
+          "sans-serif"
         ]
       },
       "mono": {

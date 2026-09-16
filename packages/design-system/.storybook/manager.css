@@ -1,4 +1,9 @@
-@import "../src/token/tokens.css";
+/* The manager chrome already derives its theme from our brand layer (see
+ * `themes.ts`), but this import pulled in `token/tokens.css` — the
+ * starter-default semantic palette, blue `#3065c0` — so anything in the manager
+ * reading `--ks-*` got upstream's colours. The canvas gets the real brand through
+ * `global.scss`; the manager belongs on the same layer. */
+@import "../src/token/branding-tokens.css";
 
 .sidebar-item svg {
   color: inherit;

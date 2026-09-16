@@ -42,3 +42,40 @@
   font-display: swap;
   src: url("../static/fonts/Montserrat-Bold.woff2") format("woff2");
 }
+
+/* Mulish — this brand's copy/interface typeface, the same faces the website
+ * self-hosts. The vendored fonts above are upstream's Montserrat; the brand's
+ * own `copy`/`interface` families are set to Mulish in
+ * `token/branding-tokens.json` and `token/dictionary/typo.json`, so nothing
+ * resolves to Montserrat any more. */
+@font-face {
+  font-family: "Mulish";
+  src: url("../static/fonts/Mulish-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mulish";
+  src: url("../static/fonts/Mulish-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mulish";
+  src: url("../static/fonts/Mulish-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mulish";
+  src: url("../static/fonts/Mulish-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}

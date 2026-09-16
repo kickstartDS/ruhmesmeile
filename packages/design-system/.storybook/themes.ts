@@ -66,7 +66,10 @@ export const light = create({
   inputTextColor: componentsToHex(fg),
   inputBorderRadius: 8,
 
-  brandTitle: "Your kickstartDS Storybook",
-  brandUrl: "https://www.kickstartDS.com",
+  brandTitle: "ruhmesmeile Design System",
+  brandUrl: "https://www.ruhmesmeile.com",
+  // Our own wordmark: `logo.svg` and `logo-dark.svg` are the site's logo in the
+  // site's foreground colour (this manager theme is `light`), `logo-inverted.svg`
+  // is the white one the site header uses.
   brandImage: "/logo.svg",
 });
