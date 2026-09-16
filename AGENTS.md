@@ -196,6 +196,31 @@ Kamal, one config per service (`config/deploy-*.yml`), shared secrets in `.kamal
 
 **Content publishes deploy the site.** Storyblok fires on `story.published`, `story.unpublished`, `story.deleted` and `story.moved` for **every** story in the space — no slug filter — so any editor action that changes what the site renders rebuilds and redeploys production. In the space that is a `Circle CI` webhook endpoint (which deploys) and an older `Netlify` one subscribed to the same four actions. `.circleci/deploy-trigger.rb` runs before the deploy for content-triggered pipelines only, and does two things a code push never gets: it **halts** any run a newer run will supersede (a bulk publish or folder move fires one webhook per story, and every one of them used to build and redeploy — 27 pipelines from one content migration, 19 deploys of a single commit), and it deploys a content rebuild under a unique version, `<sha12>_content_<UTC>`. The unique tag matters: a content rebuild otherwise ships under the *same* tag as the previous build, and kamal runs `docker image rm --force` + `docker pull` on that tag *before* it takes the deploy lock, so two concurrent runs delete each other's image and fail with `Image … is missing the 'service' label`.
 
+ ### Auxiliary services
+
+The five services below share the box with the site; each is one kamal-proxy app on port 8080 with its own host. Image names and hosts live in the committed, secret-free `packages/website/.env`, secrets in `.env.local` + `.kamal/secrets` (names only).
+
+| Service | Host | Image |
+| --- | --- | --- |
+| Storyblok MCP | `storyblok-mcp.ruhmesmeile.com` | `ruhmesmeile/ruhmesmeile-storyblok-mcp` |
+| Design Tokens MCP | `design-tokens-mcp.ruhmesmeile.com` | `ruhmesmeile/ruhmesmeile-design-tokens-mcp` |
+| Component Builder MCP | `component-builder-mcp.ruhmesmeile.com` | `ruhmesmeile/ruhmesmeile-component-builder-mcp` |
+| Design System (Storybook) | `ds.ruhmesmeile.com` | `ruhmesmeile/ruhmesmeile-design-system-storybook` |
+| Design Tokens Editor | `design.ruhmesmeile.com` | `ruhmesmeile/ruhmesmeile-design-tokens-editor` |
+
+Deploy **from a workstation**, one at a time (kamal takes a deploy lock, and concurrent runs race on the image tag):
+
+```bash
+set -a; . packages/website/.env; . packages/website/.env.local; set +a
+kamal deploy -c config/deploy-storyblok-mcp.yml        # one of the five
+```
+
+**`storyblok-mcp` needs a host-side design-system build first** — `pnpm --filter @kickstartds/design-system build` — because its Dockerfile copies `packages/design-system/dist` (token extraction and SSR component bundling). `.dockerignore` keeps that tree in the context and excludes only `dist/static` (~105 MB of screenshots); excluding the whole tree is what broke this image once. The other four build from source and need nothing extra.
+
+**Auth is opt-in and shared.** All three MCPs and the editor verify `Authorization: Bearer <jwt>` (HS256, `packages/shared-auth`) **only when `MCP_JWT_SECRET` is set**; without it they serve unauthenticated and log `WARNING: MCP_JWT_SECRET is not set — HTTP endpoints are unauthenticated`. With it set, the Storyblok MCP (CMS write access + OpenAI spend) and the tokens MCP (branding-token writes) are the ones that matter. Issue tokens with `node scripts/issue-token.mjs --user <name> --role admin|reader [--expires 90d]` (needs `MCP_JWT_SECRET` in the environment), revoke by listing the token's `jti` in `MCP_REVOKED_TOKENS`. The Storybook has no auth and bakes a public Storyblok preview token into its bundle by design.
+
+Smoke tests are in `docs/guides/design-tokens-mcp-deployment.md` — `GET /health`, then `POST /mcp` with a JSON-RPC `initialize`, `tools/list`, `tools/call`. The editor's is `GET /api/health`.
+
  **Legacy reference site.** `legacy.ruhmesmeile.com` is an immutable `next export` snapshot of the site as it was before the monorepo migration, served by nginx. It is the visual reference for every migration review, so **do not redeploy or extend it**. Branch `legacy-site`, tag `legacy-v1`, `Dockerfile.legacy`, `legacy-nginx.conf`, `config/deploy-legacy.yml`, image `ruhmesmeile/ruhmesmeile-legacy-website`. Two things are worth knowing: the export had to drop `pages/server-sitemap.xml` through `exportPathMap` (it is server-rendered and `next export` refuses it) and the static export had to be committed to that branch because Kamal builds from a `git clone` of the repo, not the working tree.
 
 ### Local ports
