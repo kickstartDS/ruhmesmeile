@@ -26,9 +26,9 @@ export const Default: Story = {
     },
   },
   args: pack({
-    title: "Title of the specific Event",
-    categories: [{ label: "First Category" }, { label: "Second Category" }],
+    title: "Headless CMS Workshop",
+    categories: [{ label: "Workshop" }, { label: "Bonn" }],
     intro:
-      "This text serves as a placeholder for descriptive content. It can be replaced with real copy to explain features, concepts, or key messages in more detail.",
+      "Von der Content-Modellierung bis zum Go-Live: An zwei Tagen bauen wir gemeinsam eine Website auf Storyblok – markenkonform, wartungsarm und in Wochen statt Monaten live.",
   }),
 };

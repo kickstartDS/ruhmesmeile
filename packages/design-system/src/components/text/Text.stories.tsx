@@ -29,11 +29,11 @@ export const SingleColumn: Story = {
   },
   args: pack({
     layout: "singleColumn",
-    text: `This is a simple text paragraph that demonstrates standard body copy. It can be used to explain a topic, provide background information, or introduce related content in a neutral and readable way.
+    text: `Ein Headless CMS trennt die Inhalte von ihrer Ausgabe. Redaktion und Frontend arbeiten dadurch entkoppelt: Inhalte werden einmal strukturiert gepflegt und lassen sich in Website, App und Landingpage gleichermaßen ausliefern – statt Seite für Seite neu zu bauen.
 
-This paragraph highlights **information** and includes a text link for further reference. Additional details can be found by visiting **[this example link](#)** to explore related content or documentation.
+Der Unterschied zeigt sich im Redaktionsalltag. Statt fertiger Seiten entstehen **wiederverwendbare Module**, die sich frei kombinieren lassen. Wie das konkret aussieht, zeigen wir in unseren **[Case Studies](https://www.ruhmesmeile.com/case-studies)**.
 
-*This paragraph is intended to demonstrate italic text formatting.*`,
+*Kurz gesagt: Headless ist kein Werkzeugwechsel, sondern eine Entscheidung für Geschwindigkeit und Markenkonsistenz.*`,
   }),
 };
 
@@ -46,11 +46,11 @@ export const Centered: Story = {
   },
   args: pack({
     align: "center",
-    text: `This is a simple text paragraph that demonstrates standard body copy. It can be used to explain a topic, provide background information, or introduce related content in a neutral and readable way.
+    text: `Ein Headless CMS trennt die Inhalte von ihrer Ausgabe. Redaktion und Frontend arbeiten dadurch entkoppelt: Inhalte werden einmal strukturiert gepflegt und lassen sich in Website, App und Landingpage gleichermaßen ausliefern – statt Seite für Seite neu zu bauen.
 
-This paragraph highlights **information** and includes a text link for further reference. Additional details can be found by visiting **[this example link](#)** to explore related content or documentation.
+Der Unterschied zeigt sich im Redaktionsalltag. Statt fertiger Seiten entstehen **wiederverwendbare Module**, die sich frei kombinieren lassen. Wie das konkret aussieht, zeigen wir in unseren **[Case Studies](https://www.ruhmesmeile.com/case-studies)**.
 
-*This paragraph is intended to demonstrate italic text formatting.*`,
+*Kurz gesagt: Headless ist kein Werkzeugwechsel, sondern eine Entscheidung für Geschwindigkeit und Markenkonsistenz.*`,
   }),
 };
 
@@ -63,11 +63,11 @@ export const MultiColumn: Story = {
   },
   args: pack({
     layout: "multiColumn",
-    text: `This is a simple text paragraph that demonstrates standard body copy. It can be used to explain a topic, provide background information, or introduce related content in a neutral and readable way.
+    text: `Ein Headless CMS trennt die Inhalte von ihrer Ausgabe. Redaktion und Frontend arbeiten dadurch entkoppelt: Inhalte werden einmal strukturiert gepflegt und lassen sich in Website, App und Landingpage gleichermaßen ausliefern – statt Seite für Seite neu zu bauen.
 
-This paragraph highlights **information** and includes a text link for further reference. Additional details can be found by visiting **[this example link](#)** to explore related content or documentation.
+Der Unterschied zeigt sich im Redaktionsalltag. Statt fertiger Seiten entstehen **wiederverwendbare Module**, die sich frei kombinieren lassen. Wie das konkret aussieht, zeigen wir in unseren **[Case Studies](https://www.ruhmesmeile.com/case-studies)**.
 
-*This paragraph is intended to demonstrate italic text formatting.*`,
+*Kurz gesagt: Headless ist kein Werkzeugwechsel, sondern eine Entscheidung für Geschwindigkeit und Markenkonsistenz.*`,
   }),
 };
 
@@ -80,10 +80,10 @@ export const Highlight: Story = {
   },
   args: pack({
     highlightText: true,
-    text: `This is a simple text paragraph that demonstrates standard body copy. It can be used to explain a topic, provide background information, or introduce related content in a neutral and readable way.
+    text: `Ein Headless CMS trennt die Inhalte von ihrer Ausgabe. Redaktion und Frontend arbeiten dadurch entkoppelt: Inhalte werden einmal strukturiert gepflegt und lassen sich in Website, App und Landingpage gleichermaßen ausliefern – statt Seite für Seite neu zu bauen.
 
-This paragraph highlights **information** and includes a text link for further reference. Additional details can be found by visiting **[this example link](#)** to explore related content or documentation.
+Der Unterschied zeigt sich im Redaktionsalltag. Statt fertiger Seiten entstehen **wiederverwendbare Module**, die sich frei kombinieren lassen. Wie das konkret aussieht, zeigen wir in unseren **[Case Studies](https://www.ruhmesmeile.com/case-studies)**.
 
-*This paragraph is intended to demonstrate italic text formatting.*`,
+*Kurz gesagt: Headless ist kein Werkzeugwechsel, sondern eine Entscheidung für Geschwindigkeit und Markenkonsistenz.*`,
   }),
 };

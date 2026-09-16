@@ -26,19 +26,28 @@ export const Default: Story = {
     },
   },
   args: pack({
-    label: "Registration Request",
+    label: "Anmeldung",
+    title: "Headless CMS Workshop",
     location: {
-      name: "Tech Conference Center",
-      address: `Alexanderplatz 1<br/>10178 Berlin`,
+      name: "ruhmesmeile GmbH",
+      address: `Mozartstraße 4-10<br/>53115 Bonn`,
     },
-    date: "18.09.2026",
+    date: "08.10.2026",
     time: "09:00 – 17:00",
-    confirmationCheckboxLabel: `I read and agree to the terms and conditions*`,
+    nameInput: {
+      label: "Name*",
+      placeholder: "Euer Name",
+    },
+    emailInput: {
+      label: "E-Mail*",
+      placeholder: "Eure E-Mail-Adresse",
+    },
+    confirmationCheckboxLabel: `Ich habe die Teilnahmebedingungen gelesen und stimme ihnen zu*`,
+    mandatoryText: "_* Pflichtfeld_",
     cta: {
-      label: "Send Request",
+      label: "Anmeldung senden",
       url: "#",
-      ariaLabel:
-        "Register for the event on 18th September 2026 from 09:00 to 17:00",
+      ariaLabel: "Für den Headless CMS Workshop am 8. Oktober 2026 anmelden",
     },
   }),
 };

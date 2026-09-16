@@ -27,11 +27,11 @@ const ColorDemo = () => (
     >
       <TeaserCard
         imageRatio="landscape"
-        headline="Empower Your Business"
-        text="Leverage our expertise in creating scalable and robust applications using modern technologies."
-        url={""}
+        headline="Design Systeme & Composable Frontends"
+        text="Egal, wie viele Marken oder Produkte ihr habt – unser Design ist skalierbar. Wir entwickeln Design Systeme, die mit eurem Unternehmen wachsen."
+        url={"https://www.ruhmesmeile.com/case-studies"}
         button={{
-          label: "Get Started",
+          label: "Case Studies ansehen",
           chevron: true,
         }}
       />
@@ -44,12 +44,12 @@ const ColorDemo = () => (
           {
             cta: {
               icon: "arrow-right",
-              label: "Learn more",
-              url: "#",
+              label: "Beratung starten",
+              url: "https://www.ruhmesmeile.com/kontakt",
             },
             icon: "home",
-            text: "Our design system allows for a scalable architecture, enabling you to build applications that can grow with your needs.",
-            title: "Scalable Architecture",
+            text: "Wir lösen starre Alt-Systeme ab und überführen eure Inhalte automatisiert in markenkonforme, wiederverwendbare Frontend-Module.",
+            title: "Skalierbare Architektur",
           },
         ]}
         layout="smallTiles"
@@ -59,47 +59,47 @@ const ColorDemo = () => (
         stat={[
           {
             icon: "person",
-            number: "150",
-            title: "Users",
+            number: "20",
+            title: "Jahre Erfahrung",
             description:
-              "Active users on the platform taking advantage of the design system.",
+              "Wir bauen seit über zwei Jahrzehnten Frontends, Design Systeme und CMS-Architekturen.",
           },
         ]}
       />
       <BlogAside
         author={{
-          byline: "CEO at Company",
+          byline: "CTO & Founder",
 
           links: [
             {
-              ariaLabel: "Link to Isabella Doe's social media profile",
+              ariaLabel: "Kontakt zu Jonas Ulrich",
               icon: "twitter",
-              label: "jane_smith",
+              label: "+49 228 30412660",
               newTab: false,
-              url: "tel:+4922868896620",
+              url: "tel:+4922830412660",
             },
             {
-              ariaLabel: "Link to Isabella Doe's social media profile",
+              ariaLabel: "Kontakt zu Jonas Ulrich",
               icon: "email",
-              label: "jane.smith@example.com",
+              label: "mail@ruhmesmeile.com",
               newTab: false,
-              url: "mailto:mail@example.com",
+              url: "mailto:mail@ruhmesmeile.com",
             },
           ],
-          name: "Jane Smith",
+          name: "Jonas Ulrich",
         }}
-        date="12/30/2022"
-        readingTime="5 min read"
+        date="08.10.2026"
+        readingTime="6 Min. Lesezeit"
         socialSharing={[
           {
             icon: "twitter",
-            title: "Share on Twitter",
-            url: "https://twitter.com/share?text=Check%20this%20out!&url=https://example.com",
+            title: "Auf X teilen",
+            url: "https://twitter.com/share?text=ruhmesmeile&url=https://www.ruhmesmeile.com/insights",
           },
           {
             icon: "linkedin",
-            title: "Share on LinkedIn",
-            url: "https://twitter.com/share?text=Check%20this%20out!&url=https://example.com",
+            title: "Auf LinkedIn teilen",
+            url: "https://www.linkedin.com/shareArticle?mini=true&url=https://www.ruhmesmeile.com/insights",
           },
         ]}
       />
@@ -120,27 +120,32 @@ const ColorDemo = () => (
       >
         <EventFilter
           applyButton={{
-            label: "Filter Appointments",
+            label: "Termine filtern",
           }}
           categories={{
-            categoryCheckboxes: ["All", "Buyers", "Sellers", "Partners"],
-            title: "Categories",
+            categoryCheckboxes: [
+              "Alle",
+              "Headless CMS",
+              "Design System",
+              "Case Studies",
+            ],
+            title: "Kategorien",
             toggle: true,
           }}
           datePicker={{
             dateFromInput: {
-              label: "From",
-              placeholder: "Select a date",
+              label: "Von",
+              placeholder: "Datum wählen",
             },
             dateToInput: {
-              label: "To",
-              placeholder: "Select a date",
+              label: "Bis",
+              placeholder: "Datum wählen",
             },
-            title: "Find Appointment",
+            title: "Termin finden",
             toggle: true,
           }}
           resetButton={{
-            label: "Reset Filters",
+            label: "Filter zurücksetzen",
           }}
         />
       </div>
@@ -153,49 +158,48 @@ const ColorDemo = () => (
         }}
       >
         <EventLocation
-          address="Alexanderplatz 1<br />
-  10178 Berlin"
+          address="Mozartstraße 4-10<br />53115 Bonn"
           dates={[
             {
               ariaLabel:
-                "Register for the event on 18th September 2025 from 09:00 to 17:00",
-              date: "18.09.2025",
-              label: "Register",
+                "Termin am 8. Oktober 2026 von 16:00 bis 17:00 Uhr",
+              date: "08.10.2026",
+              label: "Termin sichern",
               newTab: true,
-              time: "09:00 – 17:00",
-              url: "#",
+              time: "16:00 – 17:00",
+              url: "https://www.ruhmesmeile.com/kontakt",
             },
             {
               ariaLabel:
-                "Register for the event on 18th September 2025 from 09:00 to 17:00",
-              date: "18.09.2025",
-              label: "Register",
+                "Termin am 8. Oktober 2026 von 16:00 bis 17:00 Uhr",
+              date: "08.10.2026",
+              label: "Termin sichern",
               newTab: true,
-              time: "09:00 – 17:00",
-              url: "#",
+              time: "16:00 – 17:00",
+              url: "https://www.ruhmesmeile.com/kontakt",
             },
           ]}
           displayMode="spacious"
           links={[
             {
-              label: "Open in Google Maps",
+              label: "Route berechnen",
               newTab: true,
-              url: "https://maps.google.com/?q=Berlin+Congress+Center",
+              url: "https://maps.google.com/?q=Mozartstra%C3%9Fe+4-10+Bonn",
             },
           ]}
-          locationName="Berlin Congress Center"
+          locationName="ruhmesmeile, Bonn"
         />
         <EventLatestTeaser
-          ariaLabel="Event teaser for "
+          ariaLabel="Termin: Live-Webinar Headless CMS"
           calendar={{
-            day: "30",
-            month: "Dec",
+            day: "8",
+            month: "Okt",
           }}
-          cta="Show event"
-          date="12/30/2025"
-          location="Berlin, Germany"
-          title="The Future of AI"
-          url="https://example.com"
+          cta="Zum Webinar"
+          date="08.10.2026"
+          location="Online"
+          title="Live-Webinar: Was sind Headless CMS?"
+          url="https://www.ruhmesmeile.com/insights"
         />
       </div>
       <div
@@ -209,96 +213,96 @@ const ColorDemo = () => (
           initiallyShown={3}
           links={[
             {
-              label: "Market Insights",
+              label: "Design System Services",
               url: "#",
             },
             {
-              label: "Industry Trends",
+              label: "Headless CMS Services",
               url: "#",
             },
             {
-              label: "Competitor Analysis",
+              label: "UX-Strategie & Beratung",
               url: "#",
             },
             {
-              label: "Customer Feedback",
+              label: "Für Energieunternehmen",
               url: "#",
             },
             {
-              label: "Sales Data",
+              label: "Für Industrieunternehmen",
               url: "#",
             },
             {
-              label: "Product Development",
+              label: "Case Studies",
+              url: "https://www.ruhmesmeile.com/case-studies",
+            },
+            {
+              label: "CMS Website-Accelerator",
               url: "#",
             },
             {
-              label: "Supply Chain Management",
+              label: "Whitelabel Frontends",
               url: "#",
             },
             {
-              label: "Financial Performance",
-              url: "#",
-            },
-            {
-              label: "Regulatory Compliance",
+              label: "Agentur & Beratung",
               url: "#",
             },
           ]}
-          topic="Industry Intelligence"
+          topic="Was wir bieten"
         />
         <BusinessCard
-          address="1234 Business Lane<br />Suite 567"
+          address="Mozartstraße 4-10<br />53115 Bonn"
           avatar={{
-            alt: "Emily Johnson",
+            alt: "Daniel Ley",
             src: "img/people/contact-person.png",
           }}
           buttons={[
             {
-              label: "Market Insights",
+              label: "Zur Terminbuchung",
               url: "#",
             },
           ]}
           contact={[
             {
               icon: "phone",
-              label: "+1 234 567 890",
-              url: "tel:+1234567890",
+              label: "+49 228 30412660",
+              url: "tel:+4922830412660",
             },
             {
               icon: "email",
-              label: "emily@example.com",
-              url: "mailto:emily@example.com",
+              label: "mail@ruhmesmeile.com",
+              url: "mailto:mail@ruhmesmeile.com",
             },
             {
               icon: "linkedin",
-              label: "Emily Johnson",
-              url: "#",
+              label: "ruhmesmeile",
+              url: "https://www.ruhmesmeile.com/ueber-uns",
             },
           ]}
           logo={{
-            alt: "Business Logo",
+            alt: "ruhmesmeile Logo",
             src: "logo.svg",
             url: "#",
           }}
-          topic="Industry Intelligence"
+          topic="Euer Ansprechpartner"
         />
       </div>
     </Section>
     <Section content={{ mode: "default" }} spaceBefore="small" width="wide">
       <EventListTeaser
-        category="Buyers"
-        ctaText="Show event"
-        date="30.12.2025"
+        category="Webinar"
+        ctaText="Zum Webinar"
+        date="08.10.2026"
         location={{
-          address: "Alexanderplatz 1<br />\n10178 Berlin",
-          name: "Tech Conference Center",
+          address: "Mozartstraße 4-10<br />53115 Bonn",
+          name: "ruhmesmeile, Bonn",
         }}
-        tags={["AI"]}
-        text="The Future of AI is here and now - Join us to explore the latest advancements in artificial intelligence."
-        time="10:00"
-        title="The Future of AI"
-        url="#"
+        tags={["Headless CMS"]}
+        text="In 45 Minuten zeigen wir, wie ein Headless CMS Redaktion und Frontend entkoppelt – und was das für euren Relaunch bedeutet."
+        time="16:00"
+        title="Live-Webinar: Was sind Headless CMS?"
+        url="https://www.ruhmesmeile.com/insights"
       />
       <div
         style={{
@@ -309,24 +313,24 @@ const ColorDemo = () => (
       >
         <SearchResult
           imageColSize="none"
-          initialMatch="Embracing a **sustainable** lifestyle."
+          initialMatch="Wie startet man mit **Headless CMS**?"
           matches={[
             {
               snippet:
-                "Learn how leading companies are integrating **sustainability**.",
-              title: "Embracing Sustainability",
-              url: "#",
+                "Wie dein Headless-Projekt durch einen Website Accelerator zu einem Erfolg wird.",
+              title: "Vereinfache den Switch zu Headless CMS",
+              url: "https://www.ruhmesmeile.com/insights",
             },
           ]}
           showLink
-          title="GreenTech Summit"
-          url="https://www.example.com/greentech-summit-2023"
+          title="Insights von ruhmesmeile"
+          url="https://www.ruhmesmeile.com/insights"
         />
         <Downloads
           download={[
             {
               format: "PDF",
-              name: "Product Brochure",
+              name: "CMS Website Accelerator – Leistungsüberblick",
               previewImage: "img/offset-image.png",
               size: "2.5 MB",
               url: "#",
@@ -336,16 +340,16 @@ const ColorDemo = () => (
         <Breadcrumb
           pages={[
             {
-              label: "Page 1",
-              url: "https://example.com/page1",
+              label: "Startseite",
+              url: "https://www.ruhmesmeile.com/",
             },
             {
-              label: "Page 2",
-              url: "https://example.com/page2",
+              label: "Über uns",
+              url: "https://www.ruhmesmeile.com/ueber-uns",
             },
             {
-              label: "Page 3",
-              url: "https://example.com/page3",
+              label: "Kontakt",
+              url: "https://www.ruhmesmeile.com/kontakt",
             },
           ]}
         />

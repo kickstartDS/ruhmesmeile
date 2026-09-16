@@ -11,6 +11,14 @@ const { args, argTypes } = getArgsShared(schema as JSONSchema7);
 export const headerProps = {
   ...unpack(args),
   logo: dsa.logo,
+  navItems: [
+    { label: "Services", url: "/services" },
+    { label: "Case Studies", url: "/case-studies" },
+    { label: "Insights", url: "/design-system-insights" },
+    { label: "Über uns", url: "/ueber-uns" },
+    { label: "Kontakt", url: "/ueber-uns/kontakt" },
+    { label: "Projektanfrage", url: "/ueber-uns/kontakt" },
+  ],
 };
 const meta: Meta = {
   title: "Layout/Header",

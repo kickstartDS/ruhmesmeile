@@ -25,5 +25,6 @@ type Story = StoryObj<typeof SearchForm>;
 export const Pagefind: Story = {
   args: {
     component: "dsa.search-form.pagefind",
+    moreButtonLabel: "Alle Ergebnisse anzeigen",
   },
 };

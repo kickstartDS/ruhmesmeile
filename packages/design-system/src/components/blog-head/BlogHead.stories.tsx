@@ -28,16 +28,19 @@ export const Default: Story = {
     },
   },
   args: pack({
-    date: "12/30/2022",
+    date: "26.02.2026",
     tags: [
       {
-        entry: "Technology",
+        entry: "Content Ops",
       },
       {
-        entry: "AI",
+        entry: "KI",
       },
     ],
-    headline: "The Future of AI",
-    image: "img/close-up-young-business-team-working.png",
+    headline:
+      "Dein CMS kann jetzt denken – Content Operations mit KI automatisieren",
+    image:
+      "https://a.storyblok.com/f/297364/856x540/507306688b/teaser-glossary-mcp.png",
+    alt: "Illustration: Content Operations mit KI automatisieren",
   }),
 };

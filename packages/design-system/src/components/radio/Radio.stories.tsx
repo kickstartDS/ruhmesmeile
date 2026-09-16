@@ -27,5 +27,7 @@ export const Default: Story = {
       height: 172,
     },
   },
-  args: pack({}),
+  args: pack({
+    label: "Design System Beratung",
+  }),
 };

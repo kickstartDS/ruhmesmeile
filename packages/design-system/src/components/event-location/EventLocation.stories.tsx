@@ -26,35 +26,35 @@ export const Default: Story = {
     },
   },
   args: pack({
-    locationName: "Berlin Congress Center",
-    address: `Alexanderplatz 1<br />
-  10178 Berlin`,
+    locationName: "ruhmesmeile GmbH",
+    address: `Mozartstraße 4-10<br />
+  53115 Bonn`,
     dates: [
       {
-        date: "18.09.2025",
+        date: "08.10.2026",
         time: "09:00 – 17:00",
-        label: "Register",
+        label: "Anmelden",
         url: "#",
         ariaLabel:
-          "Register for the event on 18th September 2025 from 09:00 to 17:00",
+          "Anmeldung für den Workshop am 8. Oktober 2026 von 09:00 bis 17:00 Uhr",
       },
       {
-        date: "18.09.2025",
-        time: "09:00 – 17:00",
-        label: "Register",
+        date: "26.11.2026",
+        time: "10:00 – 16:00",
+        label: "Anmelden",
         url: "#",
         ariaLabel:
-          "Register for the event on 18th September 2025 from 09:00 to 17:00",
+          "Anmeldung für den Workshop am 26. November 2026 von 10:00 bis 16:00 Uhr",
       },
     ],
     links: [
       {
-        url: "https://maps.google.com/?q=Berlin+Congress+Center",
-        label: "Open in Google Maps",
+        url: "https://maps.google.com/?q=Mozartstra%C3%9Fe+4-10+53115+Bonn",
+        label: "In Google Maps öffnen",
       },
       {
-        url: "https://maps.google.com/?q=Berlin+Congress+Center",
-        label: "Location Website",
+        url: "https://www.ruhmesmeile.com/",
+        label: "Website von ruhmesmeile",
       },
     ],
   }),

@@ -28,5 +28,7 @@ export const Default: Story = {
       height: 172,
     },
   },
-  args: pack({}),
+  args: pack({
+    label: "Ich stimme der Verarbeitung meiner Daten zu.",
+  }),
 };

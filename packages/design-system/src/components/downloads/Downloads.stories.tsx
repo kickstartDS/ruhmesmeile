@@ -30,27 +30,27 @@ export const TechnicalDetailsOnly: Story = {
   args: pack({
     download: [
       {
-        name: "Product Brochure",
+        name: "Whitepaper: Headless CMS vs. Monolith",
         format: "PDF",
-        size: "2.5 MB",
+        size: "2,4 MB",
         previewImage: "img/offset-image.png",
         url: "#",
       },
       {
-        name: "Company Brochure",
+        name: "Case Study: Design System der RUB",
         previewImage: "img/kickstartDS/CMS-Starter producthunt-slide-01.svg",
         format: "PDF",
-        size: "3.2 MB",
+        size: "3,2 MB",
         url: "#",
       },
       {
-        name: "User Guide",
+        name: "Checkliste: Anforderungen an ein neues CMS",
         format: "DOC",
         size: "20 KB",
         url: "#",
       },
       {
-        name: "Technical Specifications",
+        name: "Design-Token-Referenz",
         format: "TXT",
         size: "12 KB",
         url: "#",
@@ -69,25 +69,27 @@ export const DescriptionOnly: Story = {
   args: pack({
     download: [
       {
-        name: "Product Brochure",
+        name: "Whitepaper: Headless CMS vs. Monolith",
         description:
-          "Detailed product information and specifications. Recommended for all users.",
+          "Wann sich der Wechsel vom Monolithen lohnt – mit Entscheidungshilfe, Kostenrahmen und Checkliste für euer Team.",
         previewImage: "img/offset-image.png",
       },
       {
-        name: "Technical Specifications",
+        name: "Checkliste: Anforderungen an ein neues CMS",
         description:
-          "In-depth technical details and requirements. Recommended for technical users.",
+          "Die Fragen, die ihr vor der Ausschreibung klärt – gesammelt aus über 250 Projekten.",
         previewImage: "img/kickstartDS/CMS-Starter producthunt-slide-01.svg",
       },
       {
-        name: "User Guide",
-        description: "Comprehensive guide to using our product.",
+        name: "Präsentation: Design System Beratung",
+        description:
+          "Wie wir Design Systeme aufsetzen, einführen und dauerhaft in euren Teams verankern.",
         previewImage: "img/about/cta.png",
       },
       {
-        name: "Company Brochure",
-        description: "Overview of our company and services.",
+        name: "Referenzübersicht: Unsere Kunden",
+        description:
+          "Dachser, Telekom, maxcluster, wolfcraft, HPP Architekten und die RUB im Überblick.",
         previewImage: "img/view-modern-office.jpg",
       },
     ],
@@ -104,30 +106,32 @@ export const Complete: Story = {
   args: pack({
     download: [
       {
-        name: "Product Brochure",
+        name: "Whitepaper: Headless CMS vs. Monolith",
         format: "PDF",
-        size: "2.5 MB",
+        size: "2,4 MB",
         description:
-          "Detailed product information and specifications. Recommended for all users.",
+          "Wann sich der Wechsel vom Monolithen lohnt – mit Entscheidungshilfe, Kostenrahmen und Checkliste für euer Team.",
         previewImage: "img/offset-image.png",
       },
       {
-        name: "Company Brochure",
-        description: "Overview of our company and services.",
+        name: "Case Study: Design System der RUB",
+        description:
+          "Wie die Ruhr-Universität Bochum ihre Komponenten in Storybook dokumentiert und pflegt.",
         previewImage: "img/kickstartDS/CMS-Starter producthunt-slide-01.svg",
         format: "PDF",
-        size: "3.2 MB",
+        size: "3,2 MB",
       },
       {
-        name: "User Guide",
-        description: "Comprehensive guide to using our product.",
+        name: "Checkliste: Anforderungen an ein neues CMS",
+        description:
+          "Die Fragen, die ihr vor der Ausschreibung klärt – gesammelt aus über 250 Projekten.",
         format: "DOC",
         size: "20 KB",
       },
       {
-        name: "Technical Specifications",
+        name: "Design-Token-Referenz",
         description:
-          "In-depth technical details and requirements. Recommended for technical users.",
+          "Alle Tokens aus kickstartDS: Farben, Abstände, Typografie – als Nachschlagewerk für euer Team.",
         format: "TXT",
         size: "12 KB",
       },
@@ -145,26 +149,27 @@ export const Mixed: Story = {
   args: pack({
     download: [
       {
-        name: "Product Brochure",
+        name: "Whitepaper: Headless CMS vs. Monolith",
         format: "PDF",
-        size: "2.5 MB",
+        size: "2,4 MB",
         description:
-          "Detailed product information and specifications. Recommended for all users.",
+          "Wann sich der Wechsel vom Monolithen lohnt – mit Entscheidungshilfe, Kostenrahmen und Checkliste für euer Team.",
         previewImage: "img/offset-image.png",
       },
       {
-        name: "User Guide",
+        name: "Checkliste: Anforderungen an ein neues CMS",
         format: "PDF",
-        size: "1.2 MB",
+        size: "1,2 MB",
         previewImage: "img/about/cta.png",
       },
       {
-        name: "Company Brochure",
+        name: "Design-Token-Referenz",
         previewImage: "img/kickstartDS/CMS-Starter producthunt-slide-01.svg",
       },
       {
-        name: "Technical Specifications",
-        description: "In-depth technical details and requirements.",
+        name: "Referenzübersicht: Unsere Kunden",
+        description:
+          "Dachser, Telekom, maxcluster, wolfcraft, HPP Architekten und die RUB im Überblick.",
       },
     ],
   }),

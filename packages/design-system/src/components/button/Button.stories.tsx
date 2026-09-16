@@ -28,7 +28,7 @@ export const PrimaryButton: Story = {
     },
   },
   args: pack({
-    label: "Primary Button",
+    label: "Beratung starten",
     variant: "primary",
   }),
 };
@@ -41,7 +41,7 @@ export const SecondaryButton: Story = {
     },
   },
   args: pack({
-    label: "Secondary Button",
+    label: "Über uns",
     variant: "secondary",
   }),
 };
@@ -54,7 +54,7 @@ export const TertiaryButton: Story = {
     },
   },
   args: pack({
-    label: "Tertiary Button",
+    label: "Was sind Headless CMS?",
     variant: "tertiary",
   }),
 };
@@ -67,7 +67,7 @@ export const PrimaryDisabledButton: Story = {
     },
   },
   args: pack({
-    label: "Disabled Button",
+    label: "Projektanfrage",
     variant: "primary",
     disabled: true,
   }),

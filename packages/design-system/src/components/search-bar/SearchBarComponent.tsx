@@ -17,8 +17,8 @@ export const SearchBarContextDefault = forwardRef<
   (
     {
       placeholder,
-      hint = "Press <kbd>Enter</kbd> to search",
-      alternativeText = "Did you mean",
+      hint = "Mit <kbd>Enter</kbd> startest du die Suche",
+      alternativeText = "Meintest du",
       alternativeResult,
     },
     ref
@@ -28,11 +28,11 @@ export const SearchBarContextDefault = forwardRef<
         <TextField
           hideLabel
           type="search"
-          placeholder={placeholder || "Search..."}
+          placeholder={placeholder || "Wonach suchst du?"}
           className="dsa-search-bar__input"
           autoComplete="off"
           name="q"
-          label={"Search"}
+          label={"Suche"}
         />
         <Icon icon={"search"} />
       </div>

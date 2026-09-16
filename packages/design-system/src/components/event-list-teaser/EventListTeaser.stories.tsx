@@ -28,20 +28,21 @@ export const Default: Story = {
     },
   },
   args: pack({
-    text: "This paragraph represents generic body text. It can be used to describe products, services, or relevant information.The Future of AI is here and now - Join us to explore the latest advancements in artificial intelligence.",
-    date: "30.12.2025",
+    text: "Zwei Tage Workshop in Bonn: Wir modellieren mit euch die Inhalte, bauen die Komponenten und zeigen, wie Redaktion und Entwicklung zusammenspielen. Bringt euren Case mit – wir arbeiten direkt daran.",
+    date: "08.10.2026",
+    time: "09:00 – 17:00",
     location: {
-      name: "Tech Conference Center",
-      address: `Alexanderplatz 1<br />
-10178 Berlin`,
+      name: "ruhmesmeile, Bonn",
+      address: `Mozartstraße 4-10<br />
+53115 Bonn`,
     },
-    title: "Title of an Event",
-    category: "Category",
+    title: "Headless CMS Workshop",
+    category: "Workshop",
     image: {
-      src: "img/placeholder/avatar-square.svg",
-      alt: "A placeholder Image",
+      src: "https://a.storyblok.com/f/297364/1080x810/70a6e8e1ab/teaser_uni-design-system.png",
+      alt: "Komponenten und Design Tokens im Storybook während des Workshops",
     },
     url: "#",
-    ctaText: "Go to event",
+    ctaText: "Zur Anmeldung",
   }),
 };

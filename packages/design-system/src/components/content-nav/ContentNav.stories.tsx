@@ -27,20 +27,47 @@ export const Default: Story = {
   },
   args: pack({
     image: {
-      src: "img/placeholder/avatar-wide.svg",
-      alt: "A placeholder Image",
+      src: "https://a.storyblok.com/f/297364/330x330/e426dfbd49/hp-deko-illu-systems.svg",
+      alt: "Illustration: Systeme und Module von ruhmesmeile",
     },
-    topic: "Descriptive Topic",
+    topic: "Unser Angebot",
     links: [
-      { label: "Market Insights", url: "#" },
-      { label: "Industry Trends", url: "#" },
-      { label: "Competitor Analysis", url: "#" },
-      { label: "Customer Feedback", url: "#" },
-      { label: "Sales Data", url: "#" },
-      { label: "Product Development", url: "#" },
-      { label: "Supply Chain Management", url: "#" },
-      { label: "Financial Performance", url: "#" },
-      { label: "Regulatory Compliance", url: "#" },
+      {
+        label: "Headless CMS",
+        url: "https://www.ruhmesmeile.com/headless-cms/headless-cms-services",
+      },
+      {
+        label: "User Experience Design",
+        url: "https://www.ruhmesmeile.com/ux-strategie-beratung",
+      },
+      {
+        label: "Design Systeme",
+        url: "https://www.ruhmesmeile.com/design-system-services",
+      },
+      {
+        label: "Composable Frontends",
+        url: "https://www.ruhmesmeile.com/headless-cms/composable-frontends",
+      },
+      {
+        label: "CMS Website Accelerator",
+        url: "https://www.ruhmesmeile.com/headless-cms/cms-website-accelerator",
+      },
+      {
+        label: "Case Studies",
+        url: "https://www.ruhmesmeile.com/case-studies/",
+      },
+      {
+        label: "Insights",
+        url: "https://www.ruhmesmeile.com/design-system-insights/",
+      },
+      {
+        label: "Über uns",
+        url: "https://www.ruhmesmeile.com/ueber-uns/",
+      },
+      {
+        label: "Kontakt",
+        url: "https://www.ruhmesmeile.com/ueber-uns/kontakt",
+      },
     ],
     initiallyShown: 4,
   }),

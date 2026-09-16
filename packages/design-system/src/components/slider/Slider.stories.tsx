@@ -19,34 +19,34 @@ const meta: Meta = {
     <Slider {...args}>
       <TeaserCard
         layout="row"
-        headline="Explore This Topic"
-        text="This teaser introduces a topic or piece of content and provides a short summary to encourage further exploration."
-        image="img/placeholder/avatar-wide.svg"
-        url="#"
+        headline="CMS Website Accelerator"
+        text="Wir unterstützen euch bei der Erprobung neuer Web-Technologien zur Ablösung von starren Alt-Systemen – skalierbar und investitionssicher."
+        image="https://a.storyblok.com/f/297364/1099x731/28a441c2ee/rm_lp-industry-electronics.png"
+        url="/headless-cms/cms-website-accelerator"
         button={{
-          label: "Go to Page",
+          label: "Mehr erfahren",
           hidden: true,
         }}
       />
       <TeaserCard
         layout="row"
-        headline="Explore This Topic"
-        text="This teaser introduces a topic or piece of content and provides a short summary to encourage further exploration."
-        image="img/placeholder/avatar-wide.svg"
-        url="#"
+        headline="Design System Beratung"
+        text="Wir beraten euch bei Prozessen, Tools und Software für moderne Frontend-Architekturen – von der Strategie bis zur Implementierung."
+        image="https://a.storyblok.com/f/297364/1080x810/70a6e8e1ab/teaser_uni-design-system.png"
+        url="/design-system-services/vorteile-eines-design-systems"
         button={{
-          label: "Go to Page",
+          label: "Mehr erfahren",
           hidden: true,
         }}
       />
       <TeaserCard
         layout="row"
-        headline="Explore This Topic"
-        text="This teaser introduces a topic or piece of content and provides a short summary to encourage further exploration."
-        image="img/placeholder/avatar-wide.svg"
-        url="#"
+        headline="Composable Frontends"
+        text="Unsere UI-Komponentenbibliothek liefert wiederverwendbare, modulare Bausteine für schnelle, flexible und anpassbare UIs."
+        image="https://a.storyblok.com/f/297364/330x330/e426dfbd49/hp-deko-illu-systems.svg"
+        url="/headless-cms/composable-frontends"
         button={{
-          label: "Go to Page",
+          label: "Mehr erfahren",
           hidden: true,
         }}
       />

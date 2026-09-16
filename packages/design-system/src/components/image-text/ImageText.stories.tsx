@@ -28,14 +28,14 @@ export const BesideRightLayout: Story = {
     },
   },
   args: pack({
-    text: `This is a simple text paragraph that demonstrates standard body copy. It can be used to explain a topic, provide background information, or introduce related content in a neutral and readable way.
+    text: `Headless CMS und Design Systeme sind kein Selbstzweck. Sie sorgen dafür, dass eure Inhalte schneller live gehen und überall gleich aussehen.
 
-This paragraph highlights **information** and includes a text link for further reference. Additional details can be found by visiting **[this example link](#)** to explore related content or documentation.
+Wie das konkret aussieht, zeigen wir in unseren **Case Studies**: von der **Universität** über die [Deutsche Telekom](#) bis zu DACHSER und REWE – inklusive der Zahlen zu Time-to-Market und Brand-Konsistenz.
 
-*This paragraph is intended to demonstrate italic text formatting.*`,
+*Wir arbeiten dabei mit festen Ansprechpartnern statt mit großen Agentur-Teams: Boutique-Ansatz statt Overhead.*`,
     image: {
-      src: "img/placeholder/image-gallery-02.svg",
-      alt: "Placeholder Image",
+      src: "https://a.storyblok.com/f/297364/1080x810/6a4ce7621a/dachser_teaser_4zu3.png/m/1080x810",
+      alt: "Dachser Design System – Projektvisual",
     },
     layout: "beside-right",
   }),
@@ -49,14 +49,14 @@ export const AboveLayout: Story = {
     },
   },
   args: pack({
-    text: `This is a simple text paragraph that demonstrates standard body copy. It can be used to explain a topic, provide background information, or introduce related content in a neutral and readable way.
+    text: `Headless CMS und Design Systeme sind kein Selbstzweck. Sie sorgen dafür, dass eure Inhalte schneller live gehen und überall gleich aussehen.
 
-This paragraph highlights **information** and includes a text link for further reference. Additional details can be found by visiting **[this example link](#)** to explore related content or documentation.
+Wie das konkret aussieht, zeigen wir in unseren **Case Studies**: von der **Universität** über die [Deutsche Telekom](#) bis zu DACHSER und REWE – inklusive der Zahlen zu Time-to-Market und Brand-Konsistenz.
 
-*This paragraph is intended to demonstrate italic text formatting.*`,
+*Wir arbeiten dabei mit festen Ansprechpartnern statt mit großen Agentur-Teams: Boutique-Ansatz statt Overhead.*`,
     image: {
-      src: "img/placeholder/image-gallery-02.svg",
-      alt: "Placeholder Image",
+      src: "https://a.storyblok.com/f/297364/1080x810/90f97374e7/projekte_teaser_ngo.png/m/1080x810",
+      alt: "Landing-Page-Baukasten für eine NGO – Projektvisual",
     },
     layout: "above",
   }),

@@ -14,49 +14,79 @@ export const footerProps = {
     srcInverted: "/logo-inverted.svg",
     inverted: false,
     homepageHref: "#",
-    alt: "Systemics Logo",
-    width: 176,
-    height: 40,
+    alt: "ruhmesmeile",
+    // The site's wordmark is 271x39; the previous values were derived from the
+    // upstream 121x24 asset and would render ours squashed.
+    width: 271,
+    height: 39,
   },
   navGroups: [
     {
-      heading: "Product",
+      heading: "Was wir bieten",
       items: [
-        { label: "Features", url: "#" },
-        { label: "Pricing", url: "#" },
-        { label: "Integrations", url: "#" },
-        { label: "Changelog", url: "#" },
+        {
+          label: "Design System Services",
+          url: "https://www.ruhmesmeile.com/design-system-services",
+        },
+        {
+          label: "Headless CMS Services",
+          url: "https://www.ruhmesmeile.com/headless-cms/headless-cms-services",
+        },
+        {
+          label: "UX-Strategie & Beratung",
+          url: "https://www.ruhmesmeile.com/ux-strategie-beratung",
+        },
+        {
+          label: "Für Industrieunternehmen",
+          url: "https://www.ruhmesmeile.com/marketing/cms-accelerator-industriekunden",
+        },
       ],
     },
     {
-      heading: "Company",
+      heading: "Was wir machen",
       items: [
-        { label: "About", url: "#" },
-        { label: "Careers", url: "#" },
-        { label: "Blog", url: "#" },
-        { label: "Contact", url: "#" },
+        {
+          label: "Case Studies",
+          url: "https://www.ruhmesmeile.com/case-studies",
+        },
+        {
+          label: "CMS Website-Accelerator",
+          url: "https://www.ruhmesmeile.com/headless-cms/cms-website-accelerator",
+        },
+        {
+          label: "Whitelabel Frontends",
+          url: "https://www.ruhmesmeile.com/headless-cms/composable-frontends",
+        },
+        {
+          label: "Insights",
+          url: "https://www.ruhmesmeile.com/design-system-insights",
+        },
       ],
     },
     {
-      heading: "Resources",
+      heading: "Kontakt & Rechtliches",
       items: [
-        { label: "Documentation", url: "#" },
-        { label: "Support", url: "#" },
-        { label: "Community", url: "#" },
-        { label: "Status", url: "https://example.com", newTab: true },
+        {
+          label: "Datenschutz",
+          url: "https://www.ruhmesmeile.com/datenschutz",
+        },
+        { label: "Glossar", url: "https://www.ruhmesmeile.com/glossar" },
+        { label: "mail@ruhmesmeile.com", url: "mailto:mail@ruhmesmeile.com" },
+        { label: "+49 228 30412660", url: "tel:+4922830412660" },
       ],
     },
   ],
   socialLinks: [
-    { icon: "facebook", url: "https://example.com", ariaLabel: "Facebook" },
-    { icon: "twitter", url: "https://example.com", ariaLabel: "Twitter" },
-    { icon: "linkedin", url: "https://example.com", ariaLabel: "LinkedIn" },
-    { icon: "xing", url: "https://example.com", ariaLabel: "Xing" },
+    {
+      icon: "linkedin",
+      url: "https://www.linkedin.com/company/ruhmesmeile/",
+      ariaLabel: "ruhmesmeile auf LinkedIn",
+    },
   ],
-  copyright: "© 2026 Systemics Inc. All rights reserved.",
+  copyright: "© 2026 ruhmesmeile GmbH · Mozartstraße 4-10 · 53115 Bonn",
   legalLink: {
-    label: "Legal",
-    url: "#",
+    label: "Impressum",
+    url: "https://www.ruhmesmeile.com/impressum",
   },
 };
 

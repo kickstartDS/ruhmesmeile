@@ -41,35 +41,35 @@ export const TextWithContact: Story = {
     main: (
       <>
         <Cta
-          headline="Discover our solutions for Industry 4.0"
-          text={`We help companies make their production processes more efficient and future-proof through digitalization, automation, and smart technologies. Rely on our many years of experience in the industrial sector.
+          headline="Buche einen CMS & Headless Check mit Daniel"
+          text={`In 30 Minuten klären wir, ob Headless CMS, Design System oder ein Website Accelerator der richtige Weg für euch ist – und was das für euren Relaunch bedeutet.
 
-Revolutionize your manufacturing with our tailored solutions designed to meet the specific needs of your industry.`}
-          buttons={[{ label: "Learn more" }]}
+Ihr bekommt eine ehrliche Einschätzung zu Aufwand, Technologie und Reihenfolge. Ohne Verkaufsdruck.`}
+          buttons={[{ label: "Zur Terminbuchung" }]}
         />
       </>
     ),
     aside: (
       <>
         <Contact
-          title={"Isabella Doe"}
-          subtitle={"Creative Director"}
+          title={"Daniel Ley"}
+          subtitle={"Geschäftsführer"}
           image={{
-            src: "img/people/contact-isabella.png",
+            src: "https://a.storyblok.com/f/297364/1000x667/dc09a74752/daniel-ley.png",
             aspectRatio: "wide",
           }}
           links={[
             {
-              icon: "twitter",
-              url: "#",
-              label: "@Isabella_Doe",
-              ariaLabel: "Isabella Doe on Twitter",
+              icon: "linkedin",
+              url: "https://www.linkedin.com/company/ruhmesmeile/",
+              label: "ruhmesmeile",
+              ariaLabel: "ruhmesmeile auf LinkedIn",
             },
             {
-              url: "mailto:mail@example.com",
-              icon: "linkedin",
-              label: "Isabella.Doe",
-              ariaLabel: "Isabella Doe on LinkedIn",
+              url: "mailto:mail@ruhmesmeile.com",
+              icon: "email",
+              label: "mail@ruhmesmeile.com",
+              ariaLabel: "E-Mail an ruhmesmeile",
             },
           ]}
         />
@@ -96,15 +96,15 @@ export const TextWithTeaser: Story = {
     main: (
       <>
         <Headline
-          text={"Innovative solutions for Industry 4.0"}
+          text={"Dein CMS kann jetzt denken"}
           level={"h2"}
           spaceAfter="minimum"
         />
         <Text
           highlightText
-          text={`We help companies make their production processes more efficient and future-proof through digitalization, automation, and smart technologies. Rely on our many years of experience in the industrial sector.
+          text={`Designsysteme bringen Konsistenz und Effizienz, auch für Content. Mit maschinenlesbaren Komponenten erzeugt KI automatisch passgenaue Inhalte, ganz ohne Training oder Prompt-Bastelei.
 
-Revolutionize your manufacturing with our tailored solutions designed to meet the specific needs of your industry.`}
+Möglich macht das MCP: der Standard, der KI direkt mit deinem CMS verbindet.`}
         />
       </>
     ),
@@ -114,13 +114,13 @@ Revolutionize your manufacturing with our tailored solutions designed to meet th
         button={{
           chevron: false,
           hidden: false,
-          label: "Read more",
+          label: "Artikel lesen",
         }}
         imageRatio="landscape"
-        headline="Transforming Industry"
-        text="with Smart Solutions"
-        image="img/logos/castaway.svg"
-        url="#"
+        headline="Content Operations mit KI automatisieren"
+        text="Wie MCP KI direkt mit deinem CMS verbindet."
+        image="https://a.storyblok.com/f/297364/856x540/507306688b/teaser-glossary-mcp.png"
+        url="/design-system-insights/dein-cms-kann-jetzt-denken"
       />
     ),
   }),
@@ -153,11 +153,11 @@ export const TextWithTeaserTiles: Story = {
     aside: (
       <>
         <ImageText
-          text={`This paragraph highlights **information** and includes a text link for further reference. Additional details can be found by visiting **[this example link](#)** to explore related content or documentation.
+          text={`Dieser Absatz hebt **Informationen** hervor und enthält einen Textlink für weiterführende Inhalte. Mehr Details findet ihr im **[Insight zu Designsystemen](/design-system-insights/die-zeit-ist-reif-fuer-designsysteme)**.
 
-*This paragraph is intended to demonstrate italic text formatting.*"`}
+*Dieser Absatz demonstriert kursive Auszeichnung.*`}
           image={{
-            src: "img/placeholder/avatar-wide.svg",
+            src: "https://a.storyblok.com/f/297364/1300x600/750e6b7a9f/rm_hero_cms-starter_2.png",
             alt: "",
           }}
           layout={"above"}
@@ -167,44 +167,44 @@ export const TextWithTeaserTiles: Story = {
     main: (
       <>
         <TeaserCard
-          url={""}
-          headline="Lorem Ipsum"
-          image="img/placeholder/avatar-wide.svg"
+          url={"/design-system-insights/dein-cms-kann-jetzt-denken"}
+          headline="Dein CMS kann jetzt denken – Content Operations mit KI automatisieren"
+          image="https://a.storyblok.com/f/297364/856x540/507306688b/teaser-glossary-mcp.png"
           imageRatio="square"
           layout="compact"
         />
         <TeaserCard
-          url={""}
-          headline="Dolor Sit Amet"
-          image="img/placeholder/avatar-wide.svg"
+          url={"/design-system-insights/websites-muessen-ab-jetzt-neu-gedacht-werden"}
+          headline="Das Ende des Monokanals – das Web bekommt zwei Gesichter"
+          image="https://a.storyblok.com/f/297364/1536x1024/6c383d5ded/mcp-readiness.png"
           imageRatio="square"
           layout="compact"
         />
         <TeaserCard
-          url={""}
-          headline="Consectetur Adipiscing"
-          image="img/placeholder/avatar-wide.svg"
+          url={"/design-system-insights/moderne-unternehmenswebsite-schnell-markenkonform"}
+          headline="Schneller zur modernen Unternehmenswebsite – markenkonform und wartungsarm"
+          image="https://a.storyblok.com/f/297364/2030x1100/552cb82cce/rm-corporate-ui-cover.png"
           imageRatio="square"
           layout="compact"
         />
         <TeaserCard
-          url={""}
-          headline="Eiusmod Tempor"
-          image="img/placeholder/avatar-wide.svg"
+          url={"/design-system-insights/vereinfache-den-switch-zu-headless-cms"}
+          headline="Vereinfache den Switch zu Headless CMS"
+          image="https://a.storyblok.com/f/297364/1300x721/d211c2a5cf/rm_insight-headless.png"
           imageRatio="square"
           layout="compact"
         />
         <TeaserCard
-          url={""}
-          headline="Incididunt Ut Labore"
-          image="img/placeholder/avatar-wide.svg"
+          url={"/design-system-insights/design-systeme-das-fehlende-puzzle-teil-in-mach-architekturen"}
+          headline="Warum ein Designsystem das fehlende Stück in der MACH-Architektur ist"
+          image="https://a.storyblok.com/f/297364/960x540/fd30519e08/blog-post_mach-alliance.png"
           imageRatio="square"
           layout="compact"
         />
         <TeaserCard
-          url={""}
-          headline="Et Dolore Magna"
-          image="img/placeholder/avatar-wide.svg"
+          url={"/design-system-insights/die-zeit-ist-reif-fuer-designsysteme"}
+          headline="Die Zeit ist reif für Designsysteme"
+          image="https://a.storyblok.com/f/297364/1080x810/70a6e8e1ab/teaser_uni-design-system.png"
           imageRatio="square"
           layout="compact"
         />

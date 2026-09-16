@@ -36,27 +36,27 @@ const ShadowDemo = () => (
             buttons={[
               {
                 icon: "",
-                label: "Learn more",
-                url: "#",
+                label: "Beratung starten",
+                url: "https://www.ruhmesmeile.com/kontakt",
               },
               {
                 icon: "",
-                label: "All our Services",
-                url: "#",
+                label: "Über uns",
+                url: "https://www.ruhmesmeile.com/ueber-uns",
               },
             ]}
-            headline="Main message headline"
+            headline="Spezialisierte Beratung für modulare Web-Frontends und Headless CMS"
             height="small"
             image={{
               indent: "none",
-              src: "https://picsum.photos/seed/kdsvisual/640/270",
+              src: "https://a.storyblok.com/f/297364/1440x600/d10fe4b63c/rm_hero_homepage-dunkler3.jpg",
               srcDesktop: "img/placeholder/image-gallery-02.svg",
               srcMobile: "img/placeholder/image-gallery-02.svg",
               srcTablet: "img/placeholder/image-gallery-02.svg",
             }}
             mobileTextBelow={false}
             skipButton
-            text="Use this area to add a short description. It provides additional context and helps structure content within the component."
+            text="Wir entwickeln und launchen zukunftssichere Webseiten und Design Systeme, die sich an euer Business anpassen – nicht umgekehrt."
             textPosition="left"
             textbox
           />
@@ -66,14 +66,14 @@ const ShadowDemo = () => (
             button={{
               chevron: false,
               hidden: true,
-              label: "Learn more",
+              label: "Case Studies ansehen",
             }}
-            headline="Explore This Topic"
-            image="img/placeholder/avatar-wide.svg"
+            headline="Design Systeme & Composable Frontends"
+            image="https://a.storyblok.com/f/297364/1080x810/70a6e8e1ab/teaser_uni-design-system.png"
             imageRatio="wide"
             layout="stack"
-            text="This teaser introduces a topic or piece of content and provides a short summary to encourage further exploration."
-            url="#"
+            text="Egal, wie viele Marken oder Produkte ihr habt – unser Design ist skalierbar. Wir entwickeln Design Systeme, die mit eurem Unternehmen wachsen."
+            url="https://www.ruhmesmeile.com/case-studies"
           />
         }
       />
@@ -89,18 +89,18 @@ const ShadowDemo = () => (
       spaceBefore="none"
     >
       <EventListTeaser
-        category="Buyers"
-        ctaText="Show event"
-        date="30.12.2025"
+        category="Webinar"
+        ctaText="Zum Webinar"
+        date="08.10.2026"
         location={{
-          address: "Alexanderplatz 1<br />\n10178 Berlin",
-          name: "Tech Conference Center",
+          address: "Mozartstraße 4-10<br />\n53115 Bonn",
+          name: "ruhmesmeile, Bonn",
         }}
-        tags={["AI"]}
-        text="The Future of AI is here and now - Join us to explore the latest advancements in artificial intelligence."
-        time="10:00"
-        title="The Future of AI"
-        url="#"
+        tags={["Headless CMS"]}
+        text="In 45 Minuten zeigen wir, wie ein Headless CMS Redaktion und Frontend entkoppelt – und was das für euren Relaunch bedeutet."
+        time="16:00"
+        title="Live-Webinar: Was sind Headless CMS?"
+        url="https://www.ruhmesmeile.com/insights"
       />
       <div
         style={{
@@ -110,40 +110,40 @@ const ShadowDemo = () => (
         }}
       >
         <EventLocation
-          address="Alexanderplatz 1<br />
-  10178 Berlin"
+          address="Mozartstraße 4-10<br />
+  53115 Bonn"
           dates={[
             {
               ariaLabel:
-                "Register for the event on 18th September 2025 from 09:00 to 17:00",
-              date: "18.09.2025",
-              label: "Register",
+                "Termin am 8. Oktober 2026 von 16:00 bis 17:00 Uhr",
+              date: "08.10.2026",
+              label: "Termin sichern",
               newTab: true,
-              time: "09:00 – 17:00",
-              url: "#",
+              time: "16:00 – 17:00",
+              url: "https://www.ruhmesmeile.com/kontakt",
             },
           ]}
           displayMode="spacious"
           links={[
             {
-              label: "Open in Google Maps",
+              label: "Route berechnen",
               newTab: true,
-              url: "https://maps.google.com/?q=Berlin+Congress+Center",
+              url: "https://maps.google.com/?q=Mozartstra%C3%9Fe+4-10+Bonn",
             },
           ]}
-          locationName="Berlin Congress Center"
+          locationName="ruhmesmeile, Bonn"
         />
         <EventLatestTeaser
-          ariaLabel="Event teaser for "
+          ariaLabel="Termin: Live-Webinar Headless CMS"
           calendar={{
-            day: "30",
-            month: "Dec",
+            day: "8",
+            month: "Okt",
           }}
-          cta="Show event"
-          date="12/30/2025"
-          location="Berlin, Germany"
-          title="The Future of AI"
-          url="https://example.com"
+          cta="Zum Webinar"
+          date="08.10.2026"
+          location="Online"
+          title="Live-Webinar: Was sind Headless CMS?"
+          url="https://www.ruhmesmeile.com/insights"
         />
       </div>
       <div
@@ -155,51 +155,51 @@ const ShadowDemo = () => (
       >
         <SelectField
           icon="chevron-down"
-          label="Est dolore a debitis"
+          label="Womit können wir starten?"
           options={[
             {
-              label: "Option 1",
+              label: "CMS Website Accelerator",
             },
             {
-              label: "Option 2",
+              label: "Design System Beratung",
             },
             {
-              label: "Option 3",
+              label: "Composable Frontends",
             },
           ]}
         />
-        <TextField label="Your name" />
+        <TextField label="Euer Name" />
         <CheckboxGroup
-          label={"Lorem Ipsum"}
+          label={"Interessiert an"}
           options={[
             {
               //@ts-expect-error
               checked: true,
-              label: "Lorem Ipsum",
+              label: "Headless CMS",
             },
             {
-              label: "Ipsum Dolor",
+              label: "Design System",
             },
             {
-              label: "Dolor Sit Amet",
+              label: "Composable Frontends",
               disabled: true,
             },
           ]}
         />
-        <TextArea label="Your message" />
+        <TextArea label="Euer Vorhaben" />
         <RadioGroup
-          label={"Lorem Ipsum"}
+          label={"Wie groß ist euer Projekt?"}
           options={[
             {
-              label: "Lorem Ipsum",
+              label: "Website-Relaunch",
             },
             {
               //@ts-expect-error
               checked: true,
-              label: "Ipsum Dolor",
+              label: "Design System aufbauen",
             },
             {
-              label: "Dolor Sit Amet",
+              label: "Nur eine Beratung",
               disabled: true,
             },
           ]}
@@ -212,9 +212,9 @@ const ShadowDemo = () => (
           gap: "var(--ks-spacing-stack-m)",
         }}
       >
-        <Button icon="arrow-right" variant="primary" label={"Learn more"} />
-        <Button icon="date" variant="secondary" label={"Book appointment"} />
-        <Button icon="upload" variant="tertiary" label={"Upload File"} />
+        <Button icon="arrow-right" variant="primary" label={"Beratung starten"} />
+        <Button icon="date" variant="secondary" label={"Zur Terminbuchung"} />
+        <Button icon="upload" variant="tertiary" label={"Projektanfrage"} />
         <NavDropdown
           style={{
             position: "relative",
@@ -224,23 +224,23 @@ const ShadowDemo = () => (
           }}
           items={[
             {
-              label: "Consulting",
+              label: "Design System Services",
               url: "#",
             },
             {
-              label: "Implementation",
+              label: "Headless CMS Services",
               url: "#",
             },
             {
-              label: "Support",
+              label: "UX-Strategie & Beratung",
               url: "#",
             },
             {
-              label: "Training",
+              label: "Für Energieunternehmen",
               url: "#",
             },
             {
-              label: "Custom Solutions",
+              label: "Für Industrieunternehmen",
               url: "#",
             },
           ]}
@@ -252,71 +252,71 @@ const ShadowDemo = () => (
       <CookieConsent
         notice={{
           displayMode: "card",
-          title: "We use cookies",
+          title: "Wir verwenden Cookies",
           acceptButton: {
-            label: "Accept All",
+            label: "Alle akzeptieren",
           },
           rejectButton: {
-            label: "Reject All",
+            label: "Alle ablehnen",
           },
           customizeButton: {
-            label: "Customize",
+            label: "Einstellungen",
             variant: "tertiary",
           },
           decisionButtonVariant: "primary",
           description:
-            "We use cookies to enhance your experience on our website. You can choose which cookies to accept.",
+            "Wir nutzen Cookies, um unsere Website für euch besser zu machen. Ihr entscheidet, was ihr zulasst.",
         }}
         revisitButton={{
-          label: "Manage Cookies",
+          label: "Cookies verwalten",
         }}
         dialog={{
-          title: "Cookie Preferences",
-          description: "Manage your cookie preferences below.",
+          title: "Cookie-Einstellungen",
+          description: "Hier legt ihr fest, welche Cookies wir setzen dürfen.",
           required: [
             {
               key: "necessary",
-              name: "Essential Cookies",
+              name: "Notwendig",
               description:
-                "These cookies are necessary for the website to function.",
+                "Diese Cookies braucht die Website, damit sie überhaupt funktioniert.",
             },
           ],
           buttons: {
-            acceptLabel: "Accept All",
-            rejectLabel: "Reject All",
-            savePreferencesLabel: "Save Preferences",
+            acceptLabel: "Alle akzeptieren",
+            rejectLabel: "Alle ablehnen",
+            savePreferencesLabel: "Einstellungen speichern",
           },
           options: [
             {
               key: "measurement",
-              name: "Analytics Cookies",
+              name: "Statistik",
               description:
-                "These cookies help us understand how our visitors interact with the website.",
+                "Diese Cookies zeigen uns, wie Besucher:innen unsere Website nutzen.",
             },
             {
               key: "marketing",
-              name: "Marketing Cookies",
+              name: "Marketing",
               description:
-                "These cookies are used to deliver advertisements that are relevant to you.",
+                "Diese Cookies nutzen wir für relevante Werbung.",
             },
             {
               key: "functionality",
-              name: "Functional Cookies",
+              name: "Funktionen",
               description:
-                "These cookies allow the website to remember choices you make and provide enhanced, more personal features.",
+                "Diese Cookies merken sich eure Einstellungen.",
             },
             {
               key: "experience",
-              name: "Performance Cookies",
+              name: "Performance",
               description:
-                "These cookies collect information about how visitors use the website, such as which pages are visited most often and if they get error messages from web pages.",
+                "Diese Cookies messen Ladezeiten und Fehler.",
             },
           ],
           toggleLabels: {
-            accept: "Accept",
-            reject: "Reject",
+            accept: "Zulassen",
+            reject: "Ablehnen",
           },
-          alwaysActiveLabel: "Always Active",
+          alwaysActiveLabel: "Immer aktiv",
         }}
       />
     </Section>

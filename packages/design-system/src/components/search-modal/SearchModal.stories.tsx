@@ -23,7 +23,7 @@ const meta: Meta<typeof SearchModal> = {
       <>
         <Button
           size="small"
-          label="Open"
+          label="Suche öffnen"
           ks-component="dsa.radio-emit"
           data-topic="dsa.search-modal.open"
         />
@@ -40,8 +40,11 @@ type Story = StoryObj<typeof SearchModal>;
 
 export const Pagefind: Story = {
   args: pack({
+    headline: "Suche",
+    closeAriaLabel: "Schließen",
     form: {
       component: "dsa.search-form.pagefind",
+      moreButtonLabel: "Alle Ergebnisse anzeigen",
       action: "iframe.html?id=corporate-search-form--pagefind&viewMode=story",
       target: "_self",
     },

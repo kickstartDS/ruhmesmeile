@@ -26,15 +26,35 @@ export const Default: Story = {
     },
   },
   args: pack({
+    datePicker: {
+      title: "Termine eingrenzen",
+      dateFromInput: {
+        label: "Von",
+        placeholder: "Datum wählen",
+      },
+      dateToInput: {
+        label: "Bis",
+        placeholder: "Datum wählen",
+      },
+      toggle: true,
+    },
     categories: {
+      title: "Formate",
       categoryCheckboxes: [
-        "All",
-        "Buyers",
-        "Sellers",
-        "Renters",
-        "Landlords",
-        "Tenants",
+        "Alle",
+        "Workshop",
+        "Webinar",
+        "Sprechstunde",
+        "Vortrag",
+        "Meetup",
       ],
+      toggle: true,
+    },
+    applyButton: {
+      label: "Filter anwenden",
+    },
+    resetButton: {
+      label: "Filter zurücksetzen",
     },
   }),
 };

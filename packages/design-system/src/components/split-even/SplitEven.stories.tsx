@@ -42,11 +42,11 @@ export const TextWithLogos: Story = {
       <>
         <Cta
           highlightText
-          headline="Discover our solutions for Industry 4.0"
-          text={`We help companies make their production processes more efficient and future-proof through digitalization, automation, and smart technologies. Rely on our many years of experience in the industrial sector.
+          headline="Marken, die auf modulare Frontends setzen"
+          text={`Wir beraten, gestalten und entwickeln Headless CMS Websites und Design Systeme – für Energie- und Industrieunternehmen genauso wie für Universitäten und den Mittelstand.
 
-Revolutionize your manufacturing with our tailored solutions designed to meet the specific needs of your industry.`}
-          buttons={[{ label: "Learn more" }]}
+Statt starrer Alt-Systeme bekommt ihr wiederverwendbare Komponenten, die eure Teams selbst zusammensetzen – markenkonform und wartungsarm.`}
+          buttons={[{ label: "Case Studies ansehen" }]}
         />
       </>
     ),
@@ -56,28 +56,28 @@ Revolutionize your manufacturing with our tailored solutions designed to meet th
           logosPerRow={3}
           logo={[
             {
-              src: "img/logos/logoipsum-344.svg",
-              alt: "Logo 1",
+              src: "https://a.storyblok.com/f/297364/1100x380/9ef50ca58f/dachser.svg",
+              alt: "Dachser Intelligent Logistics",
             },
             {
-              src: "img/logos/logoipsum-347.svg",
-              alt: "Logo 2",
+              src: "https://a.storyblok.com/f/297364/1100x380/6d81aafe99/postbank.svg",
+              alt: "Postbank",
             },
             {
-              src: "img/logos/logoipsum-352.svg",
-              alt: "Logo 3",
+              src: "https://a.storyblok.com/f/297364/200x70/de377c4c40/logo-telekom.svg",
+              alt: "Deutsche Telekom AG",
             },
             {
-              src: "img/logos/logoipsum-356.svg",
-              alt: "Logo 4",
+              src: "https://a.storyblok.com/f/297364/1100x380/db1caceacf/rewe.svg",
+              alt: "REWE",
             },
             {
-              src: "img/logos/logoipsum-358.svg",
-              alt: "Logo 5",
+              src: "https://a.storyblok.com/f/297364/1100x380/6ebf09d690/wolfcraft.svg",
+              alt: "Wolfcraft",
             },
             {
-              src: "img/logos/logoipsum-369.svg",
-              alt: "Logo 6",
+              src: "https://a.storyblok.com/f/297364/200x60/640dee0e0f/logo_maxcluster.svg",
+              alt: "maxcluster",
             },
           ]}
         />
@@ -101,25 +101,24 @@ export const FAQWithForm: Story = {
     verticalGutter: "large",
     firstComponents: (
       <>
-        <Headline text={"Frequently Asked Questions"} level={"h2"} />
+        <Headline text={"Häufige Fragen"} level={"h2"} />
         <Faq
           questions={[
             {
               answer:
-                "Experience the speed & scalability unlike anything seen before with our Headless CMS powered websites, web apps & composable architecture.",
-              question:
-                "What are the benefits of investing in a Design System?",
+                "Ein Design System ist die Sammlung wiederverwendbarer Komponenten, Design-Tokens und Regeln, mit der eure Teams konsistente Oberflächen bauen – unabhängig davon, wer gerade entwickelt.",
+              question: "Was ist ein Design System?",
             },
             {
               answer:
-                "Experience the speed & scalability unlike anything seen before with our Headless CMS powered websites, web apps & composable architecture.",
-              question: "What is a Design System?",
+                "Konsistenz, Geschwindigkeit und Wartbarkeit: Änderungen passieren einmal zentral und wirken überall. Eine Universität setzt ihre Projekte seitdem 40% schneller um als vorher.",
+              question: "Was bringt euch ein Design System?",
             },
             {
               answer:
-                "A Headless CMS plays a crucial role in a Design System by providing a content-first approach. It separates the back-end content from the front-end presentation layer, allowing for seamless integration with any design system. This results in a flexible, scalable, and platform-agnostic system that ensures content consistency across all platforms and devices.",
+                "Ein Headless CMS trennt Inhalte von der Darstellung. Die Präsentationsschicht bleibt damit austauschbar, Inhalte bleiben über alle Kanäle konsistent – die Grundlage für modulare, markenkonforme Frontends.",
               question:
-                "What is the role of a Headless CMS in a Design System?",
+                "Welche Rolle spielt ein Headless CMS in einem Design System?",
             },
           ]}
         />
@@ -128,13 +127,13 @@ export const FAQWithForm: Story = {
     secondComponents: (
       <>
         <Headline
-          text="Still have questions?"
+          text="Noch Fragen?"
           level="h3"
           style="h3"
           spaceAfter="minimum"
         />
-        <TextArea label="Ask us directly!" />
-        <Button label={"Submit"} />
+        <TextArea label="Schreibt uns direkt!" />
+        <Button label={"Absenden"} />
       </>
     ),
   }),
@@ -166,10 +165,10 @@ export const MainTeaserWithGrid: Story = {
       <>
         <TeaserCard
           layout="compact"
-          url={""}
-          headline="Lorem Ipsum"
-          image="img/placeholder/avatar-wide.svg"
-          text="Lorem Ispum dolor sit amet, consectetur adipiscing elit."
+          url={"/case-studies/design-system-fuer-universitaet"}
+          headline="Design System für eine Universität"
+          image="https://a.storyblok.com/f/297364/1080x810/70a6e8e1ab/teaser_uni-design-system.png"
+          text="Projekte sind 40% schneller umgesetzt als vorher."
           imageRatio="landscape"
           button={{
             label: "Mehr erfahren",
@@ -182,39 +181,41 @@ export const MainTeaserWithGrid: Story = {
       <>
         <TeaserCard
           layout="compact"
-          url={""}
-          headline="Dolor Sit Amet"
-          image="img/placeholder/avatar-wide.svg"
+          url={"/headless-cms/cms-website-accelerator"}
+          headline="CMS Website Accelerator"
+          image="https://a.storyblok.com/f/297364/1099x731/28a441c2ee/rm_lp-industry-electronics.png"
         />
         <TeaserCard
           layout="compact"
-          url={""}
-          headline="Consectetur Adipiscing"
-          image="img/placeholder/avatar-wide.svg"
+          url={"/design-system-services/vorteile-eines-design-systems"}
+          headline="Design System Beratung"
+          image="https://a.storyblok.com/f/297364/2030x1100/552cb82cce/rm-corporate-ui-cover.png"
         />
         <TeaserCard
           layout="compact"
-          url={""}
-          headline="Eiusmod Tempor"
-          image="img/placeholder/avatar-wide.svg"
+          url={"/headless-cms/composable-frontends"}
+          headline="Composable Frontends"
+          image="https://a.storyblok.com/f/297364/330x330/e426dfbd49/hp-deko-illu-systems.svg"
         />
         <TeaserCard
           layout="compact"
-          url={""}
-          headline="Incididunt Ut Labore"
-          image="img/placeholder/avatar-wide.svg"
+          url={"/case-studies/ngo-landing-page-builder"}
+          headline="Landing Page Accelerator für NGO"
+          image="https://a.storyblok.com/f/297364/1080x810/90f97374e7/projekte_teaser_ngo.png"
         />
         <TeaserCard
           layout="compact"
-          url={""}
-          headline="Et Dolore Magna"
-          image="img/placeholder/avatar-wide.svg"
+          url={
+            "/case-studies/deutsche-telekom-exklusivpartner-web-baukasten"
+          }
+          headline="Telekom Exklusivpartner Webbaukasten"
+          image="https://a.storyblok.com/f/297364/1080x810/e5b08059cf/projekte_teaser_telekom.png"
         />
         <TeaserCard
           layout="compact"
-          url={""}
-          headline="Ut Enim Ad Minim"
-          image="img/placeholder/avatar-wide.svg"
+          url={"/case-studies/dachser-design-system"}
+          headline="Dachser Design System"
+          image="https://a.storyblok.com/f/297364/1080x810/6a4ce7621a/dachser_teaser_4zu3.png"
         />
       </>
     ),

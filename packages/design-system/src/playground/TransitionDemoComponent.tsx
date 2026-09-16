@@ -32,25 +32,25 @@ const TransitionDemo = () => (
       <TeaserCard
         button={{
           chevron: true,
-          label: "Learn more",
+          label: "Beratung starten",
         }}
-        image="img/placeholder/avatar-wide.svg"
+        image="https://a.storyblok.com/f/297364/1099x731/28a441c2ee/rm_lp-industry-electronics.png"
         imageRatio="landscape"
-        text="Use this area to add a short description. It provides additional context and helps structure content within the component."
-        headline="Teaser card headline"
-        url="#"
+        text="Wir lösen starre Alt-Systeme ab und überführen eure Inhalte automatisiert in markenkonforme, wiederverwendbare Frontend-Module – live in Wochen statt Monaten."
+        headline="CMS Website Accelerator"
+        url="https://www.ruhmesmeile.com/kontakt"
       />
       <TeaserCard
         button={{
           chevron: true,
-          label: "Learn more",
+          label: "Case Studies ansehen",
         }}
         layout="compact"
-        image="img/people-brainstorming-work-meeting.png"
+        image="https://a.storyblok.com/f/297364/1080x810/70a6e8e1ab/teaser_uni-design-system.png"
         imageRatio="landscape"
-        text="Use this area to add a short description. It provides additional context and helps structure content within the component."
-        headline="Teaser card headline"
-        url="#"
+        text="Egal, wie viele Marken oder Produkte ihr habt – unser Design ist skalierbar. Wir entwickeln Design Systeme, die mit eurem Unternehmen wachsen."
+        headline="Design Systeme & Composable Frontends"
+        url="https://www.ruhmesmeile.com/case-studies"
       />
       <div
         style={{
@@ -63,14 +63,14 @@ const TransitionDemo = () => (
           download={[
             {
               format: "PDF",
-              name: "Product Brochure",
+              name: "CMS Website Accelerator – Leistungsüberblick",
               previewImage: "img/offset-image.png",
               size: "2.5 MB",
               url: "#",
             },
             {
               format: "PDF",
-              name: "Company Brochure",
+              name: "Design System Services – Vorgehen",
               previewImage:
                 "img/kickstartDS/CMS-Starter producthunt-slide-01.svg",
               size: "3.2 MB",
@@ -78,13 +78,13 @@ const TransitionDemo = () => (
             },
             {
               format: "DOC",
-              name: "User Guide",
+              name: "Headless CMS – Checkliste für den Relaunch",
               size: "20 KB",
               url: "#",
             },
             {
               format: "PPT",
-              name: "Presentation",
+              name: "Composable Frontends – Architektur",
               size: "5 MB",
               url: "#",
             },
@@ -93,14 +93,14 @@ const TransitionDemo = () => (
         <Faq
           questions={[
             {
-              question: "Is this component mobile-friendly?",
+              question: "Was ist ein Headless CMS?",
               answer:
-                "Yes, this component is fully responsive and adapts to different screen sizes for optimal viewing on all devices.",
+                "Ein Headless CMS trennt Redaktion und Frontend: Inhalte liegen in einer API, das Frontend holt sie sich von dort. So pflegt ihr Inhalte einmal und spielt sie auf Website, Landingpage und App aus.",
             },
             {
-              question: "What is this component used for?",
+              question: "Wie lange dauert ein Relaunch mit dem Accelerator?",
               answer:
-                "A FAQ component is used to display frequently asked questions and their answers in a structured format.",
+                "Der CMS Website Accelerator liefert eure Website in 48 Stunden produktiv aus. Individuelle Module und weitere Marken bauen wir danach in Wochen statt Monaten ein.",
             },
           ]}
         />
@@ -122,55 +122,55 @@ const TransitionDemo = () => (
         }}
         main={
           <BlogTeaser
-            alt="Image of a business team working"
+            alt="Daniel Ley von ruhmesmeile"
             author={{
-              image: "img/people/author-emily.png",
-              name: "Jane Smith",
-              title: "Senior AI Researcher",
+              image:
+                "https://a.storyblok.com/f/297364/1000x667/dc09a74752/daniel-ley.png",
+              name: "Daniel Ley",
+              title: "Geschäftsführer",
             }}
-            date="12/30/2022"
-            headline="The Future of AI"
-            image="img/close-up-young-business-team-working.png"
+            date="08.10.2026"
+            headline="Vereinfache den Switch zu Headless CMS"
+            image="https://a.storyblok.com/f/297364/1000x667/dc09a74752/daniel-ley.png"
             link={{
-              text: "Read article",
-              url: "https://example.com",
+              text: "Alle Insights",
+              url: "https://www.ruhmesmeile.com/insights",
             }}
-            readingTime="5 min read"
+            readingTime="6 Min. Lesezeit"
             tags={[
               {
-                entry: "Technology",
+                entry: "Headless CMS",
               },
               {
-                entry: "AI",
+                entry: "Relaunch",
               },
             ]}
-            teaserText="Dive into the future of AI in this detailed blog post. Discover how technology is rapidly evolving, the impact of AI on various industries, and what to expect in the coming years. Learn about the latest advancements, challenges, and the potential solutions that AI brings to the table."
+            teaserText="Wie euer Headless-Projekt durch einen Website Accelerator zum Erfolg wird: Wir lösen starre Alt-Systeme ab, entkoppeln Redaktion und Frontend und überführen eure Inhalte in modulare, markenkonforme Bausteine."
           />
         }
         aside={
           <EventLocation
-            address="Alexanderplatz 1<br />
-  10178 Berlin"
+            address="Mozartstraße 4-10<br />53115 Bonn"
             dates={[
               {
                 ariaLabel:
-                  "Register for the event on 18th September 2025 from 09:00 to 17:00",
-                date: "18.09.2025",
-                label: "Register",
+                  "Termin am 8. Oktober 2026 von 16:00 bis 17:00 Uhr",
+                date: "08.10.2026",
+                label: "Termin sichern",
                 newTab: true,
-                time: "09:00 – 17:00",
+                time: "16:00 – 17:00",
                 url: "#",
               },
             ]}
             displayMode="spacious"
             links={[
               {
-                label: "Open in Google Maps",
+                label: "Route berechnen",
                 newTab: true,
-                url: "https://maps.google.com/?q=Berlin+Congress+Center",
+                url: "https://maps.google.com/?q=Mozartstra%C3%9Fe+4-10+Bonn",
               },
             ]}
-            locationName="Berlin Congress Center"
+            locationName="ruhmesmeile, Bonn"
           />
         }
       />
@@ -186,18 +186,18 @@ const TransitionDemo = () => (
       spaceBefore="none"
     >
       <EventListTeaser
-        category="Buyers"
-        ctaText="Show event"
-        date="30.12.2025"
+        category="Webinar"
+        ctaText="Zum Webinar"
+        date="08.10.2026"
         location={{
-          address: "Alexanderplatz 1<br />\n10178 Berlin",
-          name: "Tech Conference Center",
+          address: "Mozartstraße 4-10<br />\n53115 Bonn",
+          name: "ruhmesmeile, Bonn",
         }}
-        tags={["AI"]}
-        text="The Future of AI is here and now - Join us to explore the latest advancements in artificial intelligence."
-        time="10:00"
-        title="The Future of AI"
-        url="#"
+        tags={["Headless CMS"]}
+        text="In 45 Minuten zeigen wir, wie ein Headless CMS Redaktion und Frontend entkoppelt – und was das für euren Relaunch bedeutet."
+        time="16:00"
+        title="Live-Webinar: Was sind Headless CMS?"
+        url="https://www.ruhmesmeile.com/insights"
       />
       <div
         style={{
@@ -210,52 +210,52 @@ const TransitionDemo = () => (
           initiallyShown={4}
           links={[
             {
-              label: "Market Insights",
+              label: "Design System Services",
               url: "#",
             },
             {
-              label: "Industry Trends",
+              label: "Headless CMS Services",
               url: "#",
             },
             {
-              label: "Competitor Analysis",
+              label: "UX-Strategie & Beratung",
               url: "#",
             },
             {
-              label: "Customer Feedback",
+              label: "Für Energieunternehmen",
               url: "#",
             },
             {
-              label: "Sales Data",
+              label: "Für Industrieunternehmen",
               url: "#",
             },
             {
-              label: "Product Development",
+              label: "Case Studies",
               url: "#",
             },
             {
-              label: "Supply Chain Management",
+              label: "CMS Website-Accelerator",
               url: "#",
             },
             {
-              label: "Financial Performance",
+              label: "Whitelabel Frontends",
               url: "#",
             },
           ]}
-          topic="Descriptive Topic"
+          topic="Was wir bieten"
         />
 
         <EventLatestTeaser
-          ariaLabel="Event teaser for "
+          ariaLabel="Termin: Live-Webinar Headless CMS"
           calendar={{
-            day: "30",
-            month: "Dec",
+            day: "8",
+            month: "Okt",
           }}
-          cta="Show event"
-          date="12/30/2025"
-          location="Berlin, Germany"
-          title="The Future of AI"
-          url="https://example.com"
+          cta="Zum Webinar"
+          date="08.10.2026"
+          location="Online"
+          title="Live-Webinar: Was sind Headless CMS?"
+          url="https://www.ruhmesmeile.com/insights"
         />
       </div>
       <div
@@ -267,53 +267,53 @@ const TransitionDemo = () => (
       >
         <SelectField
           icon="chevron-down"
-          label="Est dolore a debitis"
+          label="Womit können wir starten?"
           options={[
             {
-              label: "Option 1",
+              label: "CMS Website Accelerator",
             },
             {
-              label: "Option 2",
+              label: "Design System Beratung",
             },
             {
-              label: "Option 3",
+              label: "Composable Frontends",
             },
           ]}
         />
-        <TextField label="Your name" />
+        <TextField label="Euer Name" />
         <CheckboxGroup
           name="Checkboxes"
-          label={"Lorem Ipsum"}
+          label={"Interessiert an"}
           options={[
             {
               //@ts-expect-error
               checked: true,
-              label: "Lorem Ipsum",
+              label: "Headless CMS",
             },
             {
-              label: "Ipsum Dolor",
+              label: "Design System",
             },
             {
-              label: "Dolor Sit Amet",
+              label: "Composable Frontends",
               disabled: true,
             },
           ]}
         />
-        <TextArea label="Your message" />
+        <TextArea label="Euer Vorhaben" />
         <RadioGroup
           name="Radio Buttons"
-          label={"Lorem Ipsum"}
+          label={"Wie groß ist euer Projekt?"}
           options={[
             {
-              label: "Lorem Ipsum",
+              label: "Website-Relaunch",
             },
             {
               //@ts-expect-error
               checked: true,
-              label: "Ipsum Dolor",
+              label: "Design System aufbauen",
             },
             {
-              label: "Dolor Sit Amet",
+              label: "Nur eine Beratung",
               disabled: true,
             },
           ]}
@@ -326,9 +326,9 @@ const TransitionDemo = () => (
           gap: "var(--ks-spacing-stack-m)",
         }}
       >
-        <Button icon="arrow-right" variant="primary" label={"Learn more"} />
-        <Button icon="date" variant="secondary" label={"Book appointment"} />
-        <Button icon="upload" variant="tertiary" label={"Upload File"} />
+        <Button icon="arrow-right" variant="primary" label={"Beratung starten"} />
+        <Button icon="date" variant="secondary" label={"Zur Terminbuchung"} />
+        <Button icon="upload" variant="tertiary" label={"Projektanfrage"} />
         <NavDropdown
           style={{
             position: "relative",
@@ -338,27 +338,27 @@ const TransitionDemo = () => (
           }}
           items={[
             {
-              label: "Consulting",
+              label: "Design System Services",
               url: "#",
             },
             {
-              label: "Implementation",
+              label: "Headless CMS Services",
               url: "#",
             },
             {
-              label: "Support",
+              label: "UX-Strategie & Beratung",
               url: "#",
             },
             {
-              label: "Training",
+              label: "Für Energieunternehmen",
               url: "#",
             },
             {
-              label: "Custom Solutions",
+              label: "Für Industrieunternehmen",
               url: "#",
             },
             {
-              label: "Integration Services",
+              label: "Case Studies",
               url: "#",
             },
           ]}
@@ -370,71 +370,71 @@ const TransitionDemo = () => (
       <CookieConsent
         notice={{
           displayMode: "card",
-          title: "We use cookies",
+          title: "Wir verwenden Cookies",
           acceptButton: {
-            label: "Accept All",
+            label: "Alle akzeptieren",
           },
           rejectButton: {
-            label: "Reject All",
+            label: "Alle ablehnen",
           },
           customizeButton: {
-            label: "Customize",
+            label: "Einstellungen",
             variant: "tertiary",
           },
           decisionButtonVariant: "primary",
           description:
-            "We use cookies to enhance your experience on our website. You can choose which cookies to accept.",
+            "Wir nutzen Cookies, um unsere Website für euch besser zu machen. Ihr entscheidet, was ihr zulasst.",
         }}
         revisitButton={{
-          label: "Manage Cookies",
+          label: "Cookies verwalten",
         }}
         dialog={{
-          title: "Cookie Preferences",
-          description: "Manage your cookie preferences below.",
+          title: "Cookie-Einstellungen",
+          description: "Hier legt ihr fest, welche Cookies wir setzen dürfen.",
           required: [
             {
               key: "necessary",
-              name: "Essential Cookies",
+              name: "Notwendig",
               description:
-                "These cookies are necessary for the website to function.",
+                "Diese Cookies braucht die Website, damit sie überhaupt funktioniert.",
             },
           ],
           buttons: {
-            acceptLabel: "Accept All",
-            rejectLabel: "Reject All",
-            savePreferencesLabel: "Save Preferences",
+            acceptLabel: "Alle akzeptieren",
+            rejectLabel: "Alle ablehnen",
+            savePreferencesLabel: "Einstellungen speichern",
           },
           options: [
             {
               key: "measurement",
-              name: "Analytics Cookies",
+              name: "Statistik",
               description:
-                "These cookies help us understand how our visitors interact with the website.",
+                "Diese Cookies zeigen uns, wie Besucher:innen unsere Website nutzen.",
             },
             {
               key: "marketing",
-              name: "Marketing Cookies",
+              name: "Marketing",
               description:
-                "These cookies are used to deliver advertisements that are relevant to you.",
+                "Diese Cookies nutzen wir für relevante Werbung.",
             },
             {
               key: "functionality",
-              name: "Functional Cookies",
+              name: "Funktionen",
               description:
-                "These cookies allow the website to remember choices you make and provide enhanced, more personal features.",
+                "Diese Cookies merken sich eure Einstellungen.",
             },
             {
               key: "experience",
-              name: "Performance Cookies",
+              name: "Performance",
               description:
-                "These cookies collect information about how visitors use the website, such as which pages are visited most often and if they get error messages from web pages.",
+                "Diese Cookies messen Ladezeiten und Fehler.",
             },
           ],
           toggleLabels: {
-            accept: "Accept",
-            reject: "Reject",
+            accept: "Zulassen",
+            reject: "Ablehnen",
           },
-          alwaysActiveLabel: "Always Active",
+          alwaysActiveLabel: "Immer aktiv",
         }}
       />
     </Section>

@@ -25,5 +25,21 @@ export const Default: Story = {
       height: 304,
     },
   },
-  args: pack({}),
+  args: pack({
+    title: "Nach Kategorie filtern",
+    categories: [
+      {
+        title: "Insights",
+        amount: "9",
+      },
+      {
+        title: "Case Studies",
+        amount: "10",
+      },
+      {
+        title: "Leistungen",
+        amount: "4",
+      },
+    ],
+  }),
 };

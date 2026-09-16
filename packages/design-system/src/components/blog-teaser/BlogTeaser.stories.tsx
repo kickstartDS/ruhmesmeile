@@ -28,22 +28,32 @@ export const Default: Story = {
     },
   },
   args: pack({
-    date: "12/30/2022",
+    date: "26.02.2026",
     tags: [
       {
-        entry: "Technology",
+        entry: "Content Ops",
       },
       {
-        entry: "AI",
+        entry: "KI",
       },
     ],
-    headline: "The Future of AI",
+    headline:
+      "Dein CMS kann jetzt denken – Content Operations mit KI automatisieren",
     teaserText:
-      "Dive into the future of AI in this detailed blog post. Discover how technology is rapidly evolving, the impact of AI on various industries, and what to expect in the coming years. Learn about the latest advancements, challenges, and the potential solutions that AI brings to the table.",
+      "Kennst du das? 50 Landingpages für die nächste Messe, ein neuer Blogpost pro Woche, jede Seite manuell zusammengeklickt. Wir zeigen euch, wie ihr die Content-Produktion mit dem Design System als API-Vertrag für die KI automatisiert: strukturierte Inhalte direkt aus dem Schema, generiert über den Storyblok MCP Server – und vor dem Speichern gegen das Design System validiert.",
+    image:
+      "https://a.storyblok.com/f/297364/856x540/507306688b/teaser-glossary-mcp.png",
+    alt: "Illustration: Content Operations mit KI automatisieren",
+    link: {
+      url: "https://www.ruhmesmeile.com/design-system-insights/dein-cms-kann-jetzt-denken",
+      text: "Artikel lesen",
+    },
+    readingTime: "5 Min. Lesezeit",
     author: {
-      name: "Jane Smith",
-      title: "Senior AI Researcher",
-      image: "img/people/author-emily.png",
+      name: "Jonas Ulrich",
+      title: "Autor",
+      image:
+        "https://a.storyblok.com/f/297364/1210x1040/e45abcc23a/jonas-ulrich-anschnitt2.png",
     },
   }),
 };

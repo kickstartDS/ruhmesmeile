@@ -47,58 +47,71 @@ export const Card: Story = {
   args: pack({
     notice: {
       displayMode: "card",
-      title: "We use cookies",
+      title: "Wir nutzen Cookies",
       description:
-        "We use cookies to enhance your experience on our website. You can choose which cookies to accept.",
+        "Wir nutzen Cookies, um euch die beste Erfahrung auf unserer Website zu bieten. Ihr entscheidet, welche Kategorien wir setzen dürfen.",
       acceptButton: {
-        label: "Accept All",
+        label: "Alle akzeptieren",
       },
       rejectButton: {
-        label: "Reject All",
+        label: "Alle ablehnen",
       },
       decisionButtonVariant: "primary",
       customizeButton: {
-        label: "Customize",
+        label: "Einstellungen anpassen",
         variant: "tertiary",
       },
     },
     dialog: {
-      title: "Cookie Preferences",
-      description: "Manage your cookie preferences below.",
+      title: "Cookie-Einstellungen",
+      description: "Verwaltet hier, welche Cookies wir setzen dürfen.",
+      buttons: {
+        acceptLabel: "Alle akzeptieren",
+        rejectLabel: "Alle ablehnen",
+        savePreferencesLabel: "Auswahl speichern",
+      },
+      toggleLabels: {
+        accept: "Zulassen",
+        reject: "Ablehnen",
+      },
+      alwaysActiveLabel: "Immer aktiv",
       required: [
         {
           key: "necessary",
-          name: "Essential Cookies",
+          name: "Notwendige Cookies",
           description:
-            "These cookies are necessary for the website to function.",
+            "Diese Cookies sind für den Betrieb der Website erforderlich und lassen sich nicht abwählen.",
         },
       ],
       options: [
         {
           key: "measurement",
-          name: "Analytics Cookies",
+          name: "Statistik-Cookies",
           description:
-            "These cookies help us understand how our visitors interact with the website.",
+            "Diese Cookies helfen uns zu verstehen, wie Besucher:innen unsere Website nutzen.",
         },
         {
           key: "marketing",
-          name: "Marketing Cookies",
+          name: "Marketing-Cookies",
           description:
-            "These cookies are used to deliver advertisements that are relevant to you.",
+            "Diese Cookies nutzen wir, um euch passende Inhalte und Kampagnen auszuspielen.",
         },
         {
           key: "functionality",
-          name: "Functional Cookies",
+          name: "Funktionale Cookies",
           description:
-            "These cookies allow the website to remember choices you make and provide enhanced, more personal features.",
+            "Diese Cookies merken sich eure Einstellungen und sorgen für mehr Komfort auf der Website.",
         },
         {
           key: "experience",
-          name: "Performance Cookies",
+          name: "Performance-Cookies",
           description:
-            "These cookies collect information about how visitors use the website, such as which pages are visited most often and if they get error messages from web pages.",
+            "Diese Cookies zeigen uns, welche Seiten häufig aufgerufen werden und wo es noch hakt.",
         },
       ],
+    },
+    revisitButton: {
+      label: "Cookie-Einstellungen",
     },
   }),
 };
@@ -113,50 +126,63 @@ export const Banner: Story = {
   args: pack({
     notice: {
       displayMode: "banner",
-      title: "Your Privacy Matters to Us",
+      title: "Eure Privatsphäre ist uns wichtig",
       description:
-        "We use cookies and similar technologies to personalize content, provide social media features, and analyze our traffic. You can choose which categories you want to allow and change your preferences at any time. For more information, please see our privacy policy.",
+        "Wir nutzen Cookies und ähnliche Technologien, um Inhalte zu personalisieren, Funktionen für soziale Netzwerke anzubieten und unseren Traffic auszuwerten. Ihr entscheidet, welche Kategorien wir setzen dürfen, und ändert eure Auswahl jederzeit. Mehr dazu in unserer Datenschutzerklärung.",
       decisionButtonVariant: "tertiary",
       acceptButton: {
-        label: "Accept All Cookies",
+        label: "Alle akzeptieren",
       },
       customizeButton: {
-        label: "Customize Settings",
+        label: "Einstellungen anpassen",
         variant: "secondary",
       },
       rejectButton: {
-        label: "Reject Non-Essential",
+        label: "Nicht notwendige ablehnen",
       },
     },
     dialog: {
-      title: "Manage Your Cookie Preferences",
+      title: "Cookie-Einstellungen verwalten",
       description:
-        "Here you can enable or disable different types of cookies. Essential cookies are always active as they are necessary for the website to function properly. You can change your preferences at any time. Please note that disabling certain cookies may affect your experience on our website.",
+        "Hier könnt ihr die einzelnen Kategorien aktivieren oder deaktivieren. Notwendige Cookies bleiben immer aktiv, damit die Website funktioniert. Eure Auswahl könnt ihr jederzeit ändern – einige Cookies sorgen für ein besseres Erlebnis auf unserer Website.",
+      buttons: {
+        acceptLabel: "Alle akzeptieren",
+        rejectLabel: "Alle ablehnen",
+        savePreferencesLabel: "Auswahl speichern",
+      },
+      toggleLabels: {
+        accept: "Zulassen",
+        reject: "Ablehnen",
+      },
+      alwaysActiveLabel: "Immer aktiv",
       required: [
         {
-          name: "Essential Cookies",
+          name: "Notwendige Cookies",
           description:
-            "These cookies are required for basic website functionality, such as page navigation and access to secure areas of the website. The website cannot function properly without these cookies.",
+            "Diese Cookies braucht die Website für den grundlegenden Betrieb: Seitennavigation, Formulare und sichere Bereiche. Ohne sie läuft nichts.",
         },
       ],
       decisionButtonVariant: "tertiary",
       options: [
         {
-          name: "Statistics Cookies",
+          name: "Statistik-Cookies",
           description:
-            "These cookies help us to understand how visitors interact with our website by collecting and reporting information anonymously.",
+            "Diese Cookies helfen uns zu verstehen, wie Besucher:innen mit unserer Website interagieren – zusammengefasst und anonym.",
         },
         {
-          name: "Personalization Cookies",
+          name: "Personalisierungs-Cookies",
           description:
-            "These cookies allow the website to remember choices you make, such as your language or region, to provide a more personalized experience.",
+            "Diese Cookies merken sich eure Auswahl, etwa Sprache oder Region, und machen die Website persönlicher.",
         },
         {
-          name: "Advertising Cookies",
+          name: "Werbe-Cookies",
           description:
-            "Advertising cookies are used to deliver relevant ads and marketing campaigns to you. They track visitors across websites and collect information to provide customized ads.",
+            "Werbe-Cookies nutzen wir, um euch relevante Kampagnen auszuspielen. Sie verfolgen Besucher:innen über Websites hinweg und sammeln Informationen für passende Anzeigen.",
         },
       ],
+    },
+    revisitButton: {
+      label: "Cookie-Einstellungen",
     },
   }),
 };
@@ -202,7 +228,7 @@ export const C15t: Story = {
       <>
         <Button
           size="small"
-          label="reset"
+          label="Zurücksetzen"
           onClick={() => {
             const state = c15cStore.getState();
             state.resetConsents();

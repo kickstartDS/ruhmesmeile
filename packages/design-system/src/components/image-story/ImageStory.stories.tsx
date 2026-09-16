@@ -28,34 +28,35 @@ export const StickyImageNextToScrollingText: Story = {
     },
   },
   args: pack({
-    headline: "Key headline for this section",
-    sub: "Brief supporting description",
+    headline: "Telekom Exklusivpartner Webbaukasten",
+    sub: "Ein Web-Baukasten für über 400 Vertriebspartner",
     text: `
-This section is intended to provide additional context and supporting information, while the accompanying image keeps sticky beside on larger screens.
+Für die Deutsche Telekom entwickelten wir einen Webbaukasten, mit dem exklusive Vertriebspartner ihre eigenen Webseiten erstellen – ohne Agentur, ohne Design-Kenntnisse und ohne Abstriche bei der Marke.
 
-### Clear Structure
-This section provides space for structured content that can be used to explain topics in more detail. Headings help break down information into manageable parts and guide readers through the content in a clear and logical way.
+### Ausgangslage
+Über 400 Partner brauchten eigene Auftritte für ihre Region. Eine zentrale Vorlage für alle war zu starr, individuelle Projekte zu teuer und zu langsam – und jede Abweichung ein Risiko für die Marke.
 
-### Flexible Usage
-The text area can be used in different contexts and on various pages. Content can be short or extended, depending on the communication goal and the needs of the audience.
+### Unser Ansatz
+Wir haben die Marke in ein Design System übersetzt: wiederverwendbare Module, klare Regeln und ein Redaktionssystem, in dem die Partner ihre Inhalte selbst pflegen. Komponenten führen die Redaktion, statt sie in Freigabeschleifen zu schicken.
 
-### Easy to Maintain
-All content can be updated or replaced without affecting other parts of the page. This makes it easier to keep information current and ensures long-term usability.
+### Umsetzung
+Auf Basis des CMS Website Accelerators entstand ein modularer Baukasten aus Headless CMS und Composable Frontend. Die Inhalte liegen strukturiert in Storyblok, das Frontend liefert sie markenkonform aus – schnell, wartungsarm und unabhängig vom Kanal.
 
-### Consistent Presentation
-Using a standardized text section helps maintain a consistent look and feel across the platform. This supports readability and creates a coherent user experience.
+### Ergebnis
+100% Brand-Konsistenz bei über 400 Vertriebspartnern. Neue Seiten entstehen heute in Stunden statt in Wochen, und die Zentrale pflegt Richtlinien an einer einzigen Stelle.
 
-Ready to make your journey exceptional?
+Wollt ihr euren eigenen Webbaukasten aufsetzen?
     `,
     largeHeadline: true,
     image: {
-      src: "img/placeholder/image-gallery-05.svg",
+      src: "https://a.storyblok.com/f/297364/1080x810/e5b08059cf/projekte_teaser_telekom.png/m/1080x810",
+      alt: "Telekom Exklusivpartner Webbaukasten – Projektvisual",
       aspectRatio: "unset",
       vAlign: "top",
     },
     buttons: [
       {
-        label: "Follow up",
+        label: "Case Study ansehen",
         url: "#",
         icon: "arrow-right",
       },

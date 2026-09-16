@@ -25,5 +25,25 @@ export const Default: Story = {
       height: 436,
     },
   },
-  args: pack({}),
+  args: pack({
+    headline: "Willkommen zurück",
+    text: "Meldet euch an, um eure Anmeldungen und Termine zu verwalten.",
+    usernameInput: {
+      label: "E-Mail-Adresse",
+      placeholder: "Eure E-Mail-Adresse",
+    },
+    passwordInput: {
+      label: "Passwort",
+      placeholder: "Euer Passwort",
+    },
+    cta: {
+      label: "Anmelden",
+      url: "#",
+      ariaLabel: "Zum Event-Login anmelden",
+    },
+    resetPassword: {
+      label: "Passwort vergessen?",
+      url: "#",
+    },
+  }),
 };

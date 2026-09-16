@@ -26,30 +26,33 @@ export const Default: Story = {
     },
   },
   args: pack({
-    title: "GreenTech Summit 2023",
-    previewImage: "img/full-shot-different-people-working-together.png",
+    title:
+      "Warum ein Designsystem das fehlende Stück in der MACH-Architektur ist",
+    previewImage:
+      "https://a.storyblok.com/f/297364/960x540/fd30519e08/blog-post_mach-alliance.png",
     initialMatch:
-      "Embracing a **sustainable** lifestyle can significantly reduce your environmental impact. From using energy-efficient appliances to adopting renewable energy sources, every small step counts towards a greener future.",
+      "Inmitten all der Möglichkeiten von MACH-Architekturen übersehen Unternehmen oft einen wichtigen Bestandteil einer effizienten digitalen Landschaft: ein digitales **Designsystem**.",
     matches: [
       {
-        title: "Keynote: Embracing Sustainability",
+        title: "Die Zeit ist reif für Designsysteme",
         snippet:
-          "Learn how leading companies are integrating **sustainability** into their core strategies.",
-        url: "#",
+          "Ein **Designsystem** sorgt für konsistente Gestaltung und Effizienz in der Entwicklung – und steigert den Wert eures Produkts.",
+        url: "https://www.ruhmesmeile.com/design-system-insights/die-zeit-ist-reif-fuer-designsysteme",
       },
       {
-        title: "Panel: Sustainability in Practice",
+        title: "Warum entwickeln wir kickstartDS?",
         snippet:
-          "Business models that prioritize **sustainability** are shared by industry experts in this session.",
-        url: "#",
+          "Wir geben euch die optimale Grundlage für euer eigenes **Designsystem** an die Hand – mit bewährten Konzepten und offenen Standards.",
+        url: "https://www.ruhmesmeile.com/design-system-insights/warum-entwickeln-wir-kickstartds",
       },
       {
-        title: "Workshop: Measuring Sustainability",
+        title:
+          "Schneller zur modernen Unternehmenswebsite – markenkonform und wartungsarm",
         snippet:
-          "In your organization, **sustainability** can be assessed using new tools and techniques.",
-        url: "#",
+          "Das Frontend Package: modulare Bausteine wie ein digitaler LEGO-Baukasten für starke Markenauftritte ohne Entwickleraufwand.",
+        url: "https://www.ruhmesmeile.com/design-system-insights/moderne-unternehmenswebsite-schnell-markenkonform",
       },
     ],
-    url: "https://www.example.com/greentech-summit-2023",
+    url: "https://www.ruhmesmeile.com/design-system-insights/design-systeme-das-fehlende-puzzle-teil-in-mach-architekturen",
   }),
 };

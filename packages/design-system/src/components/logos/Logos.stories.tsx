@@ -28,35 +28,38 @@ export const CenteredWithButton: Story = {
     },
   },
   args: pack({
+    tagline: "Unsere Kunden",
     logo: [
       {
-        src: "img/logos/logoipsum-344.svg",
-        alt: "Logo 1",
+        src: "https://a.storyblok.com/f/297364/200x70/de377c4c40/logo-telekom.svg",
+        alt: "Deutsche Telekom",
       },
       {
-        src: "img/logos/logoipsum-347.svg",
-        alt: "Logo 2",
+        src: "https://a.storyblok.com/f/297364/1100x380/9ef50ca58f/dachser.svg",
+        alt: "DACHSER Intelligent Logistics",
       },
       {
-        src: "img/logos/logoipsum-352.svg",
-        alt: "Logo 3",
+        src: "https://a.storyblok.com/f/297364/1100x380/a3ca17a410/rewe.svg",
+        alt: "REWE Group",
       },
       {
-        src: "img/logos/logoipsum-356.svg",
-        alt: "Logo 4",
+        src: "https://a.storyblok.com/f/297364/1100x380/6d81aafe99/postbank.svg",
+        alt: "Postbank",
       },
       {
-        src: "img/logos/logoipsum-358.svg",
-        alt: "Logo 5",
+        src: "https://a.storyblok.com/f/297364/200x60/640dee0e0f/logo_maxcluster.svg",
+        alt: "maxcluster",
       },
       {
-        src: "img/logos/logoipsum-369.svg",
-        alt: "Logo 6",
+        src: "https://a.storyblok.com/f/297364/1100x380/8209045bb7/tectrion.svg",
+        alt: "Tectrion",
       },
     ],
     cta: {
       toggle: true,
       style: "button",
+      text: "Über 250 Projekte für Marken wie Telekom, DACHSER, REWE und Postbank.",
+      label: "Beratung starten",
     },
   }),
 };
@@ -69,34 +72,37 @@ export const LeftAlignedWithTextLink: Story = {
     },
   },
   args: pack({
+    tagline: "Unsere Kunden",
     logo: [
       {
-        src: "img/logos/logoipsum-344.svg",
-        alt: "Logo 1",
+        src: "https://a.storyblok.com/f/297364/200x70/de377c4c40/logo-telekom.svg",
+        alt: "Deutsche Telekom",
       },
       {
-        src: "img/logos/logoipsum-347.svg",
-        alt: "Logo 2",
+        src: "https://a.storyblok.com/f/297364/1100x380/9ef50ca58f/dachser.svg",
+        alt: "DACHSER Intelligent Logistics",
       },
       {
-        src: "img/logos/logoipsum-352.svg",
-        alt: "Logo 3",
+        src: "https://a.storyblok.com/f/297364/1100x380/a3ca17a410/rewe.svg",
+        alt: "REWE Group",
       },
       {
-        src: "img/logos/logoipsum-356.svg",
-        alt: "Logo 4",
+        src: "https://a.storyblok.com/f/297364/1100x380/6d81aafe99/postbank.svg",
+        alt: "Postbank",
       },
       {
-        src: "img/logos/logoipsum-358.svg",
-        alt: "Logo 5",
+        src: "https://a.storyblok.com/f/297364/200x60/640dee0e0f/logo_maxcluster.svg",
+        alt: "maxcluster",
       },
       {
-        src: "img/logos/logoipsum-369.svg",
-        alt: "Logo 6",
+        src: "https://a.storyblok.com/f/297364/1100x380/8209045bb7/tectrion.svg",
+        alt: "Tectrion",
       },
     ],
     cta: {
       toggle: true,
+      text: "Wir zeigen euch, wie Unternehmen ihre Frontends und ihr CMS modernisiert haben.",
+      label: "Case Studies ansehen",
     },
     align: "left",
   }),
@@ -110,55 +116,56 @@ export const LogoWall: Story = {
     },
   },
   args: pack({
+    tagline: "Unsere Kunden",
     logosPerRow: 4,
     logo: [
       {
-        src: "img/logos/logoipsum-344.svg",
-        alt: "Logo 1",
+        src: "https://a.storyblok.com/f/297364/200x70/de377c4c40/logo-telekom.svg",
+        alt: "Deutsche Telekom",
       },
       {
-        src: "img/logos/logoipsum-347.svg",
-        alt: "Logo 2",
+        src: "https://a.storyblok.com/f/297364/1100x380/9ef50ca58f/dachser.svg",
+        alt: "DACHSER Intelligent Logistics",
       },
       {
-        src: "img/logos/logoipsum-352.svg",
-        alt: "Logo 3",
+        src: "https://a.storyblok.com/f/297364/1100x380/a3ca17a410/rewe.svg",
+        alt: "REWE Group",
       },
       {
-        src: "img/logos/logoipsum-356.svg",
-        alt: "Logo 4",
+        src: "https://a.storyblok.com/f/297364/1100x380/6d81aafe99/postbank.svg",
+        alt: "Postbank",
       },
       {
-        src: "img/logos/logoipsum-358.svg",
-        alt: "Logo 5",
+        src: "https://a.storyblok.com/f/297364/200x60/640dee0e0f/logo_maxcluster.svg",
+        alt: "maxcluster",
       },
       {
-        src: "img/logos/logoipsum-369.svg",
-        alt: "Logo 6",
+        src: "https://a.storyblok.com/f/297364/1100x380/8209045bb7/tectrion.svg",
+        alt: "Tectrion",
       },
       {
-        src: "img/logos/logoipsum-356.svg",
-        alt: "Logo 4",
+        src: "https://a.storyblok.com/f/297364/200x60/d3f740f44d/logo_rub.svg",
+        alt: "RUB",
       },
       {
-        src: "img/logos/logoipsum-358.svg",
-        alt: "Logo 5",
+        src: "https://a.storyblok.com/f/297364/1100x380/6ebf09d690/wolfcraft.svg",
+        alt: "Wolfcraft",
       },
       {
-        src: "img/logos/logoipsum-369.svg",
-        alt: "Logo 6",
+        src: "https://a.storyblok.com/f/297364/1100x380/9d490af3db/hpp.svg",
+        alt: "HPP Architekten",
       },
       {
-        src: "img/logos/logoipsum-356.svg",
-        alt: "Logo 4",
+        src: "https://a.storyblok.com/f/297364/1100x380/d8e61f953f/sparstrom.svg",
+        alt: "Sparstrom",
       },
       {
-        src: "img/logos/logoipsum-358.svg",
-        alt: "Logo 5",
+        src: "https://a.storyblok.com/f/297364/1100x380/ad08e1cf5e/deloro.svg",
+        alt: "Deloro",
       },
       {
-        src: "img/logos/logoipsum-369.svg",
-        alt: "Logo 6",
+        src: "https://a.storyblok.com/f/297364/1100x380/0e26d4335b/noweda.svg",
+        alt: "Noweda",
       },
     ],
 
@@ -176,31 +183,32 @@ export const LogoRow: Story = {
     },
   },
   args: pack({
+    tagline: "Unsere Kunden",
     logosPerRow: 6,
     logo: [
       {
-        src: "img/logos/logoipsum-344.svg",
-        alt: "Logo 1",
+        src: "https://a.storyblok.com/f/297364/200x70/de377c4c40/logo-telekom.svg",
+        alt: "Deutsche Telekom",
       },
       {
-        src: "img/logos/logoipsum-347.svg",
-        alt: "Logo 2",
+        src: "https://a.storyblok.com/f/297364/1100x380/9ef50ca58f/dachser.svg",
+        alt: "DACHSER Intelligent Logistics",
       },
       {
-        src: "img/logos/logoipsum-352.svg",
-        alt: "Logo 3",
+        src: "https://a.storyblok.com/f/297364/1100x380/a3ca17a410/rewe.svg",
+        alt: "REWE Group",
       },
       {
-        src: "img/logos/logoipsum-356.svg",
-        alt: "Logo 4",
+        src: "https://a.storyblok.com/f/297364/1100x380/6d81aafe99/postbank.svg",
+        alt: "Postbank",
       },
       {
-        src: "img/logos/logoipsum-358.svg",
-        alt: "Logo 5",
+        src: "https://a.storyblok.com/f/297364/200x60/640dee0e0f/logo_maxcluster.svg",
+        alt: "maxcluster",
       },
       {
-        src: "img/logos/logoipsum-369.svg",
-        alt: "Logo 6",
+        src: "https://a.storyblok.com/f/297364/1100x380/8209045bb7/tectrion.svg",
+        alt: "Tectrion",
       },
     ],
 

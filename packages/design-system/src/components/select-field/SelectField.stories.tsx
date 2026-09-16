@@ -28,5 +28,18 @@ export const Default: Story = {
       height: 219,
     },
   },
-  args: pack({}),
+  args: pack({
+    label: "Was interessiert euch?",
+    options: [
+      {
+        label: "Headless CMS",
+      },
+      {
+        label: "Design Systeme",
+      },
+      {
+        label: "Composable Frontends",
+      },
+    ],
+  }),
 };

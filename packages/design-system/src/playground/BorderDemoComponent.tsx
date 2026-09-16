@@ -31,49 +31,50 @@ const BorderDemo = () => (
       <CookieConsentDialog
         open
         dialog={{
-          alwaysActiveLabel: "Always Active",
+          alwaysActiveLabel: "Immer aktiv",
           buttons: {
-            acceptLabel: "Accept All",
-            rejectLabel: "Reject All",
-            savePreferencesLabel: "Save Preferences",
+            acceptLabel: "Alle akzeptieren",
+            rejectLabel: "Alle ablehnen",
+            savePreferencesLabel: "Einstellungen speichern",
           },
-          description: "Manage your cookie preferences below.",
+          description:
+            "Hier legt ihr fest, welche Cookies wir setzen dürfen.",
           options: [
             {
               description:
-                "These cookies help us understand how our visitors interact with the website.",
+                "Diese Cookies zeigen uns, wie Besucher:innen unsere Website nutzen.",
               key: "measurement",
-              name: "Analytics Cookies",
+              name: "Statistik",
             },
           ],
           required: [
             {
               description:
-                "These cookies are necessary for the website to function.",
+                "Diese Cookies braucht die Website, damit sie überhaupt funktioniert.",
               key: "necessary",
-              name: "Essential Cookies",
+              name: "Notwendig",
             },
           ],
-          title: "Cookie Preferences",
+          title: "Cookie-Einstellungen",
           toggleLabels: {
-            accept: "Accept",
-            reject: "Reject",
+            accept: "Zulassen",
+            reject: "Ablehnen",
           },
         }}
       />
       <EventListTeaser
-        category="Buyers"
-        ctaText="Show event"
-        date="30.12.2025"
+        category="Webinar"
+        ctaText="Zum Webinar"
+        date="08.10.2026"
         location={{
-          address: "Alexanderplatz 1<br />\n10178 Berlin",
-          name: "Tech Conference Center",
+          address: "Mozartstraße 4-10<br />\n53115 Bonn",
+          name: "ruhmesmeile, Bonn",
         }}
-        tags={["AI"]}
-        text="The Future of AI is here and now - Join us to explore the latest advancements in artificial intelligence. Discover how AI is transforming industries and shaping our world. Engage with experts, innovators, and thought leaders as we delve into the opportunities and challenges of AI technology."
-        time="10:00"
-        title="The Future of AI"
-        url="#"
+        tags={["Headless CMS"]}
+        text="In 45 Minuten zeigen wir, wie ein Headless CMS Redaktion und Frontend entkoppelt – und was das für euren Relaunch bedeutet."
+        time="16:00"
+        title="Live-Webinar: Was sind Headless CMS?"
+        url="https://www.ruhmesmeile.com/insights"
       />
     </Section>
     <Section spaceBefore="small" spaceAfter="small" width="wide">
@@ -90,46 +91,47 @@ const BorderDemo = () => (
       spaceAfter="none"
     >
       <TeaserCard
-        label="Label"
+        label="Angebot"
         button={{
           chevron: false,
           hidden: true,
-          label: "Learn more",
+          label: "Beratung starten",
         }}
-        headline="Explore This Topic"
-        image="img/placeholder/avatar-wide.svg"
+        headline="CMS Website Accelerator"
+        image="https://a.storyblok.com/f/297364/1099x731/28a441c2ee/rm_lp-industry-electronics.png"
+        imageAlt="Mit dem CMS Website Accelerator erstellte Landingpage"
         imageRatio="wide"
         layout="stack"
-        text="This teaser introduces a topic or piece of content and provides a short summary to encourage further exploration."
-        url="#"
+        text="Wir lösen starre Alt-Systeme ab und überführen eure Inhalte automatisiert in markenkonforme, wiederverwendbare Frontend-Module – live in Wochen statt Monaten."
+        url="https://www.ruhmesmeile.com/kontakt"
       />
       <SearchResult
         imageColSize="none"
-        initialMatch="Embracing a **sustainable** lifestyle can significantly reduce your environmental impact. "
+        initialMatch="Wie startet man mit **Headless CMS**?"
         matches={[
           {
             snippet:
-              "Learn how leading companies are integrating **sustainability** into their core strategies.",
-            title: "Keynote: Embracing Sustainability",
-            url: "#",
+              "Wie dein Headless-Projekt durch einen Website Accelerator zu einem Erfolg wird.",
+            title: "Vereinfache den Switch zu Headless CMS",
+            url: "https://www.ruhmesmeile.com/insights",
           },
           {
             snippet:
-              "Business models that prioritize **sustainability** are shared by industry experts in this session.",
-            title: "Panel: Sustainability in Practice",
-            url: "#",
+              "Warum ein Designsystem das fehlende Stück in der MACH-Architektur ist – und was das für euren Relaunch bedeutet.",
+            title: "Warum ein Designsystem das fehlende Stück in der MACH-Architektur ist",
+            url: "https://www.ruhmesmeile.com/insights",
           },
           {
             snippet:
-              "Discover innovative solutions that drive **sustainability** in various sectors.",
-            title: "Workshop: Innovative Sustainability Solutions",
-            url: "#",
+              "Markenkonform und wartungsarm: wie ihr ohne monatelange Abstimmungsschleifen zur modernen Unternehmenswebsite kommt.",
+            title: "Schneller zur modernen Unternehmenswebsite – markenkonform und wartungsarm",
+            url: "https://www.ruhmesmeile.com/insights",
           },
         ]}
         previewImage="img/full-shot-different-people-working-together.png"
         showLink
-        title="GreenTech Summit 2023"
-        url="https://www.example.com/greentech-summit-2023"
+        title="Insights von ruhmesmeile"
+        url="https://www.ruhmesmeile.com/insights"
       />
       <div
         style={{
@@ -139,40 +141,40 @@ const BorderDemo = () => (
         }}
       >
         <EventLocation
-          address="Alexanderplatz 1<br />
-  10178 Berlin"
+          address="Mozartstraße 4-10<br />
+  53115 Bonn"
           dates={[
             {
               ariaLabel:
-                "Register for the event on 18th September 2025 from 09:00 to 17:00",
-              date: "18.09.2025",
-              label: "Register",
+                "Termin am 8. Oktober 2026 von 16:00 bis 17:00 Uhr",
+              date: "08.10.2026",
+              label: "Termin sichern",
               newTab: true,
-              time: "09:00 – 17:00",
+              time: "16:00 – 17:00",
               url: "#",
             },
           ]}
           displayMode="spacious"
           links={[
             {
-              label: "Open in Google Maps",
+              label: "Route berechnen",
               newTab: true,
-              url: "https://maps.google.com/?q=Berlin+Congress+Center",
+              url: "https://maps.google.com/?q=Mozartstra%C3%9Fe+4-10+Bonn",
             },
           ]}
-          locationName="Berlin Congress Center"
+          locationName="ruhmesmeile, Bonn"
         />
         <Faq
           questions={[
             {
               answer:
-                "Yes. All content within this component can be fully customized. Text length, wording, and structure can be adapted to match different audiences, communication styles, or content strategies. The component supports both short, concise answers and more detailed explanations, depending on editorial needs.",
-              question: "Can the content be customized?",
+                "Ein Headless CMS trennt Redaktion und Frontend: Die Inhalte liegen in einer API, das Frontend holt sie sich von dort. So könnt ihr Layouts ändern, ohne Inhalte anzufassen, und Inhalte pflegen, ohne im Code zu arbeiten.",
+              question: "Was ist ein Headless CMS?",
             },
             {
               answer:
-                "This component can be used across different pages and contexts, such as product pages, service descriptions, or informational sections.",
-              question: "What is this component used for?",
+                "Sobald mehr als eine Marke, ein Produkt oder ein Team beteiligt ist. Ein Design System hält Komponenten, Tokens und Freigaben an einer Stelle – und macht jeden Relaunch danach deutlich kürzer.",
+              question: "Wann lohnt sich ein Design System?",
             },
           ]}
         />
@@ -192,18 +194,19 @@ const BorderDemo = () => (
       spaceBefore="none"
     >
       <TeaserCard
-        label="Label"
+        label="Case Study"
         button={{
           chevron: false,
           hidden: true,
-          label: "Learn more",
+          label: "Case Studies ansehen",
         }}
-        headline="Explore This Topic"
-        image="img/people-brainstorming-work-meeting.png"
+        headline="Design Systeme & Composable Frontends"
+        image="https://a.storyblok.com/f/297364/1080x810/70a6e8e1ab/teaser_uni-design-system.png"
+        imageAlt="Design System Case Study einer deutschen Universität"
         imageRatio="wide"
         layout="compact"
-        text="This teaser introduces a topic or piece of content and provides a short summary to encourage further exploration."
-        url="#"
+        text="Egal, wie viele Marken oder Produkte ihr habt – unser Design ist skalierbar. Wir entwickeln Design Systeme, die mit eurem Unternehmen wachsen."
+        url="https://www.ruhmesmeile.com/case-studies"
       />
       <div
         style={{
@@ -216,33 +219,33 @@ const BorderDemo = () => (
           categories={[
             {
               amount: "10",
-              title: "Pages",
+              title: "Seiten",
               url: "#",
             },
             {
               amount: "5",
-              title: "News",
+              title: "Insights",
               url: "#",
             },
             {
               amount: "8",
-              title: "Blog Posts",
+              title: "Case Studies",
               url: "#",
             },
           ]}
-          title="Search by category"
+          title="Nach Kategorie filtern"
         />
         <EventLatestTeaser
-          ariaLabel="Event teaser for "
+          ariaLabel="Termin: Live-Webinar Headless CMS"
           calendar={{
-            day: "30",
-            month: "Dec",
+            day: "8",
+            month: "Okt",
           }}
-          cta="Show event"
-          date="12/30/2025"
-          location="Berlin, Germany"
-          title="The Future of AI"
-          url="https://example.com"
+          cta="Zum Webinar"
+          date="08.10.2026"
+          location="Online"
+          title="Live-Webinar: Was sind Headless CMS?"
+          url="https://www.ruhmesmeile.com/insights"
         />
       </div>
       <div
@@ -254,51 +257,54 @@ const BorderDemo = () => (
       >
         <SelectField
           icon="chevron-down"
-          label="Est dolore a debitis"
+          label="Womit können wir starten?"
           options={[
             {
-              label: "Option 1",
+              label: "CMS Website Accelerator",
             },
             {
-              label: "Option 2",
+              label: "Design System Beratung",
             },
             {
-              label: "Option 3",
+              label: "Composable Frontends",
             },
           ]}
         />
-        <TextField label="Your name" />
+        <TextField label="Euer Name" placeholder="Vor- und Nachname" />
         <CheckboxGroup
-          label={"Lorem Ipsum"}
+          label={"Interessiert an"}
           options={[
             {
               //@ts-expect-error
               checked: true,
-              label: "Lorem Ipsum",
+              label: "Headless CMS",
             },
             {
-              label: "Ipsum Dolor",
+              label: "Design System",
             },
             {
-              label: "Dolor Sit Amet",
+              label: "Composable Frontends",
               disabled: true,
             },
           ]}
         />
-        <TextArea label="Your message" />
+        <TextArea
+          label="Euer Vorhaben"
+          placeholder="Website-Relaunch, Headless CMS oder Design System?"
+        />
         <RadioGroup
-          label={"Lorem Ipsum"}
+          label={"Wie groß ist euer Projekt?"}
           options={[
             {
-              label: "Lorem Ipsum",
+              label: "Website-Relaunch",
             },
             {
               //@ts-expect-error
               checked: true,
-              label: "Ipsum Dolor",
+              label: "Design System aufbauen",
             },
             {
-              label: "Dolor Sit Amet",
+              label: "Nur eine Beratung",
               disabled: true,
             },
           ]}
@@ -311,9 +317,9 @@ const BorderDemo = () => (
           gap: "var(--ks-spacing-stack-m)",
         }}
       >
-        <Button icon="arrow-right" variant="primary" label={"Learn more"} />
-        <Button icon="date" variant="secondary" label={"Book appointment"} />
-        <Button icon="upload" variant="tertiary" label={"Upload File"} />
+        <Button icon="arrow-right" variant="primary" label={"Beratung starten"} />
+        <Button icon="date" variant="secondary" label={"Zur Terminbuchung"} />
+        <Button icon="upload" variant="tertiary" label={"Projektanfrage"} />
         <NavDropdown
           style={{
             position: "relative",
@@ -323,23 +329,23 @@ const BorderDemo = () => (
           }}
           items={[
             {
-              label: "Consulting",
+              label: "Design System Services",
               url: "#",
             },
             {
-              label: "Implementation",
+              label: "Headless CMS Services",
               url: "#",
             },
             {
-              label: "Support",
+              label: "UX-Strategie & Beratung",
               url: "#",
             },
             {
-              label: "Training",
+              label: "Für Energieunternehmen",
               url: "#",
             },
             {
-              label: "Custom Solutions",
+              label: "Für Industrieunternehmen",
               url: "#",
             },
           ]}

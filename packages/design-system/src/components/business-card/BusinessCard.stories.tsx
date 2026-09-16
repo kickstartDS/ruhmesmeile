@@ -29,33 +29,42 @@ export const Default: Story = {
     centered: false,
     image: {
       src: "img/placeholder/avatar-square.svg",
-      alt: "A placeholder image",
+      alt: "Daniel Ley",
     },
     logo: {
       src: "logo.svg",
-      alt: "Business Logo",
-      url: "#",
+      alt: "ruhmesmeile Logo",
+      url: "https://www.ruhmesmeile.com/",
     },
-    topic: "Industry Intelligence",
-    address: `1234 Business Lane<br />Suite 567 <br />Business City, BC 12345`,
+    topic: "Geschäftsführer",
+    address: `Mozartstraße 4-10<br />53115 Bonn<br />Deutschland`,
     avatar: {
       src: "img/placeholder/avatar-business-card-round.svg",
-      alt: "Emily Johnson",
+      alt: "Daniel Ley",
     },
     contactLinks: [
-      { icon: "phone", label: "+1 234 567 890", url: "tel:+1234567890" },
+      {
+        icon: "phone",
+        label: "+49 228 30412660",
+        url: "tel:+4922830412660",
+      },
       {
         icon: "email",
-        label: "emily@example.com",
-        url: "mailto:emily@example.com",
+        label: "mail@ruhmesmeile.com",
+        url: "mailto:mail@ruhmesmeile.com",
       },
       {
         icon: "linkedin",
-        label: "Emily Johnson",
+        label: "ruhmesmeile",
         url: "#",
       },
     ],
-    buttons: [{ label: "Contact me", url: "#" }],
+    buttons: [
+      {
+        label: "Kontakt aufnehmen",
+        url: "https://www.ruhmesmeile.com/ueber-uns/kontakt",
+      },
+    ],
   }),
 };
 
@@ -70,33 +79,42 @@ export const Centered: Story = {
     centered: true,
     image: {
       src: "img/placeholder/avatar-square.svg",
-      alt: "A placeholder image",
+      alt: "Daniel Ley",
     },
     logo: {
       src: "logo.svg",
-      alt: "Business Logo",
-      url: "#",
+      alt: "ruhmesmeile Logo",
+      url: "https://www.ruhmesmeile.com/",
     },
-    topic: "Industry Intelligence",
-    address: `1234 Business Lane<br />Suite 567 <br />Business City, BC 12345`,
+    topic: "Geschäftsführer",
+    address: `Mozartstraße 4-10<br />53115 Bonn<br />Deutschland`,
     avatar: {
       src: "img/placeholder/avatar-business-card-round.svg",
-      alt: "Emily Johnson",
+      alt: "Daniel Ley",
     },
     contactLinks: [
-      { icon: "phone", label: "+1 234 567 890", url: "tel:+1234567890" },
+      {
+        icon: "phone",
+        label: "+49 228 30412660",
+        url: "tel:+4922830412660",
+      },
       {
         icon: "email",
-        label: "emily@example.com",
-        url: "mailto:emily@example.com",
+        label: "mail@ruhmesmeile.com",
+        url: "mailto:mail@ruhmesmeile.com",
       },
       {
         icon: "linkedin",
-        label: "Emily Johnson",
+        label: "ruhmesmeile",
         url: "#",
       },
     ],
-    buttons: [{ label: "Contact me", url: "#" }],
+    buttons: [
+      {
+        label: "Kontakt aufnehmen",
+        url: "https://www.ruhmesmeile.com/ueber-uns/kontakt",
+      },
+    ],
   }),
 };
 
@@ -111,28 +129,37 @@ export const WithoutImage: Story = {
     centered: false,
     logo: {
       src: "logo.svg",
-      alt: "Business Logo",
-      url: "#",
+      alt: "ruhmesmeile Logo",
+      url: "https://www.ruhmesmeile.com/",
     },
-    topic: "Industry Intelligence",
-    address: `1234 Business Lane<br />Suite 567 <br />Business City, BC 12345`,
+    topic: "Geschäftsführer",
+    address: `Mozartstraße 4-10<br />53115 Bonn<br />Deutschland`,
     avatar: {
       src: "img/placeholder/avatar-business-card-round.svg",
-      alt: "Emily Johnson",
+      alt: "Daniel Ley",
     },
     contactLinks: [
-      { icon: "phone", label: "+1 234 567 890", url: "tel:+1234567890" },
+      {
+        icon: "phone",
+        label: "+49 228 30412660",
+        url: "tel:+4922830412660",
+      },
       {
         icon: "email",
-        label: "emily@example.com",
-        url: "mailto:emily@example.com",
+        label: "mail@ruhmesmeile.com",
+        url: "mailto:mail@ruhmesmeile.com",
       },
       {
         icon: "linkedin",
-        label: "Emily Johnson",
+        label: "ruhmesmeile",
         url: "#",
       },
     ],
-    buttons: [{ label: "Contact me", url: "#" }],
+    buttons: [
+      {
+        label: "Kontakt aufnehmen",
+        url: "https://www.ruhmesmeile.com/ueber-uns/kontakt",
+      },
+    ],
   }),
 };

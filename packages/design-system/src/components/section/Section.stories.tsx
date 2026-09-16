@@ -21,34 +21,34 @@ const meta: Meta = {
     <Section {...args}>
       <TeaserCard
         layout="row"
-        headline="Explore This Topic"
-        text="This teaser introduces a topic or piece of content and provides a short summary to encourage further exploration."
-        image="img/placeholder/avatar-wide.svg"
-        url="#"
+        headline="Headless CMS"
+        text="Skalierbar, flexibel bei hocheffizienter Redaktion – Unternehmen beauftragen uns mit der Beratung, dem Design und der Entwicklung von Headless CMS Websites."
+        image="https://a.storyblok.com/f/297364/1300x721/d211c2a5cf/rm_insight-headless.png"
+        url="/headless-cms/headless-cms-services"
         button={{
-          label: "Go to Page",
+          label: "Beratung starten",
           hidden: true,
         }}
       />
       <TeaserCard
         layout="row"
-        headline="Explore This Topic"
-        text="This teaser introduces a topic or piece of content and provides a short summary to encourage further exploration."
-        image="img/placeholder/avatar-wide.svg"
-        url="#"
+        headline="User Experience Design"
+        text="Wir begleiten Teams bei dem Change in eine kunden- und nutzerzentrierte Produktorganisation mit der richtigen Methode, Struktur und Moderation."
+        image="https://a.storyblok.com/f/297364/1300x600/750e6b7a9f/rm_hero_cms-starter_2.png"
+        url="/ux-strategie-beratung"
         button={{
-          label: "Go to Page",
+          label: "Beratung starten",
           hidden: true,
         }}
       />
       <TeaserCard
         layout="row"
-        headline="Explore This Topic"
-        text="This teaser introduces a topic or piece of content and provides a short summary to encourage further exploration."
-        image="img/placeholder/avatar-wide.svg"
-        url="#"
+        headline="Design Systeme & Composable Frontends"
+        text="Egal, wie viele Marken oder Produkte du hast – unser Design ist skalierbar. Wir entwickeln Design Systeme, die mit deinem Unternehmen wachsen."
+        image="https://a.storyblok.com/f/297364/2030x1100/552cb82cce/rm-corporate-ui-cover.png"
+        url="/design-system-services"
         button={{
-          label: "Go to Page",
+          label: "Beratung starten",
           hidden: true,
         }}
       />
@@ -72,8 +72,8 @@ export const DynamicLayout: Story = {
       mode: "flex",
     },
     headline: {
-      text: "Key headline for this section",
-      sub: "Short explanatory subheadline",
+      text: "Unser Angebot",
+      sub: "Vier Säulen für modulare Web-Frontends und Headless CMS.",
       align: "center",
     },
     buttons: [],
@@ -82,23 +82,23 @@ export const DynamicLayout: Story = {
     <Section {...args}>
       <TeaserCard
         layout="row"
-        headline="Explore This Topic"
-        text="This teaser introduces a topic or piece of content and provides a short summary to encourage further exploration."
-        image="img/placeholder/avatar-wide.svg"
-        url="#"
+        headline="Headless CMS"
+        text="Skalierbar, flexibel bei hocheffizienter Redaktion – Unternehmen beauftragen uns mit der Beratung, dem Design und der Entwicklung von Headless CMS Websites."
+        image="https://a.storyblok.com/f/297364/1300x721/d211c2a5cf/rm_insight-headless.png"
+        url="/headless-cms/headless-cms-services"
         button={{
-          label: "Go to Page",
+          label: "Beratung starten",
           hidden: true,
         }}
       />
       <TeaserCard
         layout="row"
-        headline="Explore This Topic"
-        text="This teaser introduces a topic or piece of content and provides a short summary to encourage further exploration."
-        image="img/placeholder/avatar-wide.svg"
-        url="#"
+        headline="User Experience Design"
+        text="Wir begleiten Teams bei dem Change in eine kunden- und nutzerzentrierte Produktorganisation mit der richtigen Methode, Struktur und Moderation."
+        image="https://a.storyblok.com/f/297364/1300x600/750e6b7a9f/rm_hero_cms-starter_2.png"
+        url="/ux-strategie-beratung"
         button={{
-          label: "Go to Page",
+          label: "Beratung starten",
           hidden: true,
         }}
       />
@@ -119,8 +119,8 @@ export const TileLayout: Story = {
       mode: "tile",
     },
     headline: {
-      text: "Key headline for this section",
-      sub: "Short explanatory subheadline",
+      text: "Unser Angebot",
+      sub: "Vier Säulen für modulare Web-Frontends und Headless CMS.",
       align: "center",
     },
     buttons: [],
@@ -129,34 +129,34 @@ export const TileLayout: Story = {
     <Section {...args}>
       <TeaserCard
         layout="row"
-        headline="Explore This Topic"
-        text="This teaser introduces a topic or piece of content and provides a short summary to encourage further exploration."
-        image="img/placeholder/avatar-wide.svg"
-        url="#"
+        headline="Headless CMS"
+        text="Skalierbar, flexibel bei hocheffizienter Redaktion – Unternehmen beauftragen uns mit der Beratung, dem Design und der Entwicklung von Headless CMS Websites."
+        image="https://a.storyblok.com/f/297364/1300x721/d211c2a5cf/rm_insight-headless.png"
+        url="/headless-cms/headless-cms-services"
         button={{
-          label: "Go to Page",
+          label: "Beratung starten",
           hidden: true,
         }}
       />
       <TeaserCard
         layout="row"
-        headline="Explore This Topic"
-        text="This teaser introduces a topic or piece of content and provides a short summary to encourage further exploration."
-        image="img/placeholder/avatar-wide.svg"
-        url="#"
+        headline="User Experience Design"
+        text="Wir begleiten Teams bei dem Change in eine kunden- und nutzerzentrierte Produktorganisation mit der richtigen Methode, Struktur und Moderation."
+        image="https://a.storyblok.com/f/297364/1300x600/750e6b7a9f/rm_hero_cms-starter_2.png"
+        url="/ux-strategie-beratung"
         button={{
-          label: "Go to Page",
+          label: "Beratung starten",
           hidden: true,
         }}
       />
       <TeaserCard
         layout="row"
-        headline="Explore This Topic"
-        text="This teaser introduces a topic or piece of content and provides a short summary to encourage further exploration."
-        image="img/placeholder/avatar-wide.svg"
-        url="#"
+        headline="Design Systeme & Composable Frontends"
+        text="Egal, wie viele Marken oder Produkte du hast – unser Design ist skalierbar. Wir entwickeln Design Systeme, die mit deinem Unternehmen wachsen."
+        image="https://a.storyblok.com/f/297364/2030x1100/552cb82cce/rm-corporate-ui-cover.png"
+        url="/design-system-services"
         button={{
-          label: "Go to Page",
+          label: "Beratung starten",
           hidden: true,
         }}
       />
@@ -176,8 +176,8 @@ export const ListLayout: Story = {
       mode: "list",
     },
     headline: {
-      text: "Key headline for this section",
-      sub: "Short explanatory subheadline",
+      text: "Unser Angebot",
+      sub: "Vier Säulen für modulare Web-Frontends und Headless CMS.",
       align: "center",
     },
     buttons: [],
@@ -196,8 +196,8 @@ export const Slider: Story = {
       mode: "slider",
     },
     headline: {
-      text: "Key headline for this section",
-      sub: "Short explanatory subheadline",
+      text: "Unser Angebot",
+      sub: "Vier Säulen für modulare Web-Frontends und Headless CMS.",
       align: "left",
     },
     buttons: [],
@@ -206,122 +206,78 @@ export const Slider: Story = {
     <Section {...args}>
       <TeaserCard
         layout="row"
-        headline="Explore This Topic"
-        text="This teaser introduces a topic or piece of content and provides a short summary to encourage further exploration."
-        image="img/placeholder/avatar-wide.svg"
-        url="#"
+        headline="Headless CMS"
+        text="Skalierbar, flexibel bei hocheffizienter Redaktion – Unternehmen beauftragen uns mit der Beratung, dem Design und der Entwicklung von Headless CMS Websites."
+        image="https://a.storyblok.com/f/297364/1300x721/d211c2a5cf/rm_insight-headless.png"
+        url="/headless-cms/headless-cms-services"
         button={{
-          label: "Go to Page",
+          label: "Beratung starten",
           hidden: true,
         }}
       />
       <TeaserCard
         layout="row"
-        headline="Explore This Topic"
-        text="This teaser introduces a topic or piece of content and provides a short summary to encourage further exploration."
-        image="img/placeholder/avatar-wide.svg"
-        url="#"
+        headline="User Experience Design"
+        text="Wir begleiten Teams bei dem Change in eine kunden- und nutzerzentrierte Produktorganisation mit der richtigen Methode, Struktur und Moderation."
+        image="https://a.storyblok.com/f/297364/1300x600/750e6b7a9f/rm_hero_cms-starter_2.png"
+        url="/ux-strategie-beratung"
         button={{
-          label: "Go to Page",
+          label: "Beratung starten",
           hidden: true,
         }}
       />
       <TeaserCard
         layout="row"
-        headline="Explore This Topic"
-        text="This teaser introduces a topic or piece of content and provides a short summary to encourage further exploration."
-        image="img/placeholder/avatar-wide.svg"
-        url="#"
+        headline="Design Systeme & Composable Frontends"
+        text="Egal, wie viele Marken oder Produkte du hast – unser Design ist skalierbar. Wir entwickeln Design Systeme, die mit deinem Unternehmen wachsen."
+        image="https://a.storyblok.com/f/297364/2030x1100/552cb82cce/rm-corporate-ui-cover.png"
+        url="/design-system-services"
         button={{
-          label: "Go to Page",
+          label: "Beratung starten",
           hidden: true,
         }}
       />
       <TeaserCard
         layout="row"
-        headline="Explore This Topic"
-        text="This teaser introduces a topic or piece of content and provides a short summary to encourage further exploration."
-        image="img/placeholder/avatar-wide.svg"
-        url="#"
+        headline="Berater für euren CMS Relaunch"
+        text="Wir finden die perfekte Lösung für deine Bedürfnisse. Dabei nehmen wir uns die Zeit, um deine Ziele und Anforderungen genau zu verstehen und herauszufordern."
+        image="https://a.storyblok.com/f/297364/1099x731/28a441c2ee/rm_lp-industry-electronics.png"
+        url="/ueber-uns"
         button={{
-          label: "Go to Page",
+          label: "Beratung starten",
           hidden: true,
         }}
       />
       <TeaserCard
         layout="row"
-        headline="Explore This Topic"
-        text="This teaser introduces a topic or piece of content and provides a short summary to encourage further exploration."
-        image="img/placeholder/avatar-wide.svg"
-        url="#"
+        headline="CMS Website Accelerator"
+        text="Wir unterstützen euch bei der Erprobung neuer Web-Technologien zur Ablösung von starren Alt-Systemen – skalierbar und investitionssicher."
+        image="https://a.storyblok.com/f/297364/1080x810/90f97374e7/projekte_teaser_ngo.png"
+        url="/headless-cms/cms-website-accelerator"
         button={{
-          label: "Go to Page",
+          label: "Beratung starten",
           hidden: true,
         }}
       />
       <TeaserCard
         layout="row"
-        headline="Explore This Topic"
-        text="This teaser introduces a topic or piece of content and provides a short summary to encourage further exploration."
-        image="img/placeholder/avatar-wide.svg"
-        url="#"
+        headline="Design System Beratung"
+        text="Wir beraten euch bei Prozessen, Tools und Software für moderne Frontend-Architekturen – von der Strategie bis zur Implementierung."
+        image="https://a.storyblok.com/f/297364/1080x810/70a6e8e1ab/teaser_uni-design-system.png"
+        url="/design-system-services/vorteile-eines-design-systems"
         button={{
-          label: "Go to Page",
+          label: "Beratung starten",
           hidden: true,
         }}
       />
       <TeaserCard
         layout="row"
-        headline="Explore This Topic"
-        text="This teaser introduces a topic or piece of content and provides a short summary to encourage further exploration."
-        image="img/placeholder/avatar-wide.svg"
-        url="#"
+        headline="Composable Frontends"
+        text="Unsere UI-Komponentenbibliothek liefert wiederverwendbare, modulare Bausteine für schnelle, flexible und anpassbare UIs."
+        image="https://a.storyblok.com/f/297364/330x330/e426dfbd49/hp-deko-illu-systems.svg"
+        url="/headless-cms/composable-frontends"
         button={{
-          label: "Go to Page",
-          hidden: true,
-        }}
-      />
-      <TeaserCard
-        layout="row"
-        headline="Explore This Topic"
-        text="This teaser introduces a topic or piece of content and provides a short summary to encourage further exploration."
-        image="img/placeholder/avatar-wide.svg"
-        url="#"
-        button={{
-          label: "Go to Page",
-          hidden: true,
-        }}
-      />
-      <TeaserCard
-        layout="row"
-        headline="Explore This Topic"
-        text="This teaser introduces a topic or piece of content and provides a short summary to encourage further exploration."
-        image="img/placeholder/avatar-wide.svg"
-        url="#"
-        button={{
-          label: "Go to Page",
-          hidden: true,
-        }}
-      />
-      <TeaserCard
-        layout="row"
-        headline="Explore This Topic"
-        text="This teaser introduces a topic or piece of content and provides a short summary to encourage further exploration."
-        image="img/placeholder/avatar-wide.svg"
-        url="#"
-        button={{
-          label: "Go to Page",
-          hidden: true,
-        }}
-      />
-      <TeaserCard
-        layout="row"
-        headline="Explore This Topic"
-        text="This teaser introduces a topic or piece of content and provides a short summary to encourage further exploration."
-        image="img/placeholder/avatar-wide.svg"
-        url="#"
-        button={{
-          label: "Go to Page",
+          label: "Beratung starten",
           hidden: true,
         }}
       />
@@ -340,8 +296,8 @@ export const Inverted: Story = {
     inverted: true,
     content: { mode: "default" },
     headline: {
-      text: "Key headline for this section",
-      sub: "Short explanatory subheadline",
+      text: "Unser Angebot",
+      sub: "Vier Säulen für modulare Web-Frontends und Headless CMS.",
     },
     buttons: [],
   }),
@@ -357,8 +313,8 @@ export const AccentBackground: Story = {
   args: pack({
     backgroundColor: "accent",
     headline: {
-      text: "Key headline for this section",
-      sub: "Short explanatory subheadline",
+      text: "Unser Angebot",
+      sub: "Vier Säulen für modulare Web-Frontends und Headless CMS.",
       align: "center",
     },
     buttons: [],
@@ -375,8 +331,8 @@ export const BoldBackground: Story = {
   args: pack({
     backgroundColor: "bold",
     headline: {
-      text: "Key headline for this section",
-      sub: "Short explanatory subheadline",
+      text: "Unser Angebot",
+      sub: "Vier Säulen für modulare Web-Frontends und Headless CMS.",
       align: "center",
     },
     buttons: [],
@@ -393,8 +349,8 @@ export const Framed: Story = {
   args: pack({
     width: "wide",
     headline: {
-      text: "Key headline for this section",
-      sub: "Short explanatory subheadline",
+      text: "Unser Angebot",
+      sub: "Vier Säulen für modulare Web-Frontends und Headless CMS.",
       align: "center",
     },
     style: "framed",
@@ -412,8 +368,8 @@ export const BackgroundImage: Story = {
   args: pack({
     backgroundImage: "/img/bg_dot-carpet-blue.svg",
     headline: {
-      text: "Key headline for this section",
-      sub: "Short explanatory subheadline",
+      text: "Unser Angebot",
+      sub: "Vier Säulen für modulare Web-Frontends und Headless CMS.",
     },
     content: {
       mode: "default",
@@ -431,22 +387,22 @@ export const WithButtons: Story = {
   },
   args: pack({
     headline: {
-      text: "Key headline for this section",
-      sub: "Short explanatory subheadline",
+      text: "Unser Angebot",
+      sub: "Vier Säulen für modulare Web-Frontends und Headless CMS.",
       align: "center",
     },
     buttons: [
       {
         disabled: false,
         icon: "arrow-right",
-        label: "Premium Topics",
+        label: "Beratung starten",
         size: "medium",
         variant: "secondary",
       },
       {
         disabled: false,
         icon: "",
-        label: "Topics Overview",
+        label: "Case Studies ansehen",
         size: "medium",
         variant: "secondary",
       },

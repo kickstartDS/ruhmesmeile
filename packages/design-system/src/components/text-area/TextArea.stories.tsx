@@ -28,5 +28,11 @@ export const Default: Story = {
       height: 246,
     },
   },
-  args: pack({}),
+  args: pack({
+    label: "Euer Vorhaben",
+    placeholder:
+      "Erzählt uns kurz, worum es geht: Website-Relaunch, Headless CMS, Design System …",
+    hint: "Zwei, drei Sätze reichen. Wir melden uns innerhalb von 48 Stunden.",
+    invalidMessage: "Bitte beschreibt euer Vorhaben in ein paar Sätzen.",
+  }),
 };

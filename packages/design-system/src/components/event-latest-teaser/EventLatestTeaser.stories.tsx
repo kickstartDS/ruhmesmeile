@@ -28,15 +28,15 @@ export const Default: Story = {
     },
   },
   args: pack({
-    date: "09/18/2025",
-    title: "Title of an Event",
-    location: "Example City",
+    date: "08.10.2026",
+    title: "Headless CMS Workshop",
+    location: "Bonn",
     url: "#",
-    cta: "Go to event",
+    cta: "Zur Anmeldung",
     calendar: {
-      day: "18",
-      month: "Sep",
+      day: "08",
+      month: "Okt",
     },
-    ariaLabel: "Demo Event One on September 18, 2025 in Example City",
+    ariaLabel: "Headless CMS Workshop am 8. Oktober 2026 in Bonn",
   }),
 };

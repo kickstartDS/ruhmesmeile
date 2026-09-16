@@ -28,5 +28,10 @@ export const Default: Story = {
       height: 219,
     },
   },
-  args: pack({}),
+  args: pack({
+    label: "Euer Name",
+    placeholder: "Vor- und Nachname",
+    hint: "Damit wir euch im Beratungstermin richtig ansprechen.",
+    invalidMessage: "Bitte gebt einen Namen an.",
+  }),
 };

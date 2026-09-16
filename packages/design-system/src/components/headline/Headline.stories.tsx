@@ -30,7 +30,7 @@ export const H1: Story = {
   args: pack({
     level: "h1",
     style: "h1",
-    text: "Key headline for this sectionPage or section headline",
+    text: "Modulare Web-Frontends & Headless CMS im KI-Zeitalter",
   }),
 };
 
@@ -44,7 +44,7 @@ export const H2: Story = {
   args: pack({
     level: "h2",
     style: "h2",
-    text: "Headline text placeholder",
+    text: "Spezialisierte Beratung für eure Weblösung",
   }),
 };
 
@@ -58,7 +58,7 @@ export const H3: Story = {
   args: pack({
     level: "h3",
     style: "h3",
-    text: "Another section headline",
+    text: "Design Systeme & Composable Frontends",
   }),
 };
 
@@ -72,7 +72,7 @@ export const H4: Story = {
   args: pack({
     level: "h4",
     style: "h4",
-    text: "Message headline",
+    text: "In Wochen, nicht Monaten",
   }),
 };
 
@@ -84,8 +84,8 @@ export const WithSubheadline: Story = {
     },
   },
   args: pack({
-    text: "Key headline for this section",
-    sub: "Subheading for additional context",
+    text: "Spezialisierte Beratung für Web-Frontends",
+    sub: "In Wochen, nicht Monaten",
   }),
 };
 
@@ -97,8 +97,8 @@ export const OrderSwapped: Story = {
     },
   },
   args: pack({
-    text: "Key headline for this section",
-    sub: "Eyebrow heading to frame the context",
+    text: "Spezialisierte Beratung für Web-Frontends",
+    sub: "Unser Angebot",
     switchOrder: true,
   }),
 };
@@ -111,7 +111,7 @@ export const WithMarkdown: Story = {
     },
   },
   args: pack({
-    text: "**Key headline** for this section",
-    sub: "Subheading for _additional_ context",
+    text: "**Headless** CMS & **Design Systeme**",
+    sub: "Für _modulare_ Web-Frontends",
   }),
 };

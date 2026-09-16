@@ -28,12 +28,15 @@ export const ProductTiles: Story = {
     },
   },
   args: pack({
-    headline: "Explore This Topic",
-    text: "This teaser introduces a topic or piece of content and provides a short summary to encourage further exploration.",
-    image: "img/placeholder/avatar-wide.svg",
-    url: "#",
+    headline: "CMS Website Accelerator",
+    text: "Wir lösen starre Alt-Systeme ab und überführen eure Inhalte automatisiert in markenkonforme, wiederverwendbare Frontend-Module – live in Wochen statt Monaten.",
+    image:
+      "https://a.storyblok.com/f/297364/1099x731/28a441c2ee/rm_lp-industry-electronics.png",
+    imageAlt:
+      "Mit dem CMS Website Accelerator erstellte Landingpage für Industrieunternehmen",
+    url: "https://www.ruhmesmeile.com/kontakt",
     button: {
-      label: "Learn more",
+      label: "Beratung starten",
       hidden: true,
     },
   }),
@@ -48,12 +51,15 @@ export const Compact: Story = {
   },
   args: pack({
     layout: "compact",
-    headline: "Explore This Topic",
-    text: "This teaser introduces a topic or piece of content and provides a short summary to encourage further exploration.",
-    image: "img/people-brainstorming-work-meeting.png",
-    url: "#",
+    headline: "CMS Website Accelerator",
+    text: "Wir lösen starre Alt-Systeme ab und überführen eure Inhalte automatisiert in markenkonforme, wiederverwendbare Frontend-Module – live in Wochen statt Monaten.",
+    image:
+      "https://a.storyblok.com/f/297364/1099x731/28a441c2ee/rm_lp-industry-electronics.png",
+    imageAlt:
+      "Mit dem CMS Website Accelerator erstellte Landingpage für Industrieunternehmen",
+    url: "https://www.ruhmesmeile.com/kontakt",
     button: {
-      label: "Learn more",
+      label: "Beratung starten",
     },
   }),
 };
@@ -66,13 +72,16 @@ export const PageNavigation: Story = {
     },
   },
   args: pack({
-    headline: "Explore This Topic",
-    text: "This teaser introduces a topic or piece of content and provides a short summary to encourage further exploration.",
-    image: "img/placeholder/avatar-wide.svg",
+    headline: "CMS Website Accelerator",
+    text: "Wir lösen starre Alt-Systeme ab und überführen eure Inhalte automatisiert in markenkonforme, wiederverwendbare Frontend-Module – live in Wochen statt Monaten.",
+    image:
+      "https://a.storyblok.com/f/297364/1099x731/28a441c2ee/rm_lp-industry-electronics.png",
+    imageAlt:
+      "Mit dem CMS Website Accelerator erstellte Landingpage für Industrieunternehmen",
     imageRatio: "landscape",
-    url: "#",
+    url: "https://www.ruhmesmeile.com/kontakt",
     button: {
-      label: "Learn more",
+      label: "Beratung starten",
     },
   }),
 };
@@ -85,15 +94,18 @@ export const ShowcasePreview: Story = {
     },
   },
   args: pack({
-    label: "Category Label",
+    label: "Angebot",
     layout: "row",
     imageRatio: "wide",
-    headline: "Explore This Topic",
-    text: "This teaser introduces a topic or piece of content and provides a short summary to encourage further exploration.",
-    image: "img/placeholder/avatar-wide.svg",
-    url: "#",
+    headline: "CMS Website Accelerator",
+    text: "Wir lösen starre Alt-Systeme ab und überführen eure Inhalte automatisiert in markenkonforme, wiederverwendbare Frontend-Module – live in Wochen statt Monaten.",
+    image:
+      "https://a.storyblok.com/f/297364/1099x731/28a441c2ee/rm_lp-industry-electronics.png",
+    imageAlt:
+      "Mit dem CMS Website Accelerator erstellte Landingpage für Industrieunternehmen",
+    url: "https://www.ruhmesmeile.com/kontakt",
     button: {
-      label: "Learn more",
+      label: "Beratung starten",
     },
   }),
 };

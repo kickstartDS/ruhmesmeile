@@ -29,9 +29,9 @@ export const CountUpWithIcons: Story = {
   },
   args: pack({
     stat: [
-      { number: "150K", title: "Count", icon: "person" },
-      { number: "99%", title: "Rate", icon: "star" },
-      { number: "50h", title: "Duration", icon: "time" },
+      { number: "20+", title: "Jahre Erfahrung", icon: "person" },
+      { number: "250+", title: "Erfolgreiche Projekte", icon: "star" },
+      { number: "48h", title: "Time-to-Market", icon: "time" },
     ],
   }),
 };
@@ -47,16 +47,16 @@ export const CountUpWithDescription: Story = {
     align: "left",
     stat: [
       {
-        number: "1500",
-        title: "Users",
+        number: "100%",
+        title: "Brand-Konsistenz",
         description:
-          "An example count used to visualize quantity-based information.",
+          "Für die Deutsche Telekom entwickelten wir einen Webbaukasten, der 400+ Vertriebspartnern markenkonforme Webseiten ermöglicht.",
       },
       {
-        number: "99.9%",
-        title: "Success Rate",
+        number: "400+",
+        title: "Vertriebspartner",
         description:
-          "A sample percentage value displayed for demonstration purposes.",
+          "Ein Baukasten, der jede Landingpage im Corporate Design ausliefert – ohne Entwickleraufwand und ohne Abstimmungsrunden.",
       },
     ],
   }),

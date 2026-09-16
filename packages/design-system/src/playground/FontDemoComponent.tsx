@@ -26,22 +26,22 @@ const FontDemo = () => (
     >
       <Cta
         highlightText
-        headline="Empowering Digital Transformation at Scale"
-        sub="Unlocking Synergies for Next-Gen Business Impact"
-        text="Our mission is clear: **drive innovation** through seamless integration and agile methodologies. Harness future-ready solutions for *cross-functional alignment* and operational excellence. We champion collaborative ecosystems that accelerate value creation."
+        headline="Modulare Web-Frontends für euren Relaunch"
+        sub="Beratung, Design und Entwicklung von Headless CMS"
+        text="Wir arbeiten mit euch: **Headless CMS** als Basis, Design Systeme als Baukasten und Composable Frontends für *markenkonforme* Websites. Redaktion und Frontend bleiben sauber entkoppelt, eure Inhalte werden wiederverwendbar – wartungsarm und skalierbar."
       />
 
       <div>
         <Cta
-          headline="Accelerate Outcomes with Strategic Vision"
-          sub="Elevate Experiences with Purposeful Design"
-          text="We deliver:
-- Data-driven, measurable results
-- *Holistic* stakeholder engagement
+          headline="In 48 Stunden zur produktiven Website"
+          sub="Was wir liefern und wie wir zusammenarbeiten"
+          text="Wir liefern:
+- Klare Architektur statt gewachsener Alt-Systeme
+- *Feste* Ansprechpartner von der Beratung bis zum Launch
 
 `// Example: driveValue(innovation)`
 
-> Empowering tomorrow, today.
+> Erst verstehen, dann bauen.
 "
         />
       </div>
@@ -55,38 +55,38 @@ const FontDemo = () => (
       spaceAfter="small"
     >
       <TeaserCard
-        headline="Experience Seamless Digital Enablement"
-        text="Discover how modular, open-source solutions unlock scalable opportunities for every enterprise."
-        url={"https://basic.design-system.agency/"}
+        headline="CMS Website Accelerator"
+        text="Wir lösen starre Alt-Systeme ab und überführen eure Inhalte automatisiert in markenkonforme, wiederverwendbare Frontend-Module – live in Wochen statt Monaten."
+        url={"https://www.ruhmesmeile.com/kontakt"}
         button={{
-          label: "Browse basic Demo",
+          label: "Beratung starten",
         }}
       />
       <Stats
         stat={[
           {
             icon: "person",
-            number: "150",
-            title: "Active Innovators",
+            number: "20",
+            title: "Jahre Erfahrung",
             description:
-              "Visionaries leveraging our platform to maximize digital potential.",
+              "Wir bauen seit über zwei Jahrzehnten Frontends, Design Systeme und CMS-Architekturen.",
           },
         ]}
       />
       <SearchResult
         imageColSize="none"
-        initialMatch="Driving **transformational** change."
+        initialMatch="Wie startet man mit **Headless CMS**?"
         matches={[
           {
             snippet:
-              "Explore how industry leaders champion **innovation** at scale.",
-            title: "Innovation Leadership Forum",
+              "Wie euer Headless-Projekt durch einen Website Accelerator zum Erfolg wird.",
+            title: "Vereinfache den Switch zu Headless CMS",
             url: "#",
           },
         ]}
         showLink
-        title="Future Conference"
-        url="https://www.example.com/futurevision-2025"
+        title="Insights von ruhmesmeile"
+        url="https://www.ruhmesmeile.com/insights"
       />
       <Features
         ctas={{
@@ -97,12 +97,12 @@ const FontDemo = () => (
           {
             cta: {
               icon: "arrow-right",
-              label: "Learn more",
+              label: "Was sind Headless CMS?",
               url: "#",
             },
             icon: "home",
-            text: "Empower your business with adaptive frameworks, ensuring future-proof scalability and robust performance.",
-            title: "Adaptive Frameworks",
+            text: "Skalierbar, flexibel bei hocheffizienter Redaktion – wir beraten, gestalten und entwickeln eure Headless CMS Website.",
+            title: "Headless CMS",
           },
         ]}
         layout="smallTiles"
@@ -120,27 +120,28 @@ const FontDemo = () => (
       spaceAfter="small"
     >
       <TeaserCard
-        headline="Basic Agency Website Demo"
-        text="Compare what the free version, using Open Source components only, can already offer you and your team."
-        url={"https://basic.design-system.agency/"}
+        headline="Design Systeme & Composable Frontends"
+        text="Egal, wie viele Marken oder Produkte ihr habt – unser Design ist skalierbar. Wir entwickeln Design Systeme, die mit eurem Unternehmen wachsen."
+        url={"https://www.ruhmesmeile.com/case-studies"}
         button={{
-          label: "Browse basic Demo",
+          label: "Case Studies ansehen",
         }}
       />
       <SearchResult
         imageColSize="none"
-        initialMatch="Embracing a **sustainable** lifestyle."
+        initialMatch="Wann lohnt sich ein **Design System**?"
         matches={[
           {
             snippet:
-              "Learn how leading companies are integrating **sustainability**.",
-            title: "Embracing Sustainability",
+              "Ein Design System hält jede Marke konsistent und macht euer Frontend wartungsarm.",
+            title:
+              "Warum ein Designsystem das fehlende Stück in der MACH-Architektur ist",
             url: "#",
           },
         ]}
         showLink
-        title="GreenTech Summit"
-        url="https://www.example.com/greentech-summit-2023"
+        title="Case Studies von ruhmesmeile"
+        url="https://www.ruhmesmeile.com/case-studies"
       />
       <Features
         ctas={{
@@ -151,12 +152,12 @@ const FontDemo = () => (
           {
             cta: {
               icon: "arrow-right",
-              label: "Learn more",
+              label: "Case Studies ansehen",
               url: "#",
             },
             icon: "home",
-            text: "Our design system allows for a scalable architecture, enabling you to build applications that can grow with your needs.",
-            title: "Scalable Architecture",
+            text: "Wir entwickeln Design Systeme, die mit eurem Unternehmen wachsen – von Tokens über Komponenten bis zur Dokumentation.",
+            title: "Skalierbare Architektur",
           },
         ]}
         layout="smallTiles"
@@ -180,26 +181,26 @@ const FontDemo = () => (
         }}
       >
         <Headline
-          text="Unlock Value with Strategic Partnerships"
-          sub="Collaborate for exponential growth"
+          text="Beratung, Design und Entwicklung aus einer Hand"
+          sub="Wir bauen mit euch, nicht für euch"
           spaceAfter="minimum"
           level="h3"
           style="h3"
         />
-        <TextArea label="Your message" />
+        <TextArea label="Euer Vorhaben" />
         <CheckboxGroup
-          label={"Lorem Ipsum"}
+          label={"Interessiert an"}
           options={[
             {
               //@ts-expect-error
               checked: true,
-              label: "Lorem Ipsum",
+              label: "Headless CMS",
             },
             {
-              label: "Ipsum Dolor",
+              label: "Design System",
             },
             {
-              label: "Dolor Sit Amet",
+              label: "Composable Frontends",
               disabled: true,
             },
           ]}
@@ -213,41 +214,41 @@ const FontDemo = () => (
         }}
       >
         <Headline
-          text="Optimize Processes for Maximum Impact"
+          text="In Wochen live statt in Monaten"
           level="h4"
           style="h4"
           spaceAfter="minimum"
         />
         <SelectField
           icon="chevron-down"
-          label="Est dolore a debitis"
+          label="Womit können wir starten?"
           options={[
             {
-              label: "Option 1",
+              label: "CMS Website Accelerator",
             },
             {
-              label: "Option 2",
+              label: "Design System Beratung",
             },
             {
-              label: "Option 3",
+              label: "Composable Frontends",
             },
           ]}
         />
-        <TextField label="Your name" />
+        <TextField label="Euer Name" />
 
         <RadioGroup
-          label={"Lorem Ipsum"}
+          label={"Wie groß ist euer Projekt?"}
           options={[
             {
-              label: "Lorem Ipsum",
+              label: "Website-Relaunch",
             },
             {
               //@ts-expect-error
               checked: true,
-              label: "Ipsum Dolor",
+              label: "Design System aufbauen",
             },
             {
-              label: "Dolor Sit Amet",
+              label: "Nur eine Beratung",
               disabled: true,
             },
           ]}
@@ -263,16 +264,16 @@ const FontDemo = () => (
         <Breadcrumb
           pages={[
             {
-              label: "Home",
-              url: "https://example.com/home",
+              label: "Startseite",
+              url: "https://www.ruhmesmeile.com/",
             },
             {
-              label: "Solutions",
-              url: "https://example.com/solutions",
+              label: "Case Studies",
+              url: "https://www.ruhmesmeile.com/case-studies",
             },
             {
               label: "Insights",
-              url: "https://example.com/insights",
+              url: "https://www.ruhmesmeile.com/insights",
             },
           ]}
         />
@@ -280,7 +281,7 @@ const FontDemo = () => (
           download={[
             {
               format: "PDF",
-              name: "Visionary Solutions Overview",
+              name: "CMS Website Accelerator – Leistungsüberblick",
               previewImage: "img/offset-image.png",
               size: "2.5 MB",
               url: "#",
@@ -289,17 +290,17 @@ const FontDemo = () => (
         />
         <Button
           style={{ width: "fit-content" }}
-          label="Engage Now"
+          label="Beratung starten"
           size="large"
         />
         <Button
           style={{ width: "fit-content" }}
-          label="Discover More"
+          label="Zur Terminbuchung"
           size="medium"
         />
         <Button
           style={{ width: "fit-content" }}
-          label="Get Started"
+          label="Projektanfrage"
           size="small"
         />
       </div>

@@ -32,26 +32,35 @@ export const ColorfulTiles: Story = {
     tile: [
       {
         backgroundColor: "#ffd4f1",
-        headline: "Collaborative Environment",
-        text: "Our team thrives in a collaborative environment, fostering creativity and innovation.",
+        headline: "Schnell live",
+        text: "Kurze Umsetzungszeiten, klar strukturierte Setups – euer Projekt ist in Wochen online, nicht in Monaten.",
         image: {
           src: "img/placeholder/avatar-square.svg",
+        },
+        button: {
+          label: "Beratung starten",
         },
       },
       {
         backgroundColor: "#d8e8f",
-        headline: "Modern Infrastructure",
-        text: "Our state-of-the-art office facilities inspire productivity and efficiency.",
+        headline: "Flexibel erweiterbar",
+        text: "Modular angelegt für langfristige Skalierung: neue Module und Marken kommen dazu, ohne dass alles neu gebaut werden muss.",
         image: {
           src: "img/placeholder/avatar-square.svg",
+        },
+        button: {
+          label: "Case Studies ansehen",
         },
       },
       {
         backgroundColor: "#ddfffe",
-        headline: "Teamwork",
-        text: "We believe in the power of teamwork. Together, we can achieve great things.",
+        headline: "Markenkonsistent",
+        text: "Einheitlicher Auftritt über alle Inhalte und Formate hinweg – 100% Brand-Konsistenz, auch bei vielen Marken.",
         image: {
           src: "img/placeholder/avatar-square.svg",
+        },
+        button: {
+          label: "Über uns",
         },
       },
     ],
@@ -73,8 +82,8 @@ export const ColorfulTextWithImagesBeside: Story = {
         button: {
           toggle: false,
         },
-        headline: "First Example",
-        text: "A representative example showing how individual items can be displayed and described.",
+        headline: "CMS Website Accelerator",
+        text: "Wir unterstützen euch bei der Erprobung neuer Web-Technologien zur Ablösung von starren Alt-Systemen.",
         image: {
           src: "img/placeholder/product-shot-sqaure-spacing.svg",
         },
@@ -84,8 +93,8 @@ export const ColorfulTextWithImagesBeside: Story = {
         button: {
           toggle: false,
         },
-        headline: "Second Example",
-        text: "This example highlights consistency across items and supports visual comparison.",
+        headline: "Design System Beratung",
+        text: "Wir beraten euch bei Prozessen, Tools und Software für moderne Frontend-Architekturen.",
         image: {
           src: "img/placeholder/product-shot-sqaure-spacing.svg",
         },
@@ -95,8 +104,8 @@ export const ColorfulTextWithImagesBeside: Story = {
         button: {
           toggle: false,
         },
-        headline: "Third Example",
-        text: "A simple placeholder item intended to be adapted to real-world content.",
+        headline: "Composable Frontends",
+        text: "Wiederverwendbare, modulare Komponenten für flexible und anpassbare UIs – unabhängig vom CMS.",
         image: {
           src: "img/placeholder/product-shot-sqaure-spacing.svg",
         },

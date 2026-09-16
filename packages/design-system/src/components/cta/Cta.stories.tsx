@@ -28,19 +28,19 @@ export const Banner: Story = {
     },
   },
   args: pack({
-    headline: "Key headline for this section",
-    sub: "Subheading for additional context",
-    text: "This is placeholder text used to demonstrate layout, spacing, and typography within the component.",
+    headline: "Die Beratung für modulare Web-Frontends & Headless CMS",
+    sub: "Wir entwickeln & launchen. In Wochen, nicht in Monaten.",
+    text: "Spezialisierte Beratung für modulare Web-Frontends & Headless CMS im KI-Zeitalter – kurze Wege, direkte Zusammenarbeit mit Senior-Expert:innen.",
     textAlign: "center",
     buttons: [
       {
-        label: "Explore",
-        url: "#",
+        label: "Beratung starten",
+        url: "https://www.ruhmesmeile.com/ueber-uns/kontakt",
         icon: "chevron-right",
       },
       {
-        label: "Learn More",
-        url: "#",
+        label: "Case Studies ansehen",
+        url: "https://www.ruhmesmeile.com/case-studies/",
         icon: "",
       },
     ],
@@ -55,15 +55,15 @@ export const Highlighted: Story = {
     },
   },
   args: pack({
-    headline: "Key headline for this section",
-    sub: "Subheading for additional context",
+    headline: "Design Systeme, die mit eurem Unternehmen wachsen",
+    sub: "20+ Jahre Erfahrung, 250+ erfolgreiche Projekte",
     highlightText: true,
     textAlign: "center",
-    text: "This text serves as a placeholder for descriptive content. It can be replaced with real copy to explain features, concepts, or key messages in more detail.",
+    text: "Egal, wie viele Marken oder Produkte du hast – unser Design ist skalierbar.",
     buttons: [
       {
-        label: "Discover more",
-        url: "#",
+        label: "Projektanfrage",
+        url: "https://www.ruhmesmeile.com/ueber-uns/kontakt",
         icon: "chevron-right",
       },
     ],
@@ -78,13 +78,13 @@ export const LeftAligned: Story = {
     },
   },
   args: pack({
-    headline: "Key headline for this section",
-    sub: "Subheading for additional context",
-    text: "This text serves as a placeholder for descriptive content. It can be replaced with real copy to explain features, concepts, or key messages in more detail.",
+    headline: "Von der Beratung bis zum Go-Live",
+    sub: "Headless CMS, Design Systeme, Composable Frontends",
+    text: "Wir unterstützen euch bei der Erprobung neuer Web-Technologien zur Ablösung von starren Alt-Systemen – skalierbar und investitionssicher.",
     buttons: [
       {
-        label: "Learn More",
-        url: "#",
+        label: "Alle Insights",
+        url: "https://www.ruhmesmeile.com/design-system-insights/",
         icon: "chevron-right",
       },
     ],
@@ -99,9 +99,9 @@ export const ProductAdvertisement: Story = {
     },
   },
   args: pack({
-    headline: "Key headline for this section",
-    sub: "Subheading for additional context",
-    text: "This is placeholder text used to demonstrate layout, spacing, and typography within the component.",
+    headline: "CMS Website Accelerator: in 48 Stunden live",
+    sub: "Blitzschneller Go-Live, inklusive CMS-Integration",
+    text: "Wir unterstützen euch bei der Erprobung neuer Web-Technologien zur Ablösung von starren Alt-Systemen.",
     backgroundImage: "img/bg_dot-carpet-blue.svg",
     highlightText: true,
     padding: true,
@@ -111,12 +111,12 @@ export const ProductAdvertisement: Story = {
     image: {
       padding: false,
       src: "img/placeholder/cta-product-shot.svg",
-      alt: "Over-Ear Headphones",
+      alt: "Vorschau des CMS Website Accelerators",
     },
     buttons: [
       {
-        label: "Details",
-        url: "/shop",
+        label: "CMS Pakete & Preise",
+        url: "https://www.ruhmesmeile.com/headless-cms/cms-website-accelerator",
         icon: "chevron-right",
       },
     ],
@@ -131,9 +131,9 @@ export const ContactBanner: Story = {
     },
   },
   args: pack({
-    headline: "Key headline for this section",
-    sub: "Subheading for additional context",
-    text: "This text serves as a placeholder for descriptive content. It can be replaced with real copy to explain features, concepts, or key messages in more detail.",
+    headline: "Sprecht mit uns über euer Projekt",
+    sub: "Daniel und Jonas nehmen sich Zeit für eure Fragen",
+    text: "Schreibt uns, worum es geht – oder bucht direkt einen Termin. Ihr bekommt eine technische Einschätzung, keine Hochglanz-Präsentation.",
     padding: true,
     image: {
       src: "img/placeholder/cta-contact-banner.svg",
@@ -144,14 +144,14 @@ export const ContactBanner: Story = {
     },
     buttons: [
       {
-        label: "Contact us",
+        label: "Kontakt aufnehmen",
         icon: "person",
-        url: "#",
+        url: "https://www.ruhmesmeile.com/ueber-uns/kontakt",
       },
       {
-        label: "Book a meeting",
+        label: "Zur Terminbuchung",
         icon: "date",
-        url: "#",
+        url: "https://app.lemcal.com/@daniel-ley",
       },
     ],
   }),
@@ -165,9 +165,9 @@ export const SplitBanner: Story = {
     },
   },
   args: pack({
-    headline: "Key headline for this section",
-    sub: "Subheading for additional context",
-    text: "Use this area to add a short description. It provides additional context and helps structure content within the component",
+    headline: "Composable Frontends für euren Baukasten",
+    sub: "Wiederverwendbare Module statt Einzellösungen",
+    text: "Unsere UI-Komponentenbibliothek liefert modulare Bausteine, mit denen euer Team Landingpages selbst zusammenstellt – schnell, markenkonform und wartungsarm.",
     colorNeutral: true,
     backgroundColor: "#d9e4ff",
     padding: true,
@@ -180,9 +180,9 @@ export const SplitBanner: Story = {
     },
     buttons: [
       {
-        label: "Learn more",
+        label: "Mehr über Composable Frontends",
         icon: "",
-        url: "#",
+        url: "https://www.ruhmesmeile.com/headless-cms/composable-frontends",
       },
     ],
   }),
@@ -196,9 +196,10 @@ export const AngledImage: Story = {
     },
   },
   args: pack({
-    headline: "Key **headline** for this section",
-    text: `This text serves as a placeholder for descriptive content. It can be replaced with real copy to explain features, concepts, or key messages in more detail.`,
-    sub: "Subheading for additional context",
+    headline:
+      "Wir entwickeln **Design Systeme**, die mit eurem Unternehmen wachsen",
+    text: `Markenkonform, wartungsarm und schnell: Wir bauen die Basis, auf der eure Teams Landingpages im Baukasten-Prinzip zusammenstellen.`,
+    sub: "Design Systeme & Composable Frontends",
     padding: true,
     image: {
       src: "img/placeholder/cta-angled-image.svg",
@@ -209,9 +210,9 @@ export const AngledImage: Story = {
     },
     buttons: [
       {
-        label: "Learn more",
+        label: "Design System Services",
         icon: "",
-        url: "#",
+        url: "https://www.ruhmesmeile.com/design-system-services",
       },
     ],
   }),
@@ -225,21 +226,21 @@ export const ColoredBanner: Story = {
     },
   },
   args: pack({
-    headline: "Key headline for this section",
-    text: "Use this area to add a short description. It provides additional context and helps structure content within the component.",
-    sub: "Subheading for additional context",
+    headline: "Headless CMS, kurz erklärt",
+    text: "Inhalte liegen getrennt vom Frontend und werden über APIs ausgeliefert. Das macht euch flexibel bei Marken, Kanälen und Relaunches – ohne starre Templates.",
+    sub: "In fünf Minuten erklärt",
     highlightText: true,
     colorNeutral: true,
     backgroundColor: "#a1d5d6ff",
     padding: true,
     buttons: [
       {
-        label: "Learn More",
-        url: "#",
+        label: "Was sind Headless CMS?",
+        url: "https://www.ruhmesmeile.com/headless-cms/was-ist-ein-headless-cms",
       },
       {
-        label: "More Information",
-        url: "#",
+        label: "Zur Terminbuchung",
+        url: "https://app.lemcal.com/@daniel-ley",
       },
     ],
   }),
@@ -253,9 +254,9 @@ export const AlignBottom: Story = {
     },
   },
   args: pack({
-    headline: "Key headline for this section",
-    text: `This text serves as a placeholder for descriptive content. It can be replaced with real copy to explain features, concepts, or key messages in more detail.`,
-    sub: "Subheading for additional context",
+    headline: "Bereit für ein Frontend, das mit euch wächst?",
+    text: `Wir zeigen euch in 30 Minuten, wie ein Headless-Setup bei euch aussehen kann – konkret an euren Seiten, nicht an Folien.`,
+    sub: "Termin buchen, offene Fragen klären",
     backgroundImage: "img/grid-bg-light.svg",
     align: "bottom",
     image: {
@@ -266,8 +267,8 @@ export const AlignBottom: Story = {
     },
     buttons: [
       {
-        label: "Learn More",
-        url: "#",
+        label: "Beratung starten",
+        url: "https://www.ruhmesmeile.com/ueber-uns/kontakt",
       },
     ],
   }),

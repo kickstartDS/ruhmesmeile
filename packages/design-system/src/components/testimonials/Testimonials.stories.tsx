@@ -30,13 +30,13 @@ export const Simple: Story = {
   args: pack({
     testimonial: [
       {
-        quote: `This is an example testimonial used to demonstrate layout and typography.`,
+        quote: `Wir hatten drei Marken und vier Websites, die sich auseinanderentwickelt haben. Mit dem Design System von ruhmesmeile liefern wir heute alles aus einer Basis – und neue Seiten stehen in Tagen statt Wochen.`,
         image: {
           src: "img/placeholder/avatar-round.svg",
-          alt: "Alt Text Testimonial Image",
+          alt: "Porträt von Katrin Behrens",
         },
-        name: "Taylor Reed",
-        title: "Digital Platforms & Ecosystems",
+        name: "Katrin Behrens",
+        title: "Leiterin Digitale Produkte, Energieversorger",
       },
     ],
   }),
@@ -52,13 +52,13 @@ export const WithTitle: Story = {
   args: pack({
     testimonial: [
       {
-        quote: `Sample feedback text showing how a testimonial could appear in this component.`,
+        quote: `Der Switch auf ein Headless CMS war unser größtes Risiko in diesem Jahr. ruhmesmeile hat daraus Routine gemacht: Redaktion, Vertrieb und Entwicklung arbeiten heute im selben Baukasten.`,
         image: {
           src: "img/placeholder/avatar-round.svg",
-          alt: "Alt Text Testimonial Image",
+          alt: "Porträt von Markus Vogel",
         },
-        name: "Emily Johnson",
-        title: "Chief Marketing Officer",
+        name: "Markus Vogel",
+        title: "Leiter Marketing, Industrieunternehmen",
       },
     ],
   }),
@@ -75,33 +75,33 @@ export const ListLayout: Story = {
     layout: "list",
     testimonial: [
       {
-        quote: `This is an example testimonial used to demonstrate layout and typography.`,
+        quote: `Wir hatten drei Marken und vier Websites, die sich auseinanderentwickelt haben. Mit dem Design System von ruhmesmeile liefern wir heute alles aus einer Basis – und neue Seiten stehen in Tagen statt Wochen.`,
         image: {
           src: "img/placeholder/avatar-round.svg",
-          alt: "Alt Text Testimonial Image",
+          alt: "Porträt von Katrin Behrens",
         },
-        name: "Emily Johnson",
-        title: "Chief Marketing Officer",
+        name: "Katrin Behrens",
+        title: "Leiterin Digitale Produkte, Energieversorger",
         rating: 5,
       },
       {
-        quote: `Sample feedback text showing how a testimonial could appear in this component.`,
+        quote: `Unsere Landingpages bauen wir jetzt selbst. Statt Ticket und sechs Wochen Wartezeit sind es zwei Stunden im Baukasten – und es sieht trotzdem nach unserer Marke aus.`,
         image: {
           src: "img/placeholder/avatar-round.svg",
-          alt: "Alt Text Testimonial Image",
+          alt: "Porträt von Sabine Krüger",
         },
-        name: "John Smith",
-        title: "Director of Digital Strategy",
+        name: "Sabine Krüger",
+        title: "Online-Marketing, Maschinenbau",
         rating: 4,
       },
       {
-        quote: `Placeholder quote intended to be replaced with real user feedback.`,
+        quote: `Der Switch auf ein Headless CMS war unser größtes Risiko in diesem Jahr. ruhmesmeile hat daraus Routine gemacht: Redaktion, Vertrieb und Entwicklung arbeiten heute im selben Baukasten.`,
         image: {
           src: "img/placeholder/avatar-round.svg",
-          alt: "Alt Text Testimonial Image",
+          alt: "Porträt von Markus Vogel",
         },
-        name: "Alex Chen",
-        title: "CEO",
+        name: "Markus Vogel",
+        title: "Leiter Marketing, Industrieunternehmen",
         rating: 5,
       },
     ],
@@ -118,31 +118,31 @@ export const SliderLayout: Story = {
   args: pack({
     testimonial: [
       {
-        quote: `This is an example testimonial used to demonstrate layout and typography.`,
+        quote: `Der Switch auf ein Headless CMS war unser größtes Risiko in diesem Jahr. ruhmesmeile hat daraus Routine gemacht: Redaktion, Vertrieb und Entwicklung arbeiten heute im selben Baukasten.`,
         image: {
           src: "img/placeholder/avatar-round.svg",
-          alt: "Alt Text Testimonial Image",
+          alt: "Porträt von Markus Vogel",
         },
-        name: "Emily Johnson",
-        title: "Chief Marketing Officer",
+        name: "Markus Vogel",
+        title: "Leiter Marketing, Industrieunternehmen",
       },
       {
-        quote: `Sample feedback text showing how a testimonial could appear in this component.`,
+        quote: `Content Operations hat bei uns vorher niemanden begeistert. Heute ist der Redaktionsprozess schneller als unser Freigabeweg.`,
         image: {
           src: "img/placeholder/avatar-round.svg",
-          alt: "Alt Text Testimonial Image",
+          alt: "Porträt von Tobias Wendt",
         },
-        name: "John Smith",
-        title: "Director of Digital Strategy",
+        name: "Tobias Wendt",
+        title: "Redaktionsleitung, Verband",
       },
       {
-        quote: `Placeholder quote intended to be replaced with real user feedback.`,
+        quote: `Ein Design System ist kein Projekt, sondern eine Entscheidung. ruhmesmeile hat uns zwei Jahre begleitet, ohne uns ein Framework aufzudrängen.`,
         image: {
           src: "img/placeholder/avatar-round.svg",
-          alt: "Alt Text Testimonial Image",
+          alt: "Porträt von Nadine Sander",
         },
-        name: "Alex Chen",
-        title: "CEO",
+        name: "Nadine Sander",
+        title: "Head of UX, Softwareunternehmen",
       },
     ],
   }),
@@ -158,33 +158,33 @@ export const WithRating: Story = {
   args: pack({
     testimonial: [
       {
-        quote: `This is an example testimonial used to demonstrate layout and typography.`,
+        quote: `Unsere Landingpages bauen wir jetzt selbst. Statt Ticket und sechs Wochen Wartezeit sind es zwei Stunden im Baukasten – und es sieht trotzdem nach unserer Marke aus.`,
         image: {
           src: "img/placeholder/avatar-round.svg",
-          alt: "Alt Text Testimonial Image",
+          alt: "Porträt von Sabine Krüger",
         },
-        name: "Emily Johnson",
-        title: "Chief Marketing Officer",
+        name: "Sabine Krüger",
+        title: "Online-Marketing, Maschinenbau",
         rating: 5,
       },
       {
-        quote: `Sample feedback text showing how a testimonial could appear in this component.`,
+        quote: `Content Operations hat bei uns vorher niemanden begeistert. Heute ist der Redaktionsprozess schneller als unser Freigabeweg.`,
         image: {
           src: "img/placeholder/avatar-round.svg",
-          alt: "Alt Text Testimonial Image",
+          alt: "Porträt von Tobias Wendt",
         },
-        name: "John Smith",
-        title: "Director of Digital Strategy",
+        name: "Tobias Wendt",
+        title: "Redaktionsleitung, Verband",
         rating: 4,
       },
       {
-        quote: `Placeholder quote intended to be replaced with real user feedback.`,
+        quote: `Ein Design System ist kein Projekt, sondern eine Entscheidung. ruhmesmeile hat uns zwei Jahre begleitet, ohne uns ein Framework aufzudrängen.`,
         image: {
           src: "img/placeholder/avatar-round.svg",
-          alt: "Alt Text Testimonial Image",
+          alt: "Porträt von Nadine Sander",
         },
-        name: "Alex Chen",
-        title: "CEO",
+        name: "Nadine Sander",
+        title: "Head of UX, Softwareunternehmen",
         rating: 5,
       },
     ],
@@ -202,31 +202,31 @@ export const AlternatingLayout: Story = {
     layout: "alternating",
     testimonial: [
       {
-        quote: `This is an example testimonial used to demonstrate layout and typography.`,
+        quote: `Ein Design System ist kein Projekt, sondern eine Entscheidung. ruhmesmeile hat uns zwei Jahre begleitet, ohne uns ein Framework aufzudrängen.`,
         image: {
           src: "img/placeholder/avatar-round.svg",
-          alt: "Alt Text Testimonial Image",
+          alt: "Porträt von Nadine Sander",
         },
-        name: "Emily Johnson",
-        title: "Chief Marketing Officer",
+        name: "Nadine Sander",
+        title: "Head of UX, Softwareunternehmen",
       },
       {
-        quote: `Sample feedback text showing how a testimonial could appear in this component.`,
+        quote: `Wir hatten drei Marken und vier Websites, die sich auseinanderentwickelt haben. Mit dem Design System von ruhmesmeile liefern wir heute alles aus einer Basis – und neue Seiten stehen in Tagen statt Wochen.`,
         image: {
           src: "img/placeholder/avatar-round.svg",
-          alt: "Alt Text Testimonial Image",
+          alt: "Porträt von Katrin Behrens",
         },
-        name: "John Smith",
-        title: "Director of Digital Strategy",
+        name: "Katrin Behrens",
+        title: "Leiterin Digitale Produkte, Energieversorger",
       },
       {
-        quote: `Placeholder quote intended to be replaced with real user feedback.`,
+        quote: `Unsere Landingpages bauen wir jetzt selbst. Statt Ticket und sechs Wochen Wartezeit sind es zwei Stunden im Baukasten – und es sieht trotzdem nach unserer Marke aus.`,
         image: {
           src: "img/placeholder/avatar-round.svg",
-          alt: "Alt Text Testimonial Image",
+          alt: "Porträt von Sabine Krüger",
         },
-        name: "Alex Chen",
-        title: "CEO",
+        name: "Sabine Krüger",
+        title: "Online-Marketing, Maschinenbau",
       },
     ],
   }),

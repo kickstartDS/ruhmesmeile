@@ -28,14 +28,14 @@ export const AtmosphericVideoWithOverlay: Story = {
     },
   },
   args: pack({
-    headline: "This is the main headline",
-    sub: "Subheading for additional context",
-    text: "This is placeholder text used to demonstrate layout, spacing, and typography within the component.",
+    headline: "Wir entwickeln & launchen. In Wochen, nicht Monaten.",
+    sub: "Spezialisierte Beratung für modulare Web-Frontends & Headless CMS",
+    text: "Wir bauen digitale Plattformen, die sich an euer Business anpassen – nicht umgekehrt. Headless, markenkonform und von Anfang an skalierbar.",
     overlay: true,
     textPosition: "center",
     buttons: [
       {
-        label: "Start here",
+        label: "Beratung starten",
       },
     ],
     video: {
@@ -54,16 +54,16 @@ export const ColorNeutralText: Story = {
     },
   },
   args: pack({
-    headline: "This is the main headline",
-    sub: "Subheading for additional context",
-    text: "This is placeholder text used to demonstrate layout, spacing, and typography within the component.",
+    headline: "Was früher Wochen dauerte, geht jetzt in Minuten",
+    sub: "Case Study: Landingpages im Baukasten",
+    text: "Erfahre, wie eine NGO mit unserem Accelerator schnell, flexibel und kosteneffizient eigene Landing Pages erstellt – ganz ohne externe Hilfe.",
     textPosition: "corner",
     colorNeutral: true,
     highlightText: true,
     overlay: true,
     buttons: [
       {
-        label: "Start here",
+        label: "Case Studies ansehen",
       },
     ],
     video: {
@@ -82,15 +82,15 @@ export const ColorNeutralVideo: Story = {
     },
   },
   args: pack({
-    headline: "This is the main headline",
-    sub: "Subheading for additional context",
-    text: "This is placeholder text used to demonstrate layout, spacing, and typography within the component.",
+    headline: "Dein CMS kann jetzt denken",
+    sub: "Content Operations mit KI automatisieren",
+    text: "Mit maschinenlesbaren Komponenten erzeugt KI automatisch passgenaue Inhalte – ganz ohne Training oder Prompt-Bastelei. Möglich macht das MCP.",
     textPosition: "center",
     highlightText: true,
     overlay: true,
     buttons: [
       {
-        label: "Start here",
+        label: "Alle Insights",
       },
     ],
     video: {

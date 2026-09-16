@@ -31,11 +31,11 @@ const ColorDemo = () => (
     >
       <TeaserCard
         imageRatio="landscape"
-        headline="Empower Your Business"
-        text="Leverage our expertise in creating scalable and robust applications using modern technologies."
-        url={""}
+        headline="CMS Website Accelerator"
+        text="Wir lösen starre Alt-Systeme ab und überführen eure Inhalte automatisiert in markenkonforme, wiederverwendbare Frontend-Module – live in Wochen statt Monaten."
+        url={"https://www.ruhmesmeile.com/kontakt"}
         button={{
-          label: "Get Started",
+          label: "Beratung starten",
           chevron: true,
         }}
       />
@@ -48,12 +48,12 @@ const ColorDemo = () => (
           {
             cta: {
               icon: "arrow-right",
-              label: "Learn more",
-              url: "#",
+              label: "Case Studies ansehen",
+              url: "https://www.ruhmesmeile.com/case-studies",
             },
             icon: "home",
-            text: "Our design system allows for a scalable architecture, enabling you to build applications that can grow with your needs.",
-            title: "Scalable Architecture",
+            text: "Wir bauen modulare Frontends, die mit euren Anforderungen wachsen: Design System, Headless CMS und Komponenten, die ihr wiederverwenden könnt.",
+            title: "Skalierbare Frontends",
           },
         ]}
         layout="smallTiles"
@@ -64,27 +64,27 @@ const ColorDemo = () => (
         stat={[
           {
             icon: "person",
-            number: "150",
-            title: "Users",
+            number: "20",
+            title: "Jahre Erfahrung",
             description:
-              "Active users on the platform taking advantage of the design system.",
+              "Wir bauen seit über zwei Jahrzehnten Frontends, Design Systeme und CMS-Architekturen.",
           },
         ]}
       />
       <SearchResult
         imageColSize="none"
-        initialMatch="Embracing a **sustainable** lifestyle."
+        initialMatch="Wie startet man mit **Headless CMS**?"
         matches={[
           {
             snippet:
-              "Learn how leading companies are integrating **sustainability**.",
-            title: "Embracing Sustainability",
-            url: "#",
+              "Wie dein Headless-Projekt durch einen Website Accelerator zu einem Erfolg wird.",
+            title: "Vereinfache den Switch zu Headless CMS",
+            url: "https://www.ruhmesmeile.com/insights",
           },
         ]}
         showLink
-        title="GreenTech Summit"
-        url="https://www.example.com/greentech-summit-2023"
+        title="Insights von ruhmesmeile"
+        url="https://www.ruhmesmeile.com/insights"
       />
     </Section>
     <Section
@@ -98,18 +98,18 @@ const ColorDemo = () => (
       spaceBefore="none"
     >
       <EventListTeaser
-        category="Buyers"
-        ctaText="Show event"
-        date="30.12.2025"
+        category="Webinar"
+        ctaText="Zum Webinar"
+        date="08.10.2026"
         location={{
-          address: "Alexanderplatz 1<br />\n10178 Berlin",
-          name: "Tech Conference Center",
+          address: "Mozartstraße 4-10<br />\n53115 Bonn",
+          name: "ruhmesmeile, Bonn",
         }}
-        tags={["AI"]}
-        text="The Future of AI is here and now - Join us to explore the latest advancements in artificial intelligence."
-        time="10:00"
-        title="The Future of AI"
-        url="#"
+        tags={["Headless CMS"]}
+        text="In 45 Minuten zeigen wir, wie ein Headless CMS Redaktion und Frontend entkoppelt – und was das für euren Relaunch bedeutet."
+        time="16:00"
+        title="Live-Webinar: Was sind Headless CMS?"
+        url="https://www.ruhmesmeile.com/insights"
       />
       <div
         style={{
@@ -119,40 +119,40 @@ const ColorDemo = () => (
         }}
       >
         <EventLocation
-          address="Alexanderplatz 1<br />
-  10178 Berlin"
+          address="Mozartstraße 4-10<br />
+  53115 Bonn"
           dates={[
             {
               ariaLabel:
-                "Register for the event on 18th September 2025 from 09:00 to 17:00",
-              date: "18.09.2025",
-              label: "Register",
+                "Termin am 8. Oktober 2026 von 16:00 bis 17:00 Uhr",
+              date: "08.10.2026",
+              label: "Termin sichern",
               newTab: true,
-              time: "09:00 – 17:00",
+              time: "16:00 – 17:00",
               url: "#",
             },
           ]}
           displayMode="spacious"
           links={[
             {
-              label: "Open in Google Maps",
+              label: "Route berechnen",
               newTab: true,
-              url: "https://maps.google.com/?q=Berlin+Congress+Center",
+              url: "https://maps.google.com/?q=Mozartstra%C3%9Fe+4-10+Bonn",
             },
           ]}
-          locationName="Berlin Congress Center"
+          locationName="ruhmesmeile, Bonn"
         />
         <EventLatestTeaser
-          ariaLabel="Event teaser for "
+          ariaLabel="Termin: Live-Webinar Headless CMS"
           calendar={{
-            day: "30",
-            month: "Dec",
+            day: "8",
+            month: "Okt",
           }}
-          cta="Show event"
-          date="12/30/2025"
-          location="Berlin, Germany"
-          title="The Future of AI"
-          url="https://example.com"
+          cta="Zum Webinar"
+          date="08.10.2026"
+          location="Online"
+          title="Live-Webinar: Was sind Headless CMS?"
+          url="https://www.ruhmesmeile.com/insights"
         />
       </div>
       <div
@@ -164,51 +164,51 @@ const ColorDemo = () => (
       >
         <SelectField
           icon="chevron-down"
-          label="Est dolore a debitis"
+          label="Womit können wir starten?"
           options={[
             {
-              label: "Option 1",
+              label: "CMS Website Accelerator",
             },
             {
-              label: "Option 2",
+              label: "Design System Beratung",
             },
             {
-              label: "Option 3",
+              label: "Composable Frontends",
             },
           ]}
         />
-        <TextField label="Your name" />
+        <TextField label="Euer Name" />
         <CheckboxGroup
-          label={"Lorem Ipsum"}
+          label={"Interessiert an"}
           options={[
             {
               //@ts-expect-error
               checked: true,
-              label: "Lorem Ipsum",
+              label: "Headless CMS",
             },
             {
-              label: "Ipsum Dolor",
+              label: "Design System",
             },
             {
-              label: "Dolor Sit Amet",
+              label: "Composable Frontends",
               disabled: true,
             },
           ]}
         />
-        <TextArea label="Your message" />
+        <TextArea label="Euer Vorhaben" />
         <RadioGroup
-          label={"Lorem Ipsum"}
+          label={"Wie groß ist euer Projekt?"}
           options={[
             {
-              label: "Lorem Ipsum",
+              label: "Website-Relaunch",
             },
             {
               //@ts-expect-error
               checked: true,
-              label: "Ipsum Dolor",
+              label: "Design System aufbauen",
             },
             {
-              label: "Dolor Sit Amet",
+              label: "Nur eine Beratung",
               disabled: true,
             },
           ]}
@@ -222,43 +222,43 @@ const ColorDemo = () => (
           justifyContent: "space-between",
         }}
       >
-        <Button icon="arrow-right" variant="primary" label={"Learn more"} />
-        <Button icon="date" variant="secondary" label={"Book appointment"} />
-        <Button icon="upload" variant="tertiary" label={"Upload File"} />
+        <Button icon="arrow-right" variant="primary" label={"Beratung starten"} />
+        <Button icon="date" variant="secondary" label={"Zur Terminbuchung"} />
+        <Button icon="upload" variant="tertiary" label={"Projektanfrage"} />
         <BlogAside
           author={{
-            byline: "CEO at Company",
+            byline: "CTO & Founder",
 
             links: [
               {
-                ariaLabel: "Link to Isabella Doe's social media profile",
+                ariaLabel: "Kontakt zu Jonas Ulrich",
                 icon: "twitter",
-                label: "jane_smith",
+                label: "+49 228 30412660",
                 newTab: false,
-                url: "tel:+4922868896620",
+                url: "tel:+4922830412660",
               },
               {
-                ariaLabel: "Link to Isabella Doe's social media profile",
+                ariaLabel: "Kontakt zu Jonas Ulrich",
                 icon: "email",
-                label: "jane.smith@example.com",
+                label: "mail@ruhmesmeile.com",
                 newTab: false,
-                url: "mailto:mail@example.com",
+                url: "mailto:mail@ruhmesmeile.com",
               },
             ],
-            name: "Jane Smith",
+            name: "Jonas Ulrich",
           }}
-          date="12/30/2022"
-          readingTime="5 min read"
+          date="08.10.2026"
+          readingTime="6 Min. Lesezeit"
           socialSharing={[
             {
               icon: "twitter",
-              title: "Share on Twitter",
-              url: "https://twitter.com/share?text=Check%20this%20out!&url=https://example.com",
+              title: "Auf X teilen",
+              url: "https://twitter.com/share?text=ruhmesmeile&url=https://www.ruhmesmeile.com/insights",
             },
             {
               icon: "linkedin",
-              title: "Share on LinkedIn",
-              url: "https://twitter.com/share?text=Check%20this%20out!&url=https://example.com",
+              title: "Auf LinkedIn teilen",
+              url: "https://www.linkedin.com/shareArticle?mini=true&url=https://www.ruhmesmeile.com/insights",
             },
           ]}
         />
@@ -283,16 +283,16 @@ const ColorDemo = () => (
           <Breadcrumb
             pages={[
               {
-                label: "Page 1",
-                url: "https://example.com/page1",
+                label: "Startseite",
+                url: "https://www.ruhmesmeile.com/",
               },
               {
-                label: "Page 2",
-                url: "https://example.com/page2",
+                label: "Case Studies",
+                url: "https://www.ruhmesmeile.com/case-studies",
               },
               {
-                label: "Page 3",
-                url: "https://example.com/page3",
+                label: "Insights",
+                url: "https://www.ruhmesmeile.com/insights",
               },
             ]}
           />
@@ -302,7 +302,7 @@ const ColorDemo = () => (
             download={[
               {
                 format: "PDF",
-                name: "Product Brochure",
+                name: "CMS Website Accelerator – Leistungsüberblick",
                 previewImage: "img/offset-image.png",
                 size: "2.5 MB",
                 url: "#",
@@ -313,28 +313,28 @@ const ColorDemo = () => (
         <div style={{ flexGrow: "3" }}>
           <Pagination
             ariaLabels={{
-              goToPage: "Go to page",
-              nextPage: "Go to next page",
-              previousPage: "Go to previous page",
-              skipToFirstPage: "Skip to first page",
-              skipToLastPage: "Skip to last page",
+              goToPage: "Gehe zu Seite",
+              nextPage: "Zur nächsten Seite",
+              previousPage: "Zur vorherigen Seite",
+              skipToFirstPage: "Zur ersten Seite springen",
+              skipToLastPage: "Zur letzten Seite springen",
             }}
             pages={[
               {
                 active: false,
-                url: "https://example.com/page1",
+                url: "https://www.ruhmesmeile.com/insights",
               },
               {
                 active: true,
-                url: "https://example.com/page2",
+                url: "https://www.ruhmesmeile.com/case-studies",
               },
               {
                 active: false,
-                url: "https://example.com/page3",
+                url: "https://www.ruhmesmeile.com/ueber-uns",
               },
               {
                 active: false,
-                url: "https://example.com/page4",
+                url: "https://www.ruhmesmeile.com/kontakt",
               },
             ]}
           />

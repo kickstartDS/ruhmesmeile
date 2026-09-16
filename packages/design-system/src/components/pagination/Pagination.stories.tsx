@@ -28,43 +28,50 @@ export const Default: Story = {
     },
   },
   args: pack({
+    ariaLabels: {
+      previousPage: "Vorherige Seite",
+      nextPage: "Nächste Seite",
+      skipToFirstPage: "Zur ersten Seite springen",
+      skipToLastPage: "Zur letzten Seite springen",
+      goToPage: "Gehe zu Seite",
+    },
     pages: [
       {
-        url: "https://example.com/page1",
+        url: "https://www.ruhmesmeile.com/design-system-insights?seite=1",
       },
       {
-        url: "https://example.com/page2",
+        url: "https://www.ruhmesmeile.com/design-system-insights?seite=2",
       },
       {
-        url: "https://example.com/page3",
+        url: "https://www.ruhmesmeile.com/design-system-insights?seite=3",
       },
       {
-        url: "https://example.com/page4",
+        url: "https://www.ruhmesmeile.com/design-system-insights?seite=4",
       },
       {
-        url: "https://example.com/page5",
+        url: "https://www.ruhmesmeile.com/design-system-insights?seite=5",
       },
       {
-        url: "https://example.com/page6",
+        url: "https://www.ruhmesmeile.com/design-system-insights?seite=6",
         active: true,
       },
       {
-        url: "https://example.com/page7",
+        url: "https://www.ruhmesmeile.com/design-system-insights?seite=7",
       },
       {
-        url: "https://example.com/page8",
+        url: "https://www.ruhmesmeile.com/design-system-insights?seite=8",
       },
       {
-        url: "https://example.com/page9",
+        url: "https://www.ruhmesmeile.com/design-system-insights?seite=9",
       },
       {
-        url: "https://example.com/page10",
+        url: "https://www.ruhmesmeile.com/design-system-insights?seite=10",
       },
       {
-        url: "https://example.com/page11",
+        url: "https://www.ruhmesmeile.com/design-system-insights?seite=11",
       },
       {
-        url: "https://example.com/page12",
+        url: "https://www.ruhmesmeile.com/design-system-insights?seite=12",
       },
     ],
   }),

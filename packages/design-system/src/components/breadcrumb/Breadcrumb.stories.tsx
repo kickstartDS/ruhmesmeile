@@ -30,16 +30,16 @@ export const Default: Story = {
   args: pack({
     pages: [
       {
-        url: "https://example.com/page1",
-        label: "Page 1",
+        url: "https://www.ruhmesmeile.com/",
+        label: "Startseite",
       },
       {
-        url: "https://example.com/page2",
-        label: "Page 2",
+        url: "https://www.ruhmesmeile.com/headless-cms/headless-cms-services",
+        label: "Headless CMS",
       },
       {
-        url: "https://example.com/page3",
-        label: "Page 3",
+        url: "https://www.ruhmesmeile.com/headless-cms/was-ist-ein-headless-cms",
+        label: "Was ist ein Headless CMS?",
       },
     ],
   }),

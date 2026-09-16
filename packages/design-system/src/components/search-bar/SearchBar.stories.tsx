@@ -25,5 +25,11 @@ export const Default: Story = {
       height: 253,
     },
   },
-  args: pack({}),
+  args: pack({
+    placeholder: "Wonach suchst du?",
+    buttonText: "Suchen",
+    hint: "Mit <kbd>Enter</kbd> startest du die Suche",
+    alternativeText: "Meintest du",
+    alternativeResult: "Headless CMS",
+  }),
 };
