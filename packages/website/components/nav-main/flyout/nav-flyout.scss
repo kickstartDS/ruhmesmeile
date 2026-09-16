@@ -1,72 +1,11 @@
-@import "./nav-flyout-tokens.scss";
-
+// Site-only: the design-system nav has no CTA slot, so the site appends its own
+// "Projektanfrage" button (`components/nav-main/flyout/NavFlyoutComponent.tsx`)
+// and spaces it here. The rest of this file — the off-canvas drawer geometry,
+// the label typography and the open-state slide — is now the design system's own
+// (`packages/design-system/src/components/nav-flyout/nav-flyout.scss` and
+// `_nav-flyout-tokens.scss`).
 .dsa-nav-flyout {
-  .dsa-nav-flyout__label {
-    font-family: var(--ks-font-family-display);
-  }
-
   .dsa-nav-flyout__cta {
     margin-top: var(--ks-spacing-stack-m);
   }
-}
-
-// Mobile menu, restored to the pre-migration layout.
-//
-// The vendored design system renders `.dsa-nav-flyout` as an inline accordion
-// under the header bar (`top:var(--dsa-header--height);left:0;width:100%;
-// max-width:100%;opacity:0`, revealed by fading in). Pre-migration it was an
-// off-canvas drawer that slides in from the left, over the header:
-//
-//   .dsa-nav-flyout{width:78vw;max-width:var(--dsa-nav-flyout--max-width);
-//                   height:100vh;top:0;left:-100%;overflow-y:auto;
-//                   background:var(--dsa-nav-flyout--background);position:fixed;
-//                   transition:all var(--ks-duration-slow)}
-//   .overlay-open .dsa-nav-flyout{left:0;box-shadow:var(--dsa-nav-flyout--shadow)}
-//   .dsa-nav-flyout .dsa-nav-flyout__list{
-//     padding-top:calc(var(--dsa-header--spacing-vertical) - var(--ks-spacing-s))}
-//   .dsa-nav-flyout .dsa-nav-flyout__label{display:flex}
-//
-// The drawer is opaque and covers the header's own logo, so exactly one logo
-// is visible while the menu is open — which is what the pre-migration site
-// showed. (The design system's header renders a logo of its own next to the
-// flyout's; see HeaderComponent.)
-:root {
-  .dsa-nav-flyout {
-    left: -100%;
-    top: 0;
-    width: 78vw;
-    height: 100vh;
-    // legacy: the drawer is never faded, it only slides
-    opacity: 1;
-    transition-delay: 0s;
-    background: var(--dsa-nav-flyout--background);
-  }
-
-  // the floating header variant re-gutters the flyout for its pill layout;
-  // the legacy drawer keeps its own padding and no radius
-  .dsa-header--floating .dsa-nav-flyout {
-    padding: var(--dsa-nav-flyout--padding);
-    border-radius: 0;
-  }
-
-  .dsa-nav-flyout .dsa-nav-flyout__list {
-    padding-top: calc(
-      var(--dsa-header--spacing-vertical) - var(--ks-spacing-s)
-    );
-  }
-
-  .dsa-nav-flyout .dsa-nav-flyout__label {
-    display: flex;
-    width: auto;
-    // legacy labels had no hover transition
-    transition: none;
-  }
-}
-
-// `overlay-open` is set on <html> itself, so this needs an `html.` prefix
-// rather than `:root ` (`:root .overlay-open …` would look for a *descendant*
-// of <html> and never match).
-html.overlay-open .dsa-nav-flyout {
-  left: 0;
-  box-shadow: var(--dsa-nav-flyout--shadow);
 }

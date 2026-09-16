@@ -1,27 +1,12 @@
-@import "./nav-topbar-tokens.scss";
-
+// Site-only: the design system's topbar has no CTA slot, so the site appends its
+// own "Projektanfrage" button (`components/nav-main/topbar/NavTopbarComponent.tsx`)
+// and styles it here. The desktop-nav typography, the legacy label padding and
+// the active-item bar are now the design system's own
+// (`packages/design-system/src/components/nav-topbar/nav-topbar.scss` and
+// `_nav-topbar-tokens.scss`).
 .dsa-nav-topbar {
-  &__list {
-    gap: var(--ks-spacing-inline-xs);
-  }
-
   &__cta {
     margin-left: var(--ks-spacing-inline-m);
-  }
-
-  &__item {
-    position: relative;
-    &--active {
-      &::after {
-        position: absolute;
-        background-color: var(--ks-color-secondary);
-        content: "";
-        left: 0;
-        width: 100%;
-        height: 4px;
-        bottom: 0;
-      }
-    }
   }
 
   .dsa-button.dsa-nav-topbar__cta {
@@ -34,34 +19,5 @@
     margin-top: 0;
     margin-bottom: 0;
     margin-right: 0;
-  }
-}
-
-// Desktop nav links, restored to the pre-migration design system.
-//
-// The legacy design system took the label typography from the
-// `--dsa-nav-topbar__label--font` token (site override: interface-s, and
-// interface-m from 82em up). The vendored version dropped that shorthand and
-// applies `--dsa-nav-topbar__label--font-size`, which is pinned to
-// interface-s — one step smaller, i.e. 15.65px instead of 18px at 1440px.
-// The display family stays the site's own override, as before.
-:root {
-  .dsa-nav-topbar .dsa-nav-topbar__label {
-    font: var(--dsa-nav-topbar__label--font);
-    font-weight: var(--dsa-nav-topbar__label--font-weight);
-    font-family: var(--ks-font-family-display);
-    // legacy labels had no hover transition
-    transition: none;
-  }
-
-  // The vendored design system still bolds the current item
-  // (`.dsa-nav-topbar__item--active .dsa-nav-topbar__label` →
-  // `--dsa-nav-topbar__label--font-weight_active`, still `bold` = 700). The
-  // override right above has the same specificity (0,3,0) but comes later in
-  // the cascade, and its `font` shorthand resets `font-weight`, so it silently
-  // won and the active item rendered at the regular weight. One extra class of
-  // specificity restores the pre-migration bold active state.
-  .dsa-nav-topbar .dsa-nav-topbar__item--active .dsa-nav-topbar__label {
-    font-weight: var(--dsa-nav-topbar__label--font-weight_active);
   }
 }

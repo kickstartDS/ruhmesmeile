@@ -1,28 +1,14 @@
-@use "./fonts.scss";
-@use "./global-token.scss";
-@use "./components/button/button.scss";
-@use "./components/blog-aside/blog-aside.scss";
-@use "./components/cta/cta.scss";
-@use "./components/contact/contact.scss";
-@use "./components/faq/faq.scss";
-@use "./components/features/features.scss";
-@use "./components/footer/footer.scss";
-@use "./components/headline/headline.scss";
-@use "./components/header/header.scss";
+// Site-only styles. The pre-migration brand layer (tokens, type/spacing scales,
+// the `secondary` colour family) and every pre-migration component override now
+// live in the design system — see ../design-system/src/_global-token.scss,
+// src/token/*.scss and src/components/**. What is left here is the website's own
+// composition: the starter's own components and the extra markup this site
+// renders on top of the design system's components (nav CTAs, the ai-draft
+// section marker). Imported after `@kickstartds/design-system/global.css` in
+// pages/_app.tsx.
 @use "./components/header/nav-header-cta.scss";
-@use "./components/hero/hero.scss";
-@use "./components/image-text/image-text.scss";
-@use "./components/image-story/image-story.scss";
 @use "./components/info-table/info-table.scss";
-@use "./components/logos/logos.scss";
-@use "./components/nav-main/nav-main.scss";
-@use "./components/nav-main/nav-dropdown.scss";
-@use "./components/nav-main/nav-toggle.scss";
 @use "./components/nav-main/flyout/nav-flyout.scss";
 @use "./components/nav-main/topbar/nav-topbar.scss";
 @use "./components/section/section.scss";
-@use "./components/stats/stats.scss";
-@use "./components/teaser/teaser.scss";
-@use "./components/testimonial/testimonial.scss";
-@use "./components/breadcrumb/breadcrumb.scss";
 @use "./components/book-a-demo/book-a-demo.scss";
