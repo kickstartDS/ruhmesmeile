@@ -76,8 +76,15 @@ function readBody(req) {
   });
 }
 
+/** The request URL as the client sees it: kamal-proxy terminates TLS and forwards http. */
+function requestUrl(req) {
+  const proto = req.headers["x-forwarded-proto"] ?? "http";
+  const host = req.headers.host ?? `localhost:${PORT}`;
+  return new URL(req.url ?? "/", `${proto}://${host}`);
+}
+
 async function handleMcp(req, res) {
-  const url = new URL(req.url ?? "/", `http://${req.headers.host ?? `localhost:${PORT}`}`);
+  const url = requestUrl(req);
   const headers = new Headers();
   for (const [name, value] of Object.entries(req.headers)) {
     if (typeof value === "string") headers.set(name, value);
@@ -130,9 +137,33 @@ async function sendFile(req, res, path, status = 200) {
   return true;
 }
 
+/**
+ * Shown to a browser (or a bare `curl`) that navigates to `/mcp` without asking for
+ * the SSE channel. An MCP client opens GET /mcp with `Accept: text/event-stream` and
+ * expects a stream that stays open; anything else that arrives here is almost always
+ * a human checking whether the endpoint exists, and an endless stream reads as a
+ * broken page. Answering the request in one response is friendlier and costs a real
+ * client nothing, because a real client always sends that Accept header.
+ */
+const explain = (url) => `This is an MCP (Model Context Protocol) endpoint, not a web page.
+
+It speaks JSON-RPC over streamable HTTP, so it will not render anything in a
+browser. Point an MCP client at ${url}, or call it directly:
+
+  curl -sS -X POST ${url} \\
+    -H 'content-type: application/json' \\
+    -H 'accept: application/json, text/event-stream' \\
+    -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"curl","version":"1"}}}'
+
+Tools: list-all-documentation, get-documentation.
+
+Note for clients: a GET with 'accept: text/event-stream' opens the SSE channel as
+specified; every other request shape gets this text.
+`;
+
 const server = createServer(async (req, res) => {
   try {
-    const url = new URL(req.url ?? "/", `http://${req.headers.host ?? `localhost:${PORT}`}`);
+    const url = requestUrl(req);
     const pathname = decodeURIComponent(url.pathname);
 
     if (MCP_PATHS.has(pathname)) {
@@ -143,6 +174,15 @@ const server = createServer(async (req, res) => {
           "access-control-allow-headers": "*",
         });
         res.end();
+        return;
+      }
+      const wantsStream = /\btext\/event-stream\b/i.test(req.headers.accept ?? "");
+      if ((req.method === "GET" || req.method === "HEAD") && !wantsStream) {
+        res.writeHead(200, {
+          "content-type": "text/plain; charset=utf-8",
+          "cache-control": "no-store",
+        });
+        res.end(req.method === "HEAD" ? undefined : explain(url.toString()));
         return;
       }
       await handleMcp(req, res);
