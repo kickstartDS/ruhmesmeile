@@ -13,6 +13,7 @@ import React, {
 import ReactDOM from "react-dom/client";
 import "@kickstartds/design-system/global.client.js";
 import "@kickstartds/design-system/global.css";
+import { PREVIEW_LAYER_KEYS, isLayerEnabled } from "../preview/layers";
 
 const styleTag = document.createElement("style");
 styleTag.setAttribute("data-tokens", "");
@@ -52,8 +53,14 @@ const updateLinkTag = (key: string, href: string | undefined) => {
 };
 
 const updateTokens = () => {
-  styleTag.textContent = localStorage.getItem("css");
-  componentStyleTag.textContent = localStorage.getItem("componentCss") || "";
+  // With a layer switched off the preview falls back to the design system's own
+  // compiled CSS, which is what makes the layer's contribution visible.
+  styleTag.textContent = isLayerEnabled(PREVIEW_LAYER_KEYS.brand)
+    ? localStorage.getItem("css")
+    : "";
+  componentStyleTag.textContent = isLayerEnabled(PREVIEW_LAYER_KEYS.component)
+    ? localStorage.getItem("componentCss") || ""
+    : "";
   ensureComponentStyleTagLast();
 
   const rawTokens = localStorage.getItem("tokens");

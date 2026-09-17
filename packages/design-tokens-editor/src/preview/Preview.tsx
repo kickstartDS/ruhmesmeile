@@ -6,6 +6,11 @@ import { useEffect, useMemo, useState } from "react";
 import "./Preview.scss";
 import { Select } from "../controls/select/Select";
 import { useSearchParams } from "../utils/router";
+import {
+  PREVIEW_LAYER_KEYS,
+  isLayerEnabled,
+  setLayerEnabled,
+} from "./layers";
 import { Code } from "../editor/toolbar/Code";
 import { Css } from "../editor/toolbar/Css";
 import { Load } from "../editor/toolbar/Load";
@@ -74,7 +79,23 @@ export const Preview = ({ viewMode = "branding" }: PreviewProps) => {
   const [width, setWidth] = useState(widths[0]);
   const [page, setPage] = useState(searchParams.get("page") || pages[0].value);
   const [inverted, setInverted] = useState(false);
+  const [brandLayer, setBrandLayer] = useState(() =>
+    isLayerEnabled(PREVIEW_LAYER_KEYS.brand),
+  );
+  const [componentLayer, setComponentLayer] = useState(() =>
+    isLayerEnabled(PREVIEW_LAYER_KEYS.component),
+  );
   const iframeSrc = useIframeSrc();
+
+  // The preview iframe watches `storage`, so this reaches a running preview
+  // without reloading it — hence localStorage rather than a URL parameter.
+  useEffect(() => {
+    setLayerEnabled(PREVIEW_LAYER_KEYS.brand, brandLayer);
+  }, [brandLayer]);
+
+  useEffect(() => {
+    setLayerEnabled(PREVIEW_LAYER_KEYS.component, componentLayer);
+  }, [componentLayer]);
 
   useEffect(() => {
     searchParams.set("page", page);
@@ -116,6 +137,40 @@ export const Preview = ({ viewMode = "branding" }: PreviewProps) => {
               />
             }
             label="Inverted?"
+            sx={{
+              "& .MuiFormControlLabel-label": {
+                fontSize: "0.875rem",
+                color: "text.secondary",
+              },
+            }}
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={brandLayer}
+                onChange={(e) => setBrandLayer(e.target.checked)}
+                size="small"
+                sx={{ color: "text.secondary" }}
+              />
+            }
+            label="Brand tokens"
+            sx={{
+              "& .MuiFormControlLabel-label": {
+                fontSize: "0.875rem",
+                color: "text.secondary",
+              },
+            }}
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={componentLayer}
+                onChange={(e) => setComponentLayer(e.target.checked)}
+                size="small"
+                sx={{ color: "text.secondary" }}
+              />
+            }
+            label="Component tokens"
             sx={{
               "& .MuiFormControlLabel-label": {
                 fontSize: "0.875rem",
