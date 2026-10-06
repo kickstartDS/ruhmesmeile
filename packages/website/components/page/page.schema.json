@@ -19,6 +19,25 @@
           "title": "Hide Book a Demo Button",
           "description": "Hide the Book a Demo button on this page",
           "default": false
+        },
+        "onPageNavigation": {
+          "type": "object",
+          "title": "On-Page Navigation",
+          "description": "Anchor navigation bar below the main navigation, linking to the main sections of this page",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "title": "Enabled",
+              "description": "Show an anchor navigation bar for the page's main sections",
+              "default": false
+            },
+            "firstLabel": {
+              "type": "string",
+              "title": "First Link Label",
+              "description": "Label of the first anchor link — overrides the first section's headline text (e.g. the client name). Falls back to the headline text when empty"
+            }
+          },
+          "additionalProperties": false
         }
       }
     },

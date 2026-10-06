@@ -1,0 +1,29 @@
+:root {
+  --dsa-on-page-nav--background-color: var(--ks-background-color-default);
+  --dsa-on-page-nav--color: var(--ks-text-color-default);
+  --dsa-on-page-nav--color_active: var(--ks-color-primary);
+  --dsa-on-page-nav--font: var(--ks-font-interface-s);
+  --dsa-on-page-nav--font-weight_active: var(--ks-font-weight-bold);
+
+  --dsa-on-page-nav--gap: var(--ks-spacing-inline-s);
+  --dsa-on-page-nav--padding-block: var(--ks-spacing-inset-s);
+  --dsa-on-page-nav--padding-inline: var(--ks-spacing-inset-m);
+
+  --dsa-on-page-nav--item-background-color: var(--ks-color-primary-to-bg-9);
+  --dsa-on-page-nav--item-background-color_hover: var(
+    --ks-color-primary-to-bg-8
+  );
+  --dsa-on-page-nav--item-border-radius: var(--ks-border-radius-control);
+  --dsa-on-page-nav--item-padding-block: var(--ks-spacing-inset-xs);
+  --dsa-on-page-nav--item-padding-inline: var(--ks-spacing-inset-s);
+
+  --dsa-on-page-nav--marker-color: var(--ks-color-secondary);
+  --dsa-on-page-nav--marker-height: var(--ks-border-width-emphasized);
+
+  // Below the header's 999 and the modal depth the header uses.
+  --dsa-on-page-nav--z-index: 100;
+
+  // Height of the sticky bar, measured by `on-page-nav.client.js`; the section
+  // headlines below read it as their `scroll-margin-top`.
+  --dsa-on-page-nav--scroll-offset: 0px;
+}

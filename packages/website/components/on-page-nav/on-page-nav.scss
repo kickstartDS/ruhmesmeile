@@ -1,0 +1,63 @@
+@use "./on-page-nav-tokens.scss";
+
+// The bar is sticky, so a clicked anchor has to land below it instead of at the
+// very top of the viewport. `--g-scroll-offset` resolves to `0px` on this site,
+// so nothing else provides that offset — `on-page-nav.client.js` measures the
+// bar and sets the property.
+main .dsa-headline--h1[id] {
+  scroll-margin-top: var(--dsa-on-page-nav--scroll-offset);
+}
+
+.dsa-on-page-nav {
+  position: sticky;
+  top: 0;
+  z-index: var(--dsa-on-page-nav--z-index);
+  background: var(--dsa-on-page-nav--background-color);
+
+  // The floating header is `position: absolute`: the bar has to leave room for
+  // it at the top of the document, where it would otherwise sit underneath it.
+  &--floating {
+    margin-top: var(--dsa-header--height);
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--dsa-on-page-nav--gap);
+    margin: 0;
+    padding: var(--dsa-on-page-nav--padding-block)
+      var(--dsa-on-page-nav--padding-inline);
+    list-style: none;
+  }
+
+  &__item {
+    margin: 0;
+  }
+
+  &__link {
+    display: block;
+    font: var(--dsa-on-page-nav--font);
+    color: var(--dsa-on-page-nav--color);
+    background: var(--dsa-on-page-nav--item-background-color);
+    border-radius: var(--dsa-on-page-nav--item-border-radius);
+    padding: var(--dsa-on-page-nav--item-padding-block)
+      var(--dsa-on-page-nav--item-padding-inline);
+    text-decoration: none;
+
+    &:hover,
+    &:focus-visible {
+      background: var(--dsa-on-page-nav--item-background-color_hover);
+    }
+
+    &[aria-current] {
+      color: var(--dsa-on-page-nav--color_active);
+      font-weight: var(--dsa-on-page-nav--font-weight_active);
+      background: none;
+      // Inset shadow rather than a border, so activating a link does not shift
+      // the row.
+      box-shadow: inset 0 calc(-1 * var(--dsa-on-page-nav--marker-height)) 0 0
+        var(--dsa-on-page-nav--marker-color);
+    }
+  }
+}
