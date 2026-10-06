@@ -196,9 +196,9 @@ export interface ContentNavStoryblok {
 
 export interface CtaStoryblok {
   headline?: string;
-  type?: string;
-  contentAlign?: "" | "center" | "top" | "bottom";
   fullWidth: boolean;
+  contentAlign?: "" | "center" | "top" | "bottom";
+  type?: string;
   sub?: string;
   text?: string;
   highlightText: boolean;
@@ -216,7 +216,6 @@ export interface CtaStoryblok {
   textAlign?: "" | "left" | "center";
   align?: "" | "center" | "top" | "bottom";
   padding: boolean;
-  width?: string;
   _uid: string;
   component: "cta";
 }
@@ -273,7 +272,9 @@ export interface EventDetailStoryblok {
 
 export interface EventFilterStoryblok {
   datePicker_title?: string;
+  "datePicker_tab-a062792e-52df-4c0c-9070-eee75ec9ca3d"?: unknown;
   "datePicker_tab-99bc5c11-6b8b-4760-b109-07a1549fa638"?: unknown;
+  "datePicker_tab-372d3119-994d-4e0b-87c2-9cffddd13cf3"?: unknown;
   "datePicker_tab-f1840f91-b15f-4bf7-9703-345386df7374"?: unknown;
   datePicker_toggle: boolean;
   categories_title?: string;
@@ -659,6 +660,8 @@ export interface PageStoryblok {
   seo?: SeoStoryblok[];
   theme?: string;
   hideBookDemoButton: boolean;
+  onPageNavigation_enabled: boolean;
+  onPageNavigation_firstLabel?: string;
   _uid: string;
   component: "page";
   uuid?: string;
@@ -787,6 +790,7 @@ export interface SectionStoryblok {
     | VideoCurtainStoryblok
     | InfoTableStoryblok
     | PrompterStoryblok
+    | TabBf554005094445B8Bc12D9Dfdd640480Storyblok
   )[];
   buttons?: ButtonsStoryblok[];
   aiDraft: boolean;
@@ -909,6 +913,7 @@ export interface SplitEvenStoryblok {
     | TestimonialsStoryblok
     | TextStoryblok
     | VideoCurtainStoryblok
+    | Tab084Ee09188664F49B3B655Ff59Cfc93BStoryblok
   )[];
   secondComponents?: (
     | BlogTeaserStoryblok
@@ -937,6 +942,7 @@ export interface SplitEvenStoryblok {
     | TestimonialsStoryblok
     | TextStoryblok
     | VideoCurtainStoryblok
+    | Tab5A101427985B40A0A00D19A060E58378Storyblok
   )[];
   _uid: string;
   component: "split-even";
@@ -983,6 +989,7 @@ export interface SplitWeightedStoryblok {
     | TestimonialsStoryblok
     | TextStoryblok
     | VideoCurtainStoryblok
+    | Tab5742Ed2C074B460288C061Db3441B558Storyblok
   )[];
   asideComponents?: (
     | BlogTeaserStoryblok
@@ -1011,6 +1018,7 @@ export interface SplitWeightedStoryblok {
     | TestimonialsStoryblok
     | TextStoryblok
     | VideoCurtainStoryblok
+    | TabB92Ea33951574D1FB0Df91A798E23E2AStoryblok
   )[];
   _uid: string;
   component: "split-weighted";
@@ -1044,6 +1052,17 @@ export interface Tab065B80E8Dbf44278A8D3Bfe6B07B0EbcStoryblok {
   component: "tab-065b80e8-dbf4-4278-a8d3-bfe6b07b0ebc";
 }
 
+export interface Tab084Ee09188664F49B3B655Ff59Cfc93BStoryblok {
+  button_label?: string;
+  button_url?: MultilinkStoryblok;
+  button_variant?: "" | "primary" | "secondary" | "tertiary";
+  button_size?: "" | "small" | "medium" | "large";
+  button_disabled: boolean;
+  button_type?: "" | "button" | "submit" | "reset";
+  _uid: string;
+  component: "tab-084ee091-8866-4f49-b3b6-55ff59cfc93b";
+}
+
 export interface Tab0C4B601151Dd4642Bf5E4B997B5D2Ab9Storyblok {
   button_label?: string;
   button_url?: MultilinkStoryblok;
@@ -1053,6 +1072,39 @@ export interface Tab0C4B601151Dd4642Bf5E4B997B5D2Ab9Storyblok {
   button_type?: "" | "button" | "submit" | "reset";
   _uid: string;
   component: "tab-0c4b6011-51dd-4642-bf5e-4b997b5d2ab9";
+}
+
+export interface Tab1900E0F06862495C963140Ac036Fcc34Storyblok {
+  button_label?: string;
+  button_url?: MultilinkStoryblok;
+  button_variant?: "" | "primary" | "secondary" | "tertiary";
+  button_size?: "" | "small" | "medium" | "large";
+  button_disabled: boolean;
+  button_type?: "" | "button" | "submit" | "reset";
+  _uid: string;
+  component: "tab-1900e0f0-6862-495c-9631-40ac036fcc34";
+}
+
+export interface Tab1D64379F23D3403AB9474Fd3Ca35F00AStoryblok {
+  button_label?: string;
+  button_url?: MultilinkStoryblok;
+  button_variant?: "" | "primary" | "secondary" | "tertiary";
+  button_size?: "" | "small" | "medium" | "large";
+  button_disabled: boolean;
+  button_type?: "" | "button" | "submit" | "reset";
+  _uid: string;
+  component: "tab-1d64379f-23d3-403a-b947-4fd3ca35f00a";
+}
+
+export interface Tab1Def39757F4D4161Ae6B9316Cdc6C031Storyblok {
+  button_label?: string;
+  button_url?: MultilinkStoryblok;
+  button_variant?: "" | "primary" | "secondary" | "tertiary";
+  button_size?: "" | "small" | "medium" | "large";
+  button_disabled: boolean;
+  button_type?: "" | "button" | "submit" | "reset";
+  _uid: string;
+  component: "tab-1def3975-7f4d-4161-ae6b-9316cdc6c031";
 }
 
 export interface Tab1F7Ebb1C4D164B7FA03ECcd5E18F22CcStoryblok {
@@ -1088,6 +1140,17 @@ export interface Tab2C46C3D82F994A78B8605E684A639433Storyblok {
   component: "tab-2c46c3d8-2f99-4a78-b860-5e684a639433";
 }
 
+export interface Tab35Decd3153Fd46F18882B548B6A37E88Storyblok {
+  button_label?: string;
+  button_url?: MultilinkStoryblok;
+  button_variant?: "" | "primary" | "secondary" | "tertiary";
+  button_size?: "" | "small" | "medium" | "large";
+  button_disabled: boolean;
+  button_type?: "" | "button" | "submit" | "reset";
+  _uid: string;
+  component: "tab-35decd31-53fd-46f1-8882-b548b6a37e88";
+}
+
 export interface Tab3619Db3783Ae40D0A7E845Fee02Aa507Storyblok {
   button_label?: string;
   button_url?: MultilinkStoryblok;
@@ -1097,6 +1160,28 @@ export interface Tab3619Db3783Ae40D0A7E845Fee02Aa507Storyblok {
   button_type?: "" | "button" | "submit" | "reset";
   _uid: string;
   component: "tab-3619db37-83ae-40d0-a7e8-45fee02aa507";
+}
+
+export interface Tab3F15C02131Ff48E8910965Cdd823Ff30Storyblok {
+  button_label?: string;
+  button_url?: MultilinkStoryblok;
+  button_variant?: "" | "primary" | "secondary" | "tertiary";
+  button_size?: "" | "small" | "medium" | "large";
+  button_disabled: boolean;
+  button_type?: "" | "button" | "submit" | "reset";
+  _uid: string;
+  component: "tab-3f15c021-31ff-48e8-9109-65cdd823ff30";
+}
+
+export interface Tab40142128080B4B828Bc846D520E68DeaStoryblok {
+  button_label?: string;
+  button_url?: MultilinkStoryblok;
+  button_variant?: "" | "primary" | "secondary" | "tertiary";
+  button_size?: "" | "small" | "medium" | "large";
+  button_disabled: boolean;
+  button_type?: "" | "button" | "submit" | "reset";
+  _uid: string;
+  component: "tab-40142128-080b-4b82-8bc8-46d520e68dea";
 }
 
 export interface Tab463De4FbC9E74B6095B886D29A8Ac13BStoryblok {
@@ -1110,6 +1195,17 @@ export interface Tab463De4FbC9E74B6095B886D29A8Ac13BStoryblok {
   component: "tab-463de4fb-c9e7-4b60-95b8-86d29a8ac13b";
 }
 
+export interface Tab4E437F5187B8400E98286Ab7B8A700BcStoryblok {
+  button_label?: string;
+  button_url?: MultilinkStoryblok;
+  button_variant?: "" | "primary" | "secondary" | "tertiary";
+  button_size?: "" | "small" | "medium" | "large";
+  button_disabled: boolean;
+  button_type?: "" | "button" | "submit" | "reset";
+  _uid: string;
+  component: "tab-4e437f51-87b8-400e-9828-6ab7b8a700bc";
+}
+
 export interface Tab512D76B474114C23A8790Cad8208A4D2Storyblok {
   button_label?: string;
   button_url?: MultilinkStoryblok;
@@ -1121,6 +1217,28 @@ export interface Tab512D76B474114C23A8790Cad8208A4D2Storyblok {
   component: "tab-512d76b4-7411-4c23-a879-0cad8208a4d2";
 }
 
+export interface Tab5742Ed2C074B460288C061Db3441B558Storyblok {
+  button_label?: string;
+  button_url?: MultilinkStoryblok;
+  button_variant?: "" | "primary" | "secondary" | "tertiary";
+  button_size?: "" | "small" | "medium" | "large";
+  button_disabled: boolean;
+  button_type?: "" | "button" | "submit" | "reset";
+  _uid: string;
+  component: "tab-5742ed2c-074b-4602-88c0-61db3441b558";
+}
+
+export interface Tab5A101427985B40A0A00D19A060E58378Storyblok {
+  button_label?: string;
+  button_url?: MultilinkStoryblok;
+  button_variant?: "" | "primary" | "secondary" | "tertiary";
+  button_size?: "" | "small" | "medium" | "large";
+  button_disabled: boolean;
+  button_type?: "" | "button" | "submit" | "reset";
+  _uid: string;
+  component: "tab-5a101427-985b-40a0-a00d-19a060e58378";
+}
+
 export interface Tab7011Ebc12A1045C7963CCe7606Bd05E1Storyblok {
   button_label?: string;
   button_url?: MultilinkStoryblok;
@@ -1130,6 +1248,17 @@ export interface Tab7011Ebc12A1045C7963CCe7606Bd05E1Storyblok {
   button_type?: "" | "button" | "submit" | "reset";
   _uid: string;
   component: "tab-7011ebc1-2a10-45c7-963c-ce7606bd05e1";
+}
+
+export interface Tab77E62A825A1B4D4D923D9Bd599E83Ff7Storyblok {
+  button_label?: string;
+  button_url?: MultilinkStoryblok;
+  button_variant?: "" | "primary" | "secondary" | "tertiary";
+  button_size?: "" | "small" | "medium" | "large";
+  button_disabled: boolean;
+  button_type?: "" | "button" | "submit" | "reset";
+  _uid: string;
+  component: "tab-77e62a82-5a1b-4d4d-923d-9bd599e83ff7";
 }
 
 export interface Tab7A312335B8Be4045B414D1341A1Ace97Storyblok {
@@ -1187,6 +1316,17 @@ export interface Tab8Ea3F57326E54A6F9748C32867664Aa1Storyblok {
   component: "tab-8ea3f573-26e5-4a6f-9748-c32867664aa1";
 }
 
+export interface Tab902093C87B274D829845Cdfb20D2E57FStoryblok {
+  button_label?: string;
+  button_url?: MultilinkStoryblok;
+  button_variant?: "" | "primary" | "secondary" | "tertiary";
+  button_size?: "" | "small" | "medium" | "large";
+  button_disabled: boolean;
+  button_type?: "" | "button" | "submit" | "reset";
+  _uid: string;
+  component: "tab-902093c8-7b27-4d82-9845-cdfb20d2e57f";
+}
+
 export interface Tab9770Ef5B68A740Aa9DdcBd993B4D20B1Storyblok {
   button_label?: string;
   button_url?: MultilinkStoryblok;
@@ -1207,6 +1347,39 @@ export interface TabAdfa72AaA5504A30A5D766Facbc4016DStoryblok {
   button_type?: "" | "button" | "submit" | "reset";
   _uid: string;
   component: "tab-adfa72aa-a550-4a30-a5d7-66facbc4016d";
+}
+
+export interface TabAe5E3929B7Ea4C7EBf1C46E0Adb201CbStoryblok {
+  button_label?: string;
+  button_url?: MultilinkStoryblok;
+  button_variant?: "" | "primary" | "secondary" | "tertiary";
+  button_size?: "" | "small" | "medium" | "large";
+  button_disabled: boolean;
+  button_type?: "" | "button" | "submit" | "reset";
+  _uid: string;
+  component: "tab-ae5e3929-b7ea-4c7e-bf1c-46e0adb201cb";
+}
+
+export interface TabB92Ea33951574D1FB0Df91A798E23E2AStoryblok {
+  button_label?: string;
+  button_url?: MultilinkStoryblok;
+  button_variant?: "" | "primary" | "secondary" | "tertiary";
+  button_size?: "" | "small" | "medium" | "large";
+  button_disabled: boolean;
+  button_type?: "" | "button" | "submit" | "reset";
+  _uid: string;
+  component: "tab-b92ea339-5157-4d1f-b0df-91a798e23e2a";
+}
+
+export interface TabBf554005094445B8Bc12D9Dfdd640480Storyblok {
+  button_label?: string;
+  button_url?: MultilinkStoryblok;
+  button_variant?: "" | "primary" | "secondary" | "tertiary";
+  button_size?: "" | "small" | "medium" | "large";
+  button_disabled: boolean;
+  button_type?: "" | "button" | "submit" | "reset";
+  _uid: string;
+  component: "tab-bf554005-0944-45b8-bc12-d9dfdd640480";
 }
 
 export interface TabC449062FF0254B36B47DFc032Dfb4824Storyblok {
@@ -1231,6 +1404,28 @@ export interface TabCe0Dbebe68724C5688EcB8Dcdd4D4Ab6Storyblok {
   component: "tab-ce0dbebe-6872-4c56-88ec-b8dcdd4d4ab6";
 }
 
+export interface TabE3A80D36856C40E0B762F25Bd56Fc963Storyblok {
+  button_label?: string;
+  button_url?: MultilinkStoryblok;
+  button_variant?: "" | "primary" | "secondary" | "tertiary";
+  button_size?: "" | "small" | "medium" | "large";
+  button_disabled: boolean;
+  button_type?: "" | "button" | "submit" | "reset";
+  _uid: string;
+  component: "tab-e3a80d36-856c-40e0-b762-f25bd56fc963";
+}
+
+export interface TabE807588CC3Ef45A799E3688Ab22Cda07Storyblok {
+  button_label?: string;
+  button_url?: MultilinkStoryblok;
+  button_variant?: "" | "primary" | "secondary" | "tertiary";
+  button_size?: "" | "small" | "medium" | "large";
+  button_disabled: boolean;
+  button_type?: "" | "button" | "submit" | "reset";
+  _uid: string;
+  component: "tab-e807588c-c3ef-45a7-99e3-688ab22cda07";
+}
+
 export interface TabEb6Cb55C25C94F71B19FBc7635861D5CStoryblok {
   button_label?: string;
   button_url?: MultilinkStoryblok;
@@ -1240,6 +1435,39 @@ export interface TabEb6Cb55C25C94F71B19FBc7635861D5CStoryblok {
   button_type?: "" | "button" | "submit" | "reset";
   _uid: string;
   component: "tab-eb6cb55c-25c9-4f71-b19f-bc7635861d5c";
+}
+
+export interface TabEb7173A1Cfda4D33Bbe92A4D96DafbfbStoryblok {
+  button_label?: string;
+  button_url?: MultilinkStoryblok;
+  button_variant?: "" | "primary" | "secondary" | "tertiary";
+  button_size?: "" | "small" | "medium" | "large";
+  button_disabled: boolean;
+  button_type?: "" | "button" | "submit" | "reset";
+  _uid: string;
+  component: "tab-eb7173a1-cfda-4d33-bbe9-2a4d96dafbfb";
+}
+
+export interface TabF34360D16B8A41Cf9324E8B966Fb30BfStoryblok {
+  button_label?: string;
+  button_url?: MultilinkStoryblok;
+  button_variant?: "" | "primary" | "secondary" | "tertiary";
+  button_size?: "" | "small" | "medium" | "large";
+  button_disabled: boolean;
+  button_type?: "" | "button" | "submit" | "reset";
+  _uid: string;
+  component: "tab-f34360d1-6b8a-41cf-9324-e8b966fb30bf";
+}
+
+export interface TabF4D259D3F82A44A5Bc87Ca42Fef166E8Storyblok {
+  button_label?: string;
+  button_url?: MultilinkStoryblok;
+  button_variant?: "" | "primary" | "secondary" | "tertiary";
+  button_size?: "" | "small" | "medium" | "large";
+  button_disabled: boolean;
+  button_type?: "" | "button" | "submit" | "reset";
+  _uid: string;
+  component: "tab-f4d259d3-f82a-44a5-bc87-ca42fef166e8";
 }
 
 export interface TabFe3D78De057A4D5B93B0C41347B16E58Storyblok {
@@ -1261,8 +1489,8 @@ export interface TagsStoryblok {
 
 export interface TeaserCardStoryblok {
   headline?: string;
-  type?: string;
   target?: MultilinkStoryblok;
+  type?: string;
   text?: string;
   label?: string;
   layout?: "" | "stack" | "row" | "compact";
