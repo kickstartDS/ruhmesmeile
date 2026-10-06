@@ -48,6 +48,14 @@ export type Theme = string;
  * Hide the Book a Demo button on this page
  */
 export type HideBookADemoButton = boolean;
+/**
+ * Show an anchor navigation bar for the page's main sections
+ */
+export type Enabled = boolean;
+/**
+ * Label of the first anchor link — overrides the first section's headline text (e.g. the client name). Falls back to the headline text when empty
+ */
+export type FirstLinkLabel = string;
 
 /**
  * Abstracts a page concept into JSON schema
@@ -64,6 +72,7 @@ export interface PageProps {
   seo: SeoProps;
   theme?: Theme;
   hideBookDemoButton?: HideBookADemoButton;
+  onPageNavigation?: OnPageNavigation;
 }
 /**
  * Header settings for the page
@@ -79,4 +88,11 @@ export interface Header {
 export interface Footer {
   inverted?: ToggleInverted1;
   logo?: Logo1;
+}
+/**
+ * Anchor navigation bar below the main navigation, linking to the main sections of this page
+ */
+export interface OnPageNavigation {
+  enabled?: Enabled;
+  firstLabel?: FirstLinkLabel;
 }

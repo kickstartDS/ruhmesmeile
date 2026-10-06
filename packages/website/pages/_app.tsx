@@ -34,6 +34,7 @@ import {
   AlternatesProvider,
 } from "@/components/LanguageContext";
 import { BookADemo } from "@/components/book-a-demo/BookADemoComponent";
+import { OnPageNav } from "@/components/on-page-nav/OnPageNavComponent";
 import HeaderButtonContext from "@/components/HeaderButtonContext";
 import { SettingsContext } from "@/components/SettingsContext";
 import { Section } from "@kickstartds/design-system/components/section/index.js";
@@ -300,6 +301,11 @@ export default function App({
                           }}
                         />
                       )}
+                      <OnPageNav
+                        enabled={storyProps?.onPageNavigation?.enabled}
+                        firstLabel={storyProps?.onPageNavigation?.firstLabel}
+                        floating={floatHeader}
+                      />
                       {heroSection && <StoryblokComponent blok={heroSection} />}
                       {!hideBreadcrumbs &&
                         breadcrumbItems &&
